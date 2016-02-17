@@ -15,24 +15,42 @@ module.exports = function(grunt) {
                 options: {
                     spawn: false
                 }
-            }
-        },
-        copy: {
-            main: {
-                expand: true,
-                cwd: "node_modules/",
-                src: [ //CHANGE THESE BASED ON WHAT IS BEING USED
-                    "angular/angular.min.js",
-                    "angular/angular.min.js.map",
-                    "angular/angular-csp.css",
-                    "angular-route/angular-route.min.js",
-                    "bootstrap/*.*",
-                    "bootstrap/**/*.*"
-                ],
-                "dest": "server/public/vendor/"
+            },
+            css: {
+                files: ['client/sass/*.scss'],
+                tasks: ['sass'],
+                options: {
+                    spawn: false
+                }
+            },
+            copy: {
+                main: {
+                    expand: true,
+                    cwd: "node_modules/",
+                    src: [ //CHANGE THESE BASED ON WHAT IS BEING USED
+                        "angular/angular.min.js",
+                        "angular/angular.min.js.map",
+                        "angular/angular-csp.css",
+                        "angular-route/angular-route.min.js",
+                        "bootstrap/*.*",
+                        "bootstrap/**/*.*"
+                    ],
+                    "dest": "server/public/vendor/"
+                }
+            },
+            sass: {
+                dist: {
+                    files: [{
+                        expand: true,
+                        cwd: 'client/sass',
+                        src: ['style.scss'],
+                        dest: 'server/public/assets/styles',
+                        ext: '.css'
+                    }]
+                }
             }
         }
-    });
+    })
 
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify');
