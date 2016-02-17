@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="talkNerdyApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Talk Nerdy to Me</title>
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="assets/scripts/client.min.js"></script>
+    <link rel="stylesheet" href="assets/styles/styles.css">
+</head>
+<body ng-controller="mainController as main">
+    <h1>Toastmasters</h1>
+    <p>{{main.sampleMessage}}</p>
+    <p>Today is: {{main.today | date: fullDate}}</p>
+</body>
+</html>
