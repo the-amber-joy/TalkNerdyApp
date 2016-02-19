@@ -5,3 +5,7 @@ app.controller('mainController', function(){
     main.sampleMessage = 'Angular hooked up';
     main.today = Date.now();
 });
+
+app.controller('loginController', function(){
+
+});
