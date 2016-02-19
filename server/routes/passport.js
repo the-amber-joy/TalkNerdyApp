@@ -1,4 +1,5 @@
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+require('dotenv').config();
 
 
 module.exports = function(passport) {
