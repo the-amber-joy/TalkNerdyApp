@@ -17,13 +17,13 @@ module.exports = function(grunt) {
                 }
             }
         },
-        //css: {
-        //    files: ['client/sass/*.scss'],
-        //    tasks: ['sass'],
-        //    options: {
-        //        spawn: false
-        //    }
-        //},
+        css: {
+            files: ['client/sass/*.scss'],
+            tasks: ['sass'],
+            options: {
+                spawn: false
+            }
+        },
         copy: {
             main: {
                 expand: true,
@@ -38,30 +38,30 @@ module.exports = function(grunt) {
                 ],
                 "dest": "server/public/vendor/"
             }
+        },
+        sass: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: 'client/sass',
+                    src: ['style.scss'],
+                    dest: 'server/public/assets/styles',
+                    ext: '.css'
+                }]
+            }
         }
-        //sass: {
-        //    dist: {
-        //        files: [{
-        //            expand: true,
-        //            cwd: 'client/sass',
-        //            src: ['style.scss'],
-        //            dest: 'server/public/assets/styles',
-        //            ext: '.css'
-        //        }]
-        //    }
-        //}
 
     });
 
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    //grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
 
     // Default task(s).
-    grunt.registerTask('default', ['copy', 'uglify']);
-    //grunt.registerTask('default', ['copy', 'uglify', 'sass']);
+    //grunt.registerTask('default', ['copy', 'uglify']);
+    grunt.registerTask('default', ['copy', 'uglify', 'sass']);
 
 
 };
