@@ -12,5 +12,11 @@
     <p>{{main.sampleMessage}}</p>
     <p>Today is: {{main.today | date: fullDate}}</p>
     <p>Push Test</p>
+
+    <!--Guest, Member, and Admin views will render here-->
+    <ng-view></ng-view>
+    <!--End Custom View-->
+
+
 </body>
 </html>
