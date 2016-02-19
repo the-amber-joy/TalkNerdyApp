@@ -1,4 +1,5 @@
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+require('dotenv').config();
 
 
 module.exports = function(passport) {
@@ -17,9 +18,9 @@ module.exports = function(passport) {
 
     passport.use(new GoogleStrategy({
 
-        clientID: configAuth.googleAuth.clientID,
-        clientSecret: configAuth.googleAuth.clientSecret,
-        callbackURL: configAuth.googleAuth.callbackURL
+        clientID: process.env.clientID,
+        clientSecret: process.env.clientSecret,
+        callbackURL: process.env.callbackURL
 
     }, function (token, refreshToken, profile, done) {
 
