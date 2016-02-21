@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-    // Project configuration.
+    // Project configuration
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         uglify: {
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
             main: {
                 expand: true,
                 cwd: "node_modules/",
-                src: [ //CHANGE THESE BASED ON WHAT IS BEING USED
+                src: [
                     "angular/angular.min.js",
                     "angular/angular.min.js.map",
                     "angular/angular-csp.css",
@@ -50,7 +50,6 @@ module.exports = function(grunt) {
                 }]
             }
         }
-
     });
 
     grunt.loadNpmTasks('grunt-contrib-copy');
@@ -58,10 +57,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
 
-
     // Default task(s).
-    //grunt.registerTask('default', ['copy', 'uglify']);
     grunt.registerTask('default', ['copy', 'uglify', 'sass']);
-
 
 };
