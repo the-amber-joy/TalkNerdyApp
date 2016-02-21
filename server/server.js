@@ -11,15 +11,18 @@ app.use(express.static('server/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-
+//[][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+//                      ROUTES
+//[][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 app.use('/', index);
 app.use('/testDBroute', testDBroute);
 app.use('/mySpeeches', mySpeeches);
 app.use('/auth', auth);
 
 
-
-// Server with heroku ENV port selector
+//[][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+//        Server with heroku ENV port selector
+//[][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 var server = app.listen(process.env.PORT || 3000, function(){
     var port = server.address().port;
     console.log('Ready for some requests on Port', port)

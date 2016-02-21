@@ -21,7 +21,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     //}]);
 
     app.controller('loginController', function () {
-        console.log('UI Router seems to be working!')
+        console.log('UI Router seems to be working!');
         var login=this
             .message='Hello and things!'
     });

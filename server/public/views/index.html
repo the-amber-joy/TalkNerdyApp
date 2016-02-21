@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="talkNerdyApp">
-<head>
-    <meta charset="UTF-8">
-    <title>Talk Nerdy to Me</title>
-    <script src="vendor/angular/angular.min.js"></script>
-    <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="assets/scripts/client.min.js"></script>
-    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/styles/style.css">
-    <base href="/">
-</head>
-<body>
-    <h1>Toastmasters</h1>
-    <button ui-sref="login">Load Log-In Partial</button>
-    <!--<p>{{sampleMessage}}</p>-->
+    <head>
+        <meta charset="UTF-8">
+        <title>Talk Nerdy to Me</title>
+        <script src="vendor/angular/angular.min.js"></script>
+        <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="assets/scripts/client.min.js"></script>
+        <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/styles/style.css">
+        <base href="/">
+    </head>
+    <body>
+        <h1>Toastmasters</h1>
+        <button ui-sref="login">Load Log-In Partial</button>
+        <!--<p>{{sampleMessage}}</p>-->
 
-    <!--Guest, Member, and Admin views will render here-->
-    <div ui-view></div>
+        <!--Guest, Member, and Admin views will render here-->
+        <div ui-view></div>
 
-    <!--End Custom View-->
+        <!--End Custom View-->
 
 
-</body>
+    </body>
 </html>
-
