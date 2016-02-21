@@ -14,16 +14,16 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 }]);
 
 
-    app.controller('mainController', ['$scope', function ($scope) {
-        //var main = this;
-        $scope.sampleMessage = 'Angular hooked up';
-        $scope.today = Date.now();
-    }]);
+    //app.controller('mainController', ['$scope', function ($scope) {
+    //    //var main = this;
+    //    $scope.sampleMessage = 'Angular hooked up';
+    //    $scope.today = Date.now();
+    //}]);
 
     app.controller('loginController', function () {
         console.log('UI Router seems to be working!')
         var login=this
-            .message="Hello and things!"
+            .message='Hello and things!'
     });
 
 
