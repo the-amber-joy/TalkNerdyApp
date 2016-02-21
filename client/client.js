@@ -4,20 +4,23 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     //
     // For any unmatched url, redirect to /state1
     $urlRouterProvider.otherwise("/");
-    $stateProvider.state('/', {
-        url: '/login',
-        controller: 'loginController',
-        controllerAs: 'login'
+    $stateProvider
+        .state('/', {
+        url: 'server/public/views/index',
+        controller: 'mainController'
+        //controllerAs: 'main'
     });
 
 
-    app.controller('mainController', function () {
-        var main = this;
-        main.sampleMessage = 'Angular hooked up';
-        main.today = Date.now();
-    });
+    app.controller('mainController', [('$scope'), function ($scope) {
+        //var main = this;
+        $scope.sampleMessage = 'Angular hooked up';
+        $scope.today = Date.now();
+    }]);
 
-    app.controller('loginController', function () {
-        console.log('UI Router seems to be working!')
-    });
+    //app.controller('loginController', function () {
+    //    console.log('UI Router seems to be working!')
+    //});
+
+    //$stateProvider.html5Mode(true);
 }]);
