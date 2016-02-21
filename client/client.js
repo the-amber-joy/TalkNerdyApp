@@ -3,10 +3,10 @@ var app = angular.module('talkNerdyApp', ['ui.router']);
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     //
     // For any unmatched url, redirect to /state1
-    $urlRouterProvider.otherwise("/");
+    //$urlRouterProvider.otherwise("/");
     $stateProvider
-        .state('/', {
-        url: 'server/public/views/index',
+        .state('login', {
+        url: 'views/login.hmtl',
         controller: 'mainController'
         //controllerAs: 'main'
     });
@@ -18,9 +18,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         $scope.today = Date.now();
     }]);
 
-    //app.controller('loginController', function () {
-    //    console.log('UI Router seems to be working!')
-    //});
+    route.controller('loginController', function () {
+        console.log('UI Router seems to be working!')
+    });
 
     //$stateProvider.html5Mode(true);
 }]);
