@@ -11,8 +11,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         //controllerAs: 'main'
     });
 
+}]);
 
-    app.controller(['mainController', '$scope', function ($scope) {
+
+    app.controller('mainController', ['$scope', function ($scope) {
         //var main = this;
         $scope.sampleMessage = 'Angular hooked up';
         $scope.today = Date.now();
@@ -23,4 +25,4 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     });
 
     //$stateProvider.html5Mode(true);
-}]);
+
