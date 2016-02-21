@@ -10,7 +10,6 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         controller: 'mainController'
         //controllerAs: 'main'
     });
-
 }]);
 
 
