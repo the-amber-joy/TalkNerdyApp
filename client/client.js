@@ -1,4 +1,4 @@
-var app = angular.module('talkNerdyApp', ['ui-router']);
+var app = angular.module('talkNerdyApp', ['ui.router']);
 
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     //
@@ -18,7 +18,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         $scope.today = Date.now();
     }]);
 
-    route.controller('loginController', function () {
+    app.controller('loginController', function () {
         console.log('UI Router seems to be working!')
     });
 
