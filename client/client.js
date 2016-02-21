@@ -6,22 +6,25 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     //$urlRouterProvider.otherwise("/");
     $stateProvider
         .state('login', {
-        url: 'views/login.html',
-        controller: 'mainController'
-        //controllerAs: 'main'
+        templateUrl: 'views/login.html',
+        controller: 'loginController',
+        controllerAs: 'login'
     });
+    //$urlRouterProvider.html5Mode(true);
 }]);
 
 
-    app.controller('mainController', ['$scope', function ($scope) {
-        //var main = this;
-        $scope.sampleMessage = 'Angular hooked up';
-        $scope.today = Date.now();
-    }]);
+    //app.controller('mainController', ['$scope', function ($scope) {
+    //    //var main = this;
+    //    $scope.sampleMessage = 'Angular hooked up';
+    //    $scope.today = Date.now();
+    //}]);
 
     app.controller('loginController', function () {
         console.log('UI Router seems to be working!')
+        var login=this
+            .message='Hello and things!'
     });
 
-    //$stateProvider.html5Mode(true);
+
 

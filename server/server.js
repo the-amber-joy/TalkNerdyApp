@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var testDBroute = require('./routes/testDBroute');
+var auth = require('./routes/auth');
 
 var app = express();
 
@@ -9,11 +10,12 @@ app.use(express.static('server/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-//[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
-//                          ROUTES                            //
-//[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+
 app.use('/', index);
 app.use('/testDBroute', testDBroute);
+app.use('/auth', auth);
+
+
 
 
 // Server with heroku ENV port selector
