@@ -32,7 +32,7 @@ module.exports = function(grunt) {
                     "angular/angular.min.js",
                     "angular/angular.min.js.map",
                     "angular/angular-csp.css",
-                    "angular-route/angular-route.min.js",
+                    "angular-ui-router/release/angular-ui-router.min.js",
                     "bootstrap/*.*",
                     "bootstrap/**/*.*"
                 ],

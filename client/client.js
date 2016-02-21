@@ -1,11 +1,23 @@
-var app = angular.module('talkNerdyApp', []);
+var app = angular.module('talkNerdyApp', ['ui.router']);
 
-app.controller('mainController', function(){
-    var main = this;
-    main.sampleMessage = 'Angular hooked up';
-    main.today = Date.now();
-});
+app.config(function($stateProvider, $urlRouterProvider) {
+    //
+    // For any unmatched url, redirect to /state1
+    $urlRouterProvider.otherwise("/state1");
+    $stateProvider.state('login', {
+        url: '/login',
+        controller: 'loginController',
+        controllerAs: 'login'
+    });
 
-app.controller('loginController', function(){
 
+    app.controller('mainController', function () {
+        var main = this;
+        main.sampleMessage = 'Angular hooked up';
+        main.today = Date.now();
+    });
+
+    app.controller('loginController', function () {
+        console.log('UI Router seems to be working!')
+    });
 });
