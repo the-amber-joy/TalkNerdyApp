@@ -3,8 +3,8 @@ var app = angular.module('talkNerdyApp', ['ui.router']);
 app.config(function($stateProvider, $urlRouterProvider) {
     //
     // For any unmatched url, redirect to /state1
-    $urlRouterProvider.otherwise("/state1");
-    $stateProvider.state('login', {
+    $urlRouterProvider.otherwise("/");
+    $stateProvider.state('/', {
         url: '/login',
         controller: 'loginController',
         controllerAs: 'login'

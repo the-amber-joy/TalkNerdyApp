@@ -6,14 +6,15 @@
     <script src="vendor/angular/angular.min.js"></script>
     <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="assets/scripts/client.min.js"></script>
-    <link rel="stylesheet" href="assets/styles/styles.css">
+    <link rel="stylesheet" href="assets/styles/style.css">
 </head>
 <body ng-controller="mainController as main">
     <h1>Toastmasters</h1>
     <p>{{main.sampleMessage}}</p>
     <p>Today is: {{main.today | date: fullDate}}</p>
-    <p>Push Test</p>
 
+
+    <a href="/auth/google/callback">Google</a>
     <!--Guest, Member, and Admin views will render here-->
     <ng-view></ng-view>
     <!--End Custom View-->
