@@ -1,4 +1,4 @@
-var app = angular.module('talkNerdyApp', ['ui.router']);
+var app = angular.module('talkNerdyApp', ['ui-router']);
 
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     //
@@ -6,13 +6,13 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     //$urlRouterProvider.otherwise("/");
     $stateProvider
         .state('login', {
-        url: 'views/login.hmtl',
+        url: 'views/login.html',
         controller: 'mainController'
         //controllerAs: 'main'
     });
 
 
-    app.controller('mainController', [('$scope'), function ($scope) {
+    app.controller(['mainController', '$scope', function ($scope) {
         //var main = this;
         $scope.sampleMessage = 'Angular hooked up';
         $scope.today = Date.now();
