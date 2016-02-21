@@ -19,7 +19,6 @@ app.use('/auth', auth);
 
 
 
-
 // Server with heroku ENV port selector
 var server = app.listen(process.env.PORT || 3000, function(){
     var port = server.address().port;
