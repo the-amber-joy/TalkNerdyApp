@@ -6,10 +6,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     //$urlRouterProvider.otherwise("/");
     $stateProvider
         .state('login', {
-        url: 'views/login.html',
-        controller: 'mainController'
-        //controllerAs: 'main'
+        templateUrl: 'views/login.html',
+        controller: 'loginController',
+        controllerAs: 'login'
     });
+    //$urlRouterProvider.html5Mode(true);
 }]);
 
 
@@ -21,7 +22,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
     app.controller('loginController', function () {
         console.log('UI Router seems to be working!')
+        var login=this
+            .message="Hello and things!"
     });
 
-    //$stateProvider.html5Mode(true);
+
 
