@@ -1,1 +1,22 @@
 A LOT OF OLD MEETINGS HAPPENED
+
+<div class="well" ng-repeat="agenda in past.agendas">
+    <div>
+        Date: {{agenda.date | date}}<br>
+        Theme: {{agenda.theme}}<br>
+        Word of the Day: {{agenda.word_of_day}}<br>
+        Location: {{agenda.location}}<br>
+        Speech 1: {{agenda.speech_1}}<br>
+        Speech 2: {{agenda.speech_2}}<br>
+        Meeting Roles:<br>
+            Presiding Officer: {{agenda.presiding_officer}}<br>
+            Toastmaster: {{agenda.toastmaster}}<br>
+            General Evaluator: {{agenda.general_evaluator}}<br>
+            Evaluator 1: {{agenda.speech_evaluator_1}}<br>
+            Evaluator 2: {{agenda.speech_evaluator_2}}<br>
+            Timer: {{agenda.timer}}<br>
+            Grammarian: {{agenda.grammarian}}<br>
+            Ah Counter: {{agenda.ah_counter}}<br>
+    </div>
+</div>
+
