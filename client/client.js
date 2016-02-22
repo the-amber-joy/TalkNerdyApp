@@ -42,7 +42,7 @@ app.controller('SpeechHistory', ['$http', function ($http) {
 
 app.controller('PastController', ['$http', function ($http) {
     var past=this;
-    $http.get('/mySpeeches').then(function(response){
+    $http.get('/pastAgendas').then(function(response){
         past.agendas = response.data;
         console.log(response.data);
     });

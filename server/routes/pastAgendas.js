@@ -22,11 +22,11 @@ router.get('/', function(request, response){
                                 JOIN speeches \
                                     ON speeches.date = meetings.date \
                                 JOIN roster \
-                                    ON speeches.speaker_name = roster.oauth_name \
+                                    ON speeches.speaker_first_name = roster.first_name \
                                 JOIN speech_tracks \
                                     ON speeches.track_project = speech_tracks.project_name";
 
-        var query = client.query(queryString, [user]);
+        var query = client.query(queryString);
 
         query.on('error', function (error){
             console.log(error);
