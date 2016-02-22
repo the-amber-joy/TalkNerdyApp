@@ -33,7 +33,10 @@ passport.use('google', new GoogleStrategy({
 
         // try to find the user based on their google id
         // Check DB for user and authenticate or add user to DB if not there
-        console.log('Return Sent from Google, into callback function', profile);
+        console.log('Google ID# ', profile.id);
+        console.log('Last Name: ', profile.name.familyName);
+        console.log('First Name: ', profile.name.givenName);
+        console.log('e-mail: ', profile.emails[0].value);
     });
         //User.findOne({'google.id': profile.id}, function (err, user) {
         //    if (err)
