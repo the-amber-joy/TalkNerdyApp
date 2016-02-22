@@ -30,9 +30,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
     app.controller('SpeechHistory', ['$http', function ($http) {
         var history=this
-            .speeches = [];
         $http.get('/mySpeeches').then(function(response){
-            this.speeches = response.data;
+            history.speeches = response.data;
             console.log(this.speeches);
     });
 }]);
