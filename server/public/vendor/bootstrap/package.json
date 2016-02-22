@@ -1,16 +1,11 @@
 {
   "_args": [
     [
-<<<<<<< HEAD
       "bootstrap@^3.3.6",
-      "/Users/wallacewylie/toastmasters/TalkNerdy"
-=======
-      "bootstrap",
-      "/Users/kyracrowston/Documents/toast_team/TalkNerdy"
->>>>>>> 418cb0b4b380f9402081c3b65c733ca2b08611bf
+      "/Users/cwgraff/Desktop/Toastmasters"
     ]
   ],
-  "_from": "bootstrap@*",
+  "_from": "bootstrap@>=3.3.6 <4.0.0",
   "_id": "bootstrap@3.3.6",
   "_inCache": true,
   "_installable": true,
@@ -24,10 +19,10 @@
   "_phantomChildren": {},
   "_requested": {
     "name": "bootstrap",
-    "raw": "bootstrap",
-    "rawSpec": "",
+    "raw": "bootstrap@^3.3.6",
+    "rawSpec": "^3.3.6",
     "scope": null,
-    "spec": "*",
+    "spec": ">=3.3.6 <4.0.0",
     "type": "range"
   },
   "_requiredBy": [
@@ -36,13 +31,8 @@
   "_resolved": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.6.tgz",
   "_shasum": "8de8f749dc8a743f2ac5b510d988371e3daa6589",
   "_shrinkwrap": null,
-<<<<<<< HEAD
   "_spec": "bootstrap@^3.3.6",
-  "_where": "/Users/wallacewylie/toastmasters/TalkNerdy",
-=======
-  "_spec": "bootstrap",
-  "_where": "/Users/kyracrowston/Documents/toast_team/TalkNerdy",
->>>>>>> 418cb0b4b380f9402081c3b65c733ca2b08611bf
+  "_where": "/Users/cwgraff/Desktop/Toastmasters",
   "author": {
     "name": "Twitter, Inc."
   },
