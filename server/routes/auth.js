@@ -1,4 +1,5 @@
 var app = require('express');
+var path = require('path');
 //var passportRoute = require('./passportRoute');
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
@@ -37,6 +38,7 @@ passport.use('google', new GoogleStrategy({
         console.log('Last Name: ', profile.name.familyName);
         console.log('First Name: ', profile.name.givenName);
         console.log('e-mail: ', profile.emails[0].value);
+        console.log('Token: ', token);
     });
         //User.findOne({'google.id': profile.id}, function (err, user) {
         //    if (err)
@@ -69,16 +71,23 @@ passport.use('google', new GoogleStrategy({
 }));
 
 
+router.get('/home', function(request, response){
+    response.sendFile(path.join(__dirname, '../public/views/home.html'));
+});
+
+router.get('/login', function(request, response){
+    response.sendFile(path.join(__dirname, '../public/views/login.html'));
+});
+
+
 router.get('/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 //
 // the callback after google has authenticated the user
 router.get('/google/callback',
     passport.authenticate('google', {
-        successRedirect : '/home',
-        failureRedirect : '/login'
+        successRedirect : '/auth/home',
+        failureRedirect : '/auth/login'
     }));
-
-
 
 
 module.exports = router;
