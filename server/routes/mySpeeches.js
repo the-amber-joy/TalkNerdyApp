@@ -11,7 +11,11 @@ router.get('/', function(request, response){
     var user = "Fake";
     //Not sure if OAuth gives a req.user here or if some other syntax should be used?
 
+<<<<<<< HEAD
     connectionString = connectionString + '?ssl=true';
+=======
+    connectionString=connectionString + '?ssl=true';
+>>>>>>> 7785602e5e3cd14fef8569c090f5363b5eed38e3
     pg.connect(connectionString, function(error, client){
         if (error) {
             console.log(error);
