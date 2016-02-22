@@ -30,16 +30,17 @@ passport.use('google', new GoogleStrategy({
 
     // make the code asynchronous
     // User.findOne won't fire until we have all our data back from Google
-    process.nextTick(function () {
+    //process.nextTick(function () {
 
         // try to find the user based on their google id
         // Check DB for user and authenticate or add user to DB if not there
+        console.log('sdasdasda');
         console.log('Google ID# ', profile.id);
         console.log('Last Name: ', profile.name.familyName);
         console.log('First Name: ', profile.name.givenName);
         console.log('e-mail: ', profile.emails[0].value);
         console.log('Token: ', token);
-    });
+    //});
         //User.findOne({'google.id': profile.id}, function (err, user) {
         //    if (err)
         //        return done(err);
@@ -68,6 +69,8 @@ passport.use('google', new GoogleStrategy({
         //});
     //});
 
+    done(null, {username: 'blah', password: 'blahblah', id:1})
+
 }));
 
 
@@ -83,11 +86,22 @@ router.get('/login', function(request, response){
 router.get('/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 //
 // the callback after google has authenticated the user
-router.get('/google/callback',
-    passport.authenticate('google', {
-        successRedirect : '/auth/home',
-        failureRedirect : '/auth/login'
-    }));
+//router.get('/google/callback',
+//    passport.authenticate('google', {
+//        successRedirect : '/home',
+//        failureRedirect : '/login'
+//    }));
 
+router.get('/google/callback',
+    passport.authenticate('google', { failureRedirect: '/auth/login' }),
+    function(req, res) {
+        // Successful authentication, redirect home.
+        console.log('success');
+        res.redirect('/');
+    });
+
+router.get('/google/callback', function(request, response){
+    response.sendFile(path.join(__dirname, '../public/views/home.html'));
+});
 
 module.exports = router;

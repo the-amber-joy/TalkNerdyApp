@@ -1,18 +1,12 @@
-This is the my_speeches.html view.
-
-<br>
-TEST HERE:
-</br>
-
-<ul ng-repeat="speech in history.speeches">
-    <li>{{speech.speaker_first_name}}
-        {{speech.speaker_last_name}}
-        {{speech.speech_title}}
-        {{speech.grammarian_report}}
-        {{speech.summary}}
-        {{speech.date}}
-        {{speech.track}}
-        {{speech.track_project}}
-     </li>
-</ul>
+My speeches:
+<div class="well" ng-repeat="speech in history.speeches">
+    <div>
+        Date: {{speech.date | date}}<br>
+        Speaker: {{speech.speaker_first_name}} {{speech.speaker_last_name}}<br>
+        Speech Title: {{speech.speech_title}}<br>
+        {{speech.track}}: {{speech.track_project}}<br>
+        Summary: {{speech.summary}}<br>
+        Grammarian Report: {{speech.grammarian_report}}<br>
+     </div>
+</div>
 

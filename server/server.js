@@ -4,6 +4,7 @@ var index = require('./routes/index');
 var auth = require('./routes/auth');
 var testDBroute = require('./routes/testDBroute');
 var mySpeeches = require('./routes/mySpeeches');
+var pastAgendas = require('./routes/pastAgendas');
 
 var app = express();
 
@@ -18,6 +19,8 @@ app.use('/', index);
 app.use('/testDBroute', testDBroute);
 app.use('/mySpeeches', mySpeeches);
 app.use('/auth', auth);
+app.use('/pastAgendas', pastAgendas);
+
 
 
 //[][][][][][][][][][][][][][][][][][][][][][][][][][][][]
