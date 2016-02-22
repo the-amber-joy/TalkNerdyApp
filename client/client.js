@@ -14,6 +14,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             templateUrl: 'views/my_speeches.html',
             controller: 'SpeechHistory',
             controllerAs: 'history'
+        })
+        .state('past_agendas', {
+            templateUrl: 'views/past_agendas.html',
+            controller: 'PastController',
+            controllerAs: 'past'
         });
 }]);
     //app.controller('mainController', ['$scope', function ($scope) {
@@ -22,17 +27,24 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     //    $scope.today = Date.now();
     //}]);
 
-    app.controller('loginController', function () {
-        console.log('UI Router seems to be working!');
-        var login=this
-            .message='Hello and things!'
-    });
+app.controller('loginController', function () {
+    console.log('UI Router seems to be working!');
+    var login=this
+        .message='Hello and things!'
+});
 
-    app.controller('SpeechHistory', ['$http', function ($http) {
-        var history=this
-        $http.get('/mySpeeches').then(function(response){
-            history.speeches = response.data;
-            console.log(this.speeches);
+app.controller('SpeechHistory', ['$http', function ($http) {
+    var history=this;
+    $http.get('/mySpeeches').then(function(response){
+        history.speeches = response.data;
+    });
+}]);
+
+app.controller('PastController', ['$http', function ($http) {
+    var past=this;
+    $http.get('/mySpeeches').then(function(response){
+        past.agendas = response.data;
+        console.log(response.data);
     });
 }]);
 

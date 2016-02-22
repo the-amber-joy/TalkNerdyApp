@@ -24,8 +24,7 @@ router.get('/', function(request, response){
                                 JOIN roster \
                                     ON speeches.speaker_name = roster.oauth_name \
                                 JOIN speech_tracks \
-                                    ON speeches.track_project = speech_tracks.project_name\
-                                WHERE meetings.date = '2016-02-17'::date";
+                                    ON speeches.track_project = speech_tracks.project_name";
 
         var query = client.query(queryString, [user]);
 
@@ -41,6 +40,7 @@ router.get('/', function(request, response){
         query.on('end', function () {
             client.end();
             return response.json(pastAgendas);
+            console.log(pastAgendas);
         });
     });
 });
