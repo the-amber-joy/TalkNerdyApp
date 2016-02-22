@@ -17,7 +17,7 @@ module.exports = function(passport) {
         });
     });
 
-    passport.use(new GoogleStrategy({
+    passport.use('google', new GoogleStrategy({
 
         clientID: process.env.clientID,
         clientSecret: process.env.clientSecret,
