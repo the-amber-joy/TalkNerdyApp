@@ -97,7 +97,7 @@ router.get('/google/callback',
     function(req, res) {
         // Successful authentication, redirect home.
         console.log('success');
-        res.redirect('/');
+        res.redirect('/auth/home');
     });
 
 router.get('/google/callback', function(request, response){
