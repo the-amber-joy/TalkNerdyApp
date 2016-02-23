@@ -2,8 +2,7 @@
   "_args": [
     [
       "bootstrap@^3.3.6",
-      "/Users/wallacewylie/toastmasters/TalkNerdy",
-      "/Users/cwgraff/Desktop/Toastmasters"
+      "/Users/wallacewylie/toastmasters/TalkNerdy"
     ]
   ],
   "_from": "bootstrap@>=3.3.6 <4.0.0",
@@ -34,7 +33,6 @@
   "_shrinkwrap": null,
   "_spec": "bootstrap@^3.3.6",
   "_where": "/Users/wallacewylie/toastmasters/TalkNerdy",
-  "_where": "/Users/cwgraff/Desktop/Toastmasters",
   "author": {
     "name": "Twitter, Inc."
   },
