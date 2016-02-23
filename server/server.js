@@ -5,10 +5,12 @@ var auth = require('./routes/auth');
 var testDBroute = require('./routes/testDBroute');
 var mySpeeches = require('./routes/mySpeeches');
 var pastAgendas = require('./routes/pastAgendas');
+var passport = require('passport');
 
 var app = express();
 
 app.use(express.static('server/public'));
+app.use(passport.initialize());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
