@@ -10,11 +10,13 @@ var router = app.Router();
 
 // used to serialize the user for the session
 passport.serializeUser(function(user, done) {
+    console.log('Serialized User', user);
     done(null, user.id);
 });
 
 // used to deserialize the user
 passport.deserializeUser(function(id, done) {
+    console.log('Deserialized User', id);
     User.findById(id, function(err, user) {
         done(err, user);
     });
@@ -34,39 +36,44 @@ passport.use('google', new GoogleStrategy({
 
         // try to find the user based on their google id
         // Check DB for user and authenticate or add user to DB if not there
-        console.log('sdasdasda');
         console.log('Google ID# ', profile.id);
         console.log('Last Name: ', profile.name.familyName);
         console.log('First Name: ', profile.name.givenName);
         console.log('e-mail: ', profile.emails[0].value);
         console.log('Token: ', token);
     //});
-        //User.findOne({'google.id': profile.id}, function (err, user) {
-        //    if (err)
-        //        return done(err);
-        //
-        //    if (user) {
-        //
-        //        // if a user is found, log them in
-        //        return done(null, user);
-        //    } else {
-        //        // if the user isnt in our database, create a new user
-        //        var newUser = new User();
-        //
-        //        // set all of the relevant information
-        //        newUser.google.id = profile.id;
-        //        newUser.google.token = token;
-        //        newUser.google.name = profile.displayName;
-        //        newUser.google.email = profile.emails[0].value; // pull the first email
-        //
-        //        // save the user
-        //        newUser.save(function (err) {
-        //            if (err)
-        //                throw err;
-        //            return done(null, newUser);
-        //        });
-        //    }
-        //});
+
+
+    //[[[[[[[[[[[[[[[[[[[[[[[[ SQL will go here ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
+
+
+    //    User.findOne({'google.id': profile.id}, function (err, user) {
+    //        if (err)
+    //            return done(err);
+    //
+    //        if (user) {
+    //
+    //            // if a user is found, log them in
+    //            return done(null, user);
+    //        } else {
+    //            // if the user isnt in our database, create a new user
+    //            var newUser = new User();
+    //
+    //            // set all of the relevant information
+    //            newUser.google.id = profile.id;
+    //            newUser.google.token = token;
+    //            newUser.google.name = profile.displayName;
+    //            newUser.google.email = profile.emails[0].value; // pull the first email
+    //
+    //            // save the user
+    //            newUser.save(function (err) {
+    //                if (err)
+    //                    throw err;
+    //                return done(null, newUser);
+    //            });
+    //        }
+    //    });
     //});
 
     done(null, {username: 'blah', password: 'blahblah', id:1})
@@ -75,7 +82,7 @@ passport.use('google', new GoogleStrategy({
 
 
 router.get('/home', function(request, response){
-    response.sendFile(path.join(__dirname, '../public/views/index.html'));
+    response.sendFile(path.join(__dirname, '../public/views/home.html'));
 });
 
 router.get('/login', function(request, response){

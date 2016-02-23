@@ -32,7 +32,8 @@ $urlRouterProvider, $locationProvider) {
             controllerAs: 'past'
         });
 
-    $locationProvider.html5Mode(true).hashPrefix('!');
+    //$locationProvider.html5Mode(true).hashPrefix('!');
+    $locationProvider.html5Mode(true);
 }]);
     //app.controller('mainController', ['$scope', function ($scope) {
     //    //var main = this;
@@ -47,7 +48,6 @@ app.controller('loginController', function () {
 });
 
 app.controller('homeController', function () {
-
     console.log("We're home!");
 });
 
