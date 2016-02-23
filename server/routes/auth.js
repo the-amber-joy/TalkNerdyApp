@@ -75,7 +75,7 @@ passport.use('google', new GoogleStrategy({
 
 
 router.get('/home', function(request, response){
-    response.sendFile(path.join(__dirname, '../public/views/home.html'));
+    response.sendFile(path.join(__dirname, '../public/views/index.html'));
 });
 
 router.get('/login', function(request, response){

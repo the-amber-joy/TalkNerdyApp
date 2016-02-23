@@ -6,9 +6,16 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     //$urlRouterProvider.otherwise("/");
     $stateProvider
         .state('login', {
+            url: '/',
             templateUrl: 'views/login.html',
             controller: 'loginController',
             controllerAs: 'login'
+        })
+        .state('home', {
+            url: '/home',
+            templateUrl: 'views/home.html',
+            controller: 'homeController',
+            controllerAs: 'home'
         })
         .state('my_speeches', {
             templateUrl: 'views/my_speeches.html',
@@ -31,6 +38,11 @@ app.controller('loginController', function () {
     console.log('UI Router seems to be working!');
     var login=this
         .message='Hello and things!'
+});
+
+app.controller('homeController', function () {
+
+    console.log("We're home!");
 });
 
 app.controller('SpeechHistory', ['$http', function ($http) {
