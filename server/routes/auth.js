@@ -34,7 +34,6 @@ passport.use('google', new GoogleStrategy({
 
         // try to find the user based on their google id
         // Check DB for user and authenticate or add user to DB if not there
-        console.log('sdasdasda');
         console.log('Google ID# ', profile.id);
         console.log('Last Name: ', profile.name.familyName);
         console.log('First Name: ', profile.name.givenName);
