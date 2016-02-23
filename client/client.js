@@ -10,13 +10,13 @@ $urlRouterProvider, $locationProvider) {
         .state('login', {
             url: '/',
             templateUrl: 'views/login.html',
-            controller: 'loginController',
+            controller: 'LoginController',
             controllerAs: 'login'
         })
         .state('home', {
             url: '/home',
             templateUrl: 'views/home.html',
-            controller: 'homeController',
+            controller: 'HomeController',
             controllerAs: 'home'
         })
         .state('my_speeches', {
@@ -41,13 +41,13 @@ $urlRouterProvider, $locationProvider) {
     //    $scope.today = Date.now();
     //}]);
 
-app.controller('loginController', function () {
+app.controller('LoginController', function () {
     console.log('UI Router seems to be working!');
     var login=this
         .message='Hello and things!'
 });
 
-app.controller('homeController', function () {
+app.controller('HomeController', function () {
     console.log("We're home!");
 });
 

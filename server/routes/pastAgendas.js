@@ -16,11 +16,11 @@ router.get('/', function(request, response){
             console.log(error);
         }
 
-        //This query returns info for all speeches by logged-in req.user
+        //This query returns all past meeting agendas
         var queryString = "SELECT * \
                             FROM meetings \
                                 JOIN speeches \
-                                    ON speeches.date = meetings.date \
+                                    ON speeches.speech_date = meetings.date \
                                 JOIN roster \
                                     ON speeches.speaker_first_name = roster.first_name \
                                 JOIN speech_tracks \
