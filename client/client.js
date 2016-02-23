@@ -1,6 +1,8 @@
 var app = angular.module('talkNerdyApp', ['ui.router']);
 
-app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider,
+$urlRouterProvider, $locationProvider) {
+
     //
     // For any unmatched url, redirect to /state1
     //$urlRouterProvider.otherwise("/");
@@ -18,15 +20,19 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             controllerAs: 'home'
         })
         .state('my_speeches', {
+            url: '/home/myspeeches',
             templateUrl: 'views/my_speeches.html',
             controller: 'SpeechHistory',
             controllerAs: 'history'
         })
         .state('past_agendas', {
+            url: '/home/pastagendas',
             templateUrl: 'views/past_agendas.html',
             controller: 'PastController',
             controllerAs: 'past'
         });
+
+    $locationProvider.html5Mode(true).hashPrefix('!');
 }]);
     //app.controller('mainController', ['$scope', function ($scope) {
     //    //var main = this;
