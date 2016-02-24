@@ -15,13 +15,13 @@ module.exports = function(grunt) {
                 options: {
                     spawn: false
                 }
-            }
-        },
-        css: {
-            files: ['client/sass/*.scss'],
-            tasks: ['sass'],
-            options: {
-                spawn: false
+            },
+            css: {
+                files: ['client/sass/*.scss'],
+                tasks: ['sass'],
+                options: {
+                    spawn: false
+                }
             }
         },
         copy: {
@@ -29,6 +29,7 @@ module.exports = function(grunt) {
                 expand: true,
                 cwd: "node_modules/",
                 src: [
+                    "jquery/dist/jquery.min.js",
                     "angular/angular.min.js",
                     "angular/angular.min.js.map",
                     "angular/angular-csp.css",
@@ -36,7 +37,7 @@ module.exports = function(grunt) {
                     "bootstrap/*.*",
                     "bootstrap/**/*.*"
                 ],
-                "dest": "server/public/vendor/"
+                "dest": "server/public/vendor"
             }
         },
         sass: {

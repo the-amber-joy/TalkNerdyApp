@@ -2,35 +2,28 @@
 <html lang="en" ng-app="talkNerdyApp">
     <head>
         <meta charset="UTF-8">
-        <title>Talk Nerdy to Me</title>
-        <script src="vendor/angular/angular.min.js"></script>
-        <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
-        <script src="assets/scripts/client.min.js"></script>
+        <title>Talk Nerdy to Me - Toastmasters Club</title>
+
+
+        <!--STYLESHEETS-->
         <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/styles/style.css">
+
+        <!--SCRIPTS-->
+        <script type="text/javascript" src="vendor/angular/angular.min.js"></script>
+        <script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/scripts/client.min.js"></script>
+        <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
         <base href="/">
     </head>
     <body>
-        <h1>Toastmasters</h1>
-        <ul class="nav nav-pills nav-stacked">
-            <li>Home</li>
-            <li ui-sref="past_agendas">View Past Agendas</li>
-            <li>Request Future Speech</li>
-            <li>Speech Tracks</li>
-            <li ui-sref="my_speeches">Speech History</li>
-            <li>Manage Future Meetings</li>
-            <li>Manage Tracks</li>
-            <li>Manage Roster</li>
-        </ul>
-
-        <div class="left_nav" id="guest_buttons">
-            <button ui-sref="past_agendas">Load Past Agendas</button>
-            <button ui-sref="my_speeches">Load My Speech History Page</button>
-        </div>
+        <header ng-include="'/views/header.html'"></header>
+        <nav ng-include="'/views/sidebar/admin_sidebar.html'"></nav>
 
         <!--Guest, Member, and Admin views will render here-->
-        <div ui-view></div>
-
+        <main ui-view></main>
         <!--End Custom View-->
 
 
