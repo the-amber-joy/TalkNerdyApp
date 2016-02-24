@@ -84,6 +84,7 @@ router.get('/google', passport.authenticate('google', { scope : ['profile', 'ema
 //
 // the callback after google has authenticated the user
 router.get('/google/callback',
+
     passport.authenticate('google', {
         successRedirect : '/index',
         failureRedirect : '/login'
