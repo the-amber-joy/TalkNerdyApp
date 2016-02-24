@@ -1,8 +1,7 @@
 {
   "_args": [
     [
-      "bootstrap@^3.3.6",
-      "/Users/amberjoy/Documents/Prime/group_projects/ToastMasters/TalkNerdy"
+      "bootstrap@^3.3.6"
     ]
   ],
   "_from": "bootstrap@>=3.3.6 <4.0.0",
@@ -32,7 +31,6 @@
   "_shasum": "8de8f749dc8a743f2ac5b510d988371e3daa6589",
   "_shrinkwrap": null,
   "_spec": "bootstrap@^3.3.6",
-  "_where": "/Users/amberjoy/Documents/Prime/group_projects/ToastMasters/TalkNerdy",
   "author": {
     "name": "Twitter, Inc."
   },

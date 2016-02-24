@@ -62,6 +62,7 @@ connectionString = connectionString + '?ssl=true';
     //};
 
     pg.connect(connectionString, function (err, client, done) {
+        if (err) throw err;
         var query = "";
         if (userGoogleID) {
             query = client.query("SELECT * FROM roster WHERE google_id = $1", [userGoogleID]);
@@ -71,36 +72,35 @@ connectionString = connectionString + '?ssl=true';
                 results.push(row);
             });
             // After all data is returned, close connection and return results
-            query.on('end', function () {
+            query.on('row', function () {
+                console.log(results);
                 if (results.length > 0) {
                     client.end();
                     return results;
                 } else {
                     query = client.query("INSERT INTO roster (email, first_name, last_name, google_id) " +
-                        "VALUES ('profile.emails[0].value','profile.name.familyName', 'profile.name.givenName'," +
-                        " 'profile.id'");
+                        "VALUES ('userEmail','userFirstName', 'userLastName', 'userGoogleID'");
                 }
+                query.on('end', function () {
+                    client.end();
+                    return results;
+                });
             });
 
             // Handle Errors
             if (err) {
                 console.log(err);
             }
-            //query = client.query("INSERT INTO roster email, first_name, last_name, google_id"
-            //VALUES ('profile.emails[0].value','profile.name.familyName', 'profile.name.givenName',
-            //    'profile.id')
+
         }
 
-        //// Stream results back one row at a time
+        // Stream results back one row at a time
         //query.on('row', function (row) {
         //    results.push(row);
         //});
         //
         //// After all data is returned, close connection and return results
-        //query.on('end', function () {
-        //    client.end();
-        //    return results;
-        //});
+
         //
         //// Handle Errors
         //if (err) {
