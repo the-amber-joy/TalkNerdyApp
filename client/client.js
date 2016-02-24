@@ -30,6 +30,12 @@ $urlRouterProvider, $locationProvider) {
             templateUrl: 'views/past_agendas.html',
             controller: 'PastController',
             controllerAs: 'past'
+        })
+        .state('manage_roster', {
+            url: '/home/manage_roster',
+            templateUrl: 'views/manage_roster.html',
+            controller: 'RosterController',
+            controllerAs: 'roster'
         });
 
     //$locationProvider.html5Mode(true).hashPrefix('!');
@@ -66,3 +72,7 @@ app.controller('PastController', ['$http', function ($http) {
     });
 }]);
 
+
+app.controller('RosterController', [ function () {
+    console.log('Roster Controller Hit');
+}]);
