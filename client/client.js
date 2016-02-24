@@ -20,7 +20,7 @@ $urlRouterProvider, $locationProvider) {
             controllerAs: 'home'
         })
         .state('my_speeches', {
-            url: '/home/myspeeches',
+            url: '/home/my_speeches',
             templateUrl: 'views/my_speeches.html',
             controller: 'SpeechHistory',
             controllerAs: 'history'

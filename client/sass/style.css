@@ -1,4 +1,8 @@
 body {
-  background-color: #A9B2B1; }
+  width: 900px;
+  background-color: #A9B2B1;
+  background-image: url("logo.png");
+  background-position: top 20px right 20px;
+  background-repeat: no-repeat; }
 
 /*# sourceMappingURL=style.css.map */
