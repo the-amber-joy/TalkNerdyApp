@@ -34,6 +34,7 @@ module.exports = function(grunt) {
                     "angular/angular.min.js.map",
                     "angular/angular-csp.css",
                     "angular-ui-router/release/angular-ui-router.min.js",
+                    "bootstrap/",
                     "bootstrap/*.*",
                     "bootstrap/**/*.*"
                 ],
