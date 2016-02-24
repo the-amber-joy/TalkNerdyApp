@@ -61,30 +61,51 @@ connectionString = connectionString + '?ssl=true';
      var userGoogleID = profile.id;
     //};
 
+
+    //Trying to find a user
     pg.connect(connectionString, function (err, client, done) {
         if (err) throw err;
         var query = "";
+
+        var foundUser = {};
+        var userFound = false;
+
         if (userGoogleID) {
             query = client.query("SELECT * FROM roster WHERE google_id = $1", [userGoogleID]);
             //return query.row;
             console.log("This is working");
             query.on('row', function (row) {
-                results.push(row);
+
+                foundUser = row;
+                userFound = true;
+
             });
             // After all data is returned, close connection and return results
-            query.on('row', function () {
+            query.on('end', function () {
                 console.log(results);
-                if (results.length > 0) {
+                if (userFound) {
+
                     client.end();
-                    return results;
+                    done(null, foundUser);
+
                 } else {
-                    query = client.query("INSERT INTO roster (email, first_name, last_name, google_id) " +
+
+                    var newQuery = client.query("INSERT INTO roster (email, first_name, last_name, google_id) " +
                         "VALUES ('userEmail','userFirstName', 'userLastName', 'userGoogleID'");
+
+                    newQuery.on('row', function (row) {
+                        var newUser = row;
+                        done(null, newUser);
+                    });
+
+                    newQuery.on('end', function (row) {
+                        client.end();
+                    });
+
+
+
                 }
-                query.on('end', function () {
-                    client.end();
-                    return results;
-                });
+
             });
 
             // Handle Errors
