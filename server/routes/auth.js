@@ -2,8 +2,10 @@ var app = require('express');
 var path = require('path');
 //var passportRoute = require('./passportRoute');
 var passport = require('passport');
+var pg = require('pg');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 require('dotenv').config();
+var connectionString = require('../../database.json').data;
 
 
 var router = app.Router();
@@ -34,18 +36,78 @@ passport.use('google', new GoogleStrategy({
     // User.findOne won't fire until we have all our data back from Google
     //process.nextTick(function () {
 
-        // try to find the user based on their google id
-        // Check DB for user and authenticate or add user to DB if not there
-        console.log('Google ID# ', profile.id);
-        console.log('Last Name: ', profile.name.familyName);
-        console.log('First Name: ', profile.name.givenName);
-        console.log('e-mail: ', profile.emails[0].value);
-        console.log('Token: ', token);
+    // try to find the user based on their google id
+    // Check DB for user and authenticate or add user to DB if not there
+    console.log('Google ID# ', profile.id);
+    console.log('Last Name: ', profile.name.familyName);
+    console.log('First Name: ', profile.name.givenName);
+    console.log('e-mail: ', profile.emails[0].value);
+    console.log('Token: ', token);
     //});
 
 
     //[[[[[[[[[[[[[[[[[[[[[[[[ SQL will go here ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
+connectionString = connectionString + '?ssl=true';
+
+// Returns the entire list of people
+//    router.get("/", function(req, res) {
+    var results = [];
+
+    //var queryOptions = {
+     var userEmail = profile.emails[0].value;
+     var userFirstName = profile.firstName;
+     var userLastName = profile.name.familyName;
+     var userGoogleID = profile.id;
+    //};
+
+    pg.connect(connectionString, function (err, client, done) {
+        var query = "";
+        if (userGoogleID) {
+            query = client.query("SELECT * FROM roster WHERE google_id = $1", [userGoogleID]);
+            //return query.row;
+            console.log("This is working");
+            query.on('row', function (row) {
+                results.push(row);
+            });
+            // After all data is returned, close connection and return results
+            query.on('end', function () {
+                if (results.length > 0) {
+                    client.end();
+                    return results;
+                } else {
+                    query = client.query("INSERT INTO roster (email, first_name, last_name, google_id) " +
+                        "VALUES ('profile.emails[0].value','profile.name.familyName', 'profile.name.givenName'," +
+                        " 'profile.id'");
+                }
+            });
+
+            // Handle Errors
+            if (err) {
+                console.log(err);
+            }
+            //query = client.query("INSERT INTO roster email, first_name, last_name, google_id"
+            //VALUES ('profile.emails[0].value','profile.name.familyName', 'profile.name.givenName',
+            //    'profile.id')
+        }
+
+        //// Stream results back one row at a time
+        //query.on('row', function (row) {
+        //    results.push(row);
+        //});
+        //
+        //// After all data is returned, close connection and return results
+        //query.on('end', function () {
+        //    client.end();
+        //    return results;
+        //});
+        //
+        //// Handle Errors
+        //if (err) {
+        //    console.log(err);
+        //}
+
+});
 
 
     //    User.findOne({'google.id': profile.id}, function (err, user) {
@@ -89,5 +151,8 @@ router.get('/google/callback',
         successRedirect : '/index',
         failureRedirect : '/login'
     }));
+
+
+
 
 module.exports = router;
