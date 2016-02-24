@@ -18,13 +18,6 @@ main {
 
 nav {
   width: 25%;
-  float: left;
-  .nav-pills {
-    background-color: $sidebar-buttons;
-    :hover {
-      background-color: $sidebar-hover;
-    }
-  }
+  float:left;
 }
-
 
