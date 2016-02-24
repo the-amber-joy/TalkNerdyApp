@@ -3,15 +3,23 @@
     <head>
         <meta charset="UTF-8">
         <title>Talk Nerdy to Me</title>
+
+        <!--SCRIPTS-->
+        <script src="vendor/jquery/dist/jquery.min.js"></script>
         <script src="vendor/angular/angular.min.js"></script>
         <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script src="assets/scripts/client.min.js"></script>
+
+
+        <!--STYLES-->
         <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/styles/style.css">
+
         <base href="/">
     </head>
     <body>
-        <h1>Toastmasters</h1>
+    <header ng-include="'/assets/views/templates/header.html'"></header>
+    <h1>Toastmasters</h1>
         <ul class="nav nav-pills nav-stacked">
             <li>Home</li>
             <li ui-sref="past_agendas">View Past Agendas</li>

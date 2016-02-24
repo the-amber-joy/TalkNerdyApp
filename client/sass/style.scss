@@ -1,7 +1,20 @@
+$background-blue: #A9B2B1;
+$sidebar-buttons: #f5f5f5;
+$sidebar-hover: green;
+
 body {
+  padding: 20px;
   width: 900px;
-  background-color: #A9B2B1;
+  background-color: $background-blue;
   background-image: url("logo.png");
   background-position: top 20px right 20px;
   background-repeat: no-repeat;
 }
+
+.nav-pills {
+  background-color: $sidebar-buttons;
+  :hover {
+    color: $sidebar-hover;
+  }
+}
+
