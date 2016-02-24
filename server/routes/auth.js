@@ -80,16 +80,6 @@ passport.use('google', new GoogleStrategy({
 
 }));
 
-
-router.get('/home', function(request, response){
-    response.sendFile(path.join(__dirname, '../public/views/home.html'));
-});
-
-router.get('/login', function(request, response){
-    response.sendFile(path.join(__dirname, '../public/views/login.html'));
-});
-
-
 router.get('/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 //
 // the callback after google has authenticated the user
@@ -98,17 +88,5 @@ router.get('/google/callback',
         successRedirect : '/index',
         failureRedirect : '/login'
     }));
-
-//router.get('/google/callback',
-//    passport.authenticate('google', { failureRedirect: '/auth/login' }),
-//    function(req, res) {
-//        // Successful authentication, redirect home.
-//        console.log('success');
-//        res.redirect('/index');
-//    });
-
-//router.get('/google/callback', function(request, response){
-//    response.sendFile(path.join(__dirname, '../public/views/home.html'));
-//});
 
 module.exports = router;
