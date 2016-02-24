@@ -2,13 +2,15 @@
 <html lang="en" ng-app="talkNerdyApp">
     <head>
         <meta charset="UTF-8">
-        <title>Talk Nerdy to Me</title>
+        <title>Talk Nerdy to Me - Toastmasters Club</title>
 
         <!--SCRIPTS-->
         <script src="vendor/jquery/dist/jquery.min.js"></script>
         <script src="vendor/angular/angular.min.js"></script>
         <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script src="assets/scripts/client.min.js"></script>
+        <scsript src=vendor/bootstrap/dist/js/bootstrap.min.js">
+
 
 
         <!--STYLES-->
@@ -18,18 +20,11 @@
         <base href="/">
     </head>
     <body>
-    <header ng-include="'/assets/views/templates/header.html'"></header>
-    <h1>Toastmasters</h1>
-        <ul class="nav nav-pills nav-stacked">
-            <li>Home</li>
-            <li ui-sref="past_agendas">View Past Agendas</li>
-            <li>Request Future Speech</li>
-            <li>Speech Tracks</li>
-            <li ui-sref="my_speeches">Speech History</li>
-            <li>Manage Future Meetings</li>
-            <li>Manage Tracks</li>
-            <li>Manage Roster</li>
-        </ul>
+        <header ng-include="'/views/header.html'"></header>
+        <nav ng-include="'/views/sidebar/admin_sidebar.html'"></nav>
+
+        <h1>Toastmasters</h1>
+
 
         <!--<button ui-sref="login">Load Log-In Partial</button>-->
 

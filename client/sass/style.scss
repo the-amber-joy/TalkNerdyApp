@@ -7,14 +7,14 @@ body {
   width: 900px;
   background-color: $background-blue;
   background-image: url("logo.png");
-  background-position: top 20px right 20px;
+  background-position: top 10px right 10px;
   background-repeat: no-repeat;
 }
 
 .nav-pills {
   background-color: $sidebar-buttons;
   :hover {
-    color: $sidebar-hover;
+    background-color: $sidebar-hover;
   }
 }
 
