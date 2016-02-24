@@ -14,7 +14,7 @@ $urlRouterProvider, $locationProvider) {
             controllerAs: 'login'
         })
         .state('home', {
-            url: '/home',
+            url: '/index',
             templateUrl: 'views/home.html',
             controller: 'HomeController',
             controllerAs: 'home'

@@ -26,7 +26,10 @@
         <h1>Toastmasters</h1>
 
 
-        <!--<button ui-sref="login">Load Log-In Partial</button>-->
+        <div class="left_nav" id="guest_buttons">
+            <button ui-sref="past_agendas">Load Past Agendas</button>
+            <button ui-sref="my_speeches">Load My Speech History Page</button>
+        </div>
 
         <!--Guest, Member, and Admin views will render here-->
         <div ui-view></div>
