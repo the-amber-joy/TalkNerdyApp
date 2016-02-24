@@ -11,10 +11,20 @@ body {
   background-repeat: no-repeat;
 }
 
-.nav-pills {
-  background-color: $sidebar-buttons;
-  :hover {
-    background-color: $sidebar-hover;
+main {
+  width: 75%;
+  float: right;
+}
+
+nav {
+  width: 25%;
+  float: left;
+  .nav-pills {
+    background-color: $sidebar-buttons;
+    :hover {
+      background-color: $sidebar-hover;
+    }
   }
 }
+
 

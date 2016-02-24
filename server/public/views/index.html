@@ -4,18 +4,17 @@
         <meta charset="UTF-8">
         <title>Talk Nerdy to Me - Toastmasters Club</title>
 
-        <!--SCRIPTS-->
-        <script src="vendor/jquery/dist/jquery.min.js"></script>
-        <script src="vendor/angular/angular.min.js"></script>
-        <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
-        <script src="assets/scripts/client.min.js"></script>
-        <scsript src=vendor/bootstrap/dist/js/bootstrap.min.js">
 
-
-
-        <!--STYLES-->
+        <!--STYLESHEETS-->
         <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/styles/style.css">
+
+        <!--SCRIPTS-->
+        <script type="text/javascript" src="vendor/angular/angular.min.js"></script>
+        <script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/scripts/client.min.js"></script>
+        <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 
         <base href="/">
     </head>
@@ -23,17 +22,8 @@
         <header ng-include="'/views/header.html'"></header>
         <nav ng-include="'/views/sidebar/admin_sidebar.html'"></nav>
 
-        <h1>Toastmasters</h1>
-
-
-        <div class="left_nav" id="guest_buttons">
-            <button ui-sref="past_agendas">Load Past Agendas</button>
-            <button ui-sref="my_speeches">Load My Speech History Page</button>
-        </div>
-
         <!--Guest, Member, and Admin views will render here-->
-        <div ui-view></div>
-
+        <main ui-view></main>
         <!--End Custom View-->
 
 
