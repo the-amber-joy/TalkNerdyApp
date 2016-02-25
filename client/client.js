@@ -26,14 +26,14 @@ $urlRouterProvider, $locationProvider) {
             controllerAs: 'history'
         })
         .state('past_agendas', {
-            url: '/home/pastagendas',
+            url: '/home/past_agendas',
             templateUrl: 'views/past_agendas.html',
             controller: 'PastController',
             controllerAs: 'past'
         })
         .state('manage_roster', {
             url: '/home/manage_roster',
-            templateUrl: 'views/manage_roster.html',
+            templateUrl: '../server/public/views/admin/manage_roster.html',
             controller: 'RosterController',
             controllerAs: 'roster'
         });

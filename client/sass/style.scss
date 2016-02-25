@@ -1,23 +1,33 @@
 $background-blue: #A9B2B1;
-$sidebar-buttons: #f5f5f5;
+$app-background-color: #337ab7;
 $sidebar-hover: green;
 
 body {
-  padding: 20px;
   width: 900px;
+  margin: 25px;
   background-color: $background-blue;
   background-image: url("logo.png");
   background-position: top 10px right 10px;
   background-repeat: no-repeat;
 }
 
+header {
+  background-color: gold;
+  padding: 50px;
+}
+
 main {
-  width: 75%;
+  margin-top: 50px;
+  padding: 10px;
+  background-color: $app-background-color;
+  width: 80%;
   float: right;
+  .well {background-color: $app-background-color;}
 }
 
 nav {
-  width: 25%;
+  margin-top: 50px;
+  width: 20%;
   float:left;
 }
 
