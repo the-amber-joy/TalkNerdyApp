@@ -108,7 +108,6 @@ connectionString = connectionString + '?ssl=true';
 
 });
 
-    done(null, {username: 'blah', password: 'blahblah', id:1})
 
 }));
 
