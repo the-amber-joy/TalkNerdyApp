@@ -1,12 +1,8 @@
 {
   "_args": [
     [
-<<<<<<< HEAD
       "bootstrap@^3.3.6",
       "/Users/wallacewylie/toastmasters/TalkNerdy"
-=======
-      "bootstrap@^3.3.6"
->>>>>>> 45b7a0a62504db02e67f151fb00e1841675ce308
     ]
   ],
   "_from": "bootstrap@>=3.3.6 <4.0.0",
@@ -36,10 +32,7 @@
   "_shasum": "8de8f749dc8a743f2ac5b510d988371e3daa6589",
   "_shrinkwrap": null,
   "_spec": "bootstrap@^3.3.6",
-<<<<<<< HEAD
   "_where": "/Users/wallacewylie/toastmasters/TalkNerdy",
-=======
->>>>>>> 45b7a0a62504db02e67f151fb00e1841675ce308
   "author": {
     "name": "Twitter, Inc."
   },

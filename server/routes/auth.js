@@ -10,6 +10,10 @@ var connectionString = require('../../database.json').data;
 
 var router = app.Router();
 
+pg.on('error', function (err) {
+    console.log('Database error!', err);
+});
+
 // used to serialize the user for the session
 passport.serializeUser(function(user, done) {
     console.log('Serialized User', user);
@@ -88,16 +92,19 @@ connectionString = connectionString + '?ssl=true';
 
                 } else {
 
+                    console.log(userEmail, userFirstName, userLastName, userGoogleID);
+
                     var newQuery = client.query("INSERT INTO roster (email, first_name, last_name, google_id) " +
-                        "VALUES ('userEmail','userFirstName', 'userLastName', 'userGoogleID'");
+                        "VALUES ($1, $2, $3, $4)", [userEmail, userFirstName, userLastName, userGoogleID]);
 
-                    newQuery.on('row', function (row) {
-                        var newUser = row;
-                       return done(null, newUser);
-                    });
+                    //newQuery.on('row', function (row) {
+                    //    var newUser = row;
+                    //
+                    //});
 
-                    newQuery.on('end', function (row) {
+                    newQuery.on('end', function (row, newUser) {
                         client.end();
+                        return done(null, newUser);
                     });
 
                 }
