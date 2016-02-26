@@ -14,7 +14,9 @@ router.post('/', function(request, response) {
             done();
             console.log(err);
             return response.status(500).json({ success: false, data: err});
-        } else if (/*if the meeting exists, run these queries to edit it*/) {
+        } else if (
+        /*if the meeting exists, run these queries to edit it*/
+        ) {
 
             //Create the Meeting
             client.query("INSERT INTO meetings\
@@ -54,41 +56,9 @@ router.post('/', function(request, response) {
 
             //Insert the speeches
             client.query("UPDATE speeches\
-                (date, \
-                theme, \
-                location, \
-                word_of_day, \
-                presiding_officer, \
-                toastmaster, \
-                general_evauluator, \
-                table_topics_czar, \
-                speech_evaluator_1, \
-                speech_evaluator_2, \
-                speech_evaluator_3, \
-                grammarian, \
-                ah_counter, \
-                timer)\
-            VALUES\
-            ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)",
-                [
-                    meetingData.speech_1_title,
-                    meetingData.speech_1_track,
-                    meetingData.speech_1_project,
-                    meetingData.speech_1_name,
-                    meetingData.speech_1_blurb,
-
-                    meetingData.speech_2_title,
-                    meetingData.speech_2_track,
-                    meetingData.speech_2_project,
-                    meetingData.speech_2_name,
-                    meetingData.speech_2_blurb,
-
-                    meetingData.speech_3_title,
-                    meetingData.speech_3_track,
-                    meetingData.speech_3_project,
-                    meetingData.speech_3_name,
-                    meetingData.speech_3_blurb
-                ]);
+                SET speech_date = meetingData.date, \
+                WHERE speech_title = meetingData.speech_title"
+                );
         } else {
             //if the meeting does not exist, run these queries to add it
 

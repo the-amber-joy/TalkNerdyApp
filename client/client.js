@@ -43,14 +43,14 @@ $urlRouterProvider, $locationProvider) {
             controller: 'RosterController',
             controllerAs: 'roster'
         })
-        .state('home', {
-            url: '/home',
-            templateUrl: 'views/home.html',
-            controller: 'CurrentAgendaController',
-            controllerAs: 'agenda'
-        })
+        //.state('agenda', {
+        //    url: '/index',
+        //    templateUrl: 'views/home.html',
+        //    controller: 'CurrentAgendaController',
+        //    controllerAs: 'agenda'
+        //})
         .state('manage_mtgs', {
-            url: '/manage_mtgs',
+            url: '/home/manage_mtgs',
             templateUrl: 'views/manage_mtgs.html',
             controller: 'ManageMeetingController',
             controllerAs: 'manageMtg'
@@ -73,6 +73,10 @@ app.controller('LoginController', function () {
 
 app.controller('HomeController', function () {
     console.log("We're home!");
+    var agenda=this;
+    $http.get('/agenda').then(function(response){
+        agenda.data = response.data;
+    });
 });
 
 app.controller('SpeechHistory', ['$http', function ($http) {
@@ -98,12 +102,12 @@ app.controller('RosterController', ['$http', function ($http) {
     });
 }]);
 
-app.controller('CurrentAgendaController', ['$http', function ($http) {
-    var agenda=this;
-    $http.get('/agenda').then(function(response){
-        agenda.data = response.data;
-    });
-}]);
+//app.controller('CurrentAgendaController', ['$http', function ($http) {
+//    var agenda=this;
+//    $http.get('/agenda').then(function(response){
+//        agenda.data = response.data;
+//    });
+//}]);
 
 app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, $http) {
     var manageMtg = this;
