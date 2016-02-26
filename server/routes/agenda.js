@@ -6,6 +6,7 @@ var connectionString = require('../../database.json').data;
 //var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
 
 router.get('/', function(request, response){
+    var meetingData = [];
 
     connectionString = connectionString + '?ssl=true';
 
