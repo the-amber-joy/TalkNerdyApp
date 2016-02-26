@@ -74,5 +74,9 @@ app.controller('PastController', ['$http', function ($http) {
 
 
 app.controller('RosterController', [ function () {
+    var roster=this;
+    $http.get('/manage_roster').then(function(response){
+        roster.people = response.data;
+    });
     console.log('Roster Controller Hit');
 }]);
