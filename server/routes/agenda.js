@@ -22,7 +22,7 @@ router.get('/', function(request, response){
                                     ON speeches.speech_date = meetings.date \
                             WHERE speech_date = (SELECT date \
                                                 FROM meetings \
-                                                WHERE date >= now()::date + '12 hours'::interval \
+                                                WHERE date >= now()::date \
                                                 ORDER BY date ASC \
                                                 LIMIT 1)::date";
 
