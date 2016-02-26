@@ -3,7 +3,6 @@ var app = angular.module('talkNerdyApp', ['ui.router']);
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider,
 $urlRouterProvider, $locationProvider) {
 
-    //
     // For any unmatched url, redirect to /state1
     //$urlRouterProvider.otherwise("/");
     $stateProvider
@@ -53,6 +52,7 @@ $urlRouterProvider, $locationProvider) {
     //$locationProvider.html5Mode(true).hashPrefix('!');
     $locationProvider.html5Mode(true);
 }]);
+
     //app.controller('mainController', ['$scope', function ($scope) {
     //    //var main = this;
     //    $scope.sampleMessage = 'Angular hooked up';
@@ -65,13 +65,13 @@ app.controller('LoginController', function () {
         .message='Hello and things!'
 });
 
-app.controller('HomeController', function () {
+app.controller('HomeController', ['$http', function ($http) {
     console.log("We're home!");
     var agenda=this;
     $http.get('/agenda').then(function(response){
         agenda.data = response.data;
     });
-});
+}]);
 
 app.controller('SpeechHistory', ['$http', function ($http) {
     var history=this;
@@ -89,9 +89,9 @@ app.controller('PastController', ['$http', function ($http) {
 }]);
 
 app.controller('RosterController', ['$http', function ($http) {
-    var rosterVar=this;
+    var roster=this;
     $http.get('/manage_roster').then(function(response){
-        rosterVar.roster = response.data;
+        roster.people = response.data;
         console.log('Roster Controller Hit');
     });
 }]);

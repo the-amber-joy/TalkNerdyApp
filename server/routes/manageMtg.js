@@ -16,6 +16,7 @@ router.post('/', function(request, response) {
             return response.status(500).json({ success: false, data: err});
         } else if (
         /*if the meeting exists, run these queries to edit it*/
+        meetingData
         ) {
 
             //Create the Meeting
