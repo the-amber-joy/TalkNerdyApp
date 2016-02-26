@@ -33,7 +33,6 @@ router.get('/', function(request, response){
         query.on('end', function () {
             client.end();
             return response.json(currentRoster);
-            console.log(currentRoster);
         });
     });
 });
