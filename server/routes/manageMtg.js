@@ -6,7 +6,41 @@ var connectionString = require('../../database.json').data;
 //var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
 connectionString = connectionString + '?ssl=true';
 
+//This is where the Admin will see all the open speech submissions which do not have assigned dates yet
+router.get('/', function(request, response){
+    var openSpeechRequests = [];
 
+    connectionString = connectionString + '?ssl=true';
+
+    pg.connect(connectionString, function(error, client){
+        if (error) {
+            console.log(error);
+        }
+
+        //This query returns all past meeting agendas
+        var queryString = "SELECT * FROM speeches WHERE speech_date IS NULL";
+
+        var query = client.query(queryString);
+
+        query.on('error', function (error){
+            done();
+            console.log(error);
+            return response.status(500).json({ success: false, data: error});
+        });
+
+        query.on('row', function (row) {
+            openSpeechRequests.push(row);
+        });
+
+        query.on('end', function () {
+            client.end();
+            return response.json(openSpeechRequests);
+            console.log(openSpeechRequests);
+        });
+    });
+});
+
+//This is where the Admin will be submitting the new/edited meeting data
 router.post('/', function(request, response) {
     var meetingData = request.body.meetingData;
     pg.connect(connectionString, function(err, client, done) {
