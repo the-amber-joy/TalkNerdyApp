@@ -43,12 +43,6 @@ $urlRouterProvider, $locationProvider) {
             controller: 'RosterController',
             controllerAs: 'roster'
         })
-        //.state('agenda', {
-        //    url: '/index',
-        //    templateUrl: 'views/home.html',
-        //    controller: 'CurrentAgendaController',
-        //    controllerAs: 'agenda'
-        //})
         .state('manage_mtgs', {
             url: '/home/manage_mtgs',
             templateUrl: 'views/manage_mtgs.html',
@@ -102,13 +96,6 @@ app.controller('RosterController', ['$http', function ($http) {
     });
 }]);
 
-//app.controller('CurrentAgendaController', ['$http', function ($http) {
-//    var agenda=this;
-//    $http.get('/agenda').then(function(response){
-//        agenda.data = response.data;
-//    });
-//}]);
-
 app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, $http) {
     var manageMtg = this;
     $http.post('/manageMtg').then(function(){
@@ -119,14 +106,18 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             word_of_day: manageMtg.word_of_day,
             presiding_officer: manageMtg.presiding_officer,
             toastmaster: manageMtg.toastmaster,
-            general_evauluator: manageMtg.general_evauluator,
+            general_evaluator: manageMtg.general_evaluator,
             table_topics_czar: manageMtg.table_topics_czar,
             speech_evaluator_1: manageMtg.speech_evaluator_1,
             speech_evaluator_2: manageMtg.speech_evaluator_2,
             speech_evaluator_3: manageMtg.speech_evaluator_3,
             grammarian: manageMtg.grammarian,
             ah_counter: manageMtg.ah_counter,
-            timer: manageMtg.timer
+            timer: manageMtg.timer,
+            description: manageMtg.description,
+            speech_1: manageMtg.speech_1,
+            speech_2: manageMtg.speech_2,
+            speech_3: manageMtg.speech_3
         };
         $http.post('/manageMtg', meetingData)
     });

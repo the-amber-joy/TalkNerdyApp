@@ -33,9 +33,13 @@ router.post('/', function(request, response) {
                 speech_evaluator_3, \
                 grammarian, \
                 ah_counter, \
-                timer)\
+                timer,\
+                description,\
+                speech_1,\
+                speech_2,\
+                speech_3)\
             VALUES\
-            ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)",
+            ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18)",
             [
                 meetingData.date,
                 meetingData.theme,
@@ -43,79 +47,96 @@ router.post('/', function(request, response) {
                 meetingData.word_of_day,
                 meetingData.presiding_officer,
                 meetingData.toastmaster,
-                meetingData.general_evauluator,
+                meetingData.general_evaluator,
                 meetingData.table_topics_czar,
                 meetingData.speech_evaluator_1,
                 meetingData.speech_evaluator_2,
                 meetingData.speech_evaluator_3,
                 meetingData.grammarian,
                 meetingData.ah_counter,
-                meetingData.timer
+                meetingData.timer,
+                meetingData.description,
+                meetingData.speech_1,
+                meetingData.speech_2,
+                meetingData.speech_3
             ]);
 
 
-            //Insert the speeches
+            //Add this meeting date to the specified speeches
             client.query("UPDATE speeches\
-                SET speech_date = meetingData.date, \
-                WHERE speech_title = meetingData.speech_title"
-                );
+                SET speech_date = $1, \
+                WHERE speech_title = $2 OR $3 OR $4",
+                [
+                    meetingData.date,
+                    meetingData.speech_1,
+                    meetingData.speech_2,
+                    meetingData.speech_3
+                ]);
         } else {
-            //if the meeting does not exist, run these queries to add it
+            //if the meeting does not exist, run these queries to add it:
 
             //Create the Meeting
-            client.query("INSERT INTO tasks (task_name, user_id) VALUES ($1, $2)", [tasks[i], userId]);
+            client.query("UPDATE meetings \
+            SET\
+            date = $1,\
+                theme = $2,\
+                location = $3,\
+                word_of_day = $4,\
+                presiding_officer = $5,\
+                toastmaster = $6,\
+                general_evauluator = $7,\
+                table_topics_czar = $8,\
+                speech_evaluator_1 = $9,\
+                speech_evaluator_2 = $10,\
+                speech_evaluator_3 = $11,\
+                grammarian = $12,\
+                ah_counter = $13,\
+                timer = $14,\
+                description = $15,\
+                speech_1 = $16,\
+                speech_2 = $17,\
+                speech_3 = $18\
+            WHERE\
+            date = $19",
+            [
+                meetingData.date,
+                meetingData.theme,
+                meetingData.location,
+                meetingData.word_of_day,
+                meetingData.presiding_officer,
+                meetingData.toastmaster,
+                meetingData.general_evaluator,
+                meetingData.table_topics_czar,
+                meetingData.speech_evaluator_1,
+                meetingData.speech_evaluator_2,
+                meetingData.speech_evaluator_3,
+                meetingData.grammarian,
+                meetingData.ah_counter,
+                meetingData.timer,
+                meetingData.description,
+                meetingData.speech_1,
+                meetingData.speech_2,
+                meetingData.speech_3
+            ]);
 
-
-            //Insert the speeches
-            client.query("INSERT INTO task_dates (date, task_id) VALUES ('today', (SELECT id FROM tasks ORDER BY id DESC LIMIT 1))");
-
+            //Add this meeting date to the specified speeches
+            client.query("UPDATE speeches\
+                SET speech_date = $1, \
+                WHERE speech_title = $2 OR $3 OR $4",
+                [
+                    meetingData.date,
+                    meetingData.speech_1,
+                    meetingData.speech_2,
+                    meetingData.speech_3
+                ]);
         }
     });
-});
 
-module.exports = router;
-
-
-
-router.get('/', function(request, response){
-    var meetingData = [];
-
-    connectionString = connectionString + '?ssl=true';
-
-    pg.connect(connectionString, function(error, client){
-        if (error) {
-            console.log(error);
-        }
-
-        //Returns only the next scheduled meeting date, with all speeches scheduled for that date
-        var queryString = "SELECT * \
-                            FROM speeches \
-                                JOIN meetings \
-                                    ON speeches.speech_date = meetings.date \
-                            WHERE speech_date = (SELECT date \
-                                                FROM meetings \
-                                                WHERE date >= now()::date \
-                                                ORDER BY date ASC \
-                                                LIMIT 1)::date";
-
-        var query = client.query(queryString, [user]);
-
-        query.on('error', function (error){
-            console.log(error);
-            response.sendStatus(500);
-        });
-
-        query.on('row', function (row) {
-            meetingData.push(row);
-        });
-
-        query.on('end', function () {
-            client.end();
-            return response.json(meetingData);
-            console.log(meetingData);
-        });
+    query.on('end', function () {
+        client.end();
+        return response.json(meetingData);
+        console.log(meetingData);
     });
 });
-
 
 module.exports = router;
