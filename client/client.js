@@ -67,9 +67,10 @@ app.controller('LoginController', function () {
 
 app.controller('HomeController', ['$http', function ($http) {
     console.log("We're home!");
-    var agenda=this;
+    var home=this;
     $http.get('/agenda').then(function(response){
-        agenda.data = response.data;
+        home.data = response.data;
+        console.log('Meeting Data response: ', home.data)
     });
 }]);
 

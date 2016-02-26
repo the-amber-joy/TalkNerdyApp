@@ -6,7 +6,7 @@ var connectionString = require('../../database.json').data;
 //var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
 
 router.get('/', function(request, response){
-    var meetingData = [];
+    var meetingData = {};
 
     connectionString = connectionString + '?ssl=true';
 
@@ -26,7 +26,7 @@ router.get('/', function(request, response){
                                                 ORDER BY date ASC \
                                                 LIMIT 1)::date";
 
-        var query = client.query(queryString, [user]);
+        var query = client.query(queryString);
 
         query.on('error', function (error){
             console.log(error);
@@ -34,13 +34,13 @@ router.get('/', function(request, response){
         });
 
         query.on('row', function (row) {
-            meetingData.push(row);
+            meetingData = row;
         });
 
         query.on('end', function () {
             client.end();
+            console.log("TacOcaT", meetingData);
             return response.json(meetingData);
-            console.log(meetingData);
         });
     });
 });
