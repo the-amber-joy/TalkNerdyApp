@@ -1,5 +1,5 @@
-@import 'reset.css';
-@import 'normalize.css';
+@import 'reset';
+@import 'normalize';
 $background-gray: #A9B2B1;
 $app-background-color: #eee;
 
@@ -22,6 +22,7 @@ header {
 }
 
 main {
+  margin-top: 10px;
   padding: 10px;
   background-color: $app-background-color;
   width: 80%;
@@ -29,17 +30,21 @@ main {
   .well {background-color: $background-gray;
     border-color: #337ab7;
   }
-  border-radius: 4px 4px;
+  border-radius: 0 4px 4px 0;
 }
 
 nav {
+  margin-top: 10px;
   width: 20%;
   float:left;
   .nav>li>a:hover,
   .nav>li>a:focus {
-      background-color: $app-background-color;
-    }
+    background-color: $app-background-color;
+    border-radius: 4px 0 0 4px;
+  }
 }
+
+
 
 
 
