@@ -1,3 +1,5 @@
+@import url(../../server/public/assets/styles/reset.css);
+@import url(../../server/public/assets/styles/normalize.css);
 body {
   width: 900px;
   margin: 25px;
@@ -7,21 +9,26 @@ body {
   background-repeat: no-repeat; }
 
 header {
-  background-color: gold;
-  padding: 50px; }
+  padding: 10px; }
+
+.login {
+  padding: 10px;
+  width: 90%; }
 
 main {
-  margin-top: 50px;
   padding: 10px;
-  background-color: #337ab7;
+  background-color: #eee;
   width: 80%;
   float: right; }
   main .well {
-    background-color: #337ab7; }
+    background-color: #A9B2B1;
+    border-color: #337ab7; }
 
 nav {
-  margin-top: 50px;
   width: 20%;
   float: left; }
+  nav .nav > li > a:hover,
+  nav .nav > li > a:focus {
+    background-color: #eee; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,8 +1,7 @@
 {
   "_args": [
     [
-      "bootstrap",
-      "/Users/kyracrowston/Documents/toast_team/TalkNerdy"
+      "bootstrap@^3.3.6"
     ]
   ],
   "_from": "bootstrap@*",
@@ -32,7 +31,6 @@
   "_shasum": "8de8f749dc8a743f2ac5b510d988371e3daa6589",
   "_shrinkwrap": null,
   "_spec": "bootstrap",
-  "_where": "/Users/kyracrowston/Documents/toast_team/TalkNerdy",
   "author": {
     "name": "Twitter, Inc."
   },
