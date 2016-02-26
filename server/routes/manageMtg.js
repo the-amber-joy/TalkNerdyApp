@@ -15,10 +15,9 @@ router.post('/', function(request, response) {
             console.log(err);
             return response.status(500).json({ success: false, data: err});
         } else if (
-        /*if the meeting exists, run these queries to edit it*/
-        meetingData
+            /*if the meeting exists, run these queries to edit it*/
+            client.query("SELECT FROM meetings WHERE date = $1", [meetingData.date]) != null
         ) {
-
             //Create the Meeting
             client.query("INSERT INTO meetings\
                 (date, \

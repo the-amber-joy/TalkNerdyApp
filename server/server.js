@@ -8,7 +8,11 @@ var testDBroute = require('./routes/testDBroute');
 var mySpeeches = require('./routes/mySpeeches');
 var pastAgendas = require('./routes/pastAgendas');
 var googleID = require('./routes/googleID');
+<<<<<<< HEAD
 var manageMtg = require('./routes/manageMtg');
+=======
+var manageRoster = require('./routes/roster');
+>>>>>>> e67f4912f7d742e06d81b48c3aebc9c84cd3450f
 
 var app = express();
 
@@ -28,6 +32,7 @@ app.use('/pastAgendas', pastAgendas);
 app.use('/googleID', googleID);
 app.use('/manageMtg', manageMtg);
 app.use('/', login);
+app.use('/manage_roster', manageRoster);
 
 
 
