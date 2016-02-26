@@ -58,7 +58,7 @@ connectionString = connectionString + '?ssl=true';
 
     //var queryOptions = {
      var userEmail = profile.emails[0].value;
-     var userFirstName = profile.firstName;
+     var userFirstName = profile.name.givenName;
      var userLastName = profile.name.familyName;
      var userGoogleID = profile.id;
     //};
