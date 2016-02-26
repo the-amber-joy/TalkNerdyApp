@@ -136,6 +136,6 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             speech_2: this.speech_2,
             speech_3: this.speech_3
         };
-        $http.post('/manageMtg', speechToReset)
+        $http.post('/resetSpeech', speechToReset)
     };
 }]);
