@@ -41,6 +41,12 @@ $urlRouterProvider, $locationProvider) {
             templateUrl: '/views/admin/manage_roster.html',
             controller: 'RosterController',
             controllerAs: 'roster'
+        })
+        .state('home', {
+            url: '/home',
+            templateUrl: 'views/home.html',
+            controller: 'CurrentAgendaController',
+            controllerAs: 'agenda'
         });
 
     //$locationProvider.html5Mode(true).hashPrefix('!');
@@ -83,5 +89,12 @@ app.controller('RosterController', ['$http', function ($http) {
     $http.get('/manage_roster').then(function(response){
         roster.people = response.data;
         console.log('Roster Controller Hit');
+    });
+}]);
+
+app.controller('CurrentAgendaController', ['$http', function ($http) {
+    var agenda=this;
+    $http.get('/agenda').then(function(response){
+        agenda.data = response.data;
     });
 }]);
