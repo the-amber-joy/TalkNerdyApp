@@ -129,4 +129,13 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         };
         $http.post('/manageMtg', meetingData)
     };
+
+    $scope.resetSpeech = function(){
+        var speechToReset = {
+            speech_1: this.speech_1,
+            speech_2: this.speech_2,
+            speech_3: this.speech_3
+        };
+        $http.post('/manageMtg', speechToReset)
+    };
 }]);

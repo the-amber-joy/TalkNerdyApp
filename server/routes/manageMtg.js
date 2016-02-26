@@ -10,8 +10,6 @@ connectionString = connectionString + '?ssl=true';
 router.get('/', function(request, response){
     var openSpeechRequests = [];
 
-    connectionString = connectionString + '?ssl=true';
-
     pg.connect(connectionString, function(error, client){
         if (error) {
             console.log(error);
@@ -43,17 +41,27 @@ router.get('/', function(request, response){
 //This is where the Admin will be submitting the new/edited meeting data
 router.post('/', function(request, response) {
     var meetingData = request.body.meetingData;
-    pg.connect(connectionString, function(err, client, done) {
-        if(err) {
-            done();
-            console.log(err);
-            return response.status(500).json({ success: false, data: err});
-        } else if (
-            /*if the meeting exists, run these queries to edit it*/
-            client.query("SELECT FROM meetings WHERE date = $1", [meetingData.date]) != null
-        ) {
-            //Create the Meeting
-            client.query("INSERT INTO meetings\
+
+    var meetingDetails = [meetingData.date,
+        meetingData.theme,
+        meetingData.location,
+        meetingData.word_of_day,
+        meetingData.presiding_officer,
+        meetingData.toastmaster,
+        meetingData.general_evaluator,
+        meetingData.table_topics_czar,
+        meetingData.speech_evaluator_1,
+        meetingData.speech_evaluator_2,
+        meetingData.speech_evaluator_3,
+        meetingData.grammarian,
+        meetingData.ah_counter,
+        meetingData.timer,
+        meetingData.description,
+        meetingData.speech_1,
+        meetingData.speech_2,
+        meetingData.speech_3];
+
+    var makeNewMeeting = "INSERT INTO meetings\
                 (date, \
                 theme, \
                 location, \
@@ -73,44 +81,9 @@ router.post('/', function(request, response) {
                 speech_2,\
                 speech_3)\
             VALUES\
-            ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18)",
-            [
-                meetingData.date,
-                meetingData.theme,
-                meetingData.location,
-                meetingData.word_of_day,
-                meetingData.presiding_officer,
-                meetingData.toastmaster,
-                meetingData.general_evaluator,
-                meetingData.table_topics_czar,
-                meetingData.speech_evaluator_1,
-                meetingData.speech_evaluator_2,
-                meetingData.speech_evaluator_3,
-                meetingData.grammarian,
-                meetingData.ah_counter,
-                meetingData.timer,
-                meetingData.description,
-                meetingData.speech_1,
-                meetingData.speech_2,
-                meetingData.speech_3
-            ]);
+            ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18)";
 
-
-            //Add this meeting date to the specified speeches
-            client.query("UPDATE speeches\
-                SET speech_date = $1, \
-                WHERE speech_title = $2 OR $3 OR $4",
-                [
-                    meetingData.date,
-                    meetingData.speech_1,
-                    meetingData.speech_2,
-                    meetingData.speech_3
-                ]);
-        } else {
-            //if the meeting does not exist, run these queries to add it:
-
-            //Create the Meeting
-            client.query("UPDATE meetings \
+    var editMeetingDetails = "UPDATE meetings \
             SET\
             date = $1,\
                 theme = $2,\
@@ -131,45 +104,48 @@ router.post('/', function(request, response) {
                 speech_2 = $17,\
                 speech_3 = $18\
             WHERE\
-            date = $19",
-            [
-                meetingData.date,
-                meetingData.theme,
-                meetingData.location,
-                meetingData.word_of_day,
-                meetingData.presiding_officer,
-                meetingData.toastmaster,
-                meetingData.general_evaluator,
-                meetingData.table_topics_czar,
-                meetingData.speech_evaluator_1,
-                meetingData.speech_evaluator_2,
-                meetingData.speech_evaluator_3,
-                meetingData.grammarian,
-                meetingData.ah_counter,
-                meetingData.timer,
-                meetingData.description,
-                meetingData.speech_1,
-                meetingData.speech_2,
-                meetingData.speech_3
-            ]);
+            date = $19";
+
+    var assignSpeechDate = "UPDATE speeches\
+                SET speech_date = $1, \
+                WHERE speech_title = $2 OR $3 OR $4";
+
+    var selectedSpeech = [meetingData.date,
+        meetingData.speech_1,
+        meetingData.speech_2,
+        meetingData.speech_3
+    ];
+
+    pg.connect(connectionString, function(err, client, done) {
+        if(err) {
+            done();
+            console.log(err);
+            return response.status(500).json({ success: false, data: err});
+        } else if (
+            //see if the meeting exists
+            client.query("SELECT FROM meetings WHERE date = $1", [meetingData.date]) != null
+        ) {
+            //if meeting exists, run these queries to edit:
+
+            //Create the Meeting
+            client.query(makeNewMeeting, meetingDetails);
+
+            //Add this meeting date to the selected speeches
+            client.query(assignSpeechDate, electedSpeech);
+        } else {
+            //if the meeting does not exist, run these queries to add it:
+
+            //Create the Meeting
+            client.query(editMeetingDetails, meetingDetails);
 
             //Add this meeting date to the specified speeches
-            client.query("UPDATE speeches\
-                SET speech_date = $1, \
-                WHERE speech_title = $2 OR $3 OR $4",
-                [
-                    meetingData.date,
-                    meetingData.speech_1,
-                    meetingData.speech_2,
-                    meetingData.speech_3
-                ]);
+            client.query(assignSpeechDate, selectedSpeech);
         }
     });
 
     query.on('end', function () {
         client.end();
         return response.json(meetingData);
-        console.log(meetingData);
     });
 });
 
