@@ -51,8 +51,6 @@ passport.use('google', new GoogleStrategy({
 connectionString = connectionString + '?ssl=true';
 
 // Returns the entire list of people
-//    router.get("/", function(req, res) {
-    var results = [];
 
     //var queryOptions = {
      var userEmail = profile.emails[0].value;
@@ -61,32 +59,32 @@ connectionString = connectionString + '?ssl=true';
      var userGoogleID = profile.id;
     //};
 
-
     //Trying to find a user
-    pg.connect(connectionString, function (err, client, done) {
+    pg.connect(connectionString, function (err, client) {
         if (err) throw err;
-        var query = "";
 
         var foundUser = {};
         var userFound = false;
 
-        if (userGoogleID) {
-            query = client.query("SELECT * FROM roster WHERE google_id = $1", [userGoogleID]);
+        console.log('Right before query', profile.id);
+        if (profile.id) {
+            var query = client.query("SELECT * FROM roster WHERE google_id = $1", [profile.id]);
             //return query.row;
             console.log("This is working");
             query.on('row', function (row) {
 
+                console.log('Entered Row');
                 foundUser = row;
                 userFound = true;
 
             });
             // After all data is returned, close connection and return results
             query.on('end', function () {
-                console.log(results);
                 if (userFound) {
-
-                    client.end();
+                    console.log(userFound);
                     done(null, foundUser);
+                    client.end();
+
 
                 } else {
 
@@ -95,71 +93,21 @@ connectionString = connectionString + '?ssl=true';
 
                     newQuery.on('row', function (row) {
                         var newUser = row;
-                        done(null, newUser);
+                       return done(null, newUser);
                     });
 
                     newQuery.on('end', function (row) {
                         client.end();
                     });
 
-
-
                 }
 
             });
 
-            // Handle Errors
-            if (err) {
-                console.log(err);
-            }
-
         }
-
-        // Stream results back one row at a time
-        //query.on('row', function (row) {
-        //    results.push(row);
-        //});
-        //
-        //// After all data is returned, close connection and return results
-
-        //
-        //// Handle Errors
-        //if (err) {
-        //    console.log(err);
-        //}
 
 });
 
-
-    //    User.findOne({'google.id': profile.id}, function (err, user) {
-    //        if (err)
-    //            return done(err);
-    //
-    //        if (user) {
-    //
-    //            // if a user is found, log them in
-    //            return done(null, user);
-    //        } else {
-    //            // if the user isnt in our database, create a new user
-    //            var newUser = new User();
-    //
-    //            // set all of the relevant information
-    //            newUser.google.id = profile.id;
-    //            newUser.google.token = token;
-    //            newUser.google.name = profile.displayName;
-    //            newUser.google.email = profile.emails[0].value; // pull the first email
-    //
-    //            // save the user
-    //            newUser.save(function (err) {
-    //                if (err)
-    //                    throw err;
-    //                return done(null, newUser);
-    //            });
-    //        }
-    //    });
-    //});
-
-    done(null, {username: 'blah', password: 'blahblah', id:1})
 
 }));
 
@@ -172,8 +120,6 @@ router.get('/google/callback',
         successRedirect : '/index',
         failureRedirect : '/login'
     }));
-
-
 
 
 module.exports = router;
