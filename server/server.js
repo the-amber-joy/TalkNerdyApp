@@ -8,6 +8,7 @@ var testDBroute = require('./routes/testDBroute');
 var mySpeeches = require('./routes/mySpeeches');
 var pastAgendas = require('./routes/pastAgendas');
 var googleID = require('./routes/googleID');
+var manageRoster = require('./routes/roster');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use('/auth', auth);
 app.use('/pastAgendas', pastAgendas);
 app.use('/googleID', googleID);
 app.use('/', login);
+app.use('/manage_roster', manageRoster);
 
 
 

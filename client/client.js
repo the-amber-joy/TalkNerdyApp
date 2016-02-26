@@ -102,13 +102,6 @@ app.controller('RosterController', ['$http', function ($http) {
     });
 }]);
 
-//app.controller('CurrentAgendaController', ['$http', function ($http) {
-//    var agenda=this;
-//    $http.get('/agenda').then(function(response){
-//        agenda.data = response.data;
-//    });
-//}]);
-
 app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, $http) {
     var manageMtg = this;
     $http.post('/manageMtg').then(function(){
