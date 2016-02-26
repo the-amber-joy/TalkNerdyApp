@@ -71,13 +71,13 @@ app.controller('LoginController', function () {
         .message='Hello and things!'
 });
 
-app.controller('HomeController', function () {
+app.controller('HomeController', ['$http', function ($http) {
     console.log("We're home!");
     var agenda=this;
     $http.get('/agenda').then(function(response){
         agenda.data = response.data;
     });
-});
+}]);
 
 app.controller('SpeechHistory', ['$http', function ($http) {
     var history=this;
