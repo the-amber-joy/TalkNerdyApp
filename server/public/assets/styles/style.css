@@ -1,5 +1,5 @@
-@import url(../../server/public/assets/styles/reset.css);
-@import url(../../server/public/assets/styles/normalize.css);
+@import url(reset.css);
+@import url(normalize.css);
 body {
   width: 900px;
   margin: 25px;
@@ -19,7 +19,8 @@ main {
   padding: 10px;
   background-color: #eee;
   width: 80%;
-  float: right; }
+  float: right;
+  border-radius: 4px 4px; }
   main .well {
     background-color: #A9B2B1;
     border-color: #337ab7; }

@@ -1,5 +1,5 @@
-@import '../../server/public/assets/styles/reset.css';
-@import '../../server/public/assets/styles/normalize.css';
+@import 'reset.css';
+@import 'normalize.css';
 $background-gray: #A9B2B1;
 $app-background-color: #eee;
 
@@ -29,6 +29,7 @@ main {
   .well {background-color: $background-gray;
     border-color: #337ab7;
   }
+  border-radius: 4px 4px;
 }
 
 nav {
