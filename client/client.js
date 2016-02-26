@@ -39,7 +39,7 @@ $urlRouterProvider, $locationProvider) {
         })
         .state('manage_roster', {
             url: '/home/manage_roster',
-            templateUrl: '../server/public/views/admin/manage_roster.html',
+            templateUrl: '/views/admin/manage_roster.html',
             controller: 'RosterController',
             controllerAs: 'roster'
         });
@@ -78,7 +78,10 @@ app.controller('PastController', ['$http', function ($http) {
     });
 }]);
 
-
-app.controller('RosterController', [ function () {
-    console.log('Roster Controller Hit');
+app.controller('RosterController', ['$http', function ($http) {
+    var rosterVar=this;
+    $http.get('/manage_roster').then(function(response){
+        rosterVar.roster = response.data;
+        console.log('Roster Controller Hit');
+    });
 }]);

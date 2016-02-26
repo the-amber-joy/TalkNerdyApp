@@ -1,16 +1,23 @@
-<div class="btn-group">
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Full Roster
-    </button>
-
-    <main
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Kyra</a>
-        <br>
-        <a class="dropdown-item" href="#">Chris</a>
-        <br>
-        <a class="dropdown-item" href="#">Wallace</a>
-        <br>
-        <a class="dropdown-item" href="#">Amber</a>
-    </div>
+<div class="well" ng-repeat="person in roster.people">
+    <div>
+        {{person.first_name}} {{person.last_name}}<br>
 </div>
+    </div>
+
+
+
+<!--<div class="btn-group">-->
+    <!--<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+        <!--Full Roster-->
+    <!--</button>-->
+
+    <!--<div class="dropdown-menu">-->
+        <!--<a class="dropdown-item" href="#"></a>-->
+        <!--<br>-->
+        <!--<a class="dropdown-item" href="#"></a>-->
+        <!--<br>-->
+        <!--<a class="dropdown-item" href="#"></a>-->
+        <!--<br>-->
+        <!--<a class="dropdown-item" href="#"></a>-->
+    <!--</div>-->
+<!--</div>-->
