@@ -13,7 +13,7 @@ router.post('/', function(request, response){
 
     var resetSpeech = "UPDATE speeches\
                 SET speech_date = NULL, \
-                WHERE speech_title = $1;
+                WHERE speech_title = $1";
 
     pg.connect(connectionString, function(error, client, done) {
         if(err) {
