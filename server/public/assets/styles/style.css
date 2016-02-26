@@ -416,20 +416,23 @@ header {
   width: 90%; }
 
 main {
+  margin-top: 10px;
   padding: 10px;
   background-color: #eee;
   width: 80%;
   float: right;
-  border-radius: 4px 4px; }
+  border-radius: 0 4px 4px 0; }
   main .well {
     background-color: #A9B2B1;
     border-color: #337ab7; }
 
 nav {
+  margin-top: 10px;
   width: 20%;
   float: left; }
   nav .nav > li > a:hover,
   nav .nav > li > a:focus {
-    background-color: #eee; }
+    background-color: #eee;
+    border-radius: 4px 0 0 4px; }
 
 /*# sourceMappingURL=style.css.map */
