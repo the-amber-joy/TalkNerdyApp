@@ -42,11 +42,17 @@ $urlRouterProvider, $locationProvider) {
             controller: 'RosterController',
             controllerAs: 'roster'
         })
-        .state('home', {
-            url: '/home',
-            templateUrl: 'views/home.html',
-            controller: 'CurrentAgendaController',
-            controllerAs: 'agenda'
+        //.state('agenda', {
+        //    url: '/index',
+        //    templateUrl: 'views/home.html',
+        //    controller: 'CurrentAgendaController',
+        //    controllerAs: 'agenda'
+        //})
+        .state('manage_mtgs', {
+            url: '/home/manage_mtgs',
+            templateUrl: 'views/manage_mtgs.html',
+            controller: 'ManageMeetingController',
+            controllerAs: 'manageMtg'
         });
 
     //$locationProvider.html5Mode(true).hashPrefix('!');
@@ -67,6 +73,10 @@ app.controller('LoginController', function () {
 
 app.controller('HomeController', function () {
     console.log("We're home!");
+    var agenda=this;
+    $http.get('/agenda').then(function(response){
+        agenda.data = response.data;
+    });
 });
 
 app.controller('SpeechHistory', ['$http', function ($http) {
@@ -92,9 +102,32 @@ app.controller('RosterController', ['$http', function ($http) {
     });
 }]);
 
-app.controller('CurrentAgendaController', ['$http', function ($http) {
-    var agenda=this;
-    $http.get('/agenda').then(function(response){
-        agenda.data = response.data;
+//app.controller('CurrentAgendaController', ['$http', function ($http) {
+//    var agenda=this;
+//    $http.get('/agenda').then(function(response){
+//        agenda.data = response.data;
+//    });
+//}]);
+
+app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, $http) {
+    var manageMtg = this;
+    $http.post('/manageMtg').then(function(){
+        var meetingData = {
+            date: manageMtg.date,
+            theme: manageMtg.theme,
+            location: manageMtg.location,
+            word_of_day: manageMtg.word_of_day,
+            presiding_officer: manageMtg.presiding_officer,
+            toastmaster: manageMtg.toastmaster,
+            general_evauluator: manageMtg.general_evauluator,
+            table_topics_czar: manageMtg.table_topics_czar,
+            speech_evaluator_1: manageMtg.speech_evaluator_1,
+            speech_evaluator_2: manageMtg.speech_evaluator_2,
+            speech_evaluator_3: manageMtg.speech_evaluator_3,
+            grammarian: manageMtg.grammarian,
+            ah_counter: manageMtg.ah_counter,
+            timer: manageMtg.timer
+        };
+        $http.post('/manageMtg', meetingData)
     });
 }]);
