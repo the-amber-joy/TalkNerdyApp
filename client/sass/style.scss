@@ -1,33 +1,45 @@
-$background-blue: #A9B2B1;
-$app-background-color: #337ab7;
-$sidebar-hover: green;
+@import '../../server/public/assets/styles/reset.css';
+@import '../../server/public/assets/styles/normalize.css';
+$background-gray: #A9B2B1;
+$app-background-color: #eee;
 
 body {
   width: 900px;
   margin: 25px;
-  background-color: $background-blue;
+  background-color: $background-gray;
   background-image: url("logo.png");
   background-position: top 10px right 10px;
   background-repeat: no-repeat;
 }
 
 header {
-  background-color: gold;
-  padding: 50px;
+  padding: 10px;
+}
+
+.login {
+  padding: 10px;
+  width: 90%;
 }
 
 main {
-  margin-top: 50px;
   padding: 10px;
   background-color: $app-background-color;
   width: 80%;
   float: right;
-  .well {background-color: $app-background-color;}
+  .well {background-color: $background-gray;
+    border-color: #337ab7;
+  }
 }
 
 nav {
-  margin-top: 50px;
   width: 20%;
   float:left;
+  .nav>li>a:hover,
+  .nav>li>a:focus {
+      background-color: $app-background-color;
+    }
 }
+
+
+
 

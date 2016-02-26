@@ -7,6 +7,12 @@ $urlRouterProvider, $locationProvider) {
     // For any unmatched url, redirect to /state1
     //$urlRouterProvider.otherwise("/");
     $stateProvider
+        .state('admin_sidebar', {
+            url: '/admin_sidebar',
+            templateUrl: 'views/admin_sidebar.html',
+            controller: 'NavController',
+            controllerAs: 'nav'
+        })
         .state('login', {
             url: '/',
             templateUrl: 'views/login.html',
