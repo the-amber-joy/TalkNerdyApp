@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+
 var index = require('./routes/index');
 var login = require('./routes/login');
 var auth = require('./routes/auth');
@@ -10,6 +11,7 @@ var pastAgendas = require('./routes/pastAgendas');
 var googleID = require('./routes/googleID');
 var manageMtg = require('./routes/manageMtg');
 var manageRoster = require('./routes/roster');
+var agenda = require('./routes/agenda');
 
 var app = express();
 
@@ -28,8 +30,9 @@ app.use('/auth', auth);
 app.use('/pastAgendas', pastAgendas);
 app.use('/googleID', googleID);
 app.use('/manageMtg', manageMtg);
-app.use('/', login);
 app.use('/manage_roster', manageRoster);
+app.use('/agenda', agenda);
+app.use('/', login);
 
 
 
