@@ -97,10 +97,10 @@ connectionString = connectionString + '?ssl=true';
                     var newQuery = client.query("INSERT INTO roster (email, first_name, last_name, google_id) " +
                         "VALUES ($1, $2, $3, $4)", [userEmail, userFirstName, userLastName, userGoogleID]);
 
-                    //newQuery.on('row', function (row) {
-                    //    var newUser = row;
-                    //
-                    //});
+                    newQuery.on('row', function (row) {
+                      newUser = row;
+                        return row;
+                    });
 
                     newQuery.on('end', function (row, newUser) {
                         client.end();
