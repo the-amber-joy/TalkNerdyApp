@@ -1,3 +1,5 @@
+//This file was created to test formatting of queries
+
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');

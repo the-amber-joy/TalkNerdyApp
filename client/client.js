@@ -42,15 +42,9 @@ $urlRouterProvider, $locationProvider) {
             controller: 'RosterController',
             controllerAs: 'roster'
         })
-        //.state('agenda', {
-        //    url: '/index',
-        //    templateUrl: 'views/home.html',
-        //    controller: 'CurrentAgendaController',
-        //    controllerAs: 'agenda'
-        //})
-        .state('manage_mtgs', {
-            url: '/home/manage_mtgs',
-            templateUrl: 'views/manage_mtgs.html',
+        .state('manage_meetings', {
+            url: '/home/manage_meetings',
+            templateUrl: 'views/manage_meetings.html',
             controller: 'ManageMeetingController',
             controllerAs: 'manageMtg'
         });
@@ -67,69 +61,84 @@ $urlRouterProvider, $locationProvider) {
 
 app.controller('LoginController', function () {
     console.log('UI Router seems to be working!');
-    var login=this
+    var login = this
         .message='Hello and things!'
 });
 
 app.controller('HomeController', ['$http', function ($http) {
     console.log("We're home!");
-    var agenda=this;
+    var home=this;
     $http.get('/agenda').then(function(response){
-        agenda.data = response.data;
+        home.data = response.data;
+        console.log('Meeting Data response: ', home.data)
     });
 }]);
 
 app.controller('SpeechHistory', ['$http', function ($http) {
-    var history=this;
+    var history = this;
     $http.get('/mySpeeches').then(function(response){
-        history.speeches = response.data;
+        this.speeches = response.data;
     });
 
 
 }]);
 
 app.controller('PastController', ['$http', function ($http) {
-    var past=this;
+    var past = this;
     $http.get('/pastAgendas').then(function(response){
-        past.agendas = response.data;
+        this.agendas = response.data;
         console.log(response.data);
     });
 }]);
 
 app.controller('RosterController', ['$http', function ($http) {
-    var roster=this;
+    var roster = this;
     $http.get('/manage_roster').then(function(response){
-        roster.people = response.data;
+        this.people = response.data;
         console.log('Roster Controller Hit');
     });
 }]);
 
-//app.controller('CurrentAgendaController', ['$http', function ($http) {
-//    var agenda=this;
-//    $http.get('/agenda').then(function(response){
-//        agenda.data = response.data;
-//    });
-//}]);
-
 app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, $http) {
     var manageMtg = this;
-    $http.post('/manageMtg').then(function(){
+
+    //This call grabs all the open speech requests which which do not have assigned dates yet
+    $http.get('/manageMtg').then(function(response){
+        this.agendas = response.data;
+        console.log(response.data);
+    });
+
+    //This function/call send the create or edited meeting data back to the server/database
+    $scope.manageMeeting = function(){
         var meetingData = {
-            date: manageMtg.date,
-            theme: manageMtg.theme,
-            location: manageMtg.location,
-            word_of_day: manageMtg.word_of_day,
-            presiding_officer: manageMtg.presiding_officer,
-            toastmaster: manageMtg.toastmaster,
-            general_evauluator: manageMtg.general_evauluator,
-            table_topics_czar: manageMtg.table_topics_czar,
-            speech_evaluator_1: manageMtg.speech_evaluator_1,
-            speech_evaluator_2: manageMtg.speech_evaluator_2,
-            speech_evaluator_3: manageMtg.speech_evaluator_3,
-            grammarian: manageMtg.grammarian,
-            ah_counter: manageMtg.ah_counter,
-            timer: manageMtg.timer
+            date: this.date,
+            theme: this.theme,
+            location: this.location,
+            word_of_day: this.word_of_day,
+            presiding_officer: this.presiding_officer,
+            toastmaster: this.toastmaster,
+            general_evaluator: this.general_evaluator,
+            table_topics_czar: this.table_topics_czar,
+            speech_evaluator_1: this.speech_evaluator_1,
+            speech_evaluator_2: this.speech_evaluator_2,
+            speech_evaluator_3: this.speech_evaluator_3,
+            grammarian: this.grammarian,
+            ah_counter: this.ah_counter,
+            timer: this.timer,
+            description: this.description,
+            speech_1: this.speech_1,
+            speech_2: this.speech_2,
+            speech_3: this.speech_3
         };
         $http.post('/manageMtg', meetingData)
-    });
+    };
+
+    $scope.resetSpeech = function(){
+        var speechToReset = {
+            speech_1: this.speech_1,
+            speech_2: this.speech_2,
+            speech_3: this.speech_3
+        };
+        $http.post('/resetSpeech', speechToReset)
+    };
 }]);
