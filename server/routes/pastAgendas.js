@@ -17,14 +17,7 @@ router.get('/', function(request, response){
         }
 
         //This query returns all past meeting agendas
-        var queryString = "SELECT * \
-                            FROM meetings \
-                                JOIN speeches \
-                                    ON speeches.speech_date = meetings.date \
-                                JOIN roster \
-                                    ON speeches.speaker_first_name = roster.first_name \
-                                JOIN speech_tracks \
-                                    ON speeches.track_project = speech_tracks.project_name";
+        var queryString = "SELECT * FROM meetings WHERE date < now()";
 
         var query = client.query(queryString);
 

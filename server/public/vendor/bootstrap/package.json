@@ -2,7 +2,11 @@
   "_args": [
     [
       "bootstrap@^3.3.6",
+<<<<<<< HEAD
       "/Users/wallacewylie/toastmasters/TalkNerdy"
+=======
+      "/Users/amberjoy/Documents/Prime/group_projects/ToastMasters/TalkNerdy"
+>>>>>>> 79e695b0832920c8eadd39f1004aab7445bb56a8
     ]
   ],
   "_from": "bootstrap@>=3.3.6 <4.0.0",
@@ -32,7 +36,11 @@
   "_shasum": "8de8f749dc8a743f2ac5b510d988371e3daa6589",
   "_shrinkwrap": null,
   "_spec": "bootstrap@^3.3.6",
+<<<<<<< HEAD
   "_where": "/Users/wallacewylie/toastmasters/TalkNerdy",
+=======
+  "_where": "/Users/amberjoy/Documents/Prime/group_projects/ToastMasters/TalkNerdy",
+>>>>>>> 79e695b0832920c8eadd39f1004aab7445bb56a8
   "author": {
     "name": "Twitter, Inc."
   },
