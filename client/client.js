@@ -133,6 +133,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         $http.post('/manageMtg', meetingData)
     };
 
+    //This is in process and may have to be moved to a separate controller
     $scope.resetSpeech = function(){
         var speechToReset = {
             speech_1: this.speech_1,
