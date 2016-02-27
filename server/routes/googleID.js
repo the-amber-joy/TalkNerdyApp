@@ -55,6 +55,7 @@ router.get("/", function(req, res) {
         // After all data is returned, close connection and return results
         query.on('end', function () {
             client.end();
+            console.log('GOOGLE ID RESULTS:', results);
             return res.json(results);
         });
 

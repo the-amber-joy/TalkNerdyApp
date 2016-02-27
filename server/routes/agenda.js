@@ -48,7 +48,7 @@ router.get('/', function(request, response){
 
         query.on('end', function () {
             client.end();
-            console.log("TacOcaT", meetingData);
+            //console.log("TacOcaT", meetingData);
             return response.json(meetingData);
         });
     });

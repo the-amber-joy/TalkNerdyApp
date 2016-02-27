@@ -7,7 +7,6 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 require('dotenv').config();
 var connectionString = require('../../database.json').data;
 
-
 var router = app.Router();
 
 pg.on('error', function (err) {
@@ -22,14 +21,13 @@ var admin = false;
 passport.serializeUser(function(user, done) {
     status = user.role;
     admin = user.isadmin;
-    console.log(status, admin, "Working?");
-    console.log('Serialized User', status, admin);
+    console.log('Serialized User status: ', status, "| Is user admin? ", admin);
     done(null, user.id, status, admin);
 });
 
 // used to deserialize the user
 passport.deserializeUser(function(id, done) {
-    console.log('Deserialized User', id);
+    console.log('Deserialized User ID', id);
     User.findById(id, function(err, user) {
         done(err, user);
     });
@@ -78,14 +76,14 @@ connectionString = connectionString + '?ssl=true';
         var userFound = false;
         var newUser = {};
 
-        console.log('Right before query', profile.id);
+        console.log('Profile ID, Right before query', profile.id);
         if (profile.id) {
             var query = client.query("SELECT * FROM roster WHERE google_id = $1", [profile.id]);
             //return query.row;
-            console.log("This is working");
+            //console.log("This is working");
             query.on('row', function (row) {
 
-                console.log('Entered Row');
+                //console.log('Entered Row:', row);
                 foundUser = row;
                 userFound = true;
 
@@ -93,7 +91,7 @@ connectionString = connectionString + '?ssl=true';
             // After all data is returned, close connection and return results
             query.on('end', function () {
                 if (userFound) {
-                    console.log(userFound);
+                    console.log('user found?', userFound);
                     done(null, foundUser);
                     client.end();
 
@@ -106,7 +104,7 @@ connectionString = connectionString + '?ssl=true';
                         "VALUES ($1, $2, $3, $4) RETURNING * ", [userEmail, userFirstName, userLastName, userGoogleID]);
 
                     newQuery.on('row', function (row) {
-                        console.log(row);
+                        //console.log(row);
                       newUser = row;
                     });
 
