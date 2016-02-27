@@ -16,7 +16,7 @@ pg.on('error', function (err) {
 
 
 var status = {};
-var admin = {};
+var admin = false;
 
 // used to serialize the user for the session
 passport.serializeUser(function(user, done) {
