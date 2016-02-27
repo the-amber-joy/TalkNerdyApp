@@ -25,6 +25,8 @@
         <!--Guest, Member, and Admin views will render here-->
         <main ui-view></main>
         <!--End Custom View-->
+    <div ng-show="user.isadmin = true">Hello!</div>
+    <div ng-show="user.role = 'member'">Hello again!</div>
 
 
     </body>

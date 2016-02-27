@@ -14,10 +14,17 @@ pg.on('error', function (err) {
     console.log('Database error!', err);
 });
 
+
+var status = {};
+var admin = {};
+
 // used to serialize the user for the session
 passport.serializeUser(function(user, done) {
-    console.log('Serialized User', user);
-    done(null, user.id);
+    status = user.role;
+    admin = user.isadmin;
+    console.log(status, admin, "Working?");
+    console.log('Serialized User', status, admin);
+    done(null, user.id, status, admin);
 });
 
 // used to deserialize the user

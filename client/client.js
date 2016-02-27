@@ -42,9 +42,9 @@ $urlRouterProvider, $locationProvider) {
             controller: 'RosterController',
             controllerAs: 'roster'
         })
-        .state('manage_mtgs', {
-            url: '/home/manage_mtgs',
-            templateUrl: 'views/manage_mtgs.html',
+        .state('manage_meetings', {
+            url: '/home/manage_meetings',
+            templateUrl: 'views/manage_meetings.html',
             controller: 'ManageMeetingController',
             controllerAs: 'manageMtg'
         });
@@ -79,6 +79,8 @@ app.controller('SpeechHistory', ['$http', function ($http) {
     $http.get('/mySpeeches').then(function(response){
         this.speeches = response.data;
     });
+
+
 }]);
 
 app.controller('PastController', ['$http', function ($http) {
