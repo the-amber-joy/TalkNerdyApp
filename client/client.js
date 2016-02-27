@@ -42,9 +42,9 @@ $urlRouterProvider, $locationProvider) {
             controller: 'RosterController',
             controllerAs: 'roster'
         })
-        .state('manage_mtgs', {
-            url: '/home/manage_mtgs',
-            templateUrl: 'views/manage_mtgs.html',
+        .state('manage_meetings', {
+            url: '/home/manage_meetings',
+            templateUrl: 'views/manage_meetings.html',
             controller: 'ManageMeetingController',
             controllerAs: 'manageMtg'
         });
