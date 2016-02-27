@@ -16,11 +16,10 @@ app.controller('HomeController', ['$http', function ($http) {
 
 //This will get all speeches scheduled for the next meeting, to be shown on the Home page agenda
 app.controller('SpeechAgendaController', ['$http', function ($http) {
-   var speechAgenda = this;
-    this.speechArray = [];
+    var plannedSpeeches = this;
     $http.get('/speechAgenda').then(function(response){
         this.speechArray = response.data;
-        console.log('SpeechArray Data response: ', speechArray.data)
+        console.log('Scheduled Speeches: ', response.data)
     });
 }]);
 

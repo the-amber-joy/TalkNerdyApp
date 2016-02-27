@@ -29,7 +29,7 @@ $urlRouterProvider, $locationProvider) {
             url: '/home',
             templateUrl: 'views/home.html',
             controller: 'SpeechAgendaController',
-            controllerAs: 'speechAgenda'
+            controllerAs: 'plannedSpeeches'
         })
         .state('my_speeches', {
             url: '/home/my_speeches',
