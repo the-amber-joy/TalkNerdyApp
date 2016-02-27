@@ -8,7 +8,7 @@ $urlRouterProvider, $locationProvider) {
     $stateProvider
         .state('admin_sidebar', {
             url: '/admin_sidebar',
-            templateUrl: 'views/admin_sidebar.html',
+            templateUrl: 'views/sidebar.html',
             controller: 'NavController',
             controllerAs: 'nav'
         })
@@ -23,6 +23,13 @@ $urlRouterProvider, $locationProvider) {
             templateUrl: 'views/home.html',
             controller: 'HomeController',
             controllerAs: 'home'
+        })
+        /// This is supposed to be where we grab the speeches scheduled for the next meeting as an array
+        .state('speech_agenda', {
+            url: '/home',
+            templateUrl: 'views/home.html',
+            controller: 'SpeechAgendaController',
+            controllerAs: 'speechAgenda'
         })
         .state('my_speeches', {
             url: '/home/my_speeches',
@@ -53,5 +60,6 @@ $urlRouterProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
 }]);
 
-//CONTROLLERS are now in client/controllers.js
+//CONTROLLERS for all general views are now in client/controllers.js
+//CONTROLLERS for all ADMIN-specific functions are in client/adminControllers.js
 //FACTORIES and any other services will be in client/services.js

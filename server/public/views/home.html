@@ -1,9 +1,18 @@
+<div ng-show="user.isadmin = true">Hello Admin!</div>
+<div ng-show="user.role = 'member'">Hello member!</div>
+<div ng-show="user.role = 'guest'">You are a guest!</div>
+
 <h1>{{home.data.date | date: "fullDate"}} - {{home.data.theme}}</h1>
 <p>Word of the Day: {{home.data.word_of_day}} Location: {{home.data.location}}</p>
 <hr>
 <b>Meeting Roles</b>
 <p>{{home.data.presiding_officer}} | {{home.data.toastmaster}} | {{home.data.general_evaluator}}</p>
 <p>{{home.data.timer}} | {{home.data.ah_counter}} | {{home.data.grammarian}}</p>
+
+<div data-ng-controller="SpeechAgendaController">
+<b>Speeches scheduled for this week:</b>
+<div ng-include="'/views/speech_agenda.html'"></div>
+</div>
 
 
 

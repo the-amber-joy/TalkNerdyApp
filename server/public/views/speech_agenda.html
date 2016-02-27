@@ -1,0 +1,9 @@
+<div class="well" ng-repeat="speech in speechArray track by $index">
+    <div>
+        Speaker: {{speech.speaker_first_name}} {{speech.speaker_last_name}}<br>
+        Speech Title: {{speech.speech_title}}<br>
+        Speech Track & Project: {{speech.track}}: {{speech.track_project}}<br>
+        Summary: {{speech.summary}}<br>
+        Grammarian Report: {{speech.grammarian_report}}<br>
+    </div>
+</div>

@@ -21,13 +21,14 @@
     </head>
     <body>
         <header ng-include="'/views/header.html'"></header>
-        <nav ng-include="'/views/sidebar/admin_sidebar.html'"></nav>
+        <nav ng-include="'/views/sidebar/sidebar.html'"></nav>
 
         <!--Guest, Member, and Admin views will render here-->
         <main ui-view></main>
         <!--End Custom View-->
-    <div ng-show="user.isadmin = true">Hello!</div>
-    <div ng-show="user.role = 'member'">Hello again!</div>
+    <div ng-show="user.isadmin = true">Hello Admin!</div>
+    <div ng-show="user.role = 'member'">Hello member!</div>
+    <div ng-show="user.role != 'member'">You are a guest!</div>
 
 
     </body>

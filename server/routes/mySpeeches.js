@@ -16,6 +16,7 @@ router.get('/', function(request, response){
     pg.connect(connectionString, function(error, client){
         if (error) {
             console.log(error);
+            client.end();
         }
 
         //This query returns info for all speeches by logged-in req.user
