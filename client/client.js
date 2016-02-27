@@ -79,6 +79,8 @@ app.controller('SpeechHistory', ['$http', function ($http) {
     $http.get('/mySpeeches').then(function(response){
         this.speeches = response.data;
     });
+
+
 }]);
 
 app.controller('PastController', ['$http', function ($http) {
