@@ -101,11 +101,16 @@ app.controller('RosterController', ['$http', function ($http) {
 
 app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, $http) {
     var manageMtg = this;
+    manageMtg.dateArray = [];
 
     //This call grabs all the open speech requests which which do not have assigned dates yet
     $http.get('/manageMtg').then(function(response){
         this.agendas = response.data;
         console.log(response.data);
+    });
+
+    $http.get('/manageMtg/getDates').then(function(response){
+        manageMtg.dateArray = response.data;
     });
 
     //This function/call send the create or edited meeting data back to the server/database
