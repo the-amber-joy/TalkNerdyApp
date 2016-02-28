@@ -51,7 +51,8 @@ app.controller('SpeechHistory', ['$http', function ($http) {
 app.controller('PastController', ['$http', function ($http) {
     var past = this;
     $http.get('/pastAgendas').then(function(response){
-        this.agendas = response.data;
-        console.log(response.data);
+        past.agendas = response.data;
+        console.log('Past Agendas: ', past.agendas);
+
     });
 }]);
