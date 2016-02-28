@@ -14,7 +14,10 @@ app.controller('HomeController', ['$http', 'UserService', function ($http, UserS
         UserService.id = response.data.id;
         UserService.isadmin= response.data.isadmin;
         UserService.role = response.data.role;
-        console.log('User Service --->', UserService)
+        console.log('User Service --->', UserService);
+        home.firstName = UserService.firstName;
+        home.isadmin = UserService.isadmin;
+        home.role = UserService.role;
     });
     $http.get('/agenda').then(function(response){
         home.data = response.data;
