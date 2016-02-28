@@ -13,7 +13,7 @@ pg.on('error', function (err) {
     console.log('Database error!', err);
 });
 
-
+var currentUser = {};
 var status = {};
 var admin = false;
 
@@ -84,6 +84,7 @@ connectionString = connectionString + '?ssl=true';
             query.on('row', function (row) {
 
                 //console.log('Entered Row:', row);
+                currentUser = row;
                 foundUser = row;
                 userFound = true;
 
@@ -106,6 +107,7 @@ connectionString = connectionString + '?ssl=true';
                     newQuery.on('row', function (row) {
                         //console.log(row);
                       newUser = row;
+                        currentUser = row;
                     });
 
                     newQuery.on('end', function () {
@@ -134,6 +136,10 @@ router.get('/google/callback',
         successRedirect : '/index',
         failureRedirect : '/login'
     }));
+
+router.get('/currentUser', function(request, response){
+  response.send(currentUser);
+});
 
 
 module.exports = router;

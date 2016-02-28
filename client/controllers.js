@@ -8,6 +8,9 @@ app.controller('LoginController', function () {
 app.controller('HomeController', ['$http', function ($http) {
     console.log("We're home!");
     var home = this;
+    $http.get('/auth/currentUser').then(function(response){
+        console.log('Current User: ', response.data)
+    });
     $http.get('/agenda').then(function(response){
         home.data = response.data;
         console.log('Meeting Data response: ', home.data)
