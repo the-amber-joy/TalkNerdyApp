@@ -8,19 +8,18 @@ app.controller('LoginController', function () {
 app.controller('indexController', ['UserService', function (UserService) {
     var index = this;
         index.things = UserService;
-        //console.log('Index Role: ', UserService.role, UserService.isadmin);
 }]);
 
 app.controller('HomeController', ['$http', 'UserService', function ($http, UserService) {
     console.log("We're home!");
     var home = this;
     $http.get('/auth/currentUser').then(function(response){
-        console.log('Current User: ', response.data);
+        //console.log('Current User: ', response.data);
         UserService.firstName= response.data.first_name;
         UserService.id = response.data.id;
         UserService.isadmin= response.data.isadmin;
         UserService.role = response.data.role;
-        console.log('User Service --->', UserService);
+        //console.log('User Service --->', UserService);
         home.firstName = UserService.firstName;
         home.isadmin = UserService.isadmin;
         home.role = UserService.role;
@@ -52,7 +51,5 @@ app.controller('PastController', ['$http', function ($http) {
     var past = this;
     $http.get('/pastAgendas').then(function(response){
         past.agendas = response.data;
-        console.log('Past Agendas: ', past.agendas);
-
     });
 }]);

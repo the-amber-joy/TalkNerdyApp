@@ -47,12 +47,6 @@ passport.use('google', new GoogleStrategy({
 
     // try to find the user based on their google id
     // Check DB for user and authenticate or add user to DB if not there
-    console.log('Google ID# ', profile.id);
-    console.log('Last Name: ', profile.name.familyName);
-    console.log('First Name: ', profile.name.givenName);
-    console.log('e-mail: ', profile.emails[0].value);
-    console.log('Token: ', token);
-    //});
 
 
     //[[[[[[[[[[[[[[[[[[[[[[[[ SQL will go here ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -80,10 +74,7 @@ connectionString = connectionString + '?ssl=true';
         if (profile.id) {
             var query = client.query("SELECT * FROM roster WHERE google_id = $1", [profile.id]);
             //return query.row;
-            //console.log("This is working");
             query.on('row', function (row) {
-
-                //console.log('Entered Row:', row);
                 currentUser = row;
                 foundUser = row;
                 userFound = true;
@@ -92,7 +83,6 @@ connectionString = connectionString + '?ssl=true';
             // After all data is returned, close connection and return results
             query.on('end', function () {
                 if (userFound) {
-                    console.log('user found?', userFound);
                     done(null, foundUser);
                     client.end();
 
@@ -111,7 +101,7 @@ connectionString = connectionString + '?ssl=true';
                     });
 
                     newQuery.on('end', function () {
-                        console.log(newUser);
+                        //console.log(newUser);
                         client.end();
                         done(null, newUser);
                     });
