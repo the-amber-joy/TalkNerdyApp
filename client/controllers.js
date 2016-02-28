@@ -5,6 +5,12 @@ app.controller('LoginController', function () {
         .message='Hello and things!'
 });
 
+app.controller('indexController', ['UserService', function (UserService) {
+    var index = this;
+        index.things = UserService;
+        //console.log('Index Role: ', UserService.role, UserService.isadmin);
+}]);
+
 app.controller('HomeController', ['$http', 'UserService', function ($http, UserService) {
     console.log("We're home!");
     var home = this;
