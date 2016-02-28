@@ -5,11 +5,16 @@ app.controller('LoginController', function () {
         .message='Hello and things!'
 });
 
-app.controller('HomeController', ['$http', function ($http) {
+app.controller('HomeController', ['$http', 'UserService', function ($http, UserService) {
     console.log("We're home!");
     var home = this;
     $http.get('/auth/currentUser').then(function(response){
-        console.log('Current User: ', response.data)
+        console.log('Current User: ', response.data);
+        UserService.firstName= response.data.first_name;
+        UserService.id = response.data.id;
+        UserService.isadmin= response.data.isadmin;
+        UserService.role = response.data.role;
+        console.log('User Service --->', UserService)
     });
     $http.get('/agenda').then(function(response){
         home.data = response.data;

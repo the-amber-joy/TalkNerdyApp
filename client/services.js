@@ -1,10 +1,12 @@
 app.factory('UserService', function(){
 
     var userInfo = {
-        startDate: 0,
-        endDate: 0
+        firstName: '',
+        id: 0,
+        isadmin: false,
+        role: 'guest'
     };
 
-    return dateRange;
+    return userInfo;
 
 });
