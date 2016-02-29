@@ -51,7 +51,7 @@ $urlRouterProvider, $locationProvider) {
         })
         .state('manage_roster', {
             url: '/home/manage_roster',
-            templateUrl: '/views/admin/manage_roster.html',
+            templateUrl: '/views/manage_roster.html',
             controller: 'RosterController',
             controllerAs: 'roster'
         })
@@ -115,6 +115,7 @@ app.controller('RosterController', ['$http', function ($http) {
     var roster = this;
     $http.get('/manage_roster').then(function(response){
         roster.people = response.data;
+        console.log(roster.people);
         console.log('Roster Controller Hit');
     });
 }]);

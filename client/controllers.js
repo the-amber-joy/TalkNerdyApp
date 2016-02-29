@@ -1,4 +1,3 @@
-
 app.controller('LoginController', function () {
     console.log('UI Router seems to be working!');
     var login = this
