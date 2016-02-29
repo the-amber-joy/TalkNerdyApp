@@ -31,6 +31,12 @@ $urlRouterProvider, $locationProvider) {
             controller: 'SpeechAgendaController',
             controllerAs: 'plannedSpeeches'
         })
+        .state('request_speech', {
+            url: '/home/request_speech',
+            templateUrl: 'views/request_speech.html',
+            controller: 'RequestSpeechController',
+            controllerAs: 'requestSpeech'
+        })
         .state('my_speeches', {
             url: '/home/my_speeches',
             templateUrl: 'views/my_speeches.html',
@@ -45,7 +51,7 @@ $urlRouterProvider, $locationProvider) {
         })
         .state('manage_roster', {
             url: '/home/manage_roster',
-            templateUrl: '/views/admin/manage_roster.html',
+            templateUrl: '/views/manage_roster.html',
             controller: 'RosterController',
             controllerAs: 'roster'
         })
@@ -89,6 +95,14 @@ app.controller('SpeechHistory', ['$http', function ($http) {
     });
 }]);
 
+app.controller('RequestSpeechController', ['$http', function ($http) {
+    var request = this;
+    $scope.clear = function() {$scope.message = "";};
+    //$http.post('/').then(function(response){
+    //    this.speeches = response.data;
+    //});
+}]);
+
 app.controller('PastController', ['$http', function ($http) {
     var past = this;
     $http.get('/pastAgendas').then(function(response){
@@ -101,6 +115,7 @@ app.controller('RosterController', ['$http', function ($http) {
     var roster = this;
     $http.get('/manage_roster').then(function(response){
         roster.people = response.data;
+        console.log(roster.people);
         console.log('Roster Controller Hit');
     });
 }]);
