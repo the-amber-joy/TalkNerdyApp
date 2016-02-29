@@ -1,10 +1,11 @@
 //CONTROLLERS FOR ADMIN VIEWS & FUNCTIONS
 
-app.controller('RosterController', ['$http', 'UserService', function ($http, UserService) {
+app.controller('RosterController', ['$http', function ($http) {
+    console.log('Roster Controller Hit');
     var roster = this;
     $http.get('/manage_roster').then(function(response){
-        this.people = response.data;
-        console.log("UserService in Roster: ", UserService);
+        roster.people = response.data;
+        console.log('Response from Roster: ', response);
     });
 }]);
 

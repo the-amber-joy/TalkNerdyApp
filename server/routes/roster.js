@@ -31,9 +31,9 @@ router.get('/', function(request, response){
         });
 
         query.on('end', function () {
+            response.send(currentRoster);
             client.end();
-            console.log(currentRoster);
-            return response.json(currentRoster);
+
         });
     });
 });
