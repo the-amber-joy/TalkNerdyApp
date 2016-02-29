@@ -40,7 +40,7 @@ router.get('/', function(request, response){
 
         query.on('end', function () {
             client.end();
-            //console.log('speech Agenda from server:', speechAgenda);
+            console.log('speech Agenda from server:', speechAgenda);
             return response.json(speechAgenda);
         });
     });

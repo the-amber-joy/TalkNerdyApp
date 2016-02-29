@@ -7,7 +7,7 @@ var connectionString = require('../../database.json').data;
 //var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
 
 router.get('/', function(request, response){
-    var mySpeeches = [];
+    var openRequests = [];
     var user = "Fake";
     //"Fake" needs to be replaced with the google id of the logged-in user
 
@@ -19,10 +19,10 @@ router.get('/', function(request, response){
             client.end();
         }
 
-        //This query returns info for all speeches by logged-in req.user
-        var queryString = "SELECT * FROM speeches WHERE speaker_google_id = $1";
+        //This query returns all requested speeches by logged-in user
+        var myOpenRequests = "SELECT * FROM speeches WHERE speaker_google_id = $1 AND speech_date IS NULL";
 
-        var query = client.query(queryString, [user]);
+        var query = client.query(myOpenRequests, [user]);
 
         query.on('error', function (error){
             console.log(error);
@@ -30,13 +30,13 @@ router.get('/', function(request, response){
         });
 
         query.on('row', function (row) {
-            mySpeeches.push(row);
+            openRequests.push(row);
         });
 
         query.on('end', function () {
             client.end();
-            return response.json(mySpeeches);
-            console.log(mySpeeches);
+            return response.json(openRequests);
+            console.log(openRequests);
         });
     });
 });
