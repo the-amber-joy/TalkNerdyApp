@@ -3,12 +3,10 @@ var router = express.Router();
 var passport = require('passport');
 var pg = require('pg');
 
-var connectionString = require('../../database.json').data;
+var connectionString = require('../../database.json').data + '?ssl=true';
 
 router.get('/', function(request, response){
     var currentRoster = [];
-
-    connectionString = connectionString + '?ssl=true';
 
     pg.connect(connectionString, function(error, client){
         if(error) {
