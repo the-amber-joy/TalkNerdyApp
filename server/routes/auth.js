@@ -5,7 +5,7 @@ var passport = require('passport');
 var pg = require('pg');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 require('dotenv').config();
-var connectionString = require('../../database.json').data;
+var connectionString = require('../../database.json').data + '?ssl=true';
 
 var router = app.Router();
 
@@ -51,7 +51,6 @@ passport.use('google', new GoogleStrategy({
 
     //[[[[[[[[[[[[[[[[[[[[[[[[ SQL will go here ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
-connectionString = connectionString + '?ssl=true';
 
 // Returns the entire list of people
 

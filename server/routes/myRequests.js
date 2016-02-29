@@ -3,15 +3,13 @@ var router = express.Router();
 var passport = require('passport');
 var pg = require('pg');
 
-var connectionString = require('../../database.json').data;
+var connectionString = require('../../database.json').data + '?ssl=true';
 //var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
 
 router.get('/', function(request, response){
     var openRequests = [];
     var user = "Fake";
     //"Fake" needs to be replaced with the google id of the logged-in user
-
-    connectionString = connectionString + '?ssl=true';
 
     pg.connect(connectionString, function(error, client){
         if (error) {
