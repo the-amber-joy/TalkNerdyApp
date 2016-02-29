@@ -13,6 +13,7 @@ var manageMtg = require('./routes/manageMtg');
 var manageRoster = require('./routes/roster');
 var agenda = require('./routes/agenda');
 var speechAgenda = require('./routes/speechAgenda');
+var requestSpeech = require('./routes/requestSpeech');
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use('/manageMtg', manageMtg);
 app.use('/manage_roster', manageRoster);
 app.use('/agenda', agenda);
 app.use('/speechAgenda', speechAgenda);
+app.use('/requestSpeech', requestSpeech);
 app.use('/', login);
 
 
