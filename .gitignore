@@ -6,3 +6,4 @@ npm-debug.log
 .sass-cache
 /database.json
 /client/sass
+server/public/vendor/bootstrap/package.json
