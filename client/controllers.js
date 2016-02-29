@@ -46,9 +46,20 @@ app.controller('SpeechHistory', ['$http', function ($http) {
     });
 }]);
 
+
 app.controller('PastController', ['$http', function ($http) {
     var past = this;
     $http.get('/pastAgendas').then(function(response){
         past.agendas = response.data;
     });
+}]);
+
+app.controller('RequestSpeechController', ['$http', '$scope', function ($http, $scope) {
+    var request = this;
+    $scope.message = "";
+    $scope.newMessage = "";
+    $scope.clear = function() {$scope.message = ""; $scope.newMessage = "";};
+    //$http.post('/').then(function(response){
+    //    this.speeches = response.data;
+    //});
 }]);
