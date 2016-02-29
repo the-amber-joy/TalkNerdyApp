@@ -12,17 +12,19 @@ app.controller('indexController', ['UserService', function (UserService) {
 app.controller('HomeController', ['$http', 'UserService', function ($http, UserService) {
     console.log("We're home!");
     var home = this;
-    $http.get('/auth/currentUser').then(function(response){
-        //console.log('Current User: ', response.data);
-        UserService.firstName= response.data.first_name;
-        UserService.id = response.data.id;
-        UserService.isadmin= response.data.isadmin;
-        UserService.role = response.data.role;
-        //console.log('User Service --->', UserService);
-        home.firstName = UserService.firstName;
-        home.isadmin = UserService.isadmin;
-        home.role = UserService.role;
-    });
+    if(!UserService.id) {
+        $http.get('/auth/currentUser').then(function (response) {
+            //console.log('Current User: ', response.data);
+            UserService.firstName = response.data.first_name;
+            UserService.id = response.data.id;
+            UserService.isadmin = response.data.isadmin;
+            UserService.role = response.data.role;
+            //console.log('User Service --->', UserService);
+            home.firstName = UserService.firstName;
+            home.isadmin = UserService.isadmin;
+            home.role = UserService.role;
+        });
+    }
     $http.get('/agenda').then(function(response){
         home.data = response.data;
         console.log('Meeting Data response: ', home.data)
