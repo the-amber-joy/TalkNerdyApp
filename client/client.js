@@ -97,6 +97,7 @@ app.controller('SpeechHistory', ['$http', function ($http) {
 
 app.controller('RequestSpeechController', ['$http', function ($http) {
     var request = this;
+    $scope.clear = function() {$scope.message = "";};
     //$http.post('/').then(function(response){
     //    this.speeches = response.data;
     //});
