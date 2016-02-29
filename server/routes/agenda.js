@@ -13,6 +13,7 @@ router.get('/', function(request, response){
     pg.connect(connectionString, function(error, client){
         if (error) {
             console.log(error);
+            console.log('Are you working', client);
         }
 
         //Returns only the next scheduled meeting date, with all speeches scheduled for that date

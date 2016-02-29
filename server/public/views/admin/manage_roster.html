@@ -1,11 +1,14 @@
 <h1>Manage Roster</h1>
 
+<div class = "seeRoster">
     <select ng-model="rosterMembers">
         <option value="" disabled selected>Select A Member</option>
-        <option ng-repeat="person in roster.people">{{person.first_name}}</option>";
+        <option ng-repeat="person in roster.people | orderBy: 'last_name'">{{person.first_name}} {{person.last_name}}</option>;
     </select>
 
-<!--<select ng-model="rosterMembers">-->
-    <!--<option value="" disabled selected>Edit Role</option>-->
-    <!--<option ng-repeat="person in roster.people">{{person.first_name}}</option>";-->
-<!--</select>-->
+    <form action="">
+        <input type="radio" name="role" value="guest"> Guest<br>
+        <input type="radio" name="role" value="member"> Member<br>
+    </form>
+
+</div>
