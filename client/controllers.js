@@ -48,6 +48,14 @@ app.controller('SpeechHistory', ['$http', function ($http) {
     });
 }]);
 
+//This shows a logged-in user their own history of open speech requests
+app.controller('MyRequests', ['$http', function ($http) {
+    var openRequests = this;
+    $http.get('/myRequests').then(function(response){
+        this.myReqs = response.data;
+    });
+}]);
+
 
 app.controller('PastController', ['$http', function ($http) {
     var past = this;
