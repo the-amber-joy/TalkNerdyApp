@@ -9,7 +9,7 @@ var connectionString = require('../../database.json').data;
 router.get('/', function(request, response){
     var mySpeeches = [];
     var user = "Fake";
-    //Not sure if OAuth gives a req.user here or if some other syntax should be used?
+    //"Fake" needs to be replaced with the google id of the logged-in user
 
     connectionString = connectionString + '?ssl=true';
 
@@ -20,7 +20,7 @@ router.get('/', function(request, response){
         }
 
         //This query returns info for all speeches by logged-in req.user
-        var queryString = "SELECT * FROM speeches WHERE speaker_first_name = $1";
+        var queryString = "SELECT * FROM speeches WHERE speaker_google_id = $1";
 
         var query = client.query(queryString, [user]);
 
