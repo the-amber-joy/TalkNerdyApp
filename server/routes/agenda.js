@@ -2,17 +2,19 @@ var express = require('express');
 var router = express.Router();
 var pg = require('pg');
 
-var connectionString = require('../../database.json').data;
+var connectionString = require('../../database.json').data  + '?ssl=true';
 //var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
 
 router.get('/', function(request, response){
     var meetingData = {};
 
-    connectionString = connectionString + '?ssl=true';
+    //connectionString = connectionString + '?ssl=true';
+
 
     pg.connect(connectionString, function(error, client){
         if (error) {
             console.log(error);
+            console.log('Are you working', client);
         }
 
         //Returns only the next scheduled meeting date, with all speeches scheduled for that date
@@ -35,7 +37,7 @@ router.get('/', function(request, response){
                                                 ORDER BY date ASC \
                                                 LIMIT 1";
 
-        var query = client.query(queryString);
+        query = client.query(queryString);
 
         query.on('error', function (error){
             console.log(error);
