@@ -1,7 +1,7 @@
 My speeches:
-<div class="well" ng-repeat="speech in history.speeches">
+<div class="well" ng-repeat="speech in history.speeches track by $index">
     <div>
-        Date: {{speech.date | date}}<br>
+        Date: {{speech.speech_date | date}}<br>
         Speaker: {{speech.speaker_first_name}} {{speech.speaker_last_name}}<br>
         Speech Title: {{speech.speech_title}}<br>
         Speech Track & Project: {{speech.track}}: {{speech.track_project}}<br>

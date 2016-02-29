@@ -1,0 +1,10 @@
+<b>Speeches scheduled for this week:</b>
+<div class="well" ng-repeat="plannedSpeech in plannedSpeeches.speechArray track by $index">
+    <div>
+        Speaker: {{plannedSpeech.speaker_first_name}} {{plannedSpeech.speaker_last_name}}<br>
+        Speech Title: {{plannedSpeech.speech_title}}<br>
+        Speech Track & Project: {{plannedSpeech.track}}: {{plannedSpeech.track_project}}<br>
+        Summary: {{plannedSpeech.summary}}<br>
+        Grammarian Report: {{plannedSpeech.grammarian_report}}<br>
+    </div>
+</div>

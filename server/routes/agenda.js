@@ -16,15 +16,24 @@ router.get('/', function(request, response){
         }
 
         //Returns only the next scheduled meeting date, with all speeches scheduled for that date
+
+        // ---- Something weird going on with the speech joins here -------
+
+        //var queryString = "SELECT * \
+        //                    FROM speeches \
+        //                        JOIN meetings \
+        //                            ON speeches.speech_date = meetings.date \
+        //                    WHERE speech_date = (SELECT date \
+        //                                        FROM meetings \
+        //                                        WHERE date >= now()::date \
+        //                                        ORDER BY date ASC \
+        //                                        LIMIT 1)::date";
+
         var queryString = "SELECT * \
-                            FROM speeches \
-                                JOIN meetings \
-                                    ON speeches.speech_date = meetings.date \
-                            WHERE speech_date = (SELECT date \
-                                                FROM meetings \
-                                                WHERE date >= now()::date + '12 hours'::interval \
+                                FROM meetings \
+                                                WHERE date >= now()\
                                                 ORDER BY date ASC \
-                                                LIMIT 1)::date";
+                                                LIMIT 1";
 
         var query = client.query(queryString);
 
@@ -39,7 +48,7 @@ router.get('/', function(request, response){
 
         query.on('end', function () {
             client.end();
-            console.log("TacOcaT", meetingData);
+            //console.log("TacOcaT", meetingData);
             return response.json(meetingData);
         });
     });

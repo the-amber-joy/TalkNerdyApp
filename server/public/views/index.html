@@ -15,18 +15,17 @@
         <script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="assets/scripts/client.min.js"></script>
         <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!--<script type="text/javascript" src="/assets/scripts/controllers.min.js"></script>-->
 
         <base href="/">
     </head>
-    <body>
+    <body ng-controller="indexController as index">
         <header ng-include="'/views/header.html'"></header>
-        <nav ng-include="'/views/sidebar/admin_sidebar.html'"></nav>
+        <nav ng-include="'/views/sidebar/sidebar.html'"></nav>
 
         <!--Guest, Member, and Admin views will render here-->
         <main ui-view></main>
         <!--End Custom View-->
-
-
     </body>
 </html>
 

@@ -1,9 +1,19 @@
+<div>Hello {{home.firstName}}!</div>
+<div ng-hide="home.isadmin == false">You are an Admin!</div>
+<div ng-hide="home.role == 'guest'">You are a member!</div>
+<div ng-hide="home.role == 'member'">You are a guest!</div>
+
 <h1>{{home.data.date | date: "fullDate"}} - {{home.data.theme}}</h1>
 <p>Word of the Day: {{home.data.word_of_day}} Location: {{home.data.location}}</p>
 <hr>
 <b>Meeting Roles</b>
 <p>{{home.data.presiding_officer}} | {{home.data.toastmaster}} | {{home.data.general_evaluator}}</p>
 <p>{{home.data.timer}} | {{home.data.ah_counter}} | {{home.data.grammarian}}</p>
+<br>
+<div data-ng-controller="SpeechAgendaController">
+<div ng-include="'/views/speech_agenda.html'"></div>
+</div>
+
 
 
 

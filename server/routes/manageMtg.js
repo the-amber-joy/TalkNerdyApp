@@ -38,6 +38,37 @@ router.get('/', function(request, response){
     });
 });
 
+router.get('/getDates', function(request, response){
+    var dateArray = [];
+
+    pg.connect(connectionString, function(error, client){
+        if (error) {
+            console.log(error);
+        }
+
+        //This query returns all past meeting agendas
+        var queryString = "SELECT date, id FROM meetings WHERE date >= now()";
+
+        var query = client.query(queryString);
+
+        query.on('error', function (error){
+            done();
+            console.log(error);
+            return response.status(500).json({ success: false, data: error});
+        });
+
+        query.on('row', function (row) {
+            dateArray.push(row);
+        });
+
+        query.on('end', function () {
+            client.end();
+            console.log(dateArray);
+            return response.json(dateArray);
+        });
+    });
+});
+
 //This is where the Admin will be submitting the new/edited meeting data
 router.post('/', function(request, response) {
     var meetingData = request.body.meetingData;
