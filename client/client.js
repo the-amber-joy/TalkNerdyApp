@@ -31,6 +31,12 @@ $urlRouterProvider, $locationProvider) {
             controller: 'SpeechAgendaController',
             controllerAs: 'plannedSpeeches'
         })
+        .state('request_speech', {
+            url: '/home/request_speech',
+            templateUrl: 'views/request_speech.html',
+            controller: 'RequestSpeechController',
+            controllerAs: 'requestSpeech'
+        })
         .state('my_speeches', {
             url: '/home/my_speeches',
             templateUrl: 'views/my_speeches.html',
@@ -87,6 +93,13 @@ app.controller('SpeechHistory', ['$http', function ($http) {
     $http.get('/mySpeeches').then(function(response){
         this.speeches = response.data;
     });
+}]);
+
+app.controller('RequestSpeechController', ['$http', function ($http) {
+    var request = this;
+    //$http.post('/').then(function(response){
+    //    this.speeches = response.data;
+    //});
 }]);
 
 app.controller('PastController', ['$http', function ($http) {
