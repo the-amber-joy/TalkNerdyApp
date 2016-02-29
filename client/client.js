@@ -92,7 +92,7 @@ app.controller('PastController', ['$http', function ($http) {
 app.controller('RosterController', ['$http', function ($http) {
     var roster = this;
     $http.get('/manage_roster').then(function(response){
-        this.people = response.data;
+        roster.people = response.data;
         console.log('Roster Controller Hit');
     });
 }]);
