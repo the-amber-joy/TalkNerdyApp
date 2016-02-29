@@ -1,36 +1,11 @@
-<<<<<<< HEAD
 <h1>Manage Roster</h1>
 
-<!--//names need to highlight-->
-=======
-<p>Welcome {{UserService.firstName}}!</p>
+    <select ng-model="rosterMembers">
+        <option value="" disabled selected>Select A Member</option>
+        <option ng-repeat="person in roster.people">{{person.first_name}}</option>";
+    </select>
 
-<div ng-repeat="person in roster.people">
-    <div>
-        {{person.first_name}} {{person.last_name}} {{person.role}}<br>
-    </div>
-</div>
->>>>>>> b3c3736158afd9adba2ec148229978266b4bec0b
-
-<div class="btn-group">
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Select A Member Name:
-    </button>
-
-    <div class="dropdown-menu">
-
-        <div ng-repeat="person in roster.people">
-            <div>
-                {{person.first_name}} {{person.last_name}}<br>
-            </div>
-        </div>
-</div>
-<br>
-<br>
-
-<div class="btn-group">
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Edit Role:
-      </button>
- </div>
-
+<!--<select ng-model="rosterMembers">-->
+    <!--<option value="" disabled selected>Edit Role</option>-->
+    <!--<option ng-repeat="person in roster.people">{{person.first_name}}</option>";-->
+<!--</select>-->
