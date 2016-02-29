@@ -67,6 +67,12 @@ app.controller('RequestSpeechController', ['$http', '$scope', function ($http, $
     $scope.message = "";
     $scope.newMessage = "";
     $scope.clear = function() {$scope.message = ""; $scope.newMessage = "";};
+    $scope.save = function (){
+        //$scope.message;
+        //$scope.newMessage;
+        //console.log(message, "Hey Buddy");
+        //console.log(newMessage, "Hey Friend");
+    };
     //$http.post('/').then(function(response){
     //    this.speeches = response.data;
     //});
