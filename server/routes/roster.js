@@ -34,12 +34,10 @@ router.get('/', function(request, response){
 
         });
     });
-
-    //router.put('/', function(request, response){
-    //
-    //});
 });
 
+//router.post('/', function(request, response) {
+//    var rosterData = request.body.rosterData;
 
 
 module.exports = router;
