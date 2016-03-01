@@ -438,24 +438,31 @@ nav {
   float: right;
   margin: -90px -450px 0 0; }
 
+.pending {
+  float: left;
+  width: 100px; }
+
 .datetheme {
-  width: 200px; }
+  width: 100px;
+  margin: auto; }
 
 .locationword {
-  width: 200px;
-  float: right; }
+  width: 80px;
+  float: right;
+  clear: right; }
+
+.date {
+  width: 85px;
+  margin: 0 -25px 0 0; }
 
 .location {
-  width: 200px;
   float: right; }
 
 .word {
-  width: 200px;
   float: right;
   clear: right; }
 
 .theme {
-  width: 200px;
   margin: 5px 0 0 0; }
 
 /*# sourceMappingURL=style.css.map */
