@@ -1,8 +1,12 @@
 {
   "_args": [
-    [
+
       "bootstrap",
       "/Users/kyracrowston/Documents/toast_team/TalkNerdy"
+
+      "bootstrap@^3.3.6",
+      "/Users/cwgraff/Desktop/Toastmasters"
+
     ]
   ],
   "_from": "bootstrap@*",
@@ -31,8 +35,12 @@
   "_resolved": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.6.tgz",
   "_shasum": "8de8f749dc8a743f2ac5b510d988371e3daa6589",
   "_shrinkwrap": null,
+
   "_spec": "bootstrap",
-  "_where": "/Users/kyracrowston/Documents/toast_team/TalkNerdy",
+
+  "_spec": "bootstrap@^3.3.6",
+
+
   "author": {
     "name": "Twitter, Inc."
   },
