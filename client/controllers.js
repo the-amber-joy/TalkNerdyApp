@@ -67,23 +67,28 @@ app.controller('PastController', ['$http', function ($http) {
 }]);
 
 app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', function ($http, $scope, UserService) {
+    $scope.data = {};
+
     var request = this;
 
-    console.log('userservice object:', UserService);
-    $scope.speechTitle = ''; //Text Entry field
-    $scope.speechBlurb = ''; //Text Entry field
-    $scope.track = '?';  //This will need to be a dropdown
-    $scope.project = '?'; //This will need to be a dropdown
-    var firstName = UserService.firstName;
-    var lastName = UserService.lastName;
-    var google_id = UserService.google_id;
+    $scope.data.speechTitle = ''; //Text Entry field
+    $scope.data.speechBlurb = ''; //Text Entry field
+    $scope.data.track = '';  //This will need to be a dropdown
+    $scope.data.project = ''; //This will need to be a dropdown
+    $scope.data.firstName = UserService.firstName;
+    $scope.data.lastName = UserService.lastName;
 
-    var speechReqObject = {speechTitle: $scope.speechTitle, speechBlurb: $scope.speechBlurb, track: $scope.track, project: $scope.project, firstName: firstName, lastName: lastName, google_id: google_id};
+    //var speechRequestObject = {speechTitle: $scope.speechTitle, speechBlurb: $scope.speechBlurb, track: $scope.track, project: $scope.project, firstName: firstName, lastName: lastName};
+
+
 
     $scope.submitSpeech = function (){
-        $http.post('/requestSpeech', speechReqObject);
-        $scope.clearFields();
-        //and then something to give user the message that their request was submitted
+        console.log('CLICK!');
+        console.log('data is:', $scope.data);
+        $http.post('/requestSpeech', $scope.data).then(function(request){
+            console.log('data is:', $scope.data);
+            //and then something to give user the message that their request was submitted
+        });
     };
 
     $scope.clearFields = function() {

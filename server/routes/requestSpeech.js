@@ -6,18 +6,19 @@ var connectionString = require('../../database.json').data + '?ssl=true';
 //var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
 
 
-router.post('/', function(request, response){
-    var speechRequestObject = request.body.speechReqObject;
+router.post('/', function(request){
+    var speechRequestObject = request.body;
+
     var speechRequestQuery = "INSERT INTO speeches \
                     (speech_title, summary, track, track_project, speaker_first_name, speaker_last_name, date_requested) \
                     VALUES \
                     ($1, $2, $3, $4, $5, $6, now()::date);";
 
     pg.connect(connectionString, function(error, client, done) {
-        if(err) {
+        if(error) {
             done();
             console.log(error);
-            return response.status(500).json({ success: false, data: err});
+            return response.status(500).json({ success: false, data: error});
         }
 
         client.query(speechRequestQuery,
@@ -26,8 +27,8 @@ router.post('/', function(request, response){
                 speechRequestObject.speechBlurb,
                 speechRequestObject.track,
                 speechRequestObject.project,
-                currentUser.userFirstName,
-                currentUser.userLastName
+                speechRequestObject.firstName,
+                speechRequestObject.lastName
             ]);
 
         client.on('end', function () {

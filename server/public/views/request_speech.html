@@ -1,23 +1,31 @@
 <p>Fill in the details to submit a title and description for a speech you would like to give:</p>
 <br />
 <br />
-<form ng-submit="submitSpeech(); clearFields()"></form>
-    <h2>Title</h2>
-    <textarea ng-model="speechTitle"></textarea>
+
+<form ng-submit="submitSpeech()">
+
+    <div>
+        <label for="speechTitle">Speech Title:</label><br>
+        <input type="text" ng-model="data.speechTitle" id="speechTitle">
+    </div>
+
+    <div>
+        <label for="speechBlurb">Description:</label><br>
+        <textarea ng-model="data.speechBlurb" id="speechBlurb"></textarea>
+    </div>
+
+    <div>
+        <label for="track">Speech Track:</label><br>
+        <input type="text" ng-model="data.track" id="track">
+    </div>
+
+    <div>
+        <label for="project">Speech Project:</label><br>
+        <input type="text" ng-model="data.project" id="project">
+    </div>
 
 
-    <h2>Description</h2>
-    <textarea ng-model="speechBlurb" rows="10" cols="50"></textarea><h2>Description</h2>
-
-    <h2>Track</h2>
-    <textarea ng-model="track"></textarea>
-
-    <h2>Project</h2>
-    <textarea ng-model="project"></textarea>
-
-    <p>
-        <input type="submit" value="Save Request">
-        <button ng-click="clearFields()">Clear</button>
-    </p>
+    <input type="submit" value="Save Request">
+    <button ng-click="clearFields()">Clear</button>
 </form>
 
