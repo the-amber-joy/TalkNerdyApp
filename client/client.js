@@ -24,13 +24,6 @@ $urlRouterProvider, $locationProvider) {
             controller: 'HomeController',
             controllerAs: 'home'
         })
-        /// This is supposed to be where we grab the speeches scheduled for the next meeting as an array
-        //.state('speech_agenda', {
-        //    url: '/home',
-        //    templateUrl: 'views/home.html',
-        //    controller: 'SpeechAgendaController',
-        //    controllerAs: 'plannedSpeeches'
-        //})
         .state('request_speech', {
             url: '/home/request_speech',
             templateUrl: 'views/request_speech.html',
