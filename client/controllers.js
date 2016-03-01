@@ -66,16 +66,20 @@ app.controller('PastController', ['$http', function ($http) {
 
 app.controller('RequestSpeechController', ['$http', '$scope', function ($http, $scope) {
     var request = this;
-    $scope.message = "";
-    $scope.newMessage = "";
-    $scope.clear = function() {$scope.message = ""; $scope.newMessage = "";};
+
+    $scope.speechTitle = ""; //Text Entry field
+    $scope.speechBlurb = ""; //Text Entry field
+    $scope.track = "?";  //This will need to be a dropdown
+    $scope.project = "?"; //This will need to be a dropdown
+
+    var speechReqObject = {speechTitle: $scope.speechTitle, speechBlurb: $scope.speechBlurb, track: $scope.track, project: $scope.project };
+
     $scope.save = function (){
-        //$scope.message;
-        //$scope.newMessage;
-        //console.log(message, "Hey Buddy");
-        //console.log(newMessage, "Hey Friend");
+        $http.post('/requestSpeech', speechReqObject);
     };
-    //$http.post('/').then(function(response){
-    //    this.speeches = response.data;
-    //});
+
+    $scope.clear = function() {
+
+    };
+
 }]);
