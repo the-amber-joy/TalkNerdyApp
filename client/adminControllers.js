@@ -6,6 +6,9 @@ app.controller('RosterController', ['$http', function ($http) {
     $http.get('/manage_roster').then(function(response){
         roster.people = response.data;
         console.log('Response from Roster: ', response);
+    $http.post('/manage_roster').then(function(response){
+
+    })
     });
 }]);
 
