@@ -76,6 +76,8 @@ app.controller('RequestSpeechController', ['$http', '$scope', function ($http, $
 
     $scope.save = function (){
         $http.post('/requestSpeech', speechReqObject);
+        $scope.clear();
+        //and then something to give user the message that their request was submitted
     };
 
     $scope.clear = function() {
