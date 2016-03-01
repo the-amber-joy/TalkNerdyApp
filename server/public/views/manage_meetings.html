@@ -1,93 +1,109 @@
 <h1>Create or Edit future meetings here</h1>
-<p>This page will also display all requested speeches which have not been assigned meeting dates yet.</p>
 
 
-<div class="centre">
+<div ng-submit="submitManagedMeetings">
+    <div class="centre">
 
-<div class="pending">
-<form class="pendingSpeeches">
-    <textarea cols="25" rows="20" name="comment"></textarea>
-</form>
-</div>
 
-    <div class="datetheme">
-        <div class="date">
-<select ng-model="dateStart">
-    <option value="" disabled selected>Select Meeting Date</option>
-    <option ng-repeat="day in manageMtg.dateArray">{{day.date | date: "fullDate"}}</option>";
-</select>
+        <div class="pending">
+            <form class="pendingSpeeches">
+                <textarea cols="25" rows="20" name="comment"></textarea>
+            </form>
         </div>
 
 
-<form action=theme">
-    <input type="text" class="theme" name="theme" placeholder="Theme">
-</form>
+    <div class="datetheme">
+        <div class="date">
+            <select ng-model="dateStart">
+                <option value="" disabled selected>Select Meeting Date</option>
+                <option ng-repeat="day in manageMtg.dateArray">{{day.date | date: "fullDate"}}</option>";
+            </select>
+        </div>
+
+
+    <div>
+        <label for="theme"></label>
+        <input type="text" ng-model="this.theme" id="theme" placeholder="Theme">
     </div>
 
-    <div class="locationword">
-<form action="location">
-     <input type="text" class="location" name="location" placeholder="Location">
-</form>
 
-<form action="wordOfDay">
-    <input type="text" class="word" name="word" placeholder="Word of the Day">
-</form>
+<div class="locationword">
+    <div>
+        <label for="location"></label>
+        <input type="text" ng-model="this.location" id="location" placeholder="Location">
+    </div>
+
+
+    <div>
+        <label for="word"></label>
+        <input type="text" ng-model="this.word_of_day" id="word" placeholder="Word of the Day">
+    </div>
+
     </div>
     </div>
 
 
 <div class="tmasterPositions">
-    <form action="presidingOfficer">
-        <input type="text" name="presidingOfficer" placeholder="Presiding Officer">
-    </form>
+    <div>
+        <label for="presiding_Officer"></label>
+        <input type="text" ng-model="this.presiding_officer" id="presiding_officer" placeholder="Presiding Officer">
+    </div>
 
         <br>
 
-    <form action="toastmaster">
-        <input type="text" name="toastmaster" placeholder="Toastmaster">
-    </form>
+    <div>
+        <label for="toastmaster"></label>
+        <input type="text" ng-model="this.toastmaster" id="toastmaster" placeholder="Toastmaster">
+    </div>
 
         <br>
 
-    <form action="genEvaluator">
-        <input type="text" name="genEvaluator" placeholder="General Evaluator">
-    </form>
+    <div>
+        <label for="general_evaluator"></label>
+        <input type="text" ng-model="this.general_evaluator" id="general_evaluator" placeholder="General Evaluator">
+    </div>
 
         <br>
 
-    <form action="eval1">
-        <input type="text" name="eval1" placeholder="Evaluator One">
-    </form>
+    <div>
+        <label for="evaluatorOne"></label>
+        <input type="text" ng-model="this.speech_evaluator_1" id="evaluatorOne" placeholder="Speech Evaluator 1">
+    </div>
 
         <br>
 
-    <form action="eval2">
-        <input type="text" name="eval2" placeholder="Evaluator Two">
-    </form>
+    <div>
+        <label for="evaluatorTwo"></label>
+        <input type="text" ng-model="this.speech_evaluator_2" id="evaluatorTwo" placeholder="Speech Evaluator 2">
+    </div>
 
         <br>
 
-    <form action="eval3">
-        <input type="text" name="eval3" placeholder="Evaluator Three">
-    </form>
+    <div>
+        <label for="evaluatorThree"></label>
+        <input type="text" ng-model="this.speech_evaluator_3" id="evaluatorThree" placeholder="Speech Evaluator 3">
+    </div>
 
         <br>
 
-    <form action="timer">
-        <input type="text" name="timer" placeholder="Timer">
-    </form>
+    <div>
+        <label for="timer"></label>
+        <input type="text" ng-model="this.timer" id="timer" placeholder="Timer">
+    </div>
 
         <br>
 
-    <form action="grammarian">
-        <input type="text" name="grammarian" placeholder="Grammarian">
-    </form>
+    <div>
+        <label for="grammarian"></label>
+        <input type=text ng-model="this.grammarian" id="grammarian" placeholder="Grammarian">
+    </div>
 
         <br>
 
-    <form action="ahCounter">
-        <input type="text" name="ahCounter" placeholder="Ah Counter">
-    </form>
+    <div>
+        <label for="ahCounter"></label>
+        <input type="text" ng-model="this.ah_counter" id="ahCounter" placeholder="Ah Counter">
+    </div>
 </div>
 
-
+</form>
