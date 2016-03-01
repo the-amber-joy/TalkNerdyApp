@@ -5,3 +5,70 @@
     <option value="" disabled selected>Select Meeting Date</option>
     <option ng-repeat="day in manageMtg.dateArray">{{day.date | date: "fullDate"}}</option>";
 </select>
+
+
+<form action="location">
+    <input type="text" name="location" placeholder="Location">
+</form>
+
+<form action=theme">
+    <input type="text" name="theme" placeholder="Theme">
+</form>
+
+<form action="wordOfDay">
+    <input type="text" name="word" placeholder="Word of the Day">
+</form>
+
+<div class="toastmasterPositions">
+    <form action="presidingOfficer">
+        <input type="text" name="presidingOfficer" placeholder="Presiding Officer">
+    </form>
+
+        <br>
+
+    <form action="toastmaster">
+        <input type="text" name="toastmaster" placeholder="Toastmaster">
+    </form>
+
+        <br>
+
+    <form action="genEvaluator">
+        <input type="text" name="genEvaluator" placeholder="General Evaluator">
+    </form>
+
+        <br>
+
+    <form action="eval1">
+        <input type="text" name="eval1" placeholder="Evaluator One">
+    </form>
+
+        <br>
+
+    <form action="eval2">
+        <input type="text" name="eval2" placeholder="Evaluator Two">
+    </form>
+
+        <br>
+
+    <form action="eval3">
+        <input type="text" name="eval3" placeholder="Evaluator Three">
+    </form>
+
+        <br>
+
+    <form action="timer">
+        <input type="text" name="timer" placeholder="Timer">
+    </form>
+
+        <br>
+
+    <form action="grammarian">
+        <input type="text" name="grammarian" placeholder="Grammarian">
+    </form>
+
+        <br>
+
+    <form action="ahCounter">
+        <input type="text" name="ahCounter" placeholder="Ah Counter">
+    </form>
+</div>
