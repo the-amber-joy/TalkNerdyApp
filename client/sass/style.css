@@ -401,7 +401,7 @@ th {
   padding: 0; }
 
 body {
-  width: 900px;
+  width: 100%;
   margin: 25px;
   background-color: #A9B2B1;
   background-image: url("logo.png");
@@ -434,25 +434,24 @@ nav {
     background-color: #eee;
     border-radius: 4px 0 0 4px; }
 
-.tmasterPositions {
-  float: right;
-  margin: -90px -450px 0 0; }
+.centre {
+  width: 710px; }
 
 .pending {
   float: left;
-  width: 100px; }
+  width: 223px; }
 
 .datetheme {
-  width: 100px;
-  margin: auto; }
+  float: left;
+  width: 305px;
+  margin-left: 38px; }
 
 .locationword {
-  width: 80px;
+  width: 115px;
   float: right;
   clear: right; }
 
 .date {
-  width: 85px;
   margin: 0 -25px 0 0; }
 
 .location {
@@ -464,5 +463,10 @@ nav {
 
 .theme {
   margin: 5px 0 0 0; }
+
+.tmasterPositions {
+  width: 255px;
+  float: right;
+  clear: right; }
 
 /*# sourceMappingURL=style.css.map */
