@@ -31,13 +31,16 @@ router.get('/', function(request, response){
         query.on('end', function () {
             response.send(currentRoster);
             client.end();
-
         });
+
+        router.post('/', function(request, response) {
+
+            var updateRosterQuery = "INSERT INTO roster \
+                    (first_name, role) \
+                    VALUES \
+                    ($1, $2)";
+        })
     });
 });
-
-//router.post('/', function(request, response) {
-//    var rosterData = request.body.rosterData;
-
 
 module.exports = router;

@@ -1,33 +1,40 @@
 //CONTROLLERS FOR ADMIN VIEWS & FUNCTIONS
 
-app.controller('RosterController', ['$http', function ($http) {
+app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
     console.log('Roster Controller Hit');
     var roster = this;
-    $http.get('/manage_roster').then(function(response){
+    $http.get('/manage_roster').then(function (response) {
         roster.people = response.data;
         console.log('Response from Roster: ', response);
-    $http.post('/manage_roster').then(function(response){
 
-    })
+        $scope.updateRoster = function () {
+            var roster = {
+                first_name: this.first_name,
+                last_name: this.last_name,
+                role: this.role
+            };
+
+            $http.post('/manage_roster', roster);
+
+        };
     });
 }]);
-
 app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, $http) {
     var manageMtg = this;
     manageMtg.dateArray = [];
 
     //This call grabs all the open speech requests which which do not have assigned dates yet
-    $http.get('/manageMtg').then(function(response){
+    $http.get('/manageMtg').then(function (response) {
         this.agendas = response.data;
         console.log(response.data);
     });
 
-    $http.get('/manageMtg/getDates').then(function(response){
+    $http.get('/manageMtg/getDates').then(function (response) {
         manageMtg.dateArray = response.data;
     });
 
     //This function/call send the create or edited meeting data back to the server/database
-    $scope.manageMeeting = function(){
+    $scope.manageMeeting = function () {
         var meetingData = {
             date: this.date,
             theme: this.theme,
@@ -48,16 +55,20 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             speech_2: this.speech_2,
             speech_3: this.speech_3
         };
+
         $http.post('/manageMtg', meetingData)
     };
 
     //This is in process and may have to be moved to a separate controller
-    $scope.resetSpeech = function(){
+    $scope.resetSpeech = function () {
         var speechToReset = {
             speech_1: this.speech_1,
             speech_2: this.speech_2,
             speech_3: this.speech_3
         };
-        $http.post('/resetSpeech', speechToReset)
-    };
+
+        $http.post('/resetSpeech', speechToReset);
+
+    }
+
 }]);

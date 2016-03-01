@@ -13,7 +13,6 @@ router.post('/', function(request, response){
                     VALUES \
                     ($1, $2, $3, $4, $5, $6, now()::date);";
 
-
     pg.connect(connectionString, function(error, client, done) {
         if(err) {
             done();
