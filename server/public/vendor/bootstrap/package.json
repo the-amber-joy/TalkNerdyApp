@@ -1,8 +1,13 @@
 {
   "_args": [
     [
+<<<<<<< HEAD
       "bootstrap@^3.3.6",
       "/Users/wallacewylie/toastmasters/TalkNerdy"
+=======
+      "bootstrap",
+      "/Users/kyracrowston/Documents/toast_team/TalkNerdy"
+>>>>>>> 334ef097f2a3a6ec553bc1a6f61650663ed607d0
     ]
   ],
   "_from": "bootstrap@>=3.3.6 <4.0.0",
@@ -31,8 +36,13 @@
   "_resolved": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.6.tgz",
   "_shasum": "8de8f749dc8a743f2ac5b510d988371e3daa6589",
   "_shrinkwrap": null,
+<<<<<<< HEAD
   "_spec": "bootstrap@^3.3.6",
   "_where": "/Users/wallacewylie/toastmasters/TalkNerdy",
+=======
+  "_spec": "bootstrap",
+  "_where": "/Users/kyracrowston/Documents/toast_team/TalkNerdy",
+>>>>>>> 334ef097f2a3a6ec553bc1a6f61650663ed607d0
   "author": {
     "name": "Twitter, Inc."
   },
