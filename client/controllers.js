@@ -35,7 +35,7 @@ app.controller('HomeController', ['$http', 'UserService', function ($http, UserS
 app.controller('SpeechAgendaController', ['$http', function ($http) {
     var plannedSpeeches = this;
     $http.get('/speechAgenda').then(function(response){
-        this.speechArray = response.data;
+        plannedSpeeches.speechArray = response.data;
         console.log('Scheduled Speeches: ', response.data)
     });
 }]);

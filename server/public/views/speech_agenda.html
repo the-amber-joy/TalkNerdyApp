@@ -1,3 +1,4 @@
+<div ng-controller="SpeechAgendaController as plannedSpeeches">
 <b>Speeches scheduled for this week:</b>
 <div class="well" ng-repeat="plannedSpeech in plannedSpeeches.speechArray track by $index">
     <div>
@@ -7,4 +8,5 @@
         Summary: {{plannedSpeech.summary}}<br>
         Grammarian Report: {{plannedSpeech.grammarian_report}}<br>
     </div>
+</div>
 </div>
