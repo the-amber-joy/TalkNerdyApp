@@ -43,23 +43,24 @@ nav {
   }
 }
 
-.centre {
-  width: 710px;
+//.centre {
+//  width: 710px;
+//}
+
+.container {
+  width: 1022px;
 }
 
 .pending {
   float: left;
-  width: 223px;
 }
 
 .datetheme {
   float: left;
-  width: 305px;
-  margin-left: 38px;
+  margin-left: 20px;
 }
 
 .locationword {
-  width: 115px;
   float: right;
   clear: right;
 }
@@ -83,7 +84,7 @@ nav {
 
 
 .tmasterPositions {
-  width: 255px;
+  width: 275px;
   float: right;
   clear: right;
 }
