@@ -1,25 +1,30 @@
 <h1>Create or Edit future meetings here</h1>
 <p>This page will also display all requested speeches which have not been assigned meeting dates yet.</p>
 
+<div class="centre">
+    <div class="datetheme">
 <select ng-model="dateStart">
     <option value="" disabled selected>Select Meeting Date</option>
     <option ng-repeat="day in manageMtg.dateArray">{{day.date | date: "fullDate"}}</option>";
 </select>
 
-
-<form action="location">
-    <input type="text" name="location" placeholder="Location">
-</form>
-
 <form action=theme">
-    <input type="text" name="theme" placeholder="Theme">
+    <input type="text" class="theme" name="theme" placeholder="Theme">
+</form>
+    </div>
+
+    <div class="locationword">
+<form action="location">
+     <input type="text" class="location" name="location" placeholder="Location">
 </form>
 
 <form action="wordOfDay">
-    <input type="text" name="word" placeholder="Word of the Day">
+    <input type="text" class="word" name="word" placeholder="Word of the Day">
 </form>
+    </div>
 
-<div class="toastmasterPositions">
+
+<div class="tmasterPositions">
     <form action="presidingOfficer">
         <input type="text" name="presidingOfficer" placeholder="Presiding Officer">
     </form>
@@ -71,4 +76,6 @@
     <form action="ahCounter">
         <input type="text" name="ahCounter" placeholder="Ah Counter">
     </form>
+</div>
+
 </div>
