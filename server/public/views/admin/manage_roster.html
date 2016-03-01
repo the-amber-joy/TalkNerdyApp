@@ -5,14 +5,17 @@
     <div class="seeRoster">
         <select ng-model="userRole">
             <option value="" disabled selected>Select A Member</option>
-            <option ng-repeat="person in roster.people | orderBy: 'last_name'" value={{person.role}}>{{person.first_name}} {{person.last_name}}</option>;
+            <option ng-repeat="person in roster.people" value={{$index}}>{{person.first_name}} {{person.last_name}} -- {{person.role}} -- {{person.isadmin}}</option>;
         </select>
+        <br />
+        <br />
 
         <form action="">
-            <input type="radio" name="" ng-model="status" value="guest" ng-checked="userRole == 'guest'"> Guest<br>
-            <input type="radio" name="" ng-model="status" value="member"  ng-checked="userRole == 'member'"> Member<br>
-            <input type="checkbox" name="" ng-model="adminStatus" value="admin" ng-checked="userRole == 'admin'"> Admin<br>
+            <input type="radio" name="" ng-model="status" value="guest" ng-checked="roster.people[userRole].role == 'guest'"> Guest<br>
+            <input type="radio" name="" ng-model="status" value="member"  ng-checked="roster.people[userRole].role == 'member'"> Member<br>
         </form>
+            <input type="checkbox" name="" ng-model="adminStatus" value="admin" ng-checked="roster.people[userRole].isadmin == true"> Admin<br>
+
 
     </div>
     <!--Below would be your button to trigger the function-->
