@@ -18,6 +18,7 @@ app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
         };
     });
 }]);
+
 app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, $http) {
     var manageMtg = this;
     manageMtg.dateArray = [];
@@ -70,4 +71,25 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 
     }
 
+}]);
+
+app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
+    console.log('Track Controller Hit');
+
+    var tracks = this;
+
+    $http.get('/manage_tracks').then(function (response) {
+        tracks.stuff = response.data;
+        console.log('Response from Tracks Stuff: ', response);
+
+        $scope.addTracks = function () {
+            var newTracks = {
+                track_name: this.track_name,
+                project_name: this.project_name,
+                project_descripton: this.project_descripton
+            };
+
+            $http.post('/manage_tracks', newTracks);
+        };
+    });
 }]);
