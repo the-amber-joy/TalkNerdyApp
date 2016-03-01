@@ -13,6 +13,7 @@ var agenda = require('./routes/agenda');
 var speechAgenda = require('./routes/speechAgenda');
 var requestSpeech = require('./routes/requestSpeech');
 var getTracks = require('./routes/getTracks');
+var getProjects = require('./routes/getProjects');
 var myRequests = require('./routes/myRequests');
 
 var app = express();
@@ -36,6 +37,7 @@ app.use('/speechAgenda', speechAgenda);
 app.use('/requestSpeech', requestSpeech);
 app.use('/myRequests', myRequests);
 app.use('/getTracks', getTracks);
+app.use('/getProjects', getProjects);
 app.use('/index', index);
 app.use('/', login);
 
