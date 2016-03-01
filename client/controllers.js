@@ -67,15 +67,17 @@ app.controller('PastController', ['$http', function ($http) {
 }]);
 
 app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', function ($http, $scope, UserService) {
-    var request = this;
+    var requestSpeech = this;
+
     $scope.data = {
-        speechTitle: '', //Text Entry field
-        speechBlurb: '', //Text Entry field
-        track: '',  //This will need to be a dropdown
-        project: '', //This will need to be a dropdown
         firstName: UserService.firstName,
         lastName: UserService.lastName
     };
+
+    $http.get('/getTracks').then(function(response){
+        console.log('tracks:', response.data);
+        $scope.tracks = response.data;
+    });
 
 
     $scope.resetForm = function(){
