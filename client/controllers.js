@@ -12,6 +12,7 @@ app.controller('indexController', ['UserService', function (UserService) {
 app.controller('HomeController', ['$http', 'UserService', function ($http, UserService) {
     console.log("We're home!");
     var home = this;
+    home.dateToday = Date.now();
     if(!UserService.id) {
         $http.get('/auth/currentUser').then(function (response) {
             //console.log('Current User: ', response.data);
@@ -29,7 +30,6 @@ app.controller('HomeController', ['$http', 'UserService', function ($http, UserS
     }
     $http.get('/agenda').then(function(response){
         home.data = response.data;
-        console.log('Meeting Data response: ', home.data)
     });
 }]);
 
@@ -77,6 +77,11 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
     $http.get('/getTracks').then(function(response){
         console.log('tracks:', response.data);
         $scope.tracks = response.data;
+    });
+
+    $http.get('/getProjects').then(function(response){
+        console.log('projects:', response.data);
+        $scope.projects = response.data;
     });
 
 
