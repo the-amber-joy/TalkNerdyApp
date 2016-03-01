@@ -4,15 +4,14 @@ var pg = require('pg');
 
 var connectionString = require('../../database.json').data + '?ssl=true';
 //var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
-connectionString = connectionString + '?ssl=true';
+
 
 router.post('/', function(request, response){
-
-    var requestSpeechQuery = "INSERT INTO speeches \
+    var speechRequestObject = request.body.speechReqObject;
+    var speechRequestQuery = "INSERT INTO speeches \
                     (speech_title, summary, track, track_project, speaker_first_name, speaker_last_name, date_requested) \
                     VALUES \
                     ($1, $2, $3, $4, $5, $6, now()::date);";
-
 
     pg.connect(connectionString, function(error, client, done) {
         if(err) {
@@ -21,15 +20,15 @@ router.post('/', function(request, response){
             return response.status(500).json({ success: false, data: err});
         }
 
-        client.query(requestSpeechQuery,
+        client.query(speechRequestQuery,
             [
-                speechRequest.speech_title,
-                speechRequest.summary,
-                speechRequest.track,
-                speechRequest.track_project,
-                home.name.givenName,
-                home.name.familyName
-            ]);chris
+                speechRequestObject.speechTitle,
+                speechRequestObject.speechBlurb,
+                speechRequestObject.track,
+                speechRequestObject.project,
+                currentUser.userFirstName,
+                currentUser.userLastName
+            ]);
 
         client.on('end', function () {
             client.end();
