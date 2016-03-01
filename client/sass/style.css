@@ -434,4 +434,21 @@ nav {
     background-color: #eee;
     border-radius: 4px 0 0 4px; }
 
+.tmasterPositions {
+  float: right;
+  margin: -90px -450px 0 0; }
+
+.datetheme {
+  width: 200px; }
+
+.location {
+  float: right; }
+
+.word {
+  float: right;
+  clear: right; }
+
+.theme {
+  margin: 5px 0 0 0; }
+
 /*# sourceMappingURL=style.css.map */
