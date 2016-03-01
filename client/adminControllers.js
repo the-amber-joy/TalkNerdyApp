@@ -15,7 +15,6 @@ app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
             };
 
             $http.post('/manage_roster', roster);
-
         };
     });
 }]);
