@@ -4,7 +4,7 @@ var pg = require('pg');
 
 var connectionString = require('../../database.json').data + '?ssl=true';
 //var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
-connectionString = connectionString + '?ssl=true';
+
 
 router.post('/', function(request, response){
 
@@ -27,9 +27,9 @@ router.post('/', function(request, response){
                 speechRequest.summary,
                 speechRequest.track,
                 speechRequest.track_project,
-                home.name.givenName,
-                home.name.familyName
-            ]);chris
+                currentUser.userFirstName,
+                currentUser.userLastName,
+            ]);
 
         client.on('end', function () {
             client.end();
