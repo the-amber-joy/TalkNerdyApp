@@ -3,9 +3,11 @@
     [
       "bootstrap",
       "/Users/kyracrowston/Documents/toast_team/TalkNerdy"
+      "bootstrap@^3.3.6",
+      "/Users/amberjoy/Documents/Prime/group_projects/ToastMasters/TalkNerdy"
     ]
   ],
-  "_from": "bootstrap@*",
+  "_from": "bootstrap@>=3.3.6 <4.0.0",
   "_id": "bootstrap@3.3.6",
   "_inCache": true,
   "_installable": true,
@@ -19,10 +21,10 @@
   "_phantomChildren": {},
   "_requested": {
     "name": "bootstrap",
-    "raw": "bootstrap",
-    "rawSpec": "",
+    "raw": "bootstrap@^3.3.6",
+    "rawSpec": "^3.3.6",
     "scope": null,
-    "spec": "*",
+    "spec": ">=3.3.6 <4.0.0",
     "type": "range"
   },
   "_requiredBy": [
@@ -33,6 +35,8 @@
   "_shrinkwrap": null,
   "_spec": "bootstrap",
   "_where": "/Users/kyracrowston/Documents/toast_team/TalkNerdy",
+  "_spec": "bootstrap@^3.3.6",
+  "_where": "/Users/amberjoy/Documents/Prime/group_projects/ToastMasters/TalkNerdy",
   "author": {
     "name": "Twitter, Inc."
   },

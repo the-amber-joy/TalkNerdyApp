@@ -35,7 +35,7 @@ app.controller('HomeController', ['$http', 'UserService', function ($http, UserS
 app.controller('SpeechAgendaController', ['$http', function ($http) {
     var plannedSpeeches = this;
     $http.get('/speechAgenda').then(function(response){
-        this.speechArray = response.data;
+        plannedSpeeches.speechArray = response.data;
         console.log('Scheduled Speeches: ', response.data)
     });
 }]);
@@ -66,16 +66,22 @@ app.controller('PastController', ['$http', function ($http) {
 
 app.controller('RequestSpeechController', ['$http', '$scope', function ($http, $scope) {
     var request = this;
-    $scope.message = "";
-    $scope.newMessage = "";
-    $scope.clear = function() {$scope.message = ""; $scope.newMessage = "";};
+
+    $scope.speechTitle = ""; //Text Entry field
+    $scope.speechBlurb = ""; //Text Entry field
+    $scope.track = "?";  //This will need to be a dropdown
+    $scope.project = "?"; //This will need to be a dropdown
+
+    var speechReqObject = {speechTitle: $scope.speechTitle, speechBlurb: $scope.speechBlurb, track: $scope.track, project: $scope.project };
+
     $scope.save = function (){
-        //$scope.message;
-        //$scope.newMessage;
-        //console.log(message, "Hey Buddy");
-        //console.log(newMessage, "Hey Friend");
+        $http.post('/requestSpeech', speechReqObject);
+        $scope.clear();
+        //and then something to give user the message that their request was submitted
     };
-    //$http.post('/').then(function(response){
-    //    this.speeches = response.data;
-    //});
+
+    $scope.clear = function() {
+
+    };
+
 }]);
