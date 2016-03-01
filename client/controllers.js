@@ -16,9 +16,11 @@ app.controller('HomeController', ['$http', 'UserService', function ($http, UserS
         $http.get('/auth/currentUser').then(function (response) {
             //console.log('Current User: ', response.data);
             UserService.firstName = response.data.first_name;
+            UserService.lastName = response.data.last_name;
             UserService.id = response.data.id;
             UserService.isadmin = response.data.isadmin;
             UserService.role = response.data.role;
+            UserService.google_id = response.data.google_id;
             //console.log('User Service --->', UserService);
             home.firstName = UserService.firstName;
             home.isadmin = UserService.isadmin;
@@ -64,24 +66,28 @@ app.controller('PastController', ['$http', function ($http) {
     });
 }]);
 
-app.controller('RequestSpeechController', ['$http', '$scope', '$UserService', function ($http, $scope, $UserService) {
+app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', function ($http, $scope, UserService) {
     var request = this;
 
-    $scope.speechTitle = ""; //Text Entry field
-    $scope.speechBlurb = ""; //Text Entry field
-    $scope.track = "?";  //This will need to be a dropdown
-    $scope.project = "?"; //This will need to be a dropdown
+    console.log('userservice object:', UserService);
+    $scope.speechTitle = ''; //Text Entry field
+    $scope.speechBlurb = ''; //Text Entry field
+    $scope.track = '?';  //This will need to be a dropdown
+    $scope.project = '?'; //This will need to be a dropdown
+    var firstName = UserService.firstName;
+    var lastName = UserService.lastName;
+    var google_id = UserService.google_id;
 
-    var speechReqObject = {speechTitle: $scope.speechTitle, speechBlurb: $scope.speechBlurb, track: $scope.track, project: $scope.project };
+    var speechReqObject = {speechTitle: $scope.speechTitle, speechBlurb: $scope.speechBlurb, track: $scope.track, project: $scope.project, firstName: firstName, lastName: lastName, google_id: google_id};
 
-    $scope.save = function (){
+    $scope.submitSpeech = function (){
         $http.post('/requestSpeech', speechReqObject);
-        $scope.clear();
+        $scope.clearFields();
         //and then something to give user the message that their request was submitted
     };
 
-    $scope.clear = function() {
-
+    $scope.clearFields = function() {
+        console.log('Request submitted');
     };
 
 }]);
