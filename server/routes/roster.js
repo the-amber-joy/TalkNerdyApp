@@ -33,14 +33,31 @@ router.get('/', function(request, response){
             client.end();
         });
 
-        router.post('/', function(request, response) {
-
-            var updateRosterQuery = "INSERT INTO roster \
-                    (first_name, role) \
-                    VALUES \
-                    ($1, $2)";
-        })
     });
 });
+
+router.post('/', function(request, response){
+    var rosterUpdate = request.body;
+    console.log('request.body contents:', request.body);
+
+    var updateRosterQuery = "UPDATE roster SET role = $1 WHERE first_name = $2 AND last_name = $3";
+    pg.connect(connectionString, function(error, client){
+
+        if(error) {
+            done();
+            console.log(error);
+            return response.status(500).json({ success: false, data: error})
+            }
+
+        client.query(updateRosterQuery, [rosterUpdate]);
+
+
+        client.on('end', function () {
+            client.end();
+        });
+    });
+
+});
+
 
 module.exports = router;

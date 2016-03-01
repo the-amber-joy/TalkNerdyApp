@@ -161,7 +161,7 @@ router.post('/', function(request, response) {
             client.query(makeNewMeeting, meetingDetails);
 
             //Add this meeting date to the selected speeches
-            client.query(assignSpeechDate, electedSpeech);
+            client.query(assignSpeechDate, selectedSpeech);
         } else {
             //if the meeting does not exist, run these queries to add it:
 
@@ -173,7 +173,7 @@ router.post('/', function(request, response) {
         }
     });
 
-    query.on('end', function () {
+    client.on('end', function () {
         client.end();
         return response.json(meetingData);
     });
