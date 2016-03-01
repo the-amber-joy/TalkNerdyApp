@@ -1,14 +1,22 @@
 <h1>Manage Roster</h1>
 
-<div class = "seeRoster">
-    <select ng-model="userRole">
-        <option value="" disabled selected>Select A Member</option>
-        <option ng-repeat="person in roster.people | orderBy: 'last_name'" value={{person.role}}>{{person.first_name}} {{person.last_name}} --- {{person.role}}</option>;
-    </select>
+<form ng-submit="updateRoster()">
+    <!--Your dropdown and radio buttons are already here-->
+    <div class="seeRoster">
+        <select ng-model="userRole">
+            <option value="" disabled selected>Select A Member</option>
+            <option ng-repeat="person in roster.people | orderBy: 'last_name'" value={{person.role}}>{{person.first_name}} {{person.last_name}}</option>;
+        </select>
 
-    <form action="">
-        <input type="radio" name="" ng-model="status" value="guest" ng-checked="userRole == 'guest'"> Guest<br>
-        <input type="radio" name="" ng-model="status" value="member"  ng-checked="userRole == 'member'"> Member<br>
-    </form>
+        <form action="">
+            <input type="radio" name="" ng-model="status" value="guest" ng-checked="userRole == 'guest'"> Guest<br>
+            <input type="radio" name="" ng-model="status" value="member"  ng-checked="userRole == 'member'"> Member<br>
+            <input type="checkbox" name="" ng-model="adminStatus" value="admin" ng-checked="userRole == 'admin'"> Admin<br>
+        </form>
 
-</div>
+    </div>
+    <!--Below would be your button to trigger the function-->
+    <input type="submit" value="Submit" class="submitThis">
+</form>
+
+
