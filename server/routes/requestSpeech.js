@@ -7,8 +7,8 @@ var connectionString = require('../../database.json').data + '?ssl=true';
 
 
 router.post('/', function(request, response){
-
-    var requestSpeechQuery = "INSERT INTO speeches \
+    var requestInfo = request.body.speechReqObject;
+    var speechReq = "INSERT INTO speeches \
                     (speech_title, summary, track, track_project, speaker_first_name, speaker_last_name, date_requested) \
                     VALUES \
                     ($1, $2, $3, $4, $5, $6, now()::date);";
@@ -21,14 +21,14 @@ router.post('/', function(request, response){
             return response.status(500).json({ success: false, data: err});
         }
 
-        client.query(requestSpeechQuery,
+        client.query(speechReq,
             [
                 speechRequest.speech_title,
                 speechRequest.summary,
                 speechRequest.track,
                 speechRequest.track_project,
                 currentUser.userFirstName,
-                currentUser.userLastName,
+                currentUser.userLastName
             ]);
 
         client.on('end', function () {
