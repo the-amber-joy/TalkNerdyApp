@@ -66,7 +66,7 @@ app.controller('PastController', ['$http', function ($http) {
     });
 }]);
 
-app.controller('RequestSpeechController', ['$http', '$scope', function ($http, $scope) {
+app.controller('RequestSpeechController', ['$http', 'UserService','$scope', function ($http, UserService, $scope) {
     var requestSpeech = this;
 
     $scope.data = {
@@ -84,28 +84,6 @@ app.controller('RequestSpeechController', ['$http', '$scope', function ($http, $
         $scope.projects = response.data;
     });
 
-<<<<<<< HEAD
-=======
-    //var trackName;
-    //var getTracks = function() {
-    //    for (i = 0, i < $scope.tracks.length, i++) {
-    //        trackName = $scope.tracks[i];
-    //    };
-    //};
-    //
-    //var project;
-    //for (i=0, i < $scope.projects.length, i++) {
-    //    project = $scope.projects[i]
-    //};
-    //
-    //$scope.trackInfo = [
-    //    {
-    //        'Track Name': trackName,
-    //        'Projects': [project]
-    //    }
-    //];
-
->>>>>>> 190b4bd1063b159e019da232e91413936bad1993
     $scope.resetForm = function(){
         $scope.data = {};
     };
