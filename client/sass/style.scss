@@ -1,5 +1,4 @@
-@import 'reset';
-@import 'normalize';
+
 $background-gray: #A9B2B1;
 $app-background-color: #eee;
 
@@ -48,16 +47,24 @@ nav {
 //}
 
 .container {
-  width: 1022px;
+  width: 975px;
+  border-color: black;
+  border: solid;
+  margin-left: -40px;
 }
 
 .pending {
   float: left;
 }
 
+.startdate {
+  width: 172px;
+  margin-left: 4px;
+}
+
 .datetheme {
   float: left;
-  margin-left: 20px;
+  margin-left: 36px;
 }
 
 .locationword {
@@ -73,18 +80,34 @@ nav {
   float: right;
 }
 
+.locationbox {
+  width: 172px;
+}
+
 .word {
   float: right;
   clear: right;
+}
+
+.wordbox {
+  width: 172px;
 }
 
 .theme {
   margin: 5px 0 0 0;
 }
 
+.themebox {
+  width: 172px;
+}
 
 .tmasterPositions {
+  margin-right: -100px;
   width: 275px;
   float: right;
   clear: right;
+}
+
+.subbuttons{
+  margin-left: 4px;
 }
