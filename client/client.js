@@ -48,6 +48,12 @@ $urlRouterProvider, $locationProvider) {
             controller: 'RosterController',
             controllerAs: 'roster'
         })
+        .state('manage_tracks', {
+            url: '/home/manage_tracks',
+            templateUrl: '/views/admin/manage_tracks.html',
+            controller: 'TrackController',
+            controllerAs: 'tracks'
+        })
         .state('manage_meetings', {
             url: '/home/manage_meetings',
             templateUrl: 'views/manage_meetings.html',

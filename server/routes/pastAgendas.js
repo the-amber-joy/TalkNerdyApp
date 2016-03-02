@@ -15,7 +15,7 @@ router.get('/', function(request, response){
         }
 
         //This query returns all past meeting agendas
-        var queryString = "SELECT * FROM meetings WHERE date < now()";
+        var queryString = "SELECT * FROM meetings WHERE date < now()::date";
 
         var query = client.query(queryString);
 

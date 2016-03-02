@@ -3,21 +3,24 @@
 app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
     console.log('Roster Controller Hit');
     var roster = this;
+
     $http.get('/manage_roster').then(function (response) {
         roster.people = response.data;
         console.log('Response from Roster: ', response);
+        });
 
-        $scope.updateRoster = function () {
-            var roster = {
+    $scope.updateRoster = function (){
+        roster.person = [
+            {
                 first_name: this.first_name,
                 last_name: this.last_name,
                 role: this.role
-            };
-
-            $http.post('/manage_roster', roster);
-        };
-    });
+            }
+        ];
+        $http.post('/manage_roster', roster.person)
+    };
 }]);
+
 app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, $http) {
     var manageMtg = this;
     var meetingData = {};
@@ -76,4 +79,25 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         console.log('button clicked');
     };
 
+}]);
+
+app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
+    console.log('Track Controller Hit');
+
+    var tracks = this;
+
+    $http.get('/manage_tracks').then(function (response) {
+        tracks.stuff = response.data;
+        console.log('Response from Tracks Stuff: ', response);
+
+        $scope.addTracks = function () {
+            var newTracks = {
+                track_name: this.track_name,
+                project_name: this.project_name,
+                project_descripton: this.project_descripton
+            };
+
+            $http.post('/manage_tracks', newTracks);
+        };
+    });
 }]);

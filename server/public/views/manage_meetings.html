@@ -1,3 +1,6 @@
+
+<div class="container">
+<div class="row">
 <h1>Create or Edit future meetings here</h1>
 
 
@@ -10,6 +13,8 @@
                 <textarea cols="25" rows="20" name="comment"></textarea>
             </form>
         </div>
+
+<div class="centre col-md-8">
 
 
     <div class="datetheme">
@@ -41,7 +46,7 @@
     </div>
 
     </div>
-
+</div>
 
 
 <div class="tmasterPositions">
@@ -49,6 +54,11 @@
         <label for="presiding_Officer"></label>
         <input type="text" ng-model="this.presiding_officer" id="presiding_officer" placeholder="Presiding Officer">
     </div>
+
+<!--<div class="tmasterPositions col-md-2">-->
+    <!--<form action="presidingOfficer">-->
+        <!--<input type="text" name="presidingOfficer" placeholder="Presiding Officer">-->
+    <!--</form>-->
 
         <br>
 
@@ -107,8 +117,12 @@
     </div>
 
 
+
 <input type="submit" value="Save Meeting">
 
 <button ng-click="manageMtg.reset()">Clear</button>
-</div>
+        </div>
 </form>
+      </div>
+    </div>
+

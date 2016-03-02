@@ -1,3 +1,5 @@
+<div ng-include="'/views/attendance.html'"></div>
+
 <div>Hello {{home.firstName}}!</div>
 <div ng-hide="home.isadmin == false">You are an Admin!</div>
 <div ng-hide="home.role == 'guest'">You are a member!</div>
@@ -11,7 +13,7 @@
 <p>{{home.data.timer}} | {{home.data.ah_counter}} | {{home.data.grammarian}}</p>
 <br>
 <div ng-include="'/views/speech_agenda.html'"></div>
-</div>
+
 
 
 

@@ -4,7 +4,7 @@ $background-gray: #A9B2B1;
 $app-background-color: #eee;
 
 body {
-  width: 900px;
+  width: 100%;
   margin: 25px;
   background-color: $background-gray;
   background-image: url("logo.png");
@@ -43,29 +43,29 @@ nav {
   }
 }
 
-.tmasterPositions {
-  float: right;
-  margin: -90px -450px 0 0;
+//.centre {
+//  width: 710px;
+//}
+
+.container {
+  width: 1022px;
 }
 
 .pending {
   float: left;
-  width: 100px;
 }
 
 .datetheme {
-  width: 100px;
-  margin: auto;
+  float: left;
+  margin-left: 20px;
 }
 
 .locationword {
-  width: 80px;
   float: right;
   clear: right;
 }
 
 .date {
-  width: 85px;
   margin: 0 -25px 0 0;
 }
 
@@ -80,4 +80,11 @@ nav {
 
 .theme {
   margin: 5px 0 0 0;
+}
+
+
+.tmasterPositions {
+  width: 275px;
+  float: right;
+  clear: right;
 }

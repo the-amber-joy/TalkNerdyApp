@@ -33,7 +33,7 @@ router.get('/', function(request, response){
 
         var queryString = "SELECT * \
                                 FROM meetings \
-                                                WHERE date >= now()\
+                                                WHERE date >= now()::date\
                                                 ORDER BY date ASC \
                                                 LIMIT 1";
 
@@ -50,7 +50,6 @@ router.get('/', function(request, response){
 
         query.on('end', function () {
             client.end();
-            //console.log("TacOcaT", meetingData);
             return response.json(meetingData);
         });
     });
