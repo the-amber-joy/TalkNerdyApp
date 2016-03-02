@@ -43,7 +43,7 @@ app.controller('SpeechAgendaController', ['$http', function ($http) {
 }]);
 
 //This shows a logged-in user their own history of past speeches
-app.controller('SpeechHistory', ['$http', function ($http) {
+app.controller('SpeechHistory', ['$http', 'UserService', function ($http) {
     var history = this;
     $http.get('/mySpeeches').then(function(response){
         this.speeches = response.data;
@@ -51,7 +51,7 @@ app.controller('SpeechHistory', ['$http', function ($http) {
 }]);
 
 //This shows a logged-in user their own history of open speech requests
-app.controller('MyRequests', ['$http', function ($http) {
+app.controller('MyRequests', ['$http', 'UserService', function ($http) {
     var openRequests = this;
     $http.get('/myRequests').then(function(response){
         this.myReqs = response.data;
