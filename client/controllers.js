@@ -66,7 +66,7 @@ app.controller('PastController', ['$http', function ($http) {
     });
 }]);
 
-app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', function ($http, $scope, UserService) {
+app.controller('RequestSpeechController', ['$http', '$scope', function ($http, $scope) {
     var requestSpeech = this;
 
     $scope.data = {
@@ -84,11 +84,9 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
         $scope.projects = response.data;
     });
 
-
     $scope.resetForm = function(){
         $scope.data = {};
     };
-
 
     $scope.submitSpeech = function (){
         console.log('data is:', $scope.data);
