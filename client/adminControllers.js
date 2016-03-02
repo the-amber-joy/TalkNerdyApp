@@ -3,21 +3,23 @@
 app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
     console.log('Roster Controller Hit');
     var roster = this;
+    roster.people = [];
 
     $http.get('/manage_roster').then(function (response) {
         roster.people = response.data;
-        console.log('Response from Roster: ', response);
+        //console.log('Response from Roster: ', response);
         });
 
     $scope.updateRoster = function (){
-        roster.person = [
+        roster.people.person =
             {
-                first_name: this.first_name,
-                last_name: this.last_name,
-                role: this.role
-            }
-        ];
-        $http.post('/manage_roster', roster.person)
+                first_name: this.people.first_name,
+                last_name: this.people.last_name,
+                role: this.people.role,
+                isAdmin: this.people.adminRole
+            };
+        console.log('roster.people.person:', roster.people.person);
+        $http.post('/manage_roster', roster.people.person);
     };
 }]);
 
@@ -56,7 +58,13 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             description: this.description,
             speech_1: this.speech_1,
             speech_2: this.speech_2,
-            speech_3: this.speech_3
+            speech_3: this.speech_3,
+            speaker_1_firstName: this.speaker_1_firstName,
+            speaker_1_lastName: this.speaker_1_lastName,
+            speaker_2_firstName: this.speaker_2_firstName,
+            speaker_2_lastName: this.speaker_2_lastName,
+            speaker_3_firstName: this.speaker_3_firstName,
+            speaker_3_lastName: this.speaker_3_lastName
         };
 
         $http.post('/manageMtg', meetingData)
@@ -81,23 +89,34 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 
 }]);
 
-app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
-    console.log('Track Controller Hit');
-
-    var tracks = this;
-
-    $http.get('/manage_tracks').then(function (response) {
-        tracks.stuff = response.data;
-        console.log('Response from Tracks Stuff: ', response);
-
-        $scope.addTracks = function () {
-            var newTracks = {
-                track_name: this.track_name,
-                project_name: this.project_name,
-                project_descripton: this.project_descripton
-            };
-
-            $http.post('/manage_tracks', newTracks);
-        };
-    });
-}]);
+//app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
+//    console.log('Track Controller Hit');
+//
+//    var tracks = this;
+//
+//    $http.get('/getTracks').then(function(response){
+//        console.log('tracks:', response.data);
+//        $scope.tracks = response.data;
+//    });
+//
+//    $http.get('/getProjects').then(function(response){
+//        console.log('projects:', response.data);
+//        $scope.projects = response.data;
+//    });
+//
+//    $http.get('/manage_tracks').then(function (response) {
+//        tracks.stuff = response.data;
+//        console.log('Response from Tracks Stuff: ', response);
+//
+//        $scope.addTracks = function () {
+//            var newTracks = {
+//                track_name: this.track_name,
+//                project_name: this.project_name,
+//                project_descripton: this.project_descripton
+//            };
+//
+//            $http.post('/manage_tracks', newTracks);
+//        };
+//    });
+//}]);
+//

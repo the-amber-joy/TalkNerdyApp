@@ -1,8 +1,8 @@
-app.controller('LoginController', function () {
-    console.log('UI Router seems to be working!');
-    var login = this
-        .message='Hello and things!'
-});
+//app.controller('LoginController', function () {
+//    console.log('UI Router seems to be working!');
+//    var login = this
+//        .message='Hello and things!'
+//});
 
 app.controller('indexController', ['UserService', function (UserService) {
     var index = this;
@@ -15,7 +15,7 @@ app.controller('HomeController', ['$http', 'UserService', function ($http, UserS
     home.dateToday = Date.now();
     if(!UserService.id) {
         $http.get('/auth/currentUser').then(function (response) {
-            //console.log('Current User: ', response.data);
+            console.log('Current User: ', response.data);
             UserService.firstName = response.data.first_name;
             UserService.lastName = response.data.last_name;
             UserService.id = response.data.id;
@@ -38,7 +38,7 @@ app.controller('SpeechAgendaController', ['$http', function ($http) {
     var plannedSpeeches = this;
     $http.get('/speechAgenda').then(function(response){
         plannedSpeeches.speechArray = response.data;
-        console.log('Scheduled Speeches: ', response.data)
+        //console.log('Scheduled Speeches: ', response.data)
     });
 }]);
 
