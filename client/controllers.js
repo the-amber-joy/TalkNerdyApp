@@ -66,7 +66,8 @@ app.controller('PastController', ['$http', function ($http) {
     });
 }]);
 
-app.controller('RequestSpeechController', ['$http', 'UserService','$scope', function ($http, UserService, $scope) {
+
+app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', function ($http, $scope, UserService) {
     var requestSpeech = this;
 
     $scope.data = {
