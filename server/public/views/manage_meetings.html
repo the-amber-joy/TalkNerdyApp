@@ -1,7 +1,7 @@
 <h1>Create or Edit future meetings here</h1>
 
 
-<div ng-submit="submitManagedMeetings">
+<form ng-submit="submitManagedMeetings()">
     <div class="centre">
 
 
@@ -23,9 +23,10 @@
 
     <div>
         <label for="theme"></label>
-        <input type="text" ng-model="this.theme" id="theme" placeholder="Theme">
+        <input type="text" ng-model="manageMtg.theme" id="theme" placeholder="Theme">
     </div>
-
+</div>
+</div>
 
 <div class="locationword">
     <div>
@@ -40,7 +41,7 @@
     </div>
 
     </div>
-    </div>
+
 
 
 <div class="tmasterPositions">
@@ -104,6 +105,10 @@
         <label for="ahCounter"></label>
         <input type="text" ng-model="this.ah_counter" id="ahCounter" placeholder="Ah Counter">
     </div>
-</div>
 
+
+<input type="submit" value="Save Meeting">
+
+<button ng-click="manageMtg.reset()">Clear</button>
+</div>
 </form>

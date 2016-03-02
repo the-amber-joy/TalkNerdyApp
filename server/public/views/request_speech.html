@@ -16,17 +16,20 @@
 
     <div>
         <label for="track">Speech Track:</label><br>
-        <input type="text" ng-model="data.track" id="track">
+        <select ng-model="data.speech.track" id="track">
+            <option ng-repeat="track in tracks track by $index">{{track.track_name}}</option>
+        </select>
     </div>
 
     <div>
         <label for="project">Speech Project:</label><br>
-        <input type="text" ng-model="data.project" id="project">
+        <select ng-model="data.speech.project" id="project">
+            <option ng-repeat="project in tracks track by $index">{{project.project_name}}</option>
+        </select>
     </div>
 
-
     <input type="submit" value="Save Request">
+
 </form>
+
 <button ng-click="resetForm()">Clear</button>
-
-

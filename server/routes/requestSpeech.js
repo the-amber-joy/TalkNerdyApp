@@ -25,8 +25,8 @@ router.post('/', function(request){
             [
                 speechRequestObject.speechTitle,
                 speechRequestObject.speechBlurb,
-                speechRequestObject.track,
-                speechRequestObject.project,
+                speechRequestObject.speech.track,
+                speechRequestObject.speech.project,
                 speechRequestObject.firstName,
                 speechRequestObject.lastName
             ]);
