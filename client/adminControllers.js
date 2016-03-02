@@ -21,7 +21,7 @@ app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
     };
 }]);
 
-app.controller('ManageMeetingController', ['$scope', 'UserService', '$http', function ($scope, UserService, $http) {
+app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, $http) {
     var manageMtg = this;
     var meetingData = {};
     manageMtg.dateArray = [];
@@ -29,8 +29,6 @@ app.controller('ManageMeetingController', ['$scope', 'UserService', '$http', fun
     //$scope. = {
     //
     //}
-}]);
-
 
     //This call grabs all the open speech requests which which do not have assigned dates yet
     $http.get('/manageMtg').then(function (response) {
@@ -84,16 +82,14 @@ app.controller('ManageMeetingController', ['$scope', 'UserService', '$http', fun
         manageMtg.theme = '';
         console.log('button clicked');
     };
+
     // save button
     $scope.submitManagedMeetings = function () {
-        console.log('data is:', $scope.data);
         $http.post('/submitManagedMeeting', $scope.data).then(function (request) {
-            console.log('data is:', $scope.data);
             //and then something to give user the message that their request was submitted
         });
-
-
     };
+}]);
 
 app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
     console.log('Track Controller Hit');
