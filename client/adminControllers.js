@@ -28,15 +28,6 @@ app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
         }
     });
 
-        //for(var i = 0; i < roster.people.length; i++){
-        //
-        //    var addOn = ' ';
-        //    if(roster.people[i].isadmin == true){
-        //        addOn = '<< Admin >>'
-        //    }
-        //    roster.people[i].displayLine = roster.people[i].first_name + " " + roster.people[i].last_name + " -- " + roster.people[i].role.charAt(0).toUpperCase() + roster.people[i].role.slice(1) + "  " + addOn;
-        //}
-
 
     //######## Sort the final array alphabetical order #########
         function sortArray() {
@@ -57,8 +48,6 @@ app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
         }
 
         //console.log('Response from Roster: ', response);
-
-
 
     $scope.updateRoster = function () {
         roster.people.person =
