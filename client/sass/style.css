@@ -25,7 +25,7 @@ main {
 
 nav {
   margin-top: 10px;
-  width: 20%;
+  width: 232px;
   float: left; }
   nav .nav > li > a:hover,
   nav .nav > li > a:focus {
@@ -38,20 +38,23 @@ nav {
   border: solid;
   margin-left: -40px; }
 
+.heading {
+  margin-left: 28px; }
+
 .pending {
   float: left; }
 
 .startdate {
-  width: 172px;
+  width: 220px;
   margin-left: 4px; }
 
 .datetheme {
   float: left;
-  margin-left: 36px; }
+  margin-left: 10px; }
 
 .locationword {
   float: right;
-  clear: right; }
+  margin-right: -145px; }
 
 .date {
   margin: 0 -25px 0 0; }
@@ -60,28 +63,31 @@ nav {
   float: right; }
 
 .locationbox {
-  width: 172px; }
+  width: 220px; }
 
 .word {
   float: right;
   clear: right; }
 
 .wordbox {
-  width: 172px; }
+  width: 220px; }
 
 .theme {
   margin: 5px 0 0 0; }
 
 .themebox {
-  width: 172px; }
+  width: 220px; }
 
 .tmasterPositions {
-  margin-right: -100px;
+  margin: 0 -105px 15px 0;
   width: 275px;
   float: right;
   clear: right; }
 
 .subbuttons {
-  margin-left: 4px; }
+  margin-left: 3px; }
+
+.sinput {
+  width: 100px; }
 
 /*# sourceMappingURL=style.css.map */
