@@ -7,4 +7,9 @@ npm-debug.log
 /database.json
 /server/public/assets/scripts/client.min.js
 /client/sass
+<<<<<<< HEAD
+server/public/vendor/bootstrap/*.json
+server/public/assets/scripts/client.min.js
+=======
 server/public/vendor/bootstrap/
+>>>>>>> 816020105eef9acd60072ad530e68503c7436bab
