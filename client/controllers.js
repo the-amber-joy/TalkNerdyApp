@@ -43,7 +43,7 @@ app.controller('SpeechAgendaController', ['$http', function ($http) {
 }]);
 
 //This shows a logged-in user their own history of past speeches
-app.controller('SpeechHistory', ['$http', function ($http) {
+app.controller('SpeechHistory', ['$http', 'UserService', function ($http) {
     var history = this;
     $http.get('/mySpeeches').then(function(response){
         this.speeches = response.data;
@@ -51,7 +51,7 @@ app.controller('SpeechHistory', ['$http', function ($http) {
 }]);
 
 //This shows a logged-in user their own history of open speech requests
-app.controller('MyRequests', ['$http', function ($http) {
+app.controller('MyRequests', ['$http', 'UserService', function ($http) {
     var openRequests = this;
     $http.get('/myRequests').then(function(response){
         this.myReqs = response.data;
@@ -84,6 +84,28 @@ app.controller('RequestSpeechController', ['$http', '$scope', function ($http, $
         $scope.projects = response.data;
     });
 
+<<<<<<< HEAD
+=======
+    //var trackName;
+    //var getTracks = function() {
+    //    for (i = 0, i < $scope.tracks.length, i++) {
+    //        trackName = $scope.tracks[i];
+    //    };
+    //};
+    //
+    //var project;
+    //for (i=0, i < $scope.projects.length, i++) {
+    //    project = $scope.projects[i]
+    //};
+    //
+    //$scope.trackInfo = [
+    //    {
+    //        'Track Name': trackName,
+    //        'Projects': [project]
+    //    }
+    //];
+
+>>>>>>> 190b4bd1063b159e019da232e91413936bad1993
     $scope.resetForm = function(){
         $scope.data = {};
     };
