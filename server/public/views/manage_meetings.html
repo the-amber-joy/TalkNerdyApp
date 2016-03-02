@@ -5,7 +5,7 @@
 
 
 <form ng-submit="submitManagedMeetings()">
-    <div class="centre">
+    <div class="centre col-md-8">
 
 
         <div class="pending">
@@ -14,40 +14,37 @@
             </form>
         </div>
 
-<div class="centre col-md-8">
 
 
     <div class="datetheme">
         <div class="date">
-            <select ng-model="dateStart">
+            <select ng-model="dateStart" class="startdate">
                 <option value="" disabled selected>Select Meeting Date</option>
                 <option ng-repeat="day in manageMtg.dateArray">{{day.date | date: "fullDate"}}</option>";
             </select>
         </div>
 
 
-    <div>
+    <div class="theme">
         <label for="theme"></label>
-        <input type="text" ng-model="manageMtg.theme" id="theme" placeholder="Theme">
+        <input type="text" ng-model="manageMtg.theme" id="theme" class="themebox" placeholder="Theme">
     </div>
-</div>
 </div>
 
 <div class="locationword">
     <div>
         <label for="location"></label>
-        <input type="text" ng-model="this.location" id="location" placeholder="Location">
+        <input type="text" ng-model="this.location" id="location" class="locationbox" placeholder="Location">
     </div>
 
 
     <div>
         <label for="word"></label>
-        <input type="text" ng-model="this.word_of_day" id="word" placeholder="Word of the Day">
-    </div>
+        <input type="text" ng-model="this.word_of_day" id="word" class="wordbox" placeholder="Word of the Day">
 
     </div>
 </div>
-
+</div>
 
 <div class="tmasterPositions">
     <div>
@@ -117,17 +114,14 @@
     </div>
 
 
-
+<div class="subbuttons">
 <input type="submit" value="Save Meeting">
 
 <button ng-click="manageMtg.reset()">Clear</button>
+</div>
         </div>
 </form>
       </div>
     </div>
 
-<<<<<<< HEAD
-</div>
-</div>
-=======
->>>>>>> 77737ec8e21322bd62527238c6afdacf32fa021f
+
