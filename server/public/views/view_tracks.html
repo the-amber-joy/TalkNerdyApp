@@ -1,62 +1,16 @@
 <h1>Speech Tracks</h1>
 
-<!--<div>-->
-    <!--<label for="track">Speech Track:</label><br>-->
-    <!--<select ng-model="data.speech.track" id="track">-->
-        <!--<option ng-repeat="track in tracks track by $index">{{track.track_name}}</option>-->
-    <!--</select>-->
-<!--</div>-->
-
-<!--<div class="col-md-4">-->
-    <!--<ul ng-repeat="project in projects track by $index">-->
-        <!--<li>{{project.project_name}}-->
-            <!--{{project.project_description}}-->
-        <!--</li>-->
-    <!--</ul>-->
-<!--</div>-->
-
-
-
-<!--<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">-->
-    <!--<div ng-repeat="project in projects track by $index" class="panel panel-default">-->
-        <!--<div class="panel-heading" role="tab" id="{{project.project_name}}">-->
-            <!--<h4 class="panel-title">-->
-                <!--<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="{{project.project_description}}">-->
-                    <!--{{project.project_name}}-->
-                <!--</a>-->
-            <!--</h4>-->
-        <!--</div>-->
-        <!--<div id="{{project.project_description}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="{{project.project_name}}">-->
-            <!--<div class="panel-body">-->
-                <!--{{project.project_description}}-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
-
-<!--<div ng-repeat="project in projects track by $index" class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">-->
-    <!--<div class="panel panel-default">-->
-        <!--<div class="panel-heading" role="tab" id="{{project[i]}}">-->
-            <!--<h4 class="panel-title">-->
-                <!--<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{project[i]}}" aria-expanded="false" aria-controls="collapse{{project.project_name}}">-->
-                    <!--{{project.project_name}}-->
-                <!--</a>-->
-            <!--</h4>-->
-        <!--</div>-->
-        <!--<div id="{{project[i]}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="{{project[i]}}">-->
-            <!--<div class="panel-body">-->
-                <!--{{project.project_description}}-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
-
-<accordion>
-    <accordion-group heading="{{project.project_name}}" ng-repeat="project in projects">
-        <ul>
-            <li>{{project.project_description}}</li>
-        </ul>
-    </accordion-group>
-</accordion>
+<div ng-repeat="project in projects track by $index" class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                {{project.track_name}} - {{project.project_name}}
+            </h4>
+        </div>
+        <div class="panel">
+            <div class="panel-body">
+                {{project.project_description}}
+            </div>
+        </div>
+    </div>
+</div>
