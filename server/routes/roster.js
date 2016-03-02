@@ -40,7 +40,7 @@ router.post('/', function(request, response){
     var rosterUpdate = request.body;
     console.log('request.body contents:', request.body);
 
-    var updateRosterQuery = "UPDATE roster SET role = $1 WHERE first_name = $2 AND last_name = $3";
+    var updateRosterQuery = "UPDATE roster SET role = $1 isAdmin = $2 WHERE first_name = $3 AND last_name = $4";
     pg.connect(connectionString, function(error, client){
 
         if(error) {

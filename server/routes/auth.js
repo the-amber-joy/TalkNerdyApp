@@ -21,7 +21,7 @@ var admin = false;
 passport.serializeUser(function(user, done) {
     status = user.role;
     admin = user.isadmin;
-    console.log('Serialized User status: ', status, "| Is user admin? ", admin);
+    //console.log('Serialized User status: ', status, "| Is user admin? ", admin);
     done(null, user.id, status, admin);
 });
 
@@ -69,7 +69,7 @@ passport.use('google', new GoogleStrategy({
         var userFound = false;
         var newUser = {};
 
-        console.log('Profile ID, Right before query', profile.id);
+        //console.log('Profile ID, Right before query', profile.id);
         if (profile.id) {
             var query = client.query("SELECT * FROM roster WHERE google_id = $1", [profile.id]);
             //return query.row;
