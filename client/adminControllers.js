@@ -23,6 +23,7 @@ app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
 
 app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, $http) {
     var manageMtg = this;
+    var meetingData = {};
     manageMtg.dateArray = [];
 
     //This call grabs all the open speech requests which which do not have assigned dates yet
@@ -38,8 +39,8 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
     //This function/call send the create or edited meeting data back to the server/database
     $scope.manageMeeting = function () {
         var meetingData = {
-            date: this.date,
-            theme: this.theme,
+            date: manageMtg.date,
+            theme: manageMtg.theme,
             location: this.location,
             word_of_day: this.word_of_day,
             presiding_officer: this.presiding_officer,
@@ -71,7 +72,12 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 
         $http.post('/resetSpeech', speechToReset);
 
-    }
+    };
+
+    manageMtg.reset = function(){
+        manageMtg.theme = '';
+        console.log('button clicked');
+    };
 
 }]);
 
