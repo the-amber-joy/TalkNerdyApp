@@ -28,15 +28,6 @@ app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
         }
     });
 
-        //for(var i = 0; i < roster.people.length; i++){
-        //
-        //    var addOn = ' ';
-        //    if(roster.people[i].isadmin == true){
-        //        addOn = '<< Admin >>'
-        //    }
-        //    roster.people[i].displayLine = roster.people[i].first_name + " " + roster.people[i].last_name + " -- " + roster.people[i].role.charAt(0).toUpperCase() + roster.people[i].role.slice(1) + "  " + addOn;
-        //}
-
 
     //######## Sort the final array alphabetical order #########
         function sortArray() {
@@ -57,8 +48,6 @@ app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
         }
 
         //console.log('Response from Roster: ', response);
-
-
 
     $scope.updateRoster = function () {
         roster.people.person =
@@ -89,7 +78,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 
     //This call grabs all the open speech requests which which do not have assigned dates yet
     $http.get('/manageMtg').then(function (response) {
-        this.agendas = response.data;
+        this.pendingRequests = response.data;
         console.log(response.data);
     });
 
@@ -99,9 +88,9 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 
     //This function/call send the create or edited meeting data back to the server/database
     $scope.manageMeeting = function () {
-        var meetingData = {
-            date: manageMtg.date,
-            theme: manageMtg.theme,
+        meetingData = {
+            date: this.date,
+            theme: this.theme,
             location: this.location,
             word_of_day: this.word_of_day,
             presiding_officer: this.presiding_officer,
@@ -140,12 +129,17 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         $http.post('/resetSpeech', speechToReset);
 
     };
-
-    manageMtg.reset = function(){
+    //clear button still needs work
+    manageMtg.reset = function () {
         manageMtg.theme = '';
         console.log('button clicked');
     };
 
+    // save button
+    $scope.submitManagedMeetings = function () {
+        $http.post('/submitManagedMeeting', meetingData);
+        //and then something to give user the message that their request was submitted
+    }
 }]);
 
 //app.controller('TrackController', ['$scope','$http', function ($scope, $http) {

@@ -2,17 +2,17 @@
 
 <form ng-submit="updateRoster()">
     <div class="seeRoster">
-        <select ng-model="data.person" id="people">
+        <select ng-model="userRole" id="people">
             <option value="" disabled selected>Select A Member</option>
             <option ng-repeat="person in roster.sortedArray" value={{$index}}>{{person.displayLine}}</option>;
         </select>
         <br />
         <br />
 
-            <input type="radio" name="" ng-model="status" value="guest" ng-checked="roster.people[userRole].role == 'guest'"> Guest<br>
-            <input type="radio" name="" ng-model="status" value="member"  ng-checked="roster.people[userRole].role == 'member'"> Member<br>
+            <input type="radio" name="" ng-model="status" value="guest" ng-checked="roster.sortedArray[userRole].role == 'guest'"> Guest<br>
+            <input type="radio" name="" ng-model="status" value="member"  ng-checked="roster.sortedArray[userRole].role == 'member'"> Member<br>
             <br />
-            <input type="checkbox" name="" ng-model="adminStatus" value="admin" ng-checked="roster.people[userRole].isadmin == true"> Admin<br>
+            <input type="checkbox" name="" ng-model="adminStatus" value="admin" ng-checked="roster.sortedArray[userRole].isadmin == true"> Admin<br>
 
     </div>
     <!--Below would be your button to trigger the function-->
