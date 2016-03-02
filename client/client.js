@@ -51,8 +51,14 @@ $urlRouterProvider, $locationProvider) {
         .state('manage_tracks', {
             url: '/home/manage_tracks',
             templateUrl: '/views/admin/manage_tracks.html',
-            controller: 'TrackController',
-            controllerAs: 'tracks'
+            controller: 'RequestSpeechController',
+            controllerAs: 'requestSpeech'
+        })
+        .state('view_tracks', {
+            url: '/home/view_tracks',
+            templateUrl: '/views/view_tracks.html',
+            controller: 'RequestSpeechController',
+            controllerAs: 'requestSpeech'
         })
         .state('manage_meetings', {
             url: '/home/manage_meetings',
