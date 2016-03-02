@@ -38,7 +38,7 @@ app.controller('SpeechAgendaController', ['$http', function ($http) {
     var plannedSpeeches = this;
     $http.get('/speechAgenda').then(function(response){
         plannedSpeeches.speechArray = response.data;
-        console.log('Scheduled Speeches: ', response.data)
+        //console.log('Scheduled Speeches: ', response.data)
     });
 }]);
 

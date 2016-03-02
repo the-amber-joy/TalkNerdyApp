@@ -89,7 +89,14 @@ router.post('/', function(request, response) {
         meetingData.description,
         meetingData.speech_1,
         meetingData.speech_2,
-        meetingData.speech_3];
+        meetingData.speech_3,
+        meetingData.speaker_1_firstName,
+        meetingData.speaker_1_lastName,
+        meetingData.speaker_2_firstName,
+        meetingData.speaker_2_lastName,
+        meetingData.speaker_3_firstName,
+        meetingData.speaker_3_lastName
+    ];
 
     var makeNewMeeting = "INSERT INTO meetings\
                 (date, \
@@ -109,9 +116,15 @@ router.post('/', function(request, response) {
                 description,\
                 speech_1,\
                 speech_2,\
-                speech_3)\
+                speech_3,\
+                speaker1_firstName,\
+                speaker_1_lastName,\
+                speaker_2_firstName,\
+                speaker_2_lastName,\
+                speaker_3_firstName,\
+                speaker_3_lastName)\
             VALUES\
-            ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18)";
+            ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24)";
 
     var editMeetingDetails = "UPDATE meetings \
             SET\
@@ -133,8 +146,14 @@ router.post('/', function(request, response) {
                 speech_1 = $16,\
                 speech_2 = $17,\
                 speech_3 = $18\
+                speaker_1_firstName = $19,\
+                speaker_1_lastName = $20,\
+                speaker_2_firstName = $21,\
+                speaker_2_lastName = $22,\
+                speaker_3_firstName = $23,\
+                speaker_3_lastName = $24)\
             WHERE\
-            date = $19";
+            date = $25";
 
     var assignSpeechDate = "UPDATE speeches\
                 SET speech_date = $1, \
