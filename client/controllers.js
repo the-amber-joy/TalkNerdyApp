@@ -96,6 +96,7 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
             console.log('data is:', $scope.data);
             //and then something to give user the message that their request was submitted
         });
+
         $scope.resetForm();
     };
 

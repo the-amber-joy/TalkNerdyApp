@@ -3,93 +3,125 @@
 <div class="row">
 <h1>Create or Edit future meetings here</h1>
 
-<div class="centre col-md-8">
 
-<div class="pending">
-<form class="pendingSpeeches">
-    <textarea cols="25" rows="20" name="comment"></textarea>
-</form>
-</div>
+<form ng-submit="submitManagedMeetings()">
+    <div class="centre col-md-8">
 
-    <div class="datetheme">
-        <div class="date">
-<select ng-model="dateStart">
-    <option value="" disabled selected>Select Meeting Date</option>
-    <option ng-repeat="day in manageMtg.dateArray">{{day.date | date: "fullDate"}}</option>";
-</select>
+
+        <div class="pending">
+            <form class="pendingSpeeches">
+                <textarea cols="25" rows="20" name="comment"></textarea>
+            </form>
         </div>
 
 
-<form action=theme">
-    <input type="text" class="theme" name="theme" placeholder="Theme">
-</form>
+
+    <div class="datetheme">
+        <div class="date">
+            <select ng-model="dateStart" class="startdate">
+                <option value="" disabled selected>Select Meeting Date</option>
+                <option ng-repeat="day in manageMtg.dateArray">{{day.date | date: "fullDate"}}</option>";
+            </select>
+        </div>
+
+
+    <div class="theme">
+        <label for="theme"></label>
+        <input type="text" ng-model="manageMtg.theme" id="theme" class="themebox" placeholder="Theme">
     </div>
-
-    <div class="locationword">
-<form action="location">
-     <input type="text" class="location" name="location" placeholder="Location">
-</form>
-
-<form action="wordOfDay">
-    <input type="text" class="word" name="word" placeholder="Word of the Day">
-</form>
-    </div>
-    </div>
-
-
-<div class="tmasterPositions col-md-2">
-    <form action="presidingOfficer">
-        <input type="text" name="presidingOfficer" placeholder="Presiding Officer">
-    </form>
-
-        <br>
-
-    <form action="toastmaster">
-        <input type="text" name="toastmaster" placeholder="Toastmaster">
-    </form>
-
-        <br>
-
-    <form action="genEvaluator">
-        <input type="text" name="genEvaluator" placeholder="General Evaluator">
-    </form>
-
-        <br>
-
-    <form action="eval1">
-        <input type="text" name="eval1" placeholder="Evaluator One">
-    </form>
-
-        <br>
-
-    <form action="eval2">
-        <input type="text" name="eval2" placeholder="Evaluator Two">
-    </form>
-
-        <br>
-
-    <form action="eval3">
-        <input type="text" name="eval3" placeholder="Evaluator Three">
-    </form>
-
-        <br>
-
-    <form action="timer">
-        <input type="text" name="timer" placeholder="Timer">
-    </form>
-
-        <br>
-
-    <form action="grammarian">
-        <input type="text" name="grammarian" placeholder="Grammarian">
-    </form>
-
-        <br>
-
-    <form action="ahCounter">
-        <input type="text" name="ahCounter" placeholder="Ah Counter">
-    </form>
 </div>
 
+<div class="locationword">
+    <div>
+        <label for="location"></label>
+        <input type="text" ng-model="this.location" id="location" class="locationbox" placeholder="Location">
+    </div>
+
+
+    <div>
+        <label for="word"></label>
+        <input type="text" ng-model="this.word_of_day" id="word" class="wordbox" placeholder="Word of the Day">
+
+    </div>
 </div>
 </div>
+
+<div class="tmasterPositions">
+    <div>
+        <label for="presiding_Officer"></label>
+        <input type="text" ng-model="this.presiding_officer" id="presiding_officer" placeholder="Presiding Officer">
+    </div>
+
+<!--<div class="tmasterPositions col-md-2">-->
+    <!--<form action="presidingOfficer">-->
+        <!--<input type="text" name="presidingOfficer" placeholder="Presiding Officer">-->
+    <!--</form>-->
+
+        <br>
+
+    <div>
+        <label for="toastmaster"></label>
+        <input type="text" ng-model="this.toastmaster" id="toastmaster" placeholder="Toastmaster">
+    </div>
+
+        <br>
+
+    <div>
+        <label for="general_evaluator"></label>
+        <input type="text" ng-model="this.general_evaluator" id="general_evaluator" placeholder="General Evaluator">
+    </div>
+
+        <br>
+
+    <div>
+        <label for="evaluatorOne"></label>
+        <input type="text" ng-model="this.speech_evaluator_1" id="evaluatorOne" placeholder="Speech Evaluator 1">
+    </div>
+
+        <br>
+
+    <div>
+        <label for="evaluatorTwo"></label>
+        <input type="text" ng-model="this.speech_evaluator_2" id="evaluatorTwo" placeholder="Speech Evaluator 2">
+    </div>
+
+        <br>
+
+    <div>
+        <label for="evaluatorThree"></label>
+        <input type="text" ng-model="this.speech_evaluator_3" id="evaluatorThree" placeholder="Speech Evaluator 3">
+    </div>
+
+        <br>
+
+    <div>
+        <label for="timer"></label>
+        <input type="text" ng-model="this.timer" id="timer" placeholder="Timer">
+    </div>
+
+        <br>
+
+    <div>
+        <label for="grammarian"></label>
+        <input type=text ng-model="this.grammarian" id="grammarian" placeholder="Grammarian">
+    </div>
+
+        <br>
+
+    <div>
+        <label for="ahCounter"></label>
+        <input type="text" ng-model="this.ah_counter" id="ahCounter" placeholder="Ah Counter">
+    </div>
+
+
+<div class="subbuttons">
+<input type="submit" value="Save Meeting">
+
+<button ng-click="manageMtg.reset()">Clear</button>
+</div>
+        </div>
+</form>
+      </div>
+    </div>
+
+
