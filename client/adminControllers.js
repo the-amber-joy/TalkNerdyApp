@@ -6,8 +6,53 @@ app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
 
     $http.get('/manage_roster').then(function (response) {
         roster.people = response.data;
-        console.log('Response from Roster: ', response);
-        });
+        console.log('Response from Roster: ', roster.people);
+
+        var i = 0;
+        while (i < roster.people.length + 1) {
+            if (i < roster.people.length) {
+                console.log('Loop: ', i);
+                var addOn = ' ';
+                if (roster.people[i].isadmin == true) {
+                    addOn = '<< Admin >>'
+                }
+                roster.people[i].displayLine = roster.people[i].first_name + " " + roster.people[i].last_name + " -- " + roster.people[i].role.charAt(0).toUpperCase() + roster.people[i].role.slice(1) + "  " + addOn;
+                i++;
+            } else {
+                sortArray();
+                console.log('STUFF Reached', roster.sortedArray);
+                i++;
+        }
+        }
+
+        //for(var i = 0; i < roster.people.length; i++){
+        //
+        //    var addOn = ' ';
+        //    if(roster.people[i].isadmin == true){
+        //        addOn = '<< Admin >>'
+        //    }
+        //    roster.people[i].displayLine = roster.people[i].first_name + " " + roster.people[i].last_name + " -- " + roster.people[i].role.charAt(0).toUpperCase() + roster.people[i].role.slice(1) + "  " + addOn;
+        //}
+
+    });
+
+    //######## Sort the final array alphabetical order #########
+        function sortArray() {
+                roster.people.sort(sortNames);
+                //console.log(returnsArray);
+                roster.sortedArray = roster.people;
+            }
+
+
+        //######### Sorting function ###########
+        function sortNames(a, b) {
+            //var nameA = a.first_name.toLowerCase(), nameB = b.last_name.toLowerCase();
+            if (a.first_name < b.first_name){
+                return -1;}
+            if (a.first_name > b.first_name){
+                return 1;}
+            return 0;
+        }
 
     $scope.updateRoster = function (){
         roster.person = [
@@ -17,7 +62,7 @@ app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
                 role: this.role
             }
         ];
-        $http.post('/manage_roster', roster.person)
+        //$http.post('/manage_roster', roster.person)
     };
 }]);
 
