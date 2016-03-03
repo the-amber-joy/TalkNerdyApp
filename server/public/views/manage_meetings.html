@@ -1,17 +1,21 @@
 
 <div class="container">
 <div class="row">
-<h1 class="heading">Create or Edit future meetings here</h1>
+<h1 class="heading">Create a Future Meeting</h1>
 
 
-<form ng-submit="submitManagedMeetings()">
+<form>
     <div class="centre col-md-8">
 
 
         <div class="pending">
+            <h4 class="pendingtext">Pending Speeches: </h4>
             <form class="pendingSpeeches">
-                <textarea cols="25" rows="20" name="comment"></textarea>
+                <textarea cols="25" rows="20" class="pendtext" name="comment"></textarea>
             </form>
+            <div class="delbutton">
+                <input ng-click="deleteManagedMeetings()" type="submit" class="delemeeting" value="Delete This Meeting">
+            </div>
         </div>
 
 
@@ -27,99 +31,188 @@
 
     <div class="theme">
         <label for="theme"></label>
-        <input type="text" ng-model="meetingData.theme" id="theme" class="themebox" placeholder="Theme">
+        <input type="text" ng-model="theme" id="theme" class="themebox" placeholder="Theme">
     </div>
 </div>
 
 <div class="locationword">
     <div>
         <label for="location"></label>
-        <input type="text" ng-model="meetingData.location" id="location" class="locationbox" placeholder="Location">
+        <input type="text" ng-model="location" id="location" class="locationbox" placeholder="Location">
     </div>
 
 
     <div>
         <label for="word"></label>
-        <input type="text" ng-model="meetingData.word_of_day" id="word" class="wordbox" placeholder="Word of the Day">
+        <input type="text" ng-model="word_of_day" id="word" class="wordbox" placeholder="Word of the Day">
 
     </div>
 </div>
-</div>
+
+
+
+    <div class="first">
+        <div>
+            <label for="speechonetitle"></label>
+            <input type="text" ng-model="speech_one" id="speechonetitle" class="speechone" placeholder="Speech 1 Title">
+        </div>
+        <div class="track1">
+            <select ng-model="selectTrack1" class="selecttrack1">
+                <option value="" disabled selected>Select Track</option>
+                <option ng-repeat=""></option>";
+            </select>
+        </div>
+        <div class="project1">
+            <select ng-model="selectProject1" class="selectproject1">
+                <option value="" disabled selected>Select Project</option>
+                <option ng-repeat=""></option>";
+            </select>
+        </div>
+        <div>
+            <label for="speakernameone"></label>
+            <input type="text" ng-model="speaker_nameone" id="speakernameone" placeholder="Speaker Name">
+        </div>
+        <div>
+            <label for="speechblurbone"></label>
+            <input type="text" ng-model="speech_blurbone" id="speechblurbone" class="speechblurb1" placeholder="Speech Blurb">
+        </div>
+        <div class="speechbuttonone">
+            <input type="submit" class="speechinputone" value="Put Back In Queue">
+        </div>
+    </div>
+
+
+    <div class="second">
+        <div>
+            <label for="speechtwotitle"></label>
+            <input type="text" ng-model="speech_two" id="speechtwotitle" class="speechtwo" placeholder="Speech 2 Title">
+        </div>
+        <div class="track2">
+            <select ng-model="selectTrack2" class="selecttrack2">
+                <option value="" disabled selected>Select Track</option>
+                <option ng-repeat=""></option>";
+            </select>
+        </div>
+        <div class="project2">
+            <select ng-model="selectProject2" class="selectproject2">
+                <option value="" disabled selected>Select Project</option>
+                <option ng-repeat=""></option>";
+            </select>
+        </div>
+        <div>
+            <label for="speakernametwo"></label>
+            <input type="text" ng-model="speaker_nametwo" id="speakernametwo" placeholder="Speaker Name">
+        </div>
+        <div>
+            <label for="speechblurbtwo"></label>
+            <input type="text" ng-model="speech_blurbtwo" id="speechblurbtwo" class="speechblurb2" placeholder="Speech Blurb">
+        </div>
+        <div class="speechbuttontwo">
+            <input type="submit" class="speechinputtwo" value="Put Back In Queue">
+        </div>
+    </div>
+
+
+    <div class="third">
+        <div>
+            <label for="speechthreetitle"></label>
+            <input type="text" ng-model="speech_three" id="speechthreetitle" class="speechthree" placeholder="Speech 3 Title">
+        </div>
+        <div class="track3">
+            <select ng-model="selectTrack3" class="selecttrack3">
+                <option value="" disabled selected>Select Track</option>
+                <option ng-repeat=""></option>";
+            </select>
+        </div>
+        <div class="project3">
+            <select ng-model="selectProject3" class="selectproject3">
+                <option value="" disabled selected>Select Project</option>
+                <option ng-repeat=""></option>";
+            </select>
+        </div>
+        <div>
+            <label for="speakernamethree"></label>
+            <input type="text" ng-model="speaker_namethree" id="speakernamethree" placeholder="Speaker Name">
+        </div>
+        <div>
+            <label for="speechblurbthree"></label>
+            <input type="text" ng-model="speech_blurbthree" id="speechblurbthree" class="speechblurb3" placeholder="Speech Blurb">
+        </div>
+        <div class="speechbuttonthree">
+            <input type="submit" class="speechinputthree" value="Put Back In Queue">
+        </div>
+    </div>
+        </div>
 
 <div class="tmasterPositions">
     <div>
         <label for="presiding_Officer"></label>
-        <input type="text" ng-model="meetingData.presiding_officer" id="presiding_officer" placeholder="Presiding Officer">
+        <input type="text" ng-model="presiding_officer" id="presiding_officer" placeholder="Presiding Officer">
     </div>
-
-<!--<div class="tmasterPositions col-md-2">-->
-    <!--<form action="presidingOfficer">-->
-        <!--<input type="text" name="presidingOfficer" placeholder="Presiding Officer">-->
-    <!--</form>-->
 
         <br>
 
     <div>
         <label for="toastmaster"></label>
-        <input type="text" ng-model="meetingData.toastmaster" id="toastmaster" placeholder="Toastmaster">
+        <input type="text" ng-model="toastmaster" id="toastmaster" placeholder="Toastmaster">
     </div>
 
         <br>
 
     <div>
         <label for="general_evaluator"></label>
-        <input type="text" ng-model="meetingData.general_evaluator" id="general_evaluator" placeholder="General Evaluator">
+        <input type="text" ng-model="general_evaluator" id="general_evaluator" placeholder="General Evaluator">
     </div>
 
         <br>
 
     <div>
         <label for="evaluatorOne"></label>
-        <input type="text" ng-model="meetingData.speech_evaluator_1" id="evaluatorOne" placeholder="Speech Evaluator 1">
+        <input type="text" ng-model="speech_evaluator_1" id="evaluatorOne" placeholder="Speech Evaluator 1">
     </div>
 
         <br>
 
     <div>
         <label for="evaluatorTwo"></label>
-        <input type="text" ng-model="meetingData.speech_evaluator_2" id="evaluatorTwo" placeholder="Speech Evaluator 2">
+        <input type="text" ng-model="speech_evaluator_2" id="evaluatorTwo" placeholder="Speech Evaluator 2">
     </div>
 
         <br>
 
     <div>
         <label for="evaluatorThree"></label>
-        <input type="text" ng-model="meetingData.speech_evaluator_3" id="evaluatorThree" placeholder="Speech Evaluator 3">
+        <input type="text" ng-model="speech_evaluator_3" id="evaluatorThree" placeholder="Speech Evaluator 3">
     </div>
 
         <br>
 
     <div>
         <label for="timer"></label>
-        <input type="text" ng-model="meetingData.timer" id="timer" placeholder="Timer">
+        <input type="text" ng-model="timer" id="timer" placeholder="Timer">
     </div>
 
         <br>
 
     <div>
         <label for="grammarian"></label>
-        <input type=text ng-model="meetingData.grammarian" id="grammarian" placeholder="Grammarian">
+        <input type=text ng-model="grammarian" id="grammarian" placeholder="Grammarian">
     </div>
 
         <br>
 
     <div>
         <label for="ahCounter"></label>
-        <input type="text" ng-model="meetingData.ah_counter" id="ahCounter" placeholder="Ah Counter">
+        <input type="text" ng-model="ah_counter" id="ahCounter" placeholder="Ah Counter">
     </div>
 
 
-<div class="subbuttons">
-<input type="submit" class="sinput" value="Save Meeting">
+    <div class="subbuttons">
+        <input ng-click="submitManagedMeetings()" type="submit" class="sinput" value="Save Meeting">
+    </div>
 </div>
-        </div>
 </form>
-      </div>
-    </div>
+</div>
+</div>
 
 
