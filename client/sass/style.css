@@ -1,18 +1,19 @@
 body {
   width: 100%;
   margin: 25px;
-  background-color: #A9B2B1; }
+  background-color: #a9b2b1;
+  background-image: url("http://www.transparenttextures.com/patterns/light-wool.png"); }
 
 header {
   padding: 10px; }
 
 .login {
-  padding: 10px;
+  padding: 1px 20px 20px;
   border-color: black;
   margin: 150px auto 45px auto;
   width: 400px;
   background-color: white;
-  border-radius: 20px; }
+  border-radius: 10px; }
 
 .text-left {
   color: #FFFFFF; }
@@ -25,7 +26,10 @@ header {
   margin: 50px auto 0 auto; }
 
 .btn {
-  margin-left: 90px; }
+  margin-left: 110px;
+  padding: 10px 16px;
+  color: #004165;
+  border-color: #004165; }
 
 main {
   margin-top: 30px;
