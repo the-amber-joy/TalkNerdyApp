@@ -204,4 +204,8 @@ nav {
 .homelink, a:hover, a:visited, a:link, a:active {
   text-decoration: none; }
 
+.textcolour {
+  color: #772432;
+  font-weight: bold; }
+
 /*# sourceMappingURL=style.css.map */
