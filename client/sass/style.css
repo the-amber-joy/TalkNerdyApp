@@ -72,17 +72,28 @@ nav {
 .pending {
   float: left; }
 
+.pendingtext {
+  margin-left: 18px;
+  margin-top: -2px; }
+
+.pendtext {
+  height: 365px; }
+
+.delemeeting {
+  width: 197px;
+  margin-top: 11px; }
+
 .startdate {
   width: 220px;
   margin-left: 4px; }
 
 .datetheme {
   float: left;
-  margin-left: 10px; }
+  margin-left: 15px; }
 
 .locationword {
   float: right;
-  margin-right: -145px; }
+  margin-right: -154px; }
 
 .date {
   margin: 0 -25px 0 0; }
@@ -117,7 +128,7 @@ nav {
   margin: 15px 0 0 3px; }
 
 .sinput {
-  width: 100px; }
+  width: 154px; }
 
 .first {
   width: 155px;
@@ -128,13 +139,13 @@ nav {
 .second {
   width: 155px;
   float: left;
-  margin-left: 54px;
+  margin-left: 46px;
   margin-top: 43px; }
 
 .third {
   width: 155px;
   float: right;
-  margin-right: -150px;
+  margin-right: -156px;
   margin-top: 43px; }
 
 .speechone, .speechtwo, .speechthree {

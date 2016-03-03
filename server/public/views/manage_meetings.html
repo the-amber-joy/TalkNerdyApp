@@ -9,9 +9,13 @@
 
 
         <div class="pending">
+            <h4 class="pendingtext">Pending Speeches: </h4>
             <form class="pendingSpeeches">
-                <textarea cols="25" rows="20" name="comment"></textarea>
+                <textarea cols="25" rows="20" class="pendtext" name="comment"></textarea>
             </form>
+            <div class="delbutton">
+                <input ng-click="deleteManagedMeetings()" type="submit" class="delemeeting" value="Delete This Meeting">
+            </div>
         </div>
 
 
