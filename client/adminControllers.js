@@ -150,34 +150,48 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
     }
 }]);
 
-//app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
-//    console.log('Track Controller Hit');
-//
-//    var tracks = this;
-//
-//    $http.get('/getTracks').then(function(response){
-//        console.log('tracks:', response.data);
-//        $scope.tracks = response.data;
-//    });
-//
-//    $http.get('/getProjects').then(function(response){
-//        console.log('projects:', response.data);
-//        $scope.projects = response.data;
-//    });
-//
-//    $http.get('/manage_tracks').then(function (response) {
-//        tracks.stuff = response.data;
-//        console.log('Response from Tracks Stuff: ', response);
-//
-//        $scope.addTracks = function () {
-//            var newTracks = {
-//                track_name: this.track_name,
-//                project_name: this.project_name,
-//                project_descripton: this.project_descripton
-//            };
-//
-//            $http.post('/manage_tracks', newTracks);
-//        };
-//    });
-//}]);
-//
+app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
+    console.log('Track Controller Hit');
+
+    var manageTracks = this;
+
+    $http.get('/getTracks').then(function(response){
+        //console.log('tracks:', response.data);
+        $scope.tracks = response.data;
+    });
+
+    $http.get('/getProjects').then(function(response){
+        //console.log('projects:', response.data);
+        $scope.projects = response.data;
+    });
+
+    $scope.newTrack = {};
+
+    $scope.submitTrack = function(){
+        //console.log('request object:', $scope.newTrack);
+        $http.post('/manageTracks', $scope.newTrack).then(function(request){
+        });
+        $scope.resetTrackForm();
+    };
+
+    $scope.resetTrackForm = function(){
+        $scope.newTrack = {};
+    };
+
+    //$http.get('/getTracks').then(function(response){
+    //    console.log('tracks:', response.data);
+    //    $scope.tracks = response.data;
+    //});
+    //
+    //$http.get('/getProjects').then(function(response){
+    //    console.log('projects:', response.data);
+    //    $scope.projects = response.data;
+    //});
+
+    //$scope.newTrack = {
+    //        track_name: this.trackName,
+    //        project_name: this.projectName,
+    //        project_descripton: this.projectDescription
+
+}]);
+

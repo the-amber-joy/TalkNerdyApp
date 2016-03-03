@@ -1,9 +1,25 @@
-<h1>Manage Speech Tracks</h1>
-<div class="col-md-4">
-        <p>{{track[0].track_name}}</p>
-        <ul ng-repeat="project in projects track by $index">
-            <li>{{project.project_name}}
-                {{project.project_description}}
-            </li>
-        </ul>
-</div>
+<p>Add new Speech Tracks</p>
+
+<form ng-submit="submitTrack()">
+
+    <div>
+        <label for="trackName">Track Name:</label><br>
+        <input type="text" ng-model="newTrack.trackName" id="trackName">
+    </div>
+
+    <div>
+        <label for="projectName">Project Name:</label><br>
+        <input type="text" ng-model="newTrack.projectName" id="projectName">
+    </div>
+
+    <div>
+        <label for="projectDescription">Project Description:</label><br>
+        <textarea ng-model="newTrack.projectDescription" id="projectDescription"></textarea>
+
+    </div>
+
+    <input type="submit" value="Save Track Info">
+</form>
+
+<button ng-click="resetTrackForm()">Clear Form</button>
+
