@@ -119,23 +119,23 @@ nav {
 .sinput {
   width: 100px; }
 
-.onespeech {
-  width: 155px;
-  float: left;
-  margin-left: -420px;
-  margin-top: 120px; }
-
-.twospeech {
+.first {
   width: 155px;
   float: left;
   margin-left: -220px;
   margin-top: 120px; }
 
-.threespeech {
+.second {
   width: 155px;
   float: left;
-  margin-left: -22px;
-  margin-top: 120px; }
+  margin-left: 54px;
+  margin-top: 43px; }
+
+.third {
+  width: 155px;
+  float: right;
+  margin-right: -150px;
+  margin-top: 43px; }
 
 .speechone, .speechtwo, .speechthree {
   margin-bottom: 15px; }
