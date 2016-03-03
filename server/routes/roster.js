@@ -38,22 +38,24 @@ router.get('/', function(request, response){
 
 router.post('/', function(request, response){
     var rosterUpdate = request.body;
-    console.log('request.body contents:', request.body);
+    console.log('request.body contents:', rosterUpdate);
 
-    var updateRosterQuery = "UPDATE roster SET role = $1 isAdmin = $2 WHERE first_name = $3 AND last_name = $4";
+    var updateRosterQuery = "UPDATE roster SET role = $1, isadmin = $2 WHERE id = $3";
     pg.connect(connectionString, function(error, client){
 
-        if(error) {
-            done();
+
+        var query = client.query(updateRosterQuery, [rosterUpdate.hasRole, rosterUpdate.isAdmin, rosterUpdate.id]);
+
+        query.on('error', function (error){
             console.log(error);
-            return response.status(500).json({ success: false, data: error})
-            }
+            response.sendStatus(500);
+        });
 
-        client.query(updateRosterQuery, [rosterUpdate]);
-
-
-        client.on('end', function () {
+        query.on('end', function () {
+            console.log("query end reached");
+            response.sendStatus(200);
             client.end();
+
         });
     });
 

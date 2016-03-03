@@ -5,28 +5,32 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
     var roster = this;
     roster.people = [];
 
-    $http.get('/manage_roster').then(function (response) {
-        roster.people = response.data;
+    fetchRoster();
 
-        console.log('Response from Roster: ', roster.people);
+    function fetchRoster() {
+        $http.get('/manage_roster').then(function (response) {
+            roster.people = response.data;
 
-        var i = 0;
-        while (i < roster.people.length + 1) {
-            if (i < roster.people.length) {
-                console.log('Loop: ', i);
-                var addOn = ' ';
-                if (roster.people[i].isadmin == true) {
-                    addOn = '<< Admin >>'
+            console.log('Response from Roster: ', roster.people);
+
+            var i = 0;
+            while (i < roster.people.length + 1) {
+                if (i < roster.people.length) {
+                    console.log('Loop: ', i);
+                    var addOn = ' ';
+                    if (roster.people[i].isadmin == true) {
+                        addOn = '<< Admin >>'
+                    }
+                    roster.people[i].displayLine = roster.people[i].first_name + " " + roster.people[i].last_name + " -- " + roster.people[i].role.charAt(0).toUpperCase() + roster.people[i].role.slice(1) + "  " + addOn;
+                    i++;
+                } else {
+                    sortArray();
+                    console.log('STUFF Reached', roster.sortedArray);
+                    i++;
                 }
-                roster.people[i].displayLine = roster.people[i].first_name + " " + roster.people[i].last_name + " -- " + roster.people[i].role.charAt(0).toUpperCase() + roster.people[i].role.slice(1) + "  " + addOn;
-                i++;
-            } else {
-                sortArray();
-                console.log('STUFF Reached', roster.sortedArray);
-                i++;
             }
-        }
-    });
+        });
+    }
 
 
     //######## Sort the final array alphabetical order #########
@@ -66,15 +70,11 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
         $scope.isAdmin = false;
 
 
-        //$http.post('/manage_roster', roster.person)
-        //
-        //        first_name: this.people.first_name,
-        //        last_name: this.people.last_name,
-        //        role: this.people.role,
-        //        isAdmin: this.people.adminRole
-        //    };
+        $http.post('/manage_roster', roster.person).then(function(response){
+           console.log(response);
+            fetchRoster();
+        });
 
-        //$http.post('/manage_roster', roster.people.person);
     }
 
 }]);
