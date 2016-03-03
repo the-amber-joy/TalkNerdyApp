@@ -76,12 +76,12 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
     };
 
     $http.get('/getTracks').then(function(response){
-        console.log('tracks:', response.data);
+        //console.log('tracks:', response.data);
         $scope.tracks = response.data;
     });
 
     $http.get('/getProjects').then(function(response){
-        console.log('projects:', response.data);
+        //console.log('projects:', response.data);
         $scope.projects = response.data;
     });
 
@@ -90,9 +90,9 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
     };
 
     $scope.submitSpeech = function (){
-        console.log('data is:', $scope.data);
+        //console.log('data is:', $scope.data);
         $http.post('/requestSpeech', $scope.data).then(function(request){
-            console.log('data is:', $scope.data);
+            //console.log('data is:', $scope.data);
             //and then something to give user the message that their request was submitted
         });
 

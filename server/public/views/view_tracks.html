@@ -1,15 +1,18 @@
 <h1>Speech Tracks</h1>
 
-<div ng-repeat="project in projects track by $index" class="panel-group">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                {{project.track_name}} - {{project.project_name}}
-            </h4>
-        </div>
-        <div class="panel">
-            <div class="panel-body">
-                {{project.project_description}}
+<div ng-repeat="track in tracks track by $index" class="panel-group">
+    <div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    {{track.track_name}}
+                </h4>
+            </div>
+            <div class="panel">
+                <div class="panel-body" ng-repeat="project in projects track by $index">
+                    <b>{{project.project_name}}</b><br>
+                    {{project.project_description}}
+                </div>
             </div>
         </div>
     </div>

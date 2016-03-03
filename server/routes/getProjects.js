@@ -6,7 +6,7 @@ var connectionString = require('../../database.json').data + '?ssl=true';
 //var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
 
 router.get('/', function(request, response){
-    var tracks = [];
+    var projects = [];
 
     pg.connect(connectionString, function(error, client){
         if (error) {
@@ -22,13 +22,13 @@ router.get('/', function(request, response){
         });
 
         query.on('row', function (row) {
-            tracks.push(row);
+            projects.push(row);
         });
 
         query.on('end', function () {
-            console.log(tracks);
+            //console.log(projects);
             client.end();
-            return response.json(tracks);
+            return response.json(projects);
         });
     });
 });

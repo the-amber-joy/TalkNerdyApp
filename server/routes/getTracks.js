@@ -26,7 +26,7 @@ router.get('/', function(request, response){
         });
 
         query.on('end', function () {
-            console.log(tracks);
+            //console.log(tracks);
             client.end();
             return response.json(tracks);
         });
