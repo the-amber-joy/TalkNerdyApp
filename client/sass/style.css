@@ -9,11 +9,11 @@ header {
 
 .login {
   padding: 1px 20px 20px;
-  border-color: black;
   margin: 150px auto 45px auto;
   width: 400px;
   background-color: white;
-  border-radius: 10px; }
+  border-radius: 10px;
+  border-color: #004165; }
 
 .text-left {
   color: #FFFFFF; }
@@ -52,8 +52,8 @@ nav {
 
 .banner {
   background-image: url("logo.png");
-  background-size: 150px;
-  background-position: top 25px right 110px;
+  background-size: 125px;
+  background-position: top 35px right 110px;
   background-repeat: no-repeat;
   height: 155px;
   padding: inherit;
