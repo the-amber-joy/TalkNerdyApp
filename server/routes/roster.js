@@ -14,7 +14,7 @@ router.get('/', function(request, response){
         }
 
         //this query returns all current members on roster
-        var queryString = "SELECT first_name, last_name, role, isadmin \
+        var queryString = "SELECT first_name, last_name, role, isadmin, id \
                             FROM roster";
 
         var query = client.query(queryString);

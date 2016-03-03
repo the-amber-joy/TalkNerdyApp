@@ -1,6 +1,6 @@
 //CONTROLLERS FOR ADMIN VIEWS & FUNCTIONS
 
-app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
+app.controller('RosterController', ['$scope','$http', 'UserService', function ($scope, $http, UserService) {
     console.log('Roster Controller Hit');
     var roster = this;
     roster.people = [];
@@ -49,14 +49,22 @@ app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
 
         //console.log('Response from Roster: ', response);
 
-    $scope.updateRoster = function () {
-        roster.people.person =
-        {
+    roster.updateRoster = function(){
 
-            first_name: this.first_name,
-            last_name: this.last_name,
-            role: this.role
+        roster.person =
+        {
+            isAdmin: $scope.isAdmin,
+            hasRole: $scope.status,
+            id: roster.sortedArray[$scope.userIndex].id
         };
+        console.log('Single Request: ', roster.person);
+
+        console.log("update Roster Function fired", $scope.status, $scope.isAdmin);
+        document.getElementById("guestCheck").checked = false;
+        document.getElementById("memberCheck").checked = false;
+        document.getElementById("adminCheck").checked = false;
+        $scope.isAdmin = false;
+
 
         //$http.post('/manage_roster', roster.person)
         //
@@ -65,8 +73,8 @@ app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
         //        role: this.people.role,
         //        isAdmin: this.people.adminRole
         //    };
-        console.log('roster.people.person:', roster.people.person);
-        $http.post('/manage_roster', roster.people.person);
+
+        //$http.post('/manage_roster', roster.people.person);
     }
 
 }]);
