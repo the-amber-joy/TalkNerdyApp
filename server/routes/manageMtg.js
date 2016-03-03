@@ -71,10 +71,8 @@ router.get('/getDates', function(request, response){
 //This is where the Admin will be submitting the new/edited meeting data
 router.post('/submitManagedMeeting', function(request, response) {
     var meetingData = request.body;
-    console.log(meetingData);
-    response.sendStatus(200);
 
-    var meetingDetails = [meetingData.date,
+    var meetingDetails = [
         meetingData.theme,
         meetingData.location,
         meetingData.word_of_day,
@@ -97,66 +95,37 @@ router.post('/submitManagedMeeting', function(request, response) {
         meetingData.speaker_2_firstname,
         meetingData.speaker_2_lastname,
         meetingData.speaker_3_firstname,
-        meetingData.speaker_3_lastname
+        meetingData.speaker_3_lastname,
+        meetingData.date
     ];
-
-
-    var makeNewMeeting = "INSERT INTO meetings\
-                (date, \
-                theme, \
-                location, \
-                word_of_day, \
-                presiding_officer, \
-                toastmaster, \
-                general_evaluator, \
-                table_topics_czar, \
-                speech_evaluator_1, \
-                speech_evaluator_2, \
-                speech_evaluator_3, \
-                grammarian, \
-                ah_counter, \
-                timer,\
-                description,\
-                speech_1,\
-                speech_2,\
-                speech_3,\
-                speaker_1_firstname,\
-                speaker_1_lastname,\
-                speaker_2_firstname,\
-                speaker_2_lastname,\
-                speaker_3_firstname,\
-                speaker_3_lastname)\
-            VALUES\
-            ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24)";
 
     var editMeetingDetails = "UPDATE meetings \
             SET\
-            date = $1,\
-                theme = $2,\
-                location = $3,\
-                word_of_day = $4,\
-                presiding_officer = $5,\
-                toastmaster = $6,\
-                general_evaluator = $7,\
-                table_topics_czar = $8,\
-                speech_evaluator_1 = $9,\
-                speech_evaluator_2 = $10,\
-                speech_evaluator_3 = $11,\
-                grammarian = $12,\
-                ah_counter = $13,\
-                timer = $14,\
-                description = $15,\
-                speech_1 = $16,\
-                speech_2 = $17,\
-                speech_3 = $18\
-                speaker_1_firstname = $19,\
-                speaker_1_lastname = $20,\
-                speaker_2_firstname = $21,\
-                speaker_2_lastname = $22,\
-                speaker_3_firstname = $23,\
-                speaker_3_lastname = $24)\
+                theme = $1,\
+                location = $2,\
+                word_of_day = $3,\
+                presiding_officer = $4,\
+                toastmaster = $5,\
+                general_evaluator = $6,\
+                table_topics_czar = $7,\
+                speech_evaluator_1 = $8,\
+                speech_evaluator_2 = $9,\
+                speech_evaluator_3 = $10,\
+                grammarian = $11,\
+                ah_counter = $12,\
+                timer = $13,\
+                description = $14,\
+                speech_1 = $15,\
+                speech_2 = $16,\
+                speech_3 = $17,\
+                speaker_1_firstname = $18,\
+                speaker_1_lastname = $19,\
+                speaker_2_firstname = $20,\
+                speaker_2_lastname = $21,\
+                speaker_3_firstname = $22,\
+                speaker_3_lastname = $23\
             WHERE\
-            date = $25";
+            date = $24";
 
     var assignSpeechDate = "UPDATE speeches\
                 SET speech_date = $1, \
@@ -168,37 +137,39 @@ router.post('/submitManagedMeeting', function(request, response) {
     //    meetingData.speech_3
     //];
 
-    pg.connect(connectionString, function(err, client, done) {
-        if(err) {
+    pg.connect(connectionString, function (err, client, done) {
+        if (err) {
             done();
             console.log(err);
-            return response.status(500).json({ success: false, data: err});
-        } else if (
-            //see if the meeting exists
-            client.query("SELECT FROM meetings WHERE date = $1", [meetingData.date]) != null
-        ) {
-            //if meeting exists, run these queries to edit:
-
-            //Create the Meeting
-            client.query(makeNewMeeting, meetingDetails);
-
-            //Add this meeting date to the selected speeches
-            //client.query(assignSpeechDate, selectedSpeech);
-        } else {
-            //if the meeting does not exist, run these queries to add it:
-
-            //Create the Meeting
-            client.query(editMeetingDetails, meetingDetails);
-
-            //Add this meeting date to the specified speeches
-            //client.query(assignSpeechDate, selectedSpeech);
+            response.sendStatus(500).json({success: false, data: err});
         }
-    });
+        //} else if (
+        //    //see if the meeting exists
+        //    client.query("SELECT FROM meetings WHERE date = $1", [meetingData.date]) != null
+        //) {
+        //    //if meeting exists, run these queries to edit:
+        //
+        //    //Create the Meeting
+        //    client.query(makeNewMeeting, meetingDetails);
 
-    query.on('end', function () {
-        client.end();
-        return response.json(meetingData);
-});
+        //Add this meeting date to the selected speeches
+        //client.query(assignSpeechDate, selectedSpeech);
+        //} else {
+        //if the meeting does not exist, run these queries to add it:
+
+        //Create the Meeting
+        var query = client.query(editMeetingDetails, meetingDetails);
+
+        //Add this meeting date to the specified speeches
+        //client.query(assignSpeechDate, selectedSpeech);
+
+        query.on('end', function () {
+            client.end();
+            response.sendStatus(200);
+
+        });
+
+    });
 });
 
 module.exports = router;

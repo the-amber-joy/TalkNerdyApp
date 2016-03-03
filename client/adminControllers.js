@@ -115,12 +115,12 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             speech_1: $scope.speech_1,
             speech_2: $scope.speech_2,
             speech_3: $scope.speech_3,
-            speaker_1_firstName: $scope.speaker_1_firstName,
-            speaker_1_lastName: $scope.speaker_1_lastName,
-            speaker_2_firstName: $scope.speaker_2_firstName,
-            speaker_2_lastName: $scope.speaker_2_lastName,
-            speaker_3_firstName: $scope.speaker_3_firstName,
-            speaker_3_lastName: $scope.speaker_3_lastName
+            speaker_1_firstname: $scope.speaker_1_firstName,
+            speaker_1_lastname: $scope.speaker_1_lastName,
+            speaker_2_firstname: $scope.speaker_2_firstName,
+            speaker_2_lastname: $scope.speaker_2_lastName,
+            speaker_3_firstname: $scope.speaker_3_firstName,
+            speaker_3_lastname: $scope.speaker_3_lastName
         };
 
         console.log(meetingData);
