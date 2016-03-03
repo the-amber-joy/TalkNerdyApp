@@ -9,8 +9,17 @@ header {
 .login {
   padding: 10px;
   border-color: black;
-  margin: 45px auto 45px auto;
-  width: 359px; }
+  margin: 150px auto 45px auto;
+  width: 400px;
+  background-color: white;
+  border-radius: 20px; }
+
+.text-left {
+  color: #FFFFFF; }
+
+.chapter {
+  font-style: italic;
+  color: #FFFFFF; }
 
 .welcome {
   margin: 50px auto 0 auto; }
@@ -34,7 +43,7 @@ nav {
   float: left; }
   nav .nav > li > a:hover,
   nav .nav > li > a:focus {
-    background-color: #eee;
+    background-color: #ffffff;
     border-radius: 4px 0 0 4px; }
 
 .banner {
@@ -51,7 +60,7 @@ nav {
   margin: -40px;
   padding-top: 20px;
   margin-top: -55px;
-  background-color: #004165; }
+  background-color: #772432; }
 
 .text-left {
   margin-left: 30px;

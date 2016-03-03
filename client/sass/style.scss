@@ -1,7 +1,7 @@
 
-//$background-gray: #A9B2B1;
+
 $background-gray: #A9B2B1;
-$app-background-color: #eee;
+$app-background-color: #ffffff;
 
 body {
   width: 100%;
@@ -17,8 +17,20 @@ header {
 .login {
   padding: 10px;
   border-color: black;
-  margin: 45px auto 45px auto;
-  width: 359px;
+  margin: 150px auto 45px auto;
+  width: 400px;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.text-left {
+  color: #FFFFFF;
+}
+
+.chapter {
+  font-style: italic;
+  color: #FFFFFF;
+
 }
 
 .welcome {
@@ -65,7 +77,7 @@ nav {
   margin: -40px;
   padding-top: 20px;
   margin-top: -55px;
-  background-color: #004165;
+  background-color: #772432;
 }
 
 .text-left {
