@@ -1,5 +1,9 @@
 //CONTROLLERS FOR ADMIN VIEWS & FUNCTIONS
 
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|||||||                    ROSTER CONTROLLER
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
 app.controller('RosterController', ['$scope','$http', 'UserService', function ($scope, $http, UserService) {
     console.log('Roster Controller Hit');
     var roster = this;
@@ -25,7 +29,7 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
                     i++;
                 } else {
                     sortArray();
-                    console.log('STUFF Reached', roster.sortedArray);
+                    //console.log('STUFF Reached', roster.sortedArray);
                     i++;
                 }
             }
@@ -33,7 +37,7 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
     }
 
 
-    //######## Sort the final array alphabetical order #########
+        //######## Sort the final array alphabetical order #########
         function sortArray() {
                 roster.people.sort(sortNames);
                 //console.log(returnsArray);
@@ -61,7 +65,7 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
             hasRole: $scope.status,
             id: roster.sortedArray[$scope.userIndex].id
         };
-        console.log('Single Request: ', roster.person);
+        //console.log('Single Request: ', roster.person);
 
         console.log("update Roster Function fired", $scope.status, $scope.isAdmin);
         document.getElementById("guestCheck").checked = false;
@@ -74,27 +78,63 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
            console.log(response);
             fetchRoster();
         });
-
     }
-
 }]);
+//+++++++++++++++++++++++++ End of ROSTER ++++++++++++++++++++++++++++++++++++
+
+
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|||||||                MANAGE MEETING CONTROLLER
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, $http) {
     var manageMtg = this;
     var meetingData = {};
     manageMtg.dateArray = [];
 
-    //This call grabs all the open speech requests which which do not have assigned dates yet
-    $http.get('/manageMtg').then(function (response) {
-        this.pendingRequests = response.data;
-        console.log(response.data);
-    });
+    //This call grabs all the open speech requests that do not have assigned dates yet
+    //$http.get('/manageMtg').then(function (response) {
+    //    this.pendingRequests = response.data;
+    //    console.log(response.data);
+    //});
 
+    //Return the dates for future meetings from the DB
     $http.get('/manageMtg/getDates').then(function (response) {
         manageMtg.dateArray = response.data;
     });
 
-    //This function/call send the create or edited meeting data back to the server/database
+    //Send object to update DB on button click
+    $scope.submitManagedMeetings = function () {
+
+        manageMeeting();
+
+        $http.post('/manageMtg/submitManagedMeeting', meetingData).then(function(response){
+            console.log(response);
+        });
+        //and then something to give user the message that their request was submitted
+    };
+
+    $scope.fetchExistingFields = function(selectedDate) {
+        var sendingDate={};
+        var returnedFields={};
+
+        sendingDate.date = selectedDate;
+        console.log(sendingDate);
+        $http.post('/manageMtg/fetchExisting', sendingDate).then(function(response){
+            returnedFields = response.data;
+            console.log('Here is the theme: ', returnedFields.theme);
+            for(var objectKey in returnedFields) {
+                if ((returnedFields[objectKey])) {
+                    $scope[objectKey] = returnedFields[objectKey];
+                } else {
+                    $scope[objectKey] = null}
+
+            }
+        });
+    };
+
+
+    //Format object to include with ajax call to DB
     function manageMeeting() {
         meetingData = {
             date: $scope.dateStart,
@@ -123,7 +163,6 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             speaker_3_lastname: $scope.speaker_3_lastName
         };
 
-        console.log(meetingData);
     }
 
         //    //$http.post('/manageMtg', meetingData);
@@ -140,18 +179,13 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         //    $http.post('/resetSpeech', speechToReset);
         //
         //};
-
-        // save button
-        $scope.submitManagedMeetings = function () {
-            console.log("button clicked in function");
-            manageMeeting();
-
-            $http.post('/manageMtg/submitManagedMeeting', meetingData).then(function(response){
-                console.log(response);
-            });
-            //and then something to give user the message that their request was submitted
-        }
     }]);
+//+++++++++++++++++++++++++ End of MANAGE MEETING ++++++++++++++++++++++++++++
+
+
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|||||||                     TRACK CONTROLLER
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
     console.log('Track Controller Hit');
@@ -197,4 +231,5 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
     //        project_descripton: this.projectDescription
 
 }]);
+//+++++++++++++++++++++++++ End of TRACK ++++++++++++++++++++++++++++
 

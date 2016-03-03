@@ -55,7 +55,7 @@ main {
 }
 
 nav {
-  margin-top: 30px;
+  margin-top: 40px;
   width: 20%;
   float:left;
   .nav>li>a:hover,
@@ -255,4 +255,13 @@ nav {
 
 .requestinstruct {
   margin-left: 163px;
+}
+
+.homelink, a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+}
+
+.textcolour {
+  color: #772432;
+  font-weight: bold;
 }
