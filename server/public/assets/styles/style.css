@@ -119,32 +119,32 @@ nav {
 .sinput {
   width: 100px; }
 
-.speech1 {
-  width: 155px;
-  float: left;
-  margin-left: -420px;
-  margin-top: 120px; }
-
-.speech2 {
+.first {
   width: 155px;
   float: left;
   margin-left: -220px;
   margin-top: 120px; }
 
-.speech3 {
+.second {
   width: 155px;
   float: left;
-  margin-left: -22px;
-  margin-top: 120px; }
+  margin-left: 54px;
+  margin-top: 43px; }
+
+.third {
+  width: 155px;
+  float: right;
+  margin-right: -150px;
+  margin-top: 43px; }
 
 .speechone, .speechtwo, .speechthree {
   margin-bottom: 15px; }
 
-.selecttrack {
+.selecttrack1, .selecttrack2, .selecttrack3 {
   margin-bottom: 15px;
   width: 152px; }
 
-.selectproject {
+.selectproject1, .selectproject2, .selectproject3 {
   width: 152px; }
 
 .speechblurb1, .speechblurb2, .speechblurb3 {
