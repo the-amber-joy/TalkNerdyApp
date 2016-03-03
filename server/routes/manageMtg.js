@@ -69,8 +69,10 @@ router.get('/getDates', function(request, response){
 });
 
 //This is where the Admin will be submitting the new/edited meeting data
-router.post('/', function(request, response) {
-    var meetingData = request.body.meetingData;
+router.post('/submitManagedMeeting', function(request, response) {
+    var meetingData = request.body;
+    console.log(meetingData);
+    response.sendStatus(200);
 
     var meetingDetails = [meetingData.date,
         meetingData.theme,
@@ -90,13 +92,14 @@ router.post('/', function(request, response) {
         meetingData.speech_1,
         meetingData.speech_2,
         meetingData.speech_3,
-        meetingData.speaker_1_firstName,
-        meetingData.speaker_1_lastName,
-        meetingData.speaker_2_firstName,
-        meetingData.speaker_2_lastName,
-        meetingData.speaker_3_firstName,
-        meetingData.speaker_3_lastName
+        meetingData.speaker_1_firstname,
+        meetingData.speaker_1_lastname,
+        meetingData.speaker_2_firstname,
+        meetingData.speaker_2_lastname,
+        meetingData.speaker_3_firstname,
+        meetingData.speaker_3_lastname
     ];
+
 
     var makeNewMeeting = "INSERT INTO meetings\
                 (date, \
@@ -105,7 +108,7 @@ router.post('/', function(request, response) {
                 word_of_day, \
                 presiding_officer, \
                 toastmaster, \
-                general_evauluator, \
+                general_evaluator, \
                 table_topics_czar, \
                 speech_evaluator_1, \
                 speech_evaluator_2, \
@@ -117,12 +120,12 @@ router.post('/', function(request, response) {
                 speech_1,\
                 speech_2,\
                 speech_3,\
-                speaker1_firstName,\
-                speaker_1_lastName,\
-                speaker_2_firstName,\
-                speaker_2_lastName,\
-                speaker_3_firstName,\
-                speaker_3_lastName)\
+                speaker_1_firstname,\
+                speaker_1_lastname,\
+                speaker_2_firstname,\
+                speaker_2_lastname,\
+                speaker_3_firstname,\
+                speaker_3_lastname)\
             VALUES\
             ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24)";
 
@@ -134,7 +137,7 @@ router.post('/', function(request, response) {
                 word_of_day = $4,\
                 presiding_officer = $5,\
                 toastmaster = $6,\
-                general_evauluator = $7,\
+                general_evaluator = $7,\
                 table_topics_czar = $8,\
                 speech_evaluator_1 = $9,\
                 speech_evaluator_2 = $10,\
@@ -146,12 +149,12 @@ router.post('/', function(request, response) {
                 speech_1 = $16,\
                 speech_2 = $17,\
                 speech_3 = $18\
-                speaker_1_firstName = $19,\
-                speaker_1_lastName = $20,\
-                speaker_2_firstName = $21,\
-                speaker_2_lastName = $22,\
-                speaker_3_firstName = $23,\
-                speaker_3_lastName = $24)\
+                speaker_1_firstname = $19,\
+                speaker_1_lastname = $20,\
+                speaker_2_firstname = $21,\
+                speaker_2_lastname = $22,\
+                speaker_3_firstname = $23,\
+                speaker_3_lastname = $24)\
             WHERE\
             date = $25";
 
@@ -159,11 +162,11 @@ router.post('/', function(request, response) {
                 SET speech_date = $1, \
                 WHERE speech_title = $2 OR $3 OR $4";
 
-    var selectedSpeech = [meetingData.date,
-        meetingData.speech_1,
-        meetingData.speech_2,
-        meetingData.speech_3
-    ];
+    //var selectedSpeech = [meetingData.date,
+    //    meetingData.speech_1,
+    //    meetingData.speech_2,
+    //    meetingData.speech_3
+    //];
 
     pg.connect(connectionString, function(err, client, done) {
         if(err) {
@@ -180,7 +183,7 @@ router.post('/', function(request, response) {
             client.query(makeNewMeeting, meetingDetails);
 
             //Add this meeting date to the selected speeches
-            client.query(assignSpeechDate, selectedSpeech);
+            //client.query(assignSpeechDate, selectedSpeech);
         } else {
             //if the meeting does not exist, run these queries to add it:
 
@@ -188,14 +191,14 @@ router.post('/', function(request, response) {
             client.query(editMeetingDetails, meetingDetails);
 
             //Add this meeting date to the specified speeches
-            client.query(assignSpeechDate, selectedSpeech);
+            //client.query(assignSpeechDate, selectedSpeech);
         }
     });
 
-    client.on('end', function () {
+    query.on('end', function () {
         client.end();
         return response.json(meetingData);
-    });
+});
 });
 
 module.exports = router;

@@ -95,60 +95,63 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
     });
 
     //This function/call send the create or edited meeting data back to the server/database
-    $scope.manageMeeting = function () {
+    function manageMeeting() {
         meetingData = {
-            date: this.date,
-            theme: this.theme,
-            location: this.location,
-            word_of_day: this.word_of_day,
-            presiding_officer: this.presiding_officer,
-            toastmaster: this.toastmaster,
-            general_evaluator: this.general_evaluator,
-            table_topics_czar: this.table_topics_czar,
-            speech_evaluator_1: this.speech_evaluator_1,
-            speech_evaluator_2: this.speech_evaluator_2,
-            speech_evaluator_3: this.speech_evaluator_3,
-            grammarian: this.grammarian,
-            ah_counter: this.ah_counter,
-            timer: this.timer,
-            description: this.description,
-            speech_1: this.speech_1,
-            speech_2: this.speech_2,
-            speech_3: this.speech_3,
-            speaker_1_firstName: this.speaker_1_firstName,
-            speaker_1_lastName: this.speaker_1_lastName,
-            speaker_2_firstName: this.speaker_2_firstName,
-            speaker_2_lastName: this.speaker_2_lastName,
-            speaker_3_firstName: this.speaker_3_firstName,
-            speaker_3_lastName: this.speaker_3_lastName
+            date: $scope.dateStart,
+            theme: $scope.theme,
+            location: $scope.location,
+            word_of_day: $scope.word_of_day,
+            presiding_officer: $scope.presiding_officer,
+            toastmaster: $scope.toastmaster,
+            general_evaluator: $scope.general_evaluator,
+            table_topics_czar: $scope.table_topics_czar,
+            speech_evaluator_1: $scope.speech_evaluator_1,
+            speech_evaluator_2: $scope.speech_evaluator_2,
+            speech_evaluator_3: $scope.speech_evaluator_3,
+            grammarian: $scope.grammarian,
+            ah_counter: $scope.ah_counter,
+            timer: $scope.timer,
+            description: $scope.description,
+            speech_1: $scope.speech_1,
+            speech_2: $scope.speech_2,
+            speech_3: $scope.speech_3,
+            speaker_1_firstName: $scope.speaker_1_firstName,
+            speaker_1_lastName: $scope.speaker_1_lastName,
+            speaker_2_firstName: $scope.speaker_2_firstName,
+            speaker_2_lastName: $scope.speaker_2_lastName,
+            speaker_3_firstName: $scope.speaker_3_firstName,
+            speaker_3_lastName: $scope.speaker_3_lastName
         };
 
-        $http.post('/manageMtg', meetingData)
-    };
-
-    //This is in process and may have to be moved to a separate controller
-    $scope.resetSpeech = function () {
-        var speechToReset = {
-            speech_1: this.speech_1,
-            speech_2: this.speech_2,
-            speech_3: this.speech_3
-        };
-
-        $http.post('/resetSpeech', speechToReset);
-
-    };
-    //clear button still needs work
-    manageMtg.reset = function () {
-        manageMtg.theme = '';
-        console.log('button clicked');
-    };
-
-    // save button
-    $scope.submitManagedMeetings = function () {
-        $http.post('/submitManagedMeeting', meetingData);
-        //and then something to give user the message that their request was submitted
+        console.log(meetingData);
     }
-}]);
+
+        //    //$http.post('/manageMtg', meetingData);
+        //};
+
+        //This is in process and may have to be moved to a separate controller
+        //$scope.resetSpeech = function () {
+        //    var speechToReset = {
+        //        speech_1: this.speech_1,
+        //        speech_2: this.speech_2,
+        //        speech_3: this.speech_3
+        //    };
+        //
+        //    $http.post('/resetSpeech', speechToReset);
+        //
+        //};
+
+        // save button
+        $scope.submitManagedMeetings = function () {
+            console.log("button clicked in function");
+            manageMeeting();
+
+            $http.post('/manageMtg/submitManagedMeeting', meetingData).then(function(response){
+                console.log(response);
+            });
+            //and then something to give user the message that their request was submitted
+        }
+    }]);
 
 app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
     console.log('Track Controller Hit');
