@@ -66,7 +66,40 @@ router.get('/getDates', function(request, response){
             return response.json(dateArray);
         });
     });
+
 });
+
+router.post('/fetchExisting', function(request, response){
+    var searchDate = request.body;
+    var filledFields = {};
+
+    pg.connect(connectionString, function(error, client){
+        if (error) {
+            console.log(error);
+        }
+
+        var queryString = "SELECT * FROM meetings WHERE date::date = $1";
+
+        var query = client.query(queryString, [searchDate.date.slice(0,10)]);
+
+        query.on('error', function (error){
+            done();
+            console.log(error);
+            return response.status(500).json({ success: false, data: error});
+        });
+
+        query.on('row', function (row) {
+            filledFields = row;
+        });
+
+        query.on('end', function () {
+            client.end();
+            console.log(filledFields);
+            return response.json(filledFields);
+        });
+    });
+});
+
 
 //This is where the Admin will be submitting the new/edited meeting data
 router.post('/submitManagedMeeting', function(request, response) {
