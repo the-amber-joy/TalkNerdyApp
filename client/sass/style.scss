@@ -6,21 +6,21 @@ $app-background-color: #ffffff;
 body {
   width: 100%;
   margin: 25px;
-  background-color: $background-gray;
-  //background-color: $background-gray;
+  background-color: #a9b2b1;
+  background-image: url("http://www.transparenttextures.com/patterns/light-wool.png");
 }
-
-header {
+  header {
   padding: 10px;
 }
 
 .login {
-  padding: 10px;
+  padding: 1px 20px 20px;
   border-color: black;
   margin: 150px auto 45px auto;
   width: 400px;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 10px;
+
 }
 
 .text-left {
@@ -38,7 +38,10 @@ header {
 }
 
 .btn {
-  margin-left: 90px;
+  margin-left: 110px;
+  padding: 10px 16px;
+  color: #004165;
+  border-color: #004165;
 }
 
 main {
