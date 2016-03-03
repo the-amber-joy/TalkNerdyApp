@@ -1,9 +1,9 @@
 <div ng-include="'/views/attendance.html'"></div>
 
 <div>Hello {{home.firstName}}!</div>
-<div ng-hide="home.isadmin == false">You are an Admin!</div>
-<div ng-hide="home.role == 'guest'">You are a member!</div>
-<div ng-hide="home.role == 'member'">You are a guest!</div>
+<div ng-hide="home.isadmin == false"></div>
+<div ng-hide="home.role == 'guest'"></div>
+<div ng-hide="home.role == 'member'"></div>
 
 <h1>{{home.data.date | date: "fullDate"}} - {{home.data.theme}}</h1>
 <p>Word of the Day: {{home.data.word_of_day}} Location: {{home.data.location}}</p>

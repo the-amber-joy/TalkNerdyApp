@@ -8,13 +8,11 @@
     <li ng-click="changeClass()"><a ui-sref="view_tracks">Speech Tracks</a></li>
 </ul>
 <div class="member" ng-show="index.things.role == 'member'">
-    <p>-- Member Things --</p>
     <ul class="nav nav-pills nav-stacked">
         <li ng-click="changeClass()"><a ui-sref="my_speeches">My Speech History</a></li>
     </ul>
 </div>
 <div class="admin" ng-show="index.things.isadmin == true">
-    <p>-- Admin Things --</p>
     <ul class="nav nav-pills nav-stacked">
         <li ng-click="changeClass()"><a ui-sref="manage_meetings">Manage Future Meetings</a></li>
         <li ng-click="changeClass()"><a ui-sref="manage_tracks">Manage Tracks</a></li>
