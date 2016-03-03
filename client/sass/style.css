@@ -40,7 +40,7 @@ nav {
 .banner {
   background-image: url("logo.png");
   background-size: 150px;
-  background-position: top 25px right 160px;
+  background-position: top 25px right 110px;
   background-repeat: no-repeat;
   height: 155px;
   padding: inherit;
@@ -51,7 +51,7 @@ nav {
   margin: -40px;
   padding-top: 20px;
   margin-top: -55px;
-  background-color: aliceblue; }
+  background-color: #004165; }
 
 .text-left {
   margin-left: 30px;
