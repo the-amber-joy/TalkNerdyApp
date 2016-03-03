@@ -9,11 +9,11 @@ header {
 
 .login {
   padding: 1px 20px 20px;
-  border-color: black;
   margin: 150px auto 45px auto;
   width: 400px;
   background-color: white;
-  border-radius: 10px; }
+  border-radius: 10px;
+  border-color: #004165; }
 
 .text-left {
   color: #FFFFFF; }
