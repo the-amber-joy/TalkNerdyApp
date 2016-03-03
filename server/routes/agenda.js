@@ -33,7 +33,7 @@ router.get('/', function(request, response){
 
         var queryString = "SELECT * \
                                 FROM meetings \
-                                                WHERE date >= now()::date\
+                                                WHERE date >= now()::date \
                                                 ORDER BY date ASC \
                                                 LIMIT 1";
 

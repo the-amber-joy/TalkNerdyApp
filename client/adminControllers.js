@@ -1,32 +1,36 @@
 //CONTROLLERS FOR ADMIN VIEWS & FUNCTIONS
 
-app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
+app.controller('RosterController', ['$scope','$http', 'UserService', function ($scope, $http, UserService) {
     console.log('Roster Controller Hit');
     var roster = this;
     roster.people = [];
 
-    $http.get('/manage_roster').then(function (response) {
-        roster.people = response.data;
+    fetchRoster();
 
-        console.log('Response from Roster: ', roster.people);
+    function fetchRoster() {
+        $http.get('/manage_roster').then(function (response) {
+            roster.people = response.data;
 
-        var i = 0;
-        while (i < roster.people.length + 1) {
-            if (i < roster.people.length) {
-                console.log('Loop: ', i);
-                var addOn = ' ';
-                if (roster.people[i].isadmin == true) {
-                    addOn = '<< Admin >>'
+            console.log('Response from Roster: ', roster.people);
+
+            var i = 0;
+            while (i < roster.people.length + 1) {
+                if (i < roster.people.length) {
+                    console.log('Loop: ', i);
+                    var addOn = ' ';
+                    if (roster.people[i].isadmin == true) {
+                        addOn = '<< Admin >>'
+                    }
+                    roster.people[i].displayLine = roster.people[i].first_name + " " + roster.people[i].last_name + " -- " + roster.people[i].role.charAt(0).toUpperCase() + roster.people[i].role.slice(1) + "  " + addOn;
+                    i++;
+                } else {
+                    sortArray();
+                    console.log('STUFF Reached', roster.sortedArray);
+                    i++;
                 }
-                roster.people[i].displayLine = roster.people[i].first_name + " " + roster.people[i].last_name + " -- " + roster.people[i].role.charAt(0).toUpperCase() + roster.people[i].role.slice(1) + "  " + addOn;
-                i++;
-            } else {
-                sortArray();
-                console.log('STUFF Reached', roster.sortedArray);
-                i++;
             }
-        }
-    });
+        });
+    }
 
 
     //######## Sort the final array alphabetical order #########
@@ -49,24 +53,28 @@ app.controller('RosterController', ['$scope','$http', function ($scope, $http) {
 
         //console.log('Response from Roster: ', response);
 
-    $scope.updateRoster = function () {
-        roster.people.person =
+    roster.updateRoster = function(){
+
+        roster.person =
         {
-
-            first_name: this.first_name,
-            last_name: this.last_name,
-            role: this.role
+            isAdmin: $scope.isAdmin,
+            hasRole: $scope.status,
+            id: roster.sortedArray[$scope.userIndex].id
         };
+        console.log('Single Request: ', roster.person);
 
-        //$http.post('/manage_roster', roster.person)
-        //
-        //        first_name: this.people.first_name,
-        //        last_name: this.people.last_name,
-        //        role: this.people.role,
-        //        isAdmin: this.people.adminRole
-        //    };
-        console.log('roster.people.person:', roster.people.person);
-        $http.post('/manage_roster', roster.people.person);
+        console.log("update Roster Function fired", $scope.status, $scope.isAdmin);
+        document.getElementById("guestCheck").checked = false;
+        document.getElementById("memberCheck").checked = false;
+        document.getElementById("adminCheck").checked = false;
+        $scope.isAdmin = false;
+
+
+        $http.post('/manage_roster', roster.person).then(function(response){
+           console.log(response);
+            fetchRoster();
+        });
+
     }
 
 }]);

@@ -1,23 +1,31 @@
 <h1>Manage Roster</h1>
 
-<form ng-submit="updateRoster()">
+<form ng-submit="roster.updateRoster()">
     <div class="seeRoster">
-        <select ng-model="userRole" id="people">
+        <select ng-model="userIndex" id="people" style="font-size: 26px">
             <option value="" disabled selected>Select A Member</option>
             <option ng-repeat="person in roster.sortedArray" value={{$index}}>{{person.displayLine}}</option>;
         </select>
         <br />
         <br />
-
-            <input type="radio" name="" ng-model="status" value="guest" ng-checked="roster.sortedArray[userRole].role == 'guest'"> Guest<br>
-            <input type="radio" name="" ng-model="status" value="member"  ng-checked="roster.sortedArray[userRole].role == 'member'"> Member<br>
+        <label>
+            <input type="radio" id="guestCheck" ng-model="status" value="guest"> Guest
+        </label>
+        <label>
+            <input type="radio" id="memberCheck" ng-model="status" value="member"> Member
+        </label>
             <br />
-            <input type="checkbox" name="" ng-model="adminStatus" value="admin" ng-checked="roster.sortedArray[userRole].isadmin == true"> Admin<br>
+        <label>
+            <input type="checkbox" id="adminCheck" ng-model="isAdmin"> Admin<br>
+        </label>
 
+        <!--<input type="radio" name="" value="guest" ng-checked="roster.sortedArray[userRole].role == 'guest'"> Guest<br>-->
+            <!--<input type="radio" name="" value="member" ng-checked="roster.sortedArray[userRole].role == 'member'"> Member<br>-->
+            <!--<br />-->
+            <!--<input type="checkbox" ng-model="isAdmin" ng-checked="roster.sortedArray[userRole].isadmin == true"> Admin<br>-->
     </div>
     <!--Below would be your button to trigger the function-->
     <input type="submit" value="Click to Change Role" class="submitThis">
-
 </form>
 
 
