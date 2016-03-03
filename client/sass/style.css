@@ -19,7 +19,7 @@ header {
   margin-left: 90px; }
 
 main {
-  margin-top: 10px;
+  margin-top: 30px;
   padding: 10px;
   width: 80%;
   float: right;
@@ -29,7 +29,7 @@ main {
     border-color: #337ab7; }
 
 nav {
-  margin-top: 10px;
+  margin-top: 30px;
   width: 20%;
   float: left; }
   nav .nav > li > a:hover,
@@ -40,7 +40,7 @@ nav {
 .banner {
   background-image: url("logo.png");
   background-size: 150px;
-  background-position: top 14px right 160px;
+  background-position: top 25px right 160px;
   background-repeat: no-repeat;
   height: 155px;
   padding: inherit;
@@ -50,7 +50,7 @@ nav {
   border-right: 0;
   margin: -40px;
   padding-top: 20px;
-  margin-top: -36px;
+  margin-top: -55px;
   background-color: aliceblue; }
 
 .text-left {
