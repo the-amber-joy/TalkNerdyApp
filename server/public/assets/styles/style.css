@@ -41,6 +41,9 @@ main {
     background-color: #A9B2B1;
     border-color: #337ab7; }
 
+.textColor {
+  color: #772432; }
+
 nav {
   margin-top: 30px;
   width: 20%;
