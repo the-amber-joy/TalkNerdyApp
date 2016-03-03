@@ -1,22 +1,35 @@
 body {
   width: 100%;
   margin: 25px;
-  background-color: #A9B2B1; }
+  background-color: #a9b2b1;
+  background-image: url("http://www.transparenttextures.com/patterns/light-wool.png"); }
 
 header {
   padding: 10px; }
 
 .login {
-  padding: 10px;
-  border-color: black;
-  margin: 45px auto 45px auto;
-  width: 359px; }
+  padding: 1px 20px 20px;
+  margin: 150px auto 45px auto;
+  width: 400px;
+  background-color: white;
+  border-radius: 10px;
+  border-color: #004165; }
+
+.text-left {
+  color: #FFFFFF; }
+
+.chapter {
+  font-style: italic;
+  color: #FFFFFF; }
 
 .welcome {
   margin: 50px auto 0 auto; }
 
 .btn {
-  margin-left: 90px; }
+  margin-left: 110px;
+  padding: 10px 16px;
+  color: #004165;
+  border-color: #004165; }
 
 main {
   margin-top: 30px;
@@ -34,24 +47,26 @@ nav {
   float: left; }
   nav .nav > li > a:hover,
   nav .nav > li > a:focus {
-    background-color: #eee;
+    background-color: #ffffff;
     border-radius: 4px 0 0 4px; }
 
 .banner {
   background-image: url("logo.png");
-  background-size: 150px;
-  background-position: top 25px right 160px;
+  background-size: 125px;
+  background-position: top 35px right 110px;
   background-repeat: no-repeat;
   height: 155px;
   padding: inherit;
   border-left: 0;
   border-top: 0;
-  border-bottom: 0;
+  border-bottom-color: white;
+  border-bottom-style: solid;
+  border-bottom-width: 5px;
   border-right: 0;
   margin: -40px;
   padding-top: 20px;
   margin-top: -55px;
-  background-color: aliceblue; }
+  background-color: #772432; }
 
 .text-left {
   margin-left: 30px;
@@ -72,17 +87,28 @@ nav {
 .pending {
   float: left; }
 
+.pendingtext {
+  margin-left: 18px;
+  margin-top: -2px; }
+
+.pendtext {
+  height: 365px; }
+
+.delemeeting {
+  width: 197px;
+  margin-top: 11px; }
+
 .startdate {
   width: 220px;
   margin-left: 4px; }
 
 .datetheme {
   float: left;
-  margin-left: 10px; }
+  margin-left: 15px; }
 
 .locationword {
   float: right;
-  margin-right: -145px; }
+  margin-right: -154px; }
 
 .date {
   margin: 0 -25px 0 0; }
@@ -117,7 +143,7 @@ nav {
   margin: 15px 0 0 3px; }
 
 .sinput {
-  width: 100px; }
+  width: 154px; }
 
 .first {
   width: 155px;
@@ -128,13 +154,13 @@ nav {
 .second {
   width: 155px;
   float: left;
-  margin-left: 54px;
+  margin-left: 46px;
   margin-top: 43px; }
 
 .third {
   width: 155px;
   float: right;
-  margin-right: -150px;
+  margin-right: -156px;
   margin-top: 43px; }
 
 .speechone, .speechtwo, .speechthree {
@@ -152,5 +178,30 @@ nav {
 
 .speechinputone, .speechinputtwo, .speechinputthree {
   width: 152px; }
+
+.requestform {
+  height: 129px; }
+
+.titleblurb {
+  margin-left: 164px; }
+
+.trackproject {
+  float: right;
+  margin-right: 520px;
+  width: 220px;
+  margin-top: -128px; }
+
+.requestsubmit {
+  margin-left: 163px; }
+
+.buttonclear {
+  margin-left: 276px;
+  margin-top: -6px; }
+
+.requestinstruct {
+  margin-left: 163px; }
+
+.homelink, a:hover, a:visited, a:link, a:active {
+  text-decoration: none; }
 
 /*# sourceMappingURL=style.css.map */
