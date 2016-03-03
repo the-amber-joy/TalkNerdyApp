@@ -1,4 +1,3 @@
-
 <div class="container">
 <div class="row">
 <h1 class="heading">Create a Future Meeting</h1>
@@ -22,9 +21,9 @@
 
     <div class="datetheme">
         <div class="date">
-            <select ng-model="dateStart" class="startdate">
+            <select ng-model="dateStart" class="startdate" ng-change="fetchExistingFields(dateStart)">
                 <option value="" disabled selected>Select Meeting Date</option>
-                <option ng-repeat="day in manageMtg.dateArray">{{day.date | date: "fullDate"}}</option>";
+                <option ng-repeat="day in manageMtg.dateArray" value={{day.date}}>{{day.date | date: "fullDate"}}</option>";
             </select>
         </div>
 
@@ -211,8 +210,3 @@
         <input ng-click="submitManagedMeetings()" type="submit" class="sinput" value="Save Meeting">
     </div>
 </div>
-</form>
-</div>
-</div>
-
-

@@ -1,24 +1,35 @@
 
-//$background-gray: #A9B2B1;
 $background-gray: #A9B2B1;
-$app-background-color: #eee;
+$app-background-color: #ffffff;
 
 body {
   width: 100%;
   margin: 25px;
-  background-color: $background-gray;
-  //background-color: $background-gray;
+  background-color: #a9b2b1;
+  background-image: url("http://www.transparenttextures.com/patterns/light-wool.png");
 }
-
-header {
+  header {
   padding: 10px;
 }
 
 .login {
-  padding: 10px;
-  border-color: black;
-  margin: 45px auto 45px auto;
-  width: 359px;
+  padding: 1px 20px 20px;
+  margin: 150px auto 45px auto;
+  width: 400px;
+  background-color: white;
+  border-radius: 10px;
+  border-color: #004165;
+
+}
+
+.text-left {
+  color: #FFFFFF;
+}
+
+.chapter {
+  font-style: italic;
+  color: #FFFFFF;
+
 }
 
 .welcome {
@@ -26,7 +37,10 @@ header {
 }
 
 .btn {
-  margin-left: 90px;
+  margin-left: 110px;
+  padding: 10px 16px;
+  color: #004165;
+  border-color: #004165;
 }
 
 main {
@@ -34,14 +48,14 @@ main {
   padding: 10px;
   width: 80%;
   float: right;
-  .well {background-color: $background-gray;
-    border-color: #337ab7;
+  .well {background-color: #FFFFFF;
+    width: 80%;
   }
   border-radius: 0 4px 4px 0;
 }
 
 nav {
-  margin-top: 30px;
+  margin-top: 40px;
   width: 20%;
   float:left;
   .nav>li>a:hover,
@@ -53,19 +67,21 @@ nav {
 
 .banner {
   background-image: url("logo.png");
-  background-size: 150px;
-  background-position: top 25px right 110px;
+  background-size: 125px;
+  background-position: top 35px right 110px;
   background-repeat: no-repeat;
   height: 155px;
   padding: inherit;
   border-left: 0;
   border-top: 0;
-  border-bottom: 0;
+  border-bottom-color: white;
+  border-bottom-style: solid;
+  border-bottom-width: 5px;
   border-right: 0;
   margin: -40px;
   padding-top: 20px;
   margin-top: -55px;
-  background-color: #004165;
+  background-color: #772432;
 }
 
 .text-left {
@@ -76,6 +92,14 @@ nav {
 .chapter {
   margin: 0 0 10px 33px;
 }
+
+// CSS for roster.html
+
+.well {
+  background-color: #FFFFFF;
+}
+
+//vvvvv CSS for manage_meeting.html vvvvv
 
 .container {
   width: 975px;
@@ -206,4 +230,43 @@ nav {
 
 .speechinputone, .speechinputtwo, .speechinputthree {
   width: 152px;
+}
+
+//vvvvv CSS for request_speech.html vvvvv
+
+.requestform {
+  height: 129px;
+}
+
+.titleblurb {
+  margin-left: 164px;
+}
+
+.trackproject {
+  float: right;
+  margin-right: 520px;
+  width: 220px;
+  margin-top: -128px;
+}
+
+.requestsubmit {
+  margin-left: 163px;
+}
+
+.buttonclear {
+  margin-left: 276px;
+  margin-top: -6px;
+}
+
+.requestinstruct {
+  margin-left: 163px;
+}
+
+.homelink, a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+}
+
+.textcolour {
+  color: #772432;
+  font-weight: bold;
 }
