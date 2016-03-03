@@ -14,7 +14,7 @@ var speechAgenda = require('./routes/speechAgenda');
 var requestSpeech = require('./routes/requestSpeech');
 var getTracks = require('./routes/getTracks');
 var getProjects = require('./routes/getProjects');
-var manageTracks = require('./routes/requestSpeech');
+var manageTracks = require('./routes/manageTracks');
 var myRequests = require('./routes/myRequests');
 
 var app = express();
