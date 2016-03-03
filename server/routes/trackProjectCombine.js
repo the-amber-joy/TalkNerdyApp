@@ -51,7 +51,7 @@ router.get('/', function(request, response){
         //[ { track_name: 'Competent Communicator',
         //    project_name: 'Persuade With Power',
         //    project_description: 'Discusses audience analysis and the different forms of persuasion available to a speaker.' },
-        //  { track_name: 'Competent Communicator',
+        //  { track_name: 'Cogmpetent Communicator',
         //    project_name: 'Your Body Speaks',
         //    project_description: 'Shows how to complement words with posture, stance, gestures, facial expressions, and eye contact.' },
         //  { track_name: 'qwer',
