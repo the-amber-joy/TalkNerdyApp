@@ -9,7 +9,8 @@ app.controller('indexController', ['$http', 'UserService', function ($http, User
         index.things = UserService;
 }]);
 
-app.controller('HomeController', ['$http', 'UserService', function ($http, UserService) {
+
+app.controller('HomeController', ['$http', '$scope', 'UserService', function ($http, $scope, UserService) {
     console.log("We're home!");
     var home = this;
     home.dateToday = Date.now();
@@ -31,6 +32,12 @@ app.controller('HomeController', ['$http', 'UserService', function ($http, UserS
     $http.get('/agenda').then(function(response){
         home.data = response.data;
     });
+
+
+    $scope.attending = function() {
+        console.log('UserService:', UserService.google_id);
+        $http.post('/checkin', UserService.google_id);
+    };
 }]);
 
 //This will get all speeches scheduled for the next meeting, to be shown on the Home page agenda
