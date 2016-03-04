@@ -68,6 +68,13 @@ nav {
   margin-top: -55px;
   background-color: #772432; }
 
+.homelink, a:hover, a:visited, a:link, a:active {
+  text-decoration: none; }
+
+.textcolour {
+  color: #772432;
+  font-weight: bold; }
+
 .text-left {
   margin-left: 30px;
   text-align: left; }
@@ -187,24 +194,18 @@ nav {
   height: 129px; }
 
 .titleblurb {
-  margin-left: 164px; }
+  margin-left: 90px; }
 
 .trackproject {
   float: right;
   margin-right: 520px;
   width: 220px;
-  margin-top: -128px; }
-
-.requestsubmit {
-  margin-left: 163px; }
-
-.buttonclear {
-  margin-left: 276px;
-  margin-top: -6px; }
+  margin-top: -150px; }
 
 .requestinstruct {
   margin-left: 163px; }
 
+<<<<<<< HEAD
 .homelink, a:hover, a:visited, a:link, a:active {
   text-decoration: none; }
 
@@ -216,4 +217,6 @@ nav {
   display: block;
   float: left; }
 
+=======
+>>>>>>> 61258a31bfb44b4a4f82da5199aceac0636073e7
 /*# sourceMappingURL=style.css.map */
