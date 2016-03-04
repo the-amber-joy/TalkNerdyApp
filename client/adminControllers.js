@@ -15,12 +15,12 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
         $http.get('/manage_roster').then(function (response) {
             roster.people = response.data;
 
-            console.log('Response from Roster: ', roster.people);
+            //console.log('Response from Roster: ', roster.people);
 
             var i = 0;
             while (i < roster.people.length + 1) {
                 if (i < roster.people.length) {
-                    console.log('Loop: ', i);
+                    //console.log('Loop: ', i);
                     var addOn = ' ';
                     if (roster.people[i].isadmin == true) {
                         addOn = '<< Admin >>'
@@ -65,7 +65,14 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
             hasRole: $scope.status,
             id: roster.sortedArray[$scope.userIndex].id
         };
-        //console.log('Single Request: ', roster.person);
+        if(roster.person.isAdmin == undefined){roster.person.isAdmin = roster.sortedArray[$scope.userIndex].isadmin}
+        if(roster.person.hasRole == undefined){roster.person.hasRole = roster.sortedArray[$scope.userIndex].role}
+
+
+        $http.post('/manage_roster', roster.person).then(function(response){
+            console.log(response);
+            fetchRoster();
+        });
 
         console.log("update Roster Function fired", $scope.status, $scope.isAdmin);
         document.getElementById("guestCheck").checked = false;
@@ -73,11 +80,6 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
         document.getElementById("adminCheck").checked = false;
         $scope.isAdmin = false;
 
-
-        $http.post('/manage_roster', roster.person).then(function(response){
-           console.log(response);
-            fetchRoster();
-        });
     }
 }]);
 //+++++++++++++++++++++++++ End of ROSTER ++++++++++++++++++++++++++++++++++++
