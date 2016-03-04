@@ -1,13 +1,13 @@
 <div class="container">
-<div class="row">
+<div class="row col-md-12">
 <h2 class="heading"> Create a Future Meeting</h2>
 
 
 <form>
-    <div class="centre col-md-8">
+    <div class="centre">
 
 
-        <div class="pending">
+        <div class="pending col-md-2.4">
             <h4 class="pendingtext">Pending Speeches: </h4>
             <form class="pendingSpeeches">
                 <textarea cols="25" rows="20" class="pendtext" name="comment"></textarea>
@@ -19,7 +19,7 @@
 
 
 
-    <div class="datetheme">
+    <div class="datetheme col-md-3.5">
         <div class="date">
             <select ng-model="dateStart" class="startdate" ng-change="fetchExistingFields(dateStart)">
                 <option value="" disabled selected>Select Meeting Date</option>
@@ -34,7 +34,7 @@
     </div>
 </div>
 
-<div class="locationword">
+<div class="locationword col-md-3.5">
     <div>
         <label for="location"></label>
         <input type="text" ng-model="location" id="location" class="locationbox" placeholder="Location">
@@ -50,7 +50,7 @@
 
 
 
-    <div class="first">
+    <div class="first col-md-2.4">
         <div>
             <label for="speechonetitle"></label>
             <input type="text" ng-model="speech_one" id="speechonetitle" class="speechone" placeholder="Speech 1 Title">
@@ -69,7 +69,7 @@
         </div>
         <div>
             <label for="speakernameone"></label>
-            <input type="text" ng-model="speaker_nameone" id="speakernameone" placeholder="Speaker Name">
+            <input type="text" ng-model="speaker_nameone" id="speakernameone" class="speakername1" placeholder="Speaker Name">
         </div>
         <div>
             <label for="speechblurbone"></label>
@@ -81,7 +81,7 @@
     </div>
 
 
-    <div class="second">
+    <div class="second col-md-2.4">
         <div>
             <label for="speechtwotitle"></label>
             <input type="text" ng-model="speech_two" id="speechtwotitle" class="speechtwo" placeholder="Speech 2 Title">
@@ -100,7 +100,7 @@
         </div>
         <div>
             <label for="speakernametwo"></label>
-            <input type="text" ng-model="speaker_nametwo" id="speakernametwo" placeholder="Speaker Name">
+            <input type="text" ng-model="speaker_nametwo" id="speakernametwo" class="speakername2" placeholder="Speaker Name">
         </div>
         <div>
             <label for="speechblurbtwo"></label>
@@ -112,7 +112,7 @@
     </div>
 
 
-    <div class="third">
+    <div class="third col-md-2.4">
         <div>
             <label for="speechthreetitle"></label>
             <input type="text" ng-model="speech_three" id="speechthreetitle" class="speechthree" placeholder="Speech 3 Title">
@@ -131,7 +131,7 @@
         </div>
         <div>
             <label for="speakernamethree"></label>
-            <input type="text" ng-model="speaker_namethree" id="speakernamethree" placeholder="Speaker Name">
+            <input type="text" ng-model="speaker_namethree" id="speakernamethree" class="speakername3" placeholder="Speaker Name">
         </div>
         <div>
             <label for="speechblurbthree"></label>
@@ -143,66 +143,66 @@
     </div>
         </div>
 
-<div class="tmasterPositions">
+<div class="tmasterPositions col-md-2.4">
     <div>
         <label for="presiding_Officer"></label>
-        <input type="text" ng-model="presiding_officer" id="presiding_officer" placeholder="Presiding Officer">
+        <input type="text" ng-model="presiding_officer" id="presiding_officer" class="pofficer" placeholder="Presiding Officer">
     </div>
 
         <br>
 
     <div>
         <label for="toastmaster"></label>
-        <input type="text" ng-model="toastmaster" id="toastmaster" placeholder="Toastmaster">
+        <input type="text" ng-model="toastmaster" id="toastmaster" class="toastmaster" placeholder="Toastmaster">
     </div>
 
         <br>
 
     <div>
         <label for="general_evaluator"></label>
-        <input type="text" ng-model="general_evaluator" id="general_evaluator" placeholder="General Evaluator">
+        <input type="text" ng-model="general_evaluator" id="general_evaluator" class="gevaluator" placeholder="General Evaluator">
     </div>
 
         <br>
 
     <div>
         <label for="evaluatorOne"></label>
-        <input type="text" ng-model="speech_evaluator_1" id="evaluatorOne" placeholder="Speech Evaluator 1">
+        <input type="text" ng-model="speech_evaluator_1" id="evaluatorOne" class="eval1" placeholder="Speech Evaluator 1">
     </div>
 
         <br>
 
     <div>
         <label for="evaluatorTwo"></label>
-        <input type="text" ng-model="speech_evaluator_2" id="evaluatorTwo" placeholder="Speech Evaluator 2">
+        <input type="text" ng-model="speech_evaluator_2" id="evaluatorTwo" class="eval2" placeholder="Speech Evaluator 2">
     </div>
 
         <br>
 
     <div>
         <label for="evaluatorThree"></label>
-        <input type="text" ng-model="speech_evaluator_3" id="evaluatorThree" placeholder="Speech Evaluator 3">
+        <input type="text" ng-model="speech_evaluator_3" id="evaluatorThree" class="eval3" placeholder="Speech Evaluator 3">
     </div>
 
         <br>
 
     <div>
         <label for="timer"></label>
-        <input type="text" ng-model="timer" id="timer" placeholder="Timer">
+        <input type="text" ng-model="timer" id="timer" class="timer" placeholder="Timer">
     </div>
 
         <br>
 
     <div>
         <label for="grammarian"></label>
-        <input type=text ng-model="grammarian" id="grammarian" placeholder="Grammarian">
+        <input type=text ng-model="grammarian" id="grammarian" class="grammarian" placeholder="Grammarian">
     </div>
 
         <br>
 
     <div>
         <label for="ahCounter"></label>
-        <input type="text" ng-model="ah_counter" id="ahCounter" placeholder="Ah Counter">
+        <input type="text" ng-model="ah_counter" id="ahCounter" class="ahcounter" placeholder="Ah Counter">
     </div>
 
 
