@@ -62,7 +62,7 @@ router.get('/getDates', function(request, response){
 
         query.on('end', function () {
             client.end();
-            console.log(dateArray);
+            //console.log(dateArray);
             return response.json(dateArray);
         });
     });
@@ -94,7 +94,7 @@ router.post('/fetchExisting', function(request, response){
 
         query.on('end', function () {
             client.end();
-            console.log(filledFields);
+            //console.log(filledFields);
             return response.json(filledFields);
         });
     });
@@ -129,8 +129,9 @@ router.post('/submitManagedMeeting', function(request, response) {
         meetingData.speaker_2_lastname,
         meetingData.speaker_3_firstname,
         meetingData.speaker_3_lastname,
-        meetingData.date
+        meetingData.date.slice(0,10)
     ];
+    console.log("Meeting Data", meetingData);
 
     var editMeetingDetails = "UPDATE meetings \
             SET\
@@ -160,9 +161,9 @@ router.post('/submitManagedMeeting', function(request, response) {
             WHERE\
             date = $24";
 
-    var assignSpeechDate = "UPDATE speeches\
-                SET speech_date = $1, \
-                WHERE speech_title = $2 OR $3 OR $4";
+    //var assignSpeechDate = "UPDATE speeches\
+    //            SET speech_date = $1, \
+    //            WHERE speech_title = $2 OR $3 OR $4";
 
     //var selectedSpeech = [meetingData.date,
     //    meetingData.speech_1,
