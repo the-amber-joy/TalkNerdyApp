@@ -1,8 +1,10 @@
+<div class="row">
+
 <h5 class="requestinstruct">Submit a title and description for the speech you want to give:</h5>
 
 <form ng-submit="submitSpeech()" class="requestform">
 
-<div class="titleblurb">
+<div class="titleblurb col-md-3">
     <div>
         <label for="speechTitle">Speech Title:</label><br>
         <input type="text" ng-model="data.speechTitle" id="speechTitle">
@@ -12,9 +14,14 @@
         <label for="speechBlurb">Description:</label><br>
         <textarea ng-model="data.speechBlurb" id="speechBlurb"></textarea>
     </div>
+
+    <input type="submit" class="requestsubmit" value="Save Request">
+
+
+    <button class="buttonclear" ng-click="resetForm()">Clear</button>
 </div>
 
-<div class="trackproject">
+<div class="trackproject col-md-3">
     <div>
         <label for="track">Speech Track:</label><br>
         <select ng-model="data.speech.track" id="track">
@@ -28,9 +35,9 @@
             <option ng-repeat="project in projects track by $index">{{project.project_name}}</option>
         </select>
     </div>
+
+
 </div>
+    </form>
 
-    <input type="submit" class="requestsubmit" value="Save Request">
-</form>
-
-<button class="buttonclear" ng-click="resetForm()">Clear</button>
+</div>
