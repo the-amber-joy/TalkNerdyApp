@@ -1,20 +1,25 @@
 <div ng-include="'/views/attendance.html'"></div>
-
-<div>Hello {{home.firstName}}!</div>
+<div class="well">
+<div>Hello, {{home.firstName}}!</div>
 <div ng-hide="home.isadmin == false"></div>
 <div ng-hide="home.role == 'guest'"></div>
 <div ng-hide="home.role == 'member'"></div>
 
-<h1>{{home.data.date | date: "fullDate"}} - {{home.data.theme}}</h1>
+
+<h2>{{home.data.date | date: "fullDate"}}</h2>
+<h3>{{home.data.theme}}</h3>
 <p>Word of the Day: {{home.data.word_of_day}}</p>
 <p>Location: {{home.data.location}}</p>
-<hr>
+    <hr>
+    <hr>
 <b>Meeting Roles</b>
 <p>Presiding Officer: {{home.data.presiding_officer}} | Toastmaster: {{home.data.toastmaster}} | General Evaluator: {{home.data.general_evaluator}}</p>
+    <hr>
+    <hr>
 <p>{{home.data.timer}} | {{home.data.ah_counter}} | {{home.data.grammarian}}</p>
 <br>
 <div ng-include="'/views/speech_agenda.html'"></div>
-
+</div>
 
 
 
