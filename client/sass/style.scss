@@ -293,13 +293,14 @@ nav {
 
 .titleblurb {
   margin-left: 90px;
+  margin-top: 20px;
 }
 
 .trackproject {
   float: right;
-  margin-right: 520px;
+  margin-right: 125px;
   width: 220px;
-  margin-top: -150px;
+  margin-top: 20px;
 }
 
 .requestinstruct {
@@ -320,3 +321,12 @@ nav {
   float: left;
 }
 
+.buttonclear {
+  float: right;
+  clear: right;
+  margin-right: -36px;
+}
+
+.requestsubmit {
+  float: left;
+}
