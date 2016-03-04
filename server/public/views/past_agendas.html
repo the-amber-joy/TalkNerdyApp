@@ -1,6 +1,8 @@
-<h2>Good evening, I am the Ghost of Agendas Past!</h2>
+<h1>Past Agendas</h1>
 
-<div class="well" ng-repeat="agenda in past.agendas">
+<div class="pastAgendas">
+
+    <div class="well" ng-repeat="agenda in past.agendas">
         Date: {{agenda.date | date}}<br>
         Theme: {{agenda.theme}}<br>
         Meeting Description: {{agenda.description}}<br>
@@ -19,5 +21,6 @@
             Grammarian: {{agenda.grammarian}}<br>
             Ah Counter: {{agenda.ah_counter}}<br>
 
-</div>
+    </div>
 
+</div>

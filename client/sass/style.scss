@@ -48,8 +48,8 @@ main {
   padding: 10px;
   width: 80%;
   float: right;
-  .well {background-color: $background-gray;
-    border-color: #337ab7;
+  .well {background-color: #FFFFFF;
+    width: 80%;
   }
   border-radius: 0 4px 4px 0;
 }
@@ -103,6 +103,11 @@ nav {
   margin: 0 0 10px 33px;
 }
 
+// CSS for roster.html
+
+.well {
+  background-color: #FFFFFF;
+}
 
 //vvvvv CSS for manage_meeting.html vvvvv
 

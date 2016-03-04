@@ -14,7 +14,7 @@ router.get('/', function(request, response){
             client.end();
         }
 
-        var query = client.query("SELECT * FROM speech_tracks");
+        var query = client.query("SELECT * FROM speech_tracks ORDER BY project_number ASC");
 
         query.on('error', function (error){
             console.log(error);
