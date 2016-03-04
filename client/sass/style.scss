@@ -3,10 +3,10 @@ $background-gray: #A9B2B1;
 $app-background-color: #ffffff;
 
 body {
+  font-family: 'Montserrat', sans-serif;
   width: 100%;
   margin: 25px;
   background-color: #a9b2b1;
-  background-image: url("http://www.transparenttextures.com/patterns/light-wool.png");
 }
   header {
   padding: 10px;
@@ -16,7 +16,7 @@ body {
   padding: 1px 20px 20px;
   margin: 150px auto 45px auto;
   width: 400px;
-  background-color: white;
+  background-color: #ffffff;
   border-radius: 10px;
   border-color: #004165;
 
@@ -107,7 +107,6 @@ nav {
 
 .well {
   background-color: #ffffff;
-  background-image: url("http://www.transparenttextures.com/patterns/clean-textile.png");
 }
 
 //vvvvv CSS for manage_meeting.html vvvvv
