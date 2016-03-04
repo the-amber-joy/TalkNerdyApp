@@ -36,7 +36,7 @@ app.controller('HomeController', ['$http', '$scope', 'UserService', function ($h
 
     $scope.attending = function() {
         console.log('UserService:', UserService.google_id);
-        $http.post('/checkin', UserService.google_id);
+        $http.post('/checkin', {google_id : UserService.google_id});
     };
 }]);
 
