@@ -87,7 +87,8 @@ nav {
   margin: 0 0 10px 33px; }
 
 .well {
-  background-color: #ffffff; }
+  background-color: #ffffff;
+  padding-bottom: 55px; }
 
 .container {
   width: 1056px;
