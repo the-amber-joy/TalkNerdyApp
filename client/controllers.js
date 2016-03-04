@@ -33,9 +33,9 @@ app.controller('HomeController', ['$http', '$scope', 'UserService', function ($h
         home.data = response.data;
     });
 
-
     $scope.attending = function() {
         $scope.checkedIn = true;
+        $scope.notCheckedIn = false;
         console.log('UserService:', UserService.google_id);
         $http.post('/checkin', {google_id : UserService.google_id});
     };
@@ -51,11 +51,14 @@ app.controller('SpeechAgendaController', ['$http', function ($http) {
 }]);
 
 //This shows a logged-in user their own history of past speeches
-app.controller('SpeechHistory', ['$http', 'UserService', function ($http) {
+app.controller('SpeechHistory', ['$http', 'UserService', function ($http, UserService) {
     var history = this;
-    $http.get('/mySpeeches').then(function(response){
+
+    $http.post('/mySpeeches', {google_id : UserService.google_id}).then(function(response){
+        console.log(response);
         this.speeches = response.data;
     });
+
 }]);
 
 //This shows a logged-in user their own history of open speech requests
@@ -69,7 +72,7 @@ app.controller('MyRequests', ['$http', 'UserService', function ($http) {
 
 app.controller('PastController', ['$http', function ($http) {
     var past = this;
-    $http.get('/pastAgendas').then(function(response){
+    $http.get('/pastAgendas', {}).then(function(response){
         past.agendas = response.data;
     });
 }]);

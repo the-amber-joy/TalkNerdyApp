@@ -6,10 +6,11 @@ var pg = require('pg');
 var connectionString = require('../../database.json').data + '?ssl=true';
 //var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
 
-router.get('/', function(request, response){
+router.post('/', function(request, response){
+
     var mySpeeches = [];
-    var user = "Fake";
-    //"Fake" needs to be replaced with the google id of the logged-in user
+    var user = request.body.google_id;
+    console.log('user:', user);
 
     pg.connect(connectionString, function(error, client){
         if (error) {
