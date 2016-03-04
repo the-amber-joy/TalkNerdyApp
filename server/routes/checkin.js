@@ -18,8 +18,10 @@ router.post('/', function(request){
         console.log('request.body on server side', request.body);
 
         var checkinQuery = "UPDATE roster SET last_checkin = (now()::date) WHERE google_id = $1";
+        var addAttendees = "UPDATE meetings SET attendee_count = (attendee_count + 1) WHERE date = now()::date";
 
         client.query(checkinQuery, [request.body.google_id]);
+        client.query(addAttendees);
 
         client.on('end', function () {
             client.end();
