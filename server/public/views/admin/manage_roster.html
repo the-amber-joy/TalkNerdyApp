@@ -1,13 +1,13 @@
 <h2>Manage Roster</h2>
 <div class="well">
 <form ng-submit="roster.updateRoster()">
-    <div class="seeRoster">
         <select ng-model="userIndex" id="people" style="font-size: 26px">
             <option value="" disabled selected>Select A Member</option>
             <option ng-repeat="person in roster.sortedArray" value={{$index}}>{{person.displayLine}}</option>;
         </select>
         <br />
         <br />
+        <div class="hide_if_no_selection" ng-hide="!userIndex">
         <label>
             <input type="radio" id="guestCheck" ng-model="status" value="guest"> Guest
         </label>
@@ -23,10 +23,10 @@
             <!--<input type="radio" name="" value="member" ng-checked="roster.sortedArray[userRole].role == 'member'"> Member<br>-->
             <!--<br />-->
             <!--<input type="checkbox" ng-model="isAdmin" ng-checked="roster.sortedArray[userRole].isadmin == true"> Admin<br>-->
-    </div>
     <br>
     <!--Below would be your button to trigger the function-->
     <input type="submit" value="Click to Change Role" class="submitThis">
+    </div>
 </form>
 </div>
 
