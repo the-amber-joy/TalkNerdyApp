@@ -1,12 +1,11 @@
-<div class="container">
-<div class="row col-md-12">
+<div class="container row">
+<div class=" mainbody col-xs-12 col-sm-8 col-md-12">
 <h2 class="heading"> Create a Future Meeting</h2>
 
 
 <form>
-    <div class="centre">
 
-
+    <div class=" rbox col-md-9.6">
         <div class="pending col-md-2.4">
             <h4 class="pendingtext">Pending Speeches: </h4>
             <form class="pendingSpeeches">
@@ -18,7 +17,7 @@
         </div>
 
 
-
+<div class="dtlw col-md-7">
     <div class="datetheme col-md-3.5">
         <div class="date">
             <select ng-model="dateStart" class="startdate" ng-change="fetchExistingFields(dateStart)">
@@ -47,9 +46,10 @@
 
     </div>
 </div>
+    </div>
 
 
-
+<div class="speechcolumns col-md-7.2">
     <div class="first col-md-2.4">
         <div>
             <label for="speechonetitle"></label>
@@ -141,7 +141,7 @@
             <input type="submit" class="speechinputthree" value="Put Back In Queue">
         </div>
     </div>
-        </div>
+    </div>
 
 <div class="tmasterPositions col-md-2.4">
     <div>
@@ -210,6 +210,7 @@
         <input ng-click="submitManagedMeetings()" type="submit" class="sinput" value="Save Meeting">
     </div>
 </div>
+    </div>
 </form>
 </div>
 </div>

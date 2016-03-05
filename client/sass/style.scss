@@ -73,10 +73,11 @@ nav {
 .banner {
   background-image: url("logo.png");
   background-size: 125px;
-  background-position: top 35px right 110px;
+  background-position: top 25px right 110px;
   background-repeat: no-repeat;
-  height: 155px;
+  height: inherit;
   padding: inherit;
+  width: 106%;
   border-left: 0;
   border-top: 0;
   border-bottom-color: white;
@@ -101,6 +102,7 @@ nav {
 .text-left {
   margin-left: 30px;
   text-align: left;
+  width: 30%;
 }
 
 .chapter {
@@ -117,10 +119,15 @@ nav {
 //vvvvv CSS for manage_meeting.html vvvvv
 
 .container {
-  width: 1056px;
+  width: 1062px;
   border-color: black;
   border: solid;
-  margin-left: -40px;
+  padding-bottom: 15px;
+  margin-left: 15px;
+}
+
+.mainbody {
+  width: 1022px;
 }
 
 .heading {
@@ -129,6 +136,7 @@ nav {
 
 .pending {
   float: left;
+  margin-right: 25px;
 }
 
 .pendingtext {
@@ -151,16 +159,25 @@ nav {
   margin-left: 4px;
 }
 
+.dtlw {
+  width: 485px;
+  margin-left: 10px;
+}
+
 .datetheme {
   float: left;
-  margin-left: 80px;
   margin-top: 65px;
+  width: 223px;
 }
 
 .locationword {
-  float: right;
-  margin-right: 225px;
-  margin-top: 65px;
+  float: left;
+  margin-top: 64px;
+  width: 230px;
+}
+
+.speechcolumns {
+  float: left;
 }
 
 .date {
@@ -186,7 +203,7 @@ nav {
 }
 
 .theme {
-  margin: 30px 0 0 0;
+  margin: 10px 0 0 0;
 }
 
 .themebox {
@@ -194,10 +211,10 @@ nav {
 }
 
 .tmasterPositions {
-  margin: -446px -153px 15px 0;
-  width: 298px;
+  margin-right: 10px;
   float: right;
   clear: right;
+  margin-top: -138px;
 }
 
 .pofficfer {
@@ -226,8 +243,6 @@ nav {
   margin-bottom: 4px;
 }
 
-
-
 .subbuttons{
   margin: 15px 0 0 3px;
 }
@@ -238,23 +253,20 @@ nav {
 }
 
 .first {
-  width: 155px;
+  width: 172px;
   float: left;
-  margin-left: -280px;
-  margin-top: 175px;
+  margin-top: 33px;
 }
 
 .second {
-  width: 155px;
+  width: 172px;
   float: left;
-  margin-left: 48px;
-  margin-top: 33px;
+  margin: 33px 10px 0 10px;
 }
 
 .third {
   width: 172px;
   float: right;
-  margin-right: 178px;
   margin-top: 33px;
 }
 
