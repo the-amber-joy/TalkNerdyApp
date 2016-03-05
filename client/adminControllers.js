@@ -9,6 +9,9 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
     var roster = this;
     roster.people = [];
 
+    roster.show_name_ack=false;
+    roster.show_role_ack=false;
+
     fetchRoster();
 
     function fetchRoster() {
@@ -70,6 +73,7 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
 
 
         $http.post('/manage_roster', roster.person).then(function(response){
+            roster.show_role_ack=true;
             console.log(response);
             fetchRoster();
         });
@@ -92,21 +96,18 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
         };
 
         $http.post('/manage_roster/names', roster.person).then(function(response){
+            roster.show_name_ack=true;
             console.log(response);
             fetchRoster();
         });
-
-        //console.log("update Roster Function fired", $scope.status, $scope.isAdmin);
-        //document.getElementById("guestCheck").checked = false;
-        //document.getElementById("memberCheck").checked = false;
-        //document.getElementById("adminCheck").checked = false;
-        //$scope.isAdmin = false;
 
     };
 
     roster.loadName = function(){
         $scope.user_first_name = roster.sortedArray[$scope.userIndex].first_name;
         $scope.user_last_name = roster.sortedArray[$scope.userIndex].last_name;
+        roster.show_name_ack=false;
+        roster.show_role_ack=false;
     }
 }]);
 //+++++++++++++++++++++++++ End of ROSTER ++++++++++++++++++++++++++++++++++++
@@ -143,7 +144,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         //and then something to give user the message that their request was submitted
     };
 
-    manageMtg.fetchExistingFields = function(selectedDate) {
+    $scope.fetchExistingFields = function(selectedDate) {
         var sendingDate={};
         var returnedFields={};
 
