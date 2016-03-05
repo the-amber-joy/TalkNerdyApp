@@ -3,21 +3,27 @@
 <h2 class="heading"> Create a Future Meeting</h2>
 
 
-<form>
+                         <!--UNNECESSARY TEXT BOX FORM     -->
+<!--<form>-->
 
-    <div class=" rbox col-md-9.6">
-        <div class="pending col-md-2.4">
-            <h4 class="pendingtext">Pending Speeches: </h4>
-            <form class="pendingSpeeches">
-                <textarea cols="25" rows="20" class="pendtext" name="comment"></textarea>
-            </form>
-            <div class="delbutton">
-                <input ng-click="deleteManagedMeetings()" type="submit" class="delemeeting" value="Delete This Meeting">
-            </div>
-        </div>
+    <!--<div class=" rbox col-md-9.6">-->
+        <!--<div class="pending col-md-2.4">-->
+            <!--<h4 class="pendingtext">Pending Speeches: </h4>-->
+            <!--<form class="pendingSpeeches">-->
+                <!--<textarea cols="25" rows="20" class="pendtext" name="comment"></textarea>-->
+            <!--</form>-->
 
 
-<div class="dtlw col-md-7">
+                        <!--DELETE BUTTON NEEDS TO WORK-->
+            <!--<div class="delbutton">-->
+                <!--<input ng-click="deleteManagedMeetings()" type="submit" class="delemeeting" value="Delete This Meeting">-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+                        <!--SELECT A DATE DROPDOWN-->
+<div class="dateThemeLocationWord">
+    <div class="dtlw col-md-7">
     <div class="datetheme col-md-3.5">
         <div class="date">
             <select ng-model="dateStart" class="startdate" ng-change="fetchExistingFields(dateStart)">
@@ -28,32 +34,33 @@
 
 
     <div class="theme">
-        <label for="theme"></label>
-        <input type="text" ng-model="theme" id="theme" class="themebox" placeholder="Theme">
+        <label for="theme">Theme:</label>
+        <input type="text" ng-model="theme" id="theme" class="themebox">
     </div>
 </div>
 
 <div class="locationword col-md-3.5">
     <div>
-        <label for="location"></label>
-        <input type="text" ng-model="location" id="location" class="locationbox" placeholder="Location">
+        <label for="location">Location:</label>
+        <input type="text" ng-model="location" id="location" class="locationbox">
     </div>
 
 
-    <div>
-        <label for="word"></label>
-        <input type="text" ng-model="word_of_day" id="word" class="wordbox" placeholder="Word of the Day">
+    <div class="word">
+        <label for="word">Word of the Day:</label>
+        <input type="text" ng-model="word_of_day" id="word" class="wordbox">
 
     </div>
 </div>
+    </div>
     </div>
 
 
 <div class="speechcolumns col-md-7.2">
     <div class="first col-md-2.4">
         <div>
-            <label for="speechonetitle"></label>
-            <input type="text" ng-model="speech_one" id="speechonetitle" class="speechone" placeholder="Speech 1 Title">
+            <label for="speechonetitle">Speech One Title:</label>
+            <input type="text" ng-model="speech_one" id="speechonetitle" class="speechone">
         </div>
         <div class="track1">
             <select ng-model="selectTrack1" class="selecttrack1">
@@ -68,12 +75,12 @@
             </select>
         </div>
         <div>
-            <label for="speakernameone"></label>
-            <input type="text" ng-model="speaker_nameone" id="speakernameone" class="speakername1" placeholder="Speaker Name">
+            <label for="speakernameone">Speaker One Name:</label>
+            <input type="text" ng-model="speaker_nameone" id="speakernameone" class="speakername1">
         </div>
         <div>
-            <label for="speechblurbone"></label>
-            <input type="text" ng-model="speech_blurbone" id="speechblurbone" class="speechblurb1" placeholder="Speech Blurb">
+            <label for="speechblurbone">Speech Blurb:</label>
+            <input type="text" ng-model="speech_blurbone" id="speechblurbone" class="speechblurb1">
         </div>
         <div class="speechbuttonone">
             <input type="submit" class="speechinputone" value="Put Back In Queue">
@@ -83,8 +90,8 @@
 
     <div class="second col-md-2.4">
         <div>
-            <label for="speechtwotitle"></label>
-            <input type="text" ng-model="speech_two" id="speechtwotitle" class="speechtwo" placeholder="Speech 2 Title">
+            <label for="speechtwotitle">Speech Two Title:</label>
+            <input type="text" ng-model="speech_two" id="speechtwotitle" class="speechtwo">
         </div>
         <div class="track2">
             <select ng-model="selectTrack2" class="selecttrack2">
@@ -99,12 +106,12 @@
             </select>
         </div>
         <div>
-            <label for="speakernametwo"></label>
-            <input type="text" ng-model="speaker_nametwo" id="speakernametwo" class="speakername2" placeholder="Speaker Name">
+            <label for="speakernametwo">Speech Two Name:</label>
+            <input type="text" ng-model="speaker_nametwo" id="speakernametwo" class="speakername2">
         </div>
         <div>
-            <label for="speechblurbtwo"></label>
-            <input type="text" ng-model="speech_blurbtwo" id="speechblurbtwo" class="speechblurb2" placeholder="Speech Blurb">
+            <label for="speechblurbtwo">Speech Blurb:</label>
+            <input type="text" ng-model="speech_blurbtwo" id="speechblurbtwo" class="speechblurb2">
         </div>
         <div class="speechbuttontwo">
             <input type="submit" class="speechinputtwo" value="Put Back In Queue">
@@ -114,8 +121,8 @@
 
     <div class="third col-md-2.4">
         <div>
-            <label for="speechthreetitle"></label>
-            <input type="text" ng-model="speech_three" id="speechthreetitle" class="speechthree" placeholder="Speech 3 Title">
+            <label for="speechthreetitle">Speech Three Title:</label>
+            <input type="text" ng-model="speech_three" id="speechthreetitle" class="speechthree">
         </div>
         <div class="track3">
             <select ng-model="selectTrack3" class="selecttrack3">
@@ -130,12 +137,12 @@
             </select>
         </div>
         <div>
-            <label for="speakernamethree"></label>
-            <input type="text" ng-model="speaker_namethree" id="speakernamethree" class="speakername3" placeholder="Speaker Name">
+            <label for="speakernamethree">Speaker Three Name:</label>
+            <input type="text" ng-model="speaker_namethree" id="speakernamethree" class="speakername3">
         </div>
         <div>
-            <label for="speechblurbthree"></label>
-            <input type="text" ng-model="speech_blurbthree" id="speechblurbthree" class="speechblurb3" placeholder="Speech Blurb">
+            <label for="speechblurbthree">Speech Three Blurb:</label>
+            <input type="text" ng-model="speech_blurbthree" id="speechblurbthree" class="speechblurb3">
         </div>
         <div class="speechbuttonthree">
             <input type="submit" class="speechinputthree" value="Put Back In Queue">
@@ -145,64 +152,64 @@
 
 <div class="tmasterPositions col-md-2.4">
     <div>
-        <label for="presiding_Officer"></label>
-        <input type="text" ng-model="presiding_officer" id="presiding_officer" class="pofficer" placeholder="Presiding Officer">
+        <label for="presiding_Officer">Presiding Officer:</label><br>
+        <input type="text" ng-model="presiding_officer" id="presiding_officer" class="pofficer">
     </div>
 
         <br>
 
     <div>
-        <label for="toastmaster"></label>
-        <input type="text" ng-model="toastmaster" id="toastmaster" class="toastmaster" placeholder="Toastmaster">
+        <label for="toastmaster">Toastmaster:</label><br>
+        <input type="text" ng-model="toastmaster" id="toastmaster" class="toastmaster">
     </div>
 
         <br>
 
     <div>
-        <label for="general_evaluator"></label>
-        <input type="text" ng-model="general_evaluator" id="general_evaluator" class="gevaluator" placeholder="General Evaluator">
+        <label for="general_evaluator">General Evaluator:</label><br>
+        <input type="text" ng-model="general_evaluator" id="general_evaluator" class="gevaluator">
     </div>
 
         <br>
 
     <div>
-        <label for="evaluatorOne"></label>
-        <input type="text" ng-model="speech_evaluator_1" id="evaluatorOne" class="eval1" placeholder="Speech Evaluator 1">
+        <label for="evaluatorOne">Speech Evaluator One:</label><br>
+        <input type="text" ng-model="speech_evaluator_1" id="evaluatorOne" class="eval1">
     </div>
 
         <br>
 
     <div>
-        <label for="evaluatorTwo"></label>
-        <input type="text" ng-model="speech_evaluator_2" id="evaluatorTwo" class="eval2" placeholder="Speech Evaluator 2">
+        <label for="evaluatorTwo">Speech Evaluator Two:</label><br>
+        <input type="text" ng-model="speech_evaluator_2" id="evaluatorTwo" class="eval2">
     </div>
 
         <br>
 
     <div>
-        <label for="evaluatorThree"></label>
-        <input type="text" ng-model="speech_evaluator_3" id="evaluatorThree" class="eval3" placeholder="Speech Evaluator 3">
+        <label for="evaluatorThree">Speech Evaluator Three:</label><br>
+        <input type="text" ng-model="speech_evaluator_3" id="evaluatorThree" class="eval3">
     </div>
 
         <br>
 
     <div>
-        <label for="timer"></label>
-        <input type="text" ng-model="timer" id="timer" class="timer" placeholder="Timer">
+        <label for="timer">Timer:</label><br>
+        <input type="text" ng-model="timer" id="timer" class="timer">
     </div>
 
         <br>
 
     <div>
-        <label for="grammarian"></label>
-        <input type=text ng-model="grammarian" id="grammarian" class="grammarian" placeholder="Grammarian">
+        <label for="grammarian">Grammarian:</label><br>
+        <input type=text ng-model="grammarian" id="grammarian" class="grammarian">
     </div>
 
         <br>
 
     <div>
-        <label for="ahCounter"></label>
-        <input type="text" ng-model="ah_counter" id="ahCounter" class="ahcounter" placeholder="Ah Counter">
+        <label for="ahCounter">Ah-Counter:</label><br>
+        <input type="text" ng-model="ah_counter" id="ahCounter" class="ahcounter">
     </div>
 
 
