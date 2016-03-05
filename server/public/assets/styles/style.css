@@ -130,6 +130,10 @@ nav {
   width: 485px;
   margin-left: 10px; }
 
+.dateThemeLocationWord {
+  float: right;
+  padding-right: 185px; }
+
 .datetheme {
   float: left;
   margin-top: 65px;
@@ -141,7 +145,8 @@ nav {
   width: 230px; }
 
 .speechcolumns {
-  float: left; }
+  float: right;
+  padding-right: 120px; }
 
 .date {
   margin: 0 -25px 0 0; }
@@ -168,8 +173,8 @@ nav {
 
 .tmasterPositions {
   margin-right: 10px;
-  float: right;
-  clear: right;
+  float: left;
+  clear: left;
   margin-top: -138px; }
 
 .pofficfer {
