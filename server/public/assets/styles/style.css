@@ -224,19 +224,19 @@ nav {
   width: 173px; }
 
 .requestform {
-  height: 129px; }
+  height: 175px; }
 
 .titleblurb {
-  margin-left: 90px; }
+  float: left;
+  margin-top: 20px; }
 
 .trackproject {
-  float: right;
-  margin-right: 520px;
+  float: left;
   width: 220px;
-  margin-top: -150px; }
+  margin-top: 20px; }
 
 .requestinstruct {
-  margin-left: 163px; }
+  margin-left: 13px; }
 
 .homelink, a:hover, a:visited, a:link, a:active {
   text-decoration: none; }
@@ -248,5 +248,12 @@ nav {
 .manageTrackBtn button {
   display: block;
   float: left; }
+
+.buttonclear {
+  float: left; }
+
+.requestsubmit {
+  float: left;
+  margin-right: 17px; }
 
 /*# sourceMappingURL=style.css.map */

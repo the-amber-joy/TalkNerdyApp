@@ -1,5 +1,7 @@
 <div class="row">
 
+<div class="col-md-12">
+
 <h5 class="requestinstruct">Submit a title and description for the speech you want to give:</h5>
 
 <form ng-submit="submitSpeech()" class="requestform">
@@ -14,11 +16,10 @@
         <label for="speechBlurb">Description:</label><br>
         <textarea ng-model="data.speechBlurb" id="speechBlurb"></textarea>
     </div>
-
+    <div class="submitclear">
     <input type="submit" class="requestsubmit" value="Save Request">
-
-
     <button class="buttonclear" ng-click="resetForm()">Clear</button>
+    </div>
 </div>
 
 <div class="trackproject col-md-3">
@@ -41,3 +42,4 @@
     </form>
 
 </div>
+    </div>
