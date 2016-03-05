@@ -51,24 +51,21 @@ app.controller('SpeechAgendaController', ['$http', function ($http) {
 }]);
 
 //This shows a logged-in user their own history of past speeches
-app.controller('SpeechHistory', ['$http', 'UserService', function ($http, UserService) {
+app.controller('SpeechHistory', ['$http', '$scope', 'UserService', function ($http, $scope, UserService) {
     var history = this;
 
     $http.post('/mySpeeches', {google_id : UserService.google_id}).then(function(response){
-        console.log(response);
-        this.speeches = response.data;
+        console.log('past speeches:', response.data);
+        history.speeches = response.data; //this is an array of speeches already given
     });
 
-}]);
-
-//This shows a logged-in user their own history of open speech requests
-app.controller('MyRequests', ['$http', 'UserService', function ($http) {
-    var openRequests = this;
-    $http.get('/myRequests').then(function(response){
-        this.myReqs = response.data;
+    $http.post('/myRequests', {google_id : UserService.google_id}).then(function(response){
+        console.log('requested speeches:', response.data);
+        history.requests = response.data; //this is an array of speeches not yet given
     });
-}]);
 
+
+}]);
 
 app.controller('PastController', ['$http', function ($http) {
     var past = this;
