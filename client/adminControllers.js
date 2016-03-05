@@ -217,15 +217,6 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
         $scope.newTrack = {};
     };
 
-    //$http.get('/getTracks').then(function(response){
-    //    console.log('tracks:', response.data);
-    //    $scope.tracks = response.data;
-    //});
-    //
-    //$http.get('/getProjects').then(function(response){
-    //    console.log('projects:', response.data);
-    //    $scope.projects = response.data;
-    //});
 
     //$scope.newTrack = {
     //        track_name: this.trackName,

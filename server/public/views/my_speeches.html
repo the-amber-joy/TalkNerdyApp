@@ -1,17 +1,17 @@
-<h2>My speeches: </h2>
-<div class="well" ng-repeat="speech in history.speeches track by $index">
+<h2>My open speech requests:</h2>
+<div class="well" ng-repeat="request in history.requests track by $index">
     <div>
-        Date: {{speech.speech_date | date}}<br>
-        Speaker: {{speech.speaker_first_name}} {{speech.speaker_last_name}}<br>
-        Speech Title: {{speech.speech_title}}<br>
-        Speech Track & Project: {{speech.track}}: {{speech.track_project}}<br>
-        Summary: {{speech.summary}}<br>
-        Grammarian Report: {{speech.grammarian_report}}<br>
-     </div>
+        Date: {{request.speech_date | date}}<br>
+        Speaker: {{request.speaker_first_name}} {{request.speaker_last_name}}<br>
+        Speech Title: {{request.speech_title}}<br>
+        Speech Track & Project: {{request.track}}: {{request.track_project}}<br>
+        Summary: {{request.summary}}<br>
+        Grammarian Report: {{request.grammarian_report}}<br>
+    </div>
 </div>
 
-<h2>My speech requests: </h2>
-<div class="well" ng-repeat="request in history.speeches track by $index">
+<h2>My past speeches:</h2>
+<div class="well" ng-repeat="speech in history.speeches track by $index">
     <div>
         Date: {{speech.speech_date | date}}<br>
         Speaker: {{speech.speaker_first_name}} {{speech.speaker_last_name}}<br>

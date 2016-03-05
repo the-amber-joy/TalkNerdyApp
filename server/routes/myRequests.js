@@ -6,10 +6,10 @@ var pg = require('pg');
 var connectionString = require('../../database.json').data + '?ssl=true';
 //var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
 
-router.get('/', function(request, response){
-    var openRequests = [];
-    var user = "Fake";
-    //"Fake" needs to be replaced with the google id of the logged-in user
+router.post('/', function(request, response){
+
+    var speechReqs = [];
+    var user = request.body.google_id;
 
     pg.connect(connectionString, function(error, client){
         if (error) {
@@ -17,10 +17,10 @@ router.get('/', function(request, response){
             client.end();
         }
 
-        //This query returns all requested speeches by logged-in user
-        var myOpenRequests = "SELECT * FROM speeches WHERE speaker_google_id = $1 AND speech_date IS NULL";
+        //This query returns info for all speeches by logged-in req.user
+        var queryString = "SELECT * FROM speeches WHERE speaker_google_id = $1 AND speech_date IS NULL";
 
-        var query = client.query(myOpenRequests, [user]);
+        var query = client.query(queryString, [user]);
 
         query.on('error', function (error){
             console.log(error);
@@ -28,13 +28,12 @@ router.get('/', function(request, response){
         });
 
         query.on('row', function (row) {
-            openRequests.push(row);
+            speechReqs.push(row);
         });
 
         query.on('end', function () {
             client.end();
-            return response.json(openRequests);
-            console.log(openRequests);
+            return response.json(speechReqs);
         });
     });
 });

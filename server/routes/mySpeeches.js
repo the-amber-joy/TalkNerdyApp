@@ -6,10 +6,10 @@ var pg = require('pg');
 var connectionString = require('../../database.json').data + '?ssl=true';
 //var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
 
-router.get('/', function(request, response){
+router.post('/', function(request, response){
+
     var mySpeeches = [];
-    var user = "Fake";
-    //"Fake" needs to be replaced with the google id of the logged-in user
+    var user = request.body.google_id;
 
     pg.connect(connectionString, function(error, client){
         if (error) {
@@ -18,7 +18,7 @@ router.get('/', function(request, response){
         }
 
         //This query returns info for all speeches by logged-in req.user
-        var queryString = "SELECT * FROM speeches WHERE speaker_google_id = $1";
+        var queryString = "SELECT * FROM speeches WHERE speaker_google_id = $1 ORDER BY speech_date DESC";
 
         var query = client.query(queryString, [user]);
 
@@ -34,7 +34,6 @@ router.get('/', function(request, response){
         query.on('end', function () {
             client.end();
             return response.json(mySpeeches);
-            console.log(mySpeeches);
         });
     });
 });
