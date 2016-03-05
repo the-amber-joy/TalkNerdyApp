@@ -133,7 +133,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
     });
 
     //Send object to update DB on button click
-    $scope.submitManagedMeetings = function () {
+    manageMtg.submitManagedMeetings = function () {
 
         manageMeeting();
 
@@ -143,7 +143,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         //and then something to give user the message that their request was submitted
     };
 
-    $scope.fetchExistingFields = function(selectedDate) {
+    manageMtg.fetchExistingFields = function(selectedDate) {
         var sendingDate={};
         var returnedFields={};
 
@@ -231,16 +231,16 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
         $scope.projects = response.data;
     });
 
-    $scope.newTrack = {};
+    manageTracks.newTrack = {};
 
-    $scope.submitTrack = function(){
+    manageTracks.submitTrack = function(){
         //console.log('request object:', $scope.newTrack);
         $http.post('/manageTracks', $scope.newTrack).then(function(request){
         });
         $scope.resetTrackForm();
     };
 
-    $scope.resetTrackForm = function(){
+    manageTracks.resetTrackForm = function(){
         $scope.newTrack = {};
     };
 
