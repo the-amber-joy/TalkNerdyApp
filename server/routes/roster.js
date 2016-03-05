@@ -61,5 +61,29 @@ router.post('/', function(request, response){
 
 });
 
+router.post('/names', function(request, response){
+    var nameUpdate = request.body;
+    console.log('request.body contents:', nameUpdate);
+
+    var updateRosterQuery = "UPDATE roster SET first_name = $1, last_name = $2 WHERE id = $3";
+    pg.connect(connectionString, function(error, client){
+
+
+        var query = client.query(updateRosterQuery, [nameUpdate.firstName, nameUpdate.lastName, nameUpdate.id]);
+
+        query.on('error', function (error){
+            console.log(error);
+            response.sendStatus(500);
+        });
+
+        query.on('end', function () {
+            console.log("query end reached");
+            response.sendStatus(200);
+            client.end();
+
+        });
+    });
+
+});
 
 module.exports = router;

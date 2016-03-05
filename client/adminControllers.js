@@ -80,6 +80,33 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
         document.getElementById("adminCheck").checked = false;
         $scope.isAdmin = false;
 
+    };
+
+    roster.updateName = function(){
+
+        roster.person =
+        {
+            firstName: $scope.user_first_name,
+            lastName: $scope.user_last_name,
+            id: roster.sortedArray[$scope.userIndex].id
+        };
+
+        $http.post('/manage_roster/names', roster.person).then(function(response){
+            console.log(response);
+            fetchRoster();
+        });
+
+        //console.log("update Roster Function fired", $scope.status, $scope.isAdmin);
+        //document.getElementById("guestCheck").checked = false;
+        //document.getElementById("memberCheck").checked = false;
+        //document.getElementById("adminCheck").checked = false;
+        //$scope.isAdmin = false;
+
+    };
+
+    roster.loadName = function(){
+        $scope.user_first_name = roster.sortedArray[$scope.userIndex].first_name;
+        $scope.user_last_name = roster.sortedArray[$scope.userIndex].last_name;
     }
 }]);
 //+++++++++++++++++++++++++ End of ROSTER ++++++++++++++++++++++++++++++++++++
@@ -106,7 +133,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
     });
 
     //Send object to update DB on button click
-    $scope.submitManagedMeetings = function () {
+    manageMtg.submitManagedMeetings = function () {
 
         manageMeeting();
 
@@ -116,7 +143,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         //and then something to give user the message that their request was submitted
     };
 
-    $scope.fetchExistingFields = function(selectedDate) {
+    manageMtg.fetchExistingFields = function(selectedDate) {
         var sendingDate={};
         var returnedFields={};
 
@@ -204,16 +231,16 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
         $scope.projects = response.data;
     });
 
-    $scope.newTrack = {};
+    manageTracks.newTrack = {};
 
-    $scope.submitTrack = function(){
+    manageTracks.submitTrack = function(){
         //console.log('request object:', $scope.newTrack);
         $http.post('/manageTracks', $scope.newTrack).then(function(request){
         });
         $scope.resetTrackForm();
     };
 
-    $scope.resetTrackForm = function(){
+    manageTracks.resetTrackForm = function(){
         $scope.newTrack = {};
     };
 
