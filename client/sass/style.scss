@@ -15,7 +15,7 @@ body {
 .login {
   padding: 1px 20px 20px;
   margin: 150px auto 45px auto;
-  width: 375px;
+  width: 320px;
   background-color: #ffffff;
   border-radius: 10px;
   border-color: #004165;
@@ -56,24 +56,25 @@ body {
 .btn {
   text-align: center;
   margin: 0 auto;
-  text-align: center;
   padding: 10px 16px;
   color: #004165;
   border-color: #004165;
 }
 
 main {
+  margin-right: -13px;
   margin-top: 30px;
   padding: 10px;
   width: 80%;
   float: right;
   .well {background-color: #FFFFFF;
-    width: 80%;
+    width: 90%;
   }
   border-radius: 0 4px 4px 0;
 }
 
 nav {
+  margin-left: -14px;
   margin-top: 40px;
   width: 20%;
   float:left;
@@ -85,10 +86,6 @@ nav {
 }
 
 .banner {
-  //background-image: url("logo.png");
-  //background-size: 125px;
-  //background-position: top 35px right 90px;
-  //background-repeat: no-repeat;
   padding: inherit;
   width: 106%;
   border-left: 0;
@@ -370,4 +367,8 @@ nav {
 .requestsubmit {
   float: left;
   margin-right: 17px;
+}
+
+.click {
+  width: 85px;
 }

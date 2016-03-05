@@ -10,7 +10,7 @@ header {
 .login {
   padding: 1px 20px 20px;
   margin: 150px auto 45px auto;
-  width: 375px;
+  width: 320px;
   background-color: #ffffff;
   border-radius: 10px;
   border-color: #004165; }
@@ -43,12 +43,12 @@ header {
 .btn {
   text-align: center;
   margin: 0 auto;
-  text-align: center;
   padding: 10px 16px;
   color: #004165;
   border-color: #004165; }
 
 main {
+  margin-right: -13px;
   margin-top: 30px;
   padding: 10px;
   width: 80%;
@@ -56,9 +56,10 @@ main {
   border-radius: 0 4px 4px 0; }
   main .well {
     background-color: #FFFFFF;
-    width: 80%; }
+    width: 90%; }
 
 nav {
+  margin-left: -14px;
   margin-top: 40px;
   width: 20%;
   float: left; }
@@ -289,5 +290,8 @@ nav {
 .requestsubmit {
   float: left;
   margin-right: 17px; }
+
+.click {
+  width: 85px; }
 
 /*# sourceMappingURL=style.css.map */
