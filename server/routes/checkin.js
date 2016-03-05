@@ -8,14 +8,11 @@ var connectionString = require('../../database.json').data + '?ssl=true';
 
 router.post('/', function(request){
 
-    console.log(request.body.google_id);
-
     pg.connect(connectionString, function(error, client){
         if (error) {
             console.log(error);
             client.end();
         }
-        console.log('request.body on server side', request.body);
 
         var checkinQuery = "UPDATE roster SET last_checkin = (now()::date) WHERE google_id = $1";
         var addAttendees = "UPDATE meetings SET attendee_count = (attendee_count + 1) WHERE date = now()::date";
