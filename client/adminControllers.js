@@ -121,6 +121,14 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
     var meetingData = {};
     manageMtg.dateArray = [];
 
+    $http.get('/getTracks').then(function(response){
+        manageMtg.tracks = response.data;
+    });
+
+    $http.get('/getProjects').then(function(response){
+        manageMtg.projects = response.data;
+    });
+
     //This call grabs all the open speech requests that do not have assigned dates yet
     //$http.get('/manageMtg').then(function (response) {
     //    this.pendingRequests = response.data;
@@ -217,19 +225,8 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
-    console.log('Track Controller Hit');
 
     var manageTracks = this;
-
-    $http.get('/getTracks').then(function(response){
-        //console.log('tracks:', response.data);
-        $scope.tracks = response.data;
-    });
-
-    $http.get('/getProjects').then(function(response){
-        //console.log('projects:', response.data);
-        $scope.projects = response.data;
-    });
 
     manageTracks.newTrack = {};
 

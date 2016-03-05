@@ -82,25 +82,23 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
 
     $http.get('/getTracks').then(function(response){
         //console.log('tracks:', response.data);
-        $scope.tracks = response.data;
+        requestSpeech.tracks = response.data;
     });
 
     $http.get('/getProjects').then(function(response){
         //console.log('projects:', response.data);
-        $scope.projects = response.data;
+        requestSpeech.projects = response.data;
     });
 
     requestSpeech.resetForm = function(){
-        $scope.data = {};
+        requestSpeech.data = {};
     };
 
     requestSpeech.submitSpeech = function (){
         //console.log('data is:', $scope.data);
-        $http.post('/requestSpeech', $scope.data).then(function(request){
-            //console.log('data is:', $scope.data);
-            //and then something to give user the message that their request was submitted
+        $http.post('/requestSpeech', requestSpeech.data).then(function(request){
         });
-
+        requestSpeech.submitted = true;
         requestSpeech.resetForm();
     };
 

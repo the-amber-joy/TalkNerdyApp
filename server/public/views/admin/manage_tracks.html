@@ -1,58 +1,112 @@
- <h2 class="heading"> Create a New Speech Track</h2>
+ <h2 class="heading"> Create or Edit a Speech Track</h2>
 
-<form>
-    <div class="track1">
-        <select ng-model="selectTrack1" class="selecttrack1">
-            <option value="" disabled selected>Select Track</option>
-            <!--<option ng-repeat=""></option>";-->
+<form ng-model="">
+    <div>
+        <label for="track">Select an Existing Track to Edit:</label><br>
+        <select ng-model="manageTracks.track" id="track">
+            <option ng-repeat="track in requestSpeech.tracks track by $index">{{track.track_name}}</option>
         </select>
+        <!--<label for="namageTracks.newTrackName">Create a new Track:</label><br>-->
+        <!--<input type="text" ng-model="manageTracks.newTrackName" id="namageTracks.newTrackName" placeholder="Project Name"><br>-->
     </div>
-    <div class="project1">
-        <select ng-model="selectProject1" class="selectproject1">
-            <option value="" disabled selected>Select Project</option>
-            <!--<option ng-repeat=""></option>";-->
-        </select>
-    </div>
+
     <div>
-        <label for="speechonetitle"></label>
-        <input type="text" ng-model="speech_one" id="speechonetitle" class="speechone" placeholder="Speech 1 Title">
+        <label for="project1">Project:</label><br>
+        <input type="text" ng-model="manageTracks.proj1" id="project1" placeholder="Project Name"><br>
+
+        <label for="description1">Description:</label><br>
+        <textarea ng-model="manageTracks.desc1" id="description1" placeholder="Project Description"></textarea>
     </div>
+
+
     <div>
-        <label for="speakernameone"></label>
-        <input type="text" ng-model="speaker_nameone" id="speakernameone" class="speakername1" placeholder="Speaker Name">
+        <label for="project2">Project:</label><br>
+        <input type="text" ng-model="manageTracks.proj2" id="project2" placeholder="Project Name"><br>
+
+        <label for="description1">Description:</label><br>
+        <textarea ng-model="manageTracks.desc2" id="description2" placeholder="Project Description"></textarea>
     </div>
+
     <div>
-        <label for="speechblurbone"></label>
-        <input type="text" ng-model="speech_blurbone" id="speechblurbone" class="speechblurb1" placeholder="Speech Blurb">
+        <label for="project3">Project:</label><br>
+        <input type="text" ng-model="manageTracks.proj3" id="project3" placeholder="Project Name"><br>
+
+        <label for="description3">Description:</label><br>
+        <textarea ng-model="manageTracks.desc3" id="description3" placeholder="Project Description"></textarea>
     </div>
-    <div class="speechbuttonone">
-        <input type="submit" class="speechinputone" value="Put Back In Queue">
+
+    <div>
+        <label for="project4">Project:</label><br>
+        <input type="text" ng-model="manageTracks.proj4" id="project4" placeholder="Project Name"><br>
+        <label for="description4">Description:</label><br>
+        <textarea ng-model="manageTracks.desc4" id="description4" placeholder="Project Description"></textarea>
+    </div>
+
+    <div>
+        <label for="project5">Project:</label><br>
+        <input type="text" ng-model="manageTracks.proj5" id="project5" placeholder="Project Name"><br>
+        <label for="description5">Description:</label><br>
+        <textarea ng-model="manageTracks.desc5" id="description5" placeholder="Project Description"></textarea>
+    </div>
+
+    <div>
+        <label for="project6">Project:</label><br>
+        <input type="text" ng-model="manageTracks.proj6" id="project6" placeholder="Project Name"><br>
+        <label for="description6">Description:</label><br>
+        <textarea ng-model="manageTracks.desc6" id="description6" placeholder="Project Description"></textarea>
+    </div>
+
+    <div>
+        <label for="project7">Project:</label><br>
+        <input type="text" ng-model="manageTracks.proj7" id="project7" placeholder="Project Name"><br>
+        <label for="description7">Description:</label><br>
+        <textarea ng-model="manageTracks.desc7" id="description7" placeholder="Project Description"></textarea>
+    </div>
+
+    <div>
+        <label for="project8">Project:</label><br>
+        <input type="text" ng-model="manageTracks.proj8" id="project8" placeholder="Project Name"><br>
+        <label for="description8">Description:</label><br>
+        <textarea ng-model="manageTracks.desc8" id="description8" placeholder="Project Description"></textarea>
+    </div>
+
+    <div>
+        <label for="project9">Project:</label><br>
+        <input type="text" ng-model="manageTracks.proj9" id="project9" placeholder="Project Name"><br>
+        <label for="description9">Description:</label><br>
+        <textarea ng-model="manageTracks.desc9" id="description9" placeholder="Project Description"></textarea>
+    </div>
+
+
+
+    <div>
+        <input type="submit" class="submitTrack()" value="Submit">
     </div>
 </form>
 
 
-<h2>Add New Speech Tracks</h2>
+<!--<h2>Add New Speech Tracks</h2>-->
 
-<form ng-submit="submitTrack()">
+<!--<form ng-submit="submitTrack()">-->
 
-    <div>
-        <label for="trackName">Track Name:</label><br>
-        <input type="text" ng-model="newTrack.trackName" id="trackName">
-    </div>
+    <!--<div>-->
+        <!--<label for="trackName">Track Name:</label><br>-->
+        <!--<input type="text" ng-model="newTrack.trackName" id="trackName">-->
+    <!--</div>-->
 
-    <div>
-        <label for="projectName">Project Name:</label><br>
-        <input type="text" ng-model="newTrack.projectName" id="projectName">
-    </div>
+    <!--<div>-->
+        <!--<label for="projectName">Project Name:</label><br>-->
+        <!--<input type="text" ng-model="newTrack.projectName" id="projectName">-->
+    <!--</div>-->
 
-    <div>
-        <label for="projectDescription">Project Description:</label><br>
-        <textarea cols="40" rows="5" ng-model="newTrack.projectDescription" id="projectDescription"></textarea>
-    </div>
+    <!--<div>-->
+        <!--<label for="projectDescription">Project Description:</label><br>-->
+        <!--<textarea cols="" rows="5" ng-model="newTrack.projectDescription" id="projectDescription"></textarea>-->
+    <!--</div>-->
 
-    <div class="manageTrackBtn">
-        <input type="submit" value="Save Track Info">
+    <!--<div class="manageTrackBtn">-->
+        <!--<input type="submit" value="Save Track Info">-->
 
-        <button ng-click="resetTrackForm()">Clear Form</button>
-    </div>
-</form>
+        <!--<button ng-click="resetTrackForm()">Clear Form</button>-->
+    <!--</div>-->
+<!--</form>-->

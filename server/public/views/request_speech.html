@@ -1,45 +1,43 @@
 <div class="row">
 
-<div class="col-md-12">
+    <div class="col-md-12">
 
-<h5 class="requestinstruct">Submit a title and description for the speech you want to give:</h5>
+    <h5 class="requestinstruct">Submit a title and description for the speech you want to give:</h5>
 
-<form ng-submit="submitSpeech()" class="requestform">
+        <form ng-submit="requestSpeech.submitSpeech()" class="requestform">
 
-<div class="titleblurb col-md-3">
-    <div>
-        <label for="speechTitle">Speech Title:</label><br>
-        <input type="text" ng-model="data.speechTitle" id="speechTitle">
-    </div>
+            <div class="titleblurb col-md-3">
+                <div>
+                    <label for="speechTitle">Speech Title:</label><br>
+                    <input type="text" ng-model="requestSpeech.data.speechTitle" id="speechTitle">
+                </div>
+                <div>
+                    <label for="speechBlurb">Description:</label><br>
+                    <textarea ng-model="requestSpeech.data.speechBlurb" id="speechBlurb"></textarea>
+                </div>
+                <div class="submitclear">
+                    <input type="submit" class="requestsubmit" value="Save Request">
+                    <button class="buttonclear" ng-click="requestSpeech.resetForm()">Clear</button>
+                </div>
+            </div>
 
-    <div>
-        <label for="speechBlurb">Description:</label><br>
-        <textarea ng-model="data.speechBlurb" id="speechBlurb"></textarea>
-    </div>
-    <div class="submitclear">
-    <input type="submit" class="requestsubmit" value="Save Request">
-    <button class="buttonclear" ng-click="resetForm()">Clear</button>
+            <div class="trackproject col-md-3">
+                <div>
+                    <label for="track">Speech Track:</label><br>
+                    <select ng-model="requestSpeech.data.speech.track" id="track">
+                        <option ng-repeat="track in requestSpeech.tracks track by $index">{{track.track_name}}</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="project">Speech Project:</label><br>
+                    <select ng-model="requestSpeech.data.speech.project" id="project">
+                        <option ng-repeat="project in requestSpeech.projects track by $index">{{project.project_name}}</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <p ng-show="requestSpeech.submitted">Your speech request has been submitted. An admin will notify you when your speech is scheduled for a future meeting.</p>
+
     </div>
 </div>
-
-<div class="trackproject col-md-3">
-    <div>
-        <label for="track">Speech Track:</label><br>
-        <select ng-model="data.speech.track" id="track">
-            <option ng-repeat="track in tracks track by $index">{{track.track_name}}</option>
-        </select>
-    </div>
-
-    <div>
-        <label for="project">Speech Project:</label><br>
-        <select ng-model="data.speech.project" id="project">
-            <option ng-repeat="project in projects track by $index">{{project.project_name}}</option>
-        </select>
-    </div>
-
-
-</div>
-    </form>
-
-</div>
-    </div>
