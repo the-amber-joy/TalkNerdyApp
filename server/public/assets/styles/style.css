@@ -11,13 +11,19 @@ header {
 .login {
   padding: 1px 20px 20px;
   margin: 150px auto 45px auto;
-  width: 400px;
+  width: 320px;
   background-color: #ffffff;
   border-radius: 10px;
   border-color: #004165; }
 
+.loginbox {
+  width: 96%; }
+
 .text-left {
-  color: #FFFFFF; }
+  color: #FFFFFF;
+  margin-left: 25px;
+  text-align: left;
+  width: 100%; }
 
 .chapter {
   font-style: italic;
@@ -28,15 +34,22 @@ header {
   font-size: 40px; }
 
 .welcomeParagraph {
-  font-style: italic; }
+  font-style: italic;
+  text-align: center; }
+
+.google {
+  text-align: center;
+  margin: 0 auto; }
 
 .btn {
-  margin-left: 110px;
+  text-align: center;
+  margin: 0 auto;
   padding: 10px 16px;
   color: #004165;
   border-color: #004165; }
 
 main {
+  margin-right: -13px;
   margin-top: 30px;
   padding: 10px;
   width: 80%;
@@ -44,9 +57,10 @@ main {
   border-radius: 0 4px 4px 0; }
   main .well {
     background-color: #FFFFFF;
-    width: 80%; }
+    width: 90%; }
 
 nav {
+  margin-left: -14px;
   margin-top: 40px;
   width: 20%;
   float: left; }
@@ -56,11 +70,6 @@ nav {
     border-radius: 4px 0 0 4px; }
 
 .banner {
-  background-image: url("logo.png");
-  background-size: 125px;
-  background-position: top 25px right 110px;
-  background-repeat: no-repeat;
-  height: inherit;
   padding: inherit;
   width: 106%;
   border-left: 0;
@@ -70,9 +79,22 @@ nav {
   border-bottom-width: 5px;
   border-right: 0;
   margin: -40px;
-  padding-top: 20px;
+  padding-top: 42px;
   margin-top: -55px;
   background-color: #772432; }
+
+.homechapter {
+  float: left; }
+
+.timage {
+  margin-right: 80px;
+  float: right; }
+
+.toastimage {
+  float: right;
+  height: 100px;
+  width: 120px;
+  margin-bottom: 8px; }
 
 .homelink, a:hover, a:visited, a:link, a:active {
   text-decoration: none; }
@@ -82,12 +104,14 @@ nav {
   font-weight: bold; }
 
 .text-left {
-  margin-left: 30px;
+  margin-left: 25px;
   text-align: left;
-  width: 30%; }
+  width: 100%; }
 
 .chapter {
-  margin: 0 0 10px 33px; }
+  margin: 0 0 10px 40px;
+  float: left;
+  clear: left; }
 
 .well {
   background-color: #ffffff;
@@ -272,5 +296,8 @@ nav {
 .requestsubmit {
   float: left;
   margin-right: 17px; }
+
+.click {
+  width: 85px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -29,6 +29,7 @@
     <input type="submit" value="Click to Change Role" class="submitThis">
     </div>
 </form>
+    <div ng-show="roster.show_role_ack" style="color: red">Role Successfully Updated!</div>
     <br/><br/><br/>
     <div class="name_change"  ng-hide="!userIndex">
         <p>Make changes to user First and Last Name here: </p>
@@ -40,6 +41,7 @@
             <br/><br/>
             <input type="submit" value="Click to Modify Name" class="submitThis">
         </form>
+        <div ng-show="roster.show_name_ack" style="color: red">Name Successfully Updated!</div>
 
     </div>
 
