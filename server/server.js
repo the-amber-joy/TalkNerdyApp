@@ -45,6 +45,10 @@ app.use('/manageTracks', manageTracks);
 app.use('/index', index);
 app.use('/', login);
 
+app.get('/*', function(request, response){
+    response.redirect('/index');
+});
+
 
 
 //[][][][][][][][][][][][][][][][][][][][][][][][][][][][]
