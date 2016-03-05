@@ -6,12 +6,12 @@
 <div ng-hide="home.role == 'member'"></div>
 
 
-<h2>{{home.data.date | date: "fullDate"}}</h2>
+<h2>Next Meeting: <b>{{home.data.date | date: "fullDate"}}</b></h2>
     <hr>
     <hr>
-<h4>Theme: {{home.data.theme}}</h4>
-<h4>Word of the Day: {{home.data.word_of_day}}</h4>
-<h4>Location: {{home.data.location}}</h4>
+<h4>Theme: <b>{{home.data.theme}}</b></h4>
+<h4>Word of the Day: <b>{{home.data.word_of_day}}</b></h4>
+<h4>Location: <b>{{home.data.location}}</b></h4>
     <hr>
     <hr>
 <h4><b>Meeting Roles</b></h4>
