@@ -10,7 +10,6 @@ router.post('/', function(request, response){
 
     var mySpeeches = [];
     var user = request.body.google_id;
-    console.log('user:', user);
 
     pg.connect(connectionString, function(error, client){
         if (error) {
@@ -19,7 +18,7 @@ router.post('/', function(request, response){
         }
 
         //This query returns info for all speeches by logged-in req.user
-        var queryString = "SELECT * FROM speeches WHERE speaker_google_id = $1";
+        var queryString = "SELECT * FROM speeches WHERE speaker_google_id = $1 ORDER BY speech_date DESC";
 
         var query = client.query(queryString, [user]);
 
@@ -35,7 +34,6 @@ router.post('/', function(request, response){
         query.on('end', function () {
             client.end();
             return response.json(mySpeeches);
-            console.log(mySpeeches);
         });
     });
 });

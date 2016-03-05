@@ -33,9 +33,8 @@ app.controller('HomeController', ['$http', '$scope', 'UserService', function ($h
         home.data = response.data;
     });
 
-    $scope.attending = function() {
+    home.attending = function() {
         $scope.checkedIn = true;
-        $scope.notCheckedIn = false;
         console.log('UserService:', UserService.google_id);
         $http.post('/checkin', {google_id : UserService.google_id});
     };
@@ -51,24 +50,19 @@ app.controller('SpeechAgendaController', ['$http', function ($http) {
 }]);
 
 //This shows a logged-in user their own history of past speeches
-app.controller('SpeechHistory', ['$http', 'UserService', function ($http, UserService) {
+app.controller('SpeechHistory', ['$http', '$scope', 'UserService', function ($http, $scope, UserService) {
     var history = this;
 
     $http.post('/mySpeeches', {google_id : UserService.google_id}).then(function(response){
-        console.log(response);
-        this.speeches = response.data;
+        history.speeches = response.data; //this is an array of speeches already given
     });
 
-}]);
-
-//This shows a logged-in user their own history of open speech requests
-app.controller('MyRequests', ['$http', 'UserService', function ($http) {
-    var openRequests = this;
-    $http.get('/myRequests').then(function(response){
-        this.myReqs = response.data;
+    $http.post('/myRequests', {google_id : UserService.google_id}).then(function(response){
+        history.requests = response.data; //this is an array of speeches not yet given
     });
-}]);
 
+
+}]);
 
 app.controller('PastController', ['$http', function ($http) {
     var past = this;
@@ -81,7 +75,7 @@ app.controller('PastController', ['$http', function ($http) {
 app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', function ($http, $scope, UserService) {
     var requestSpeech = this;
 
-    $scope.data = {
+    requestSpeech.data = {
         firstName: UserService.firstName,
         lastName: UserService.lastName
     };
@@ -96,18 +90,18 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
         $scope.projects = response.data;
     });
 
-    $scope.resetForm = function(){
+    requestSpeech.resetForm = function(){
         $scope.data = {};
     };
 
-    $scope.submitSpeech = function (){
+    requestSpeech.submitSpeech = function (){
         //console.log('data is:', $scope.data);
         $http.post('/requestSpeech', $scope.data).then(function(request){
             //console.log('data is:', $scope.data);
             //and then something to give user the message that their request was submitted
         });
 
-        $scope.resetForm();
+        requestSpeech.resetForm();
     };
 
 }]);
