@@ -229,6 +229,22 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
 
     var manageTracks = this;
 
+    var allTracks = [];
+
+    $http.get('/getTracks').then(function(response){
+        //console.log('tracks:', response.data);
+        manageTracks.tracks = response.data;
+        allTracks = response.data;
+    });
+
+
+    manageTracks.loadProjects = function(){
+        $http.post('/getProjects', allTracks[manageTracks.selectedTrack]).then(function(response){
+            manageTracks.selectedProjects = response;
+        });
+    }
+
+
     manageTracks.newTrack = {};
 
     manageTracks.submitTrack = function(){

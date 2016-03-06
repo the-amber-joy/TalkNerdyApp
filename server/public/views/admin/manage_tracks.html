@@ -1,9 +1,9 @@
- <h2 class="heading"> Create or Edit a Track</h2>
+ <h2 class="heading">Create or Edit a Track</h2>
 
  <form>
-     <select ng-model="viewTracks.selectedTrack" style="font-size: 26px" ng-change="viewTracks.loadProjects()">
-         <option value="" disabled selected>Select A Track to Edit:</option>
-         <option ng-repeat="track in viewTracks.tracks track by $index" value={{$index}}>{{track.track_name}}</option>
+     <select ng-model="manageTracks.selectedTrack" style="font-size: 26px" ng-change="manageTracks.loadProjects()">
+         <option value="" disabled selected>Select A Track:</option>
+         <option ng-repeat="track in manageTracks.tracks track by $index" value={{$index}}>{{track.track_name}}</option>
      </select>
  </form>
 
