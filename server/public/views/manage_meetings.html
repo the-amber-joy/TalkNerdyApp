@@ -1,5 +1,6 @@
 <div class="container row">
-<div class="centrebody col-xs-12 col-sm-8 col-md-12">
+    <div class="col-xs-6 col-sm-12 col-md-12">
+<div class="centrebody col-xs-6 col-sm-12 col-md-12">
 <h2 class="heading"> Create a Future Meeting</h2>
 
 
@@ -19,7 +20,7 @@
                 <!--<input ng-click="deleteManagedMeetings()" type="submit" class="delemeeting" value="Delete This Meeting">-->
             <!--</div>-->
         <!--</div>-->
-    <div class="tmasterPositions col-md-2.4">
+    <div class="tmasterPositions col-xs-12 col-sm-5 col-md-3">
         <div>
             <label for="presiding_Officer">Presiding Officer:</label><br>
             <input type="text" ng-model="presiding_officer" id="presiding_officer" class="pofficer">
@@ -88,8 +89,8 @@
     </div>
 
                         <!--SELECT A DATE DROPDOWN-->
-    <div class="speechcolumns col-md-7.2">
-    <div class="dtlw col-md-7">
+    <div class="speechcolumns col-xs-12 col-sm-12 col-md-8">
+    <div class="dtlw col-sm-4 col-md-7">
     <div class="datetheme col-md-3.5">
         <div class="date">
             <select ng-model="dateStart" class="startdate" ng-change="fetchExistingFields(dateStart)">
@@ -216,5 +217,6 @@
     </div>
 
 </form>
+</div>
 </div>
 </div>
