@@ -1,66 +1,50 @@
- <h2 class="heading">Create or Edit a Track</h2>
+<h2 class="heading">Create or Edit a Track</h2>
 
- <form>
-     <select ng-model="manageTracks.selectedTrack" style="font-size: 26px" ng-change="manageTracks.loadProjects()">
-         <option value="" disabled selected>Select a Track to Edit:</option>
-         <option ng-repeat="track in manageTracks.tracks track by $index" value={{$index}}>{{track.track_name}}</option>
-     </select>
- </form>
+<form>
+    <select ng-model="manageTracks.selectedTrack" style="font-size: 26px" ng-change="manageTracks.loadProjects()">
+        <option value="" disabled selected>Select A Track:</option>
+        <option ng-repeat="track in manageTracks.tracks track by $index" value={{$index}}>{{track.track_name}}</option>
+    </select>
+</form>
 
-<br>
-<<<<<<< HEAD
 <form ng-submit="manageTracks.changeTrack()" ng-repeat="project in manageTracks.selectedProjects.data">
     <form>
         <div>
             <label for="project.project_number">Project {{project.project_number}}:</label><br>
             <input type="text" ng-model="project.project_name" id="project.project_number" placeholder="Project Name"><br>
-            <br>
-            <textarea rows="1" cols="50" class="pendtext" name="comment" ng-model="project.project_description" id="project.project_number.description" placeholder="Project Description"></textarea>
-        <hr>
+            <textarea ng-model="project.project_description" id="project.project_number.description" placeholder="Project Description"></textarea>
         </div>
-=======
-
- <!--Form to create a new track -->
- <div ng-show="manageTracks.showNewTracks" >
-     <button ng-click="manageTracks.showNewTracks = true">Or Click Here to Create a New Track</button>
-
-     <form ng-submit="manageTracks.createTrack()" ng-repeat="project in manageTracks.selectedProjects.data">
-         <form ng-submit="manageTracks.addProject()">
-             <div>
-                 <label for="project.project_number">Project {{project.project_number}}:</label><br>
-                 <input type="text" ng-model="project.project_name" id="project.project_number" placeholder="Project Name"><br>
-                 <textarea ng-model="project.project_description" id="project.project_number.description" placeholder="Project Description"></textarea>
-             </div>
-             <input type="submit" value="Add Another Project" class="submitThis">
-         </form>
-         <div ng-show="manageTracks.showNewTracks">
-             <input type="submit" value="Submit Changes" class="submitThis">
-         </div>
-    </form>
- </div>
- <!--new track form-->
-
-
- <!--Form to be populated with an existing track's projects for editing -->
- <div ng-hide="manageTracks.showNewTracks">
-     Or Create a New Track below:
-    <form ng-submit="manageTracks.changeTrack()">
-        <label for="project.track_name">Track Name:</label><br>
-        <input type="text" ng-model="manageTracks.selectedTrack" id="project.track_name" placeholder="Track Name">
-        <br>
-        <form ng-repeat="project in manageTracks.selectedProjects.data">
-            <div>
-                <label for="project.project_number">Project {{project.project_number}}:</label><br>
-                <input type="text" ng-model="project.project_name" id="project.project_number" placeholder="Project Name"><br>
-                <textarea ng-model="project.project_description" id="project.project_number.description" placeholder="Project Description"></textarea>
-            </div>
-        </form>
->>>>>>> 4668bcc46df353999fc8971d457ff4cb67149d55
     </form>
 
-    <div>
-        <input type="submit" value="Submit New Track" class="submitThis">
+    <div ng-show="manageTracks.showSubmitButton">
+        <input type="submit" value="Submit" class="submitThis">
     </div>
-    </form>
- </div>
- <!--edit track form-->
+</form>
+
+
+
+<!--<h2>Add New Speech Tracks</h2>-->
+
+<!--<form ng-submit="submitTrack()">-->
+
+<!--<div>-->
+<!--<label for="trackName">Track Name:</label>-->
+<!--<input type="text" ng-model="manageTracks.newTrack.trackName" id="trackName">-->
+<!--</div>-->
+
+<!--<div>-->
+<!--<label for="projectName">Project Name:</label>-->
+<!--<input type="text" ng-model="manageTracks.newTrack.projectName" id="projectName">-->
+<!--</div>-->
+
+<!--<div>-->
+<!--<label for="projectDescription">Project Description:</label>-->
+<!--<textarea cols="" rows="5" ng-model="manageTracks.newTrack.projectDescription" id="projectDescription"></textarea>-->
+<!--</div>-->
+
+<!--<div class="manageTrackBtn">-->
+<!--<input type="submit" value="Save Track Info">-->
+
+<!--<button ng-click="resetTrackForm()">Clear Form</button>-->
+<!--</div>-->
+<!--</form>-->
