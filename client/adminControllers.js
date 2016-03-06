@@ -229,9 +229,28 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
 
     var manageTracks = this;
 
+    manageTracks.showSubmitButton = false;
+
+    var allTracks = [];
+
+    $http.get('/getTracks').then(function(response){
+        //console.log('tracks:', response.data);
+        manageTracks.tracks = response.data;
+        allTracks = response.data;
+    });
+
+
+    manageTracks.loadProjects = function(){
+        $http.post('/getProjects', allTracks[manageTracks.selectedTrack]).then(function(response){
+            manageTracks.selectedProjects = response;
+        });
+        manageTracks.showSubmitButton = true;
+    }
+
+
     manageTracks.newTrack = {};
 
-    manageTracks.submitTrack = function(){
+    manageTracks.changeTrack = function(){
         //console.log('request object:', $scope.newTrack);
         $http.post('/manageTracks', manageTracks.newTrack).then(function(request){
         });

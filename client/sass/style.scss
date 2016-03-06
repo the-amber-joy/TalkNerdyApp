@@ -89,6 +89,7 @@ nav {
 }
 
 .banner {
+  overflow: hidden;
   padding: inherit;
   width: 106%;
   border-left: 0;
@@ -151,7 +152,7 @@ nav {
 //vvvvv CSS for manage_meeting.html vvvvv
 
 .container {
-  width: 798px;
+  width: 100%;
   border-color: black;
   border: solid;
   padding-bottom: 15px;
@@ -160,7 +161,7 @@ nav {
 
 .mainbody {
   width: 90%;
-  margin-left: 2px;
+  margin-left: 5px;
 }
 
 .heading {
@@ -251,6 +252,7 @@ nav {
 }
 
 .tmasterPositions {
+  margin-left: -50px;
   float: left;
   margin-top: 8px;
 }
@@ -291,6 +293,7 @@ nav {
 }
 
 .first {
+  margin-left: -28px;
   width: 172px;
   float: left;
   clear: both;
@@ -299,11 +302,11 @@ nav {
 .second {
   width: 172px;
   float: left;
-  margin: 0 5px 0 5px;
+  margin: 0 5px 0 15px;
 }
 
 .third {
-  width: 172px;
+  width: 190px;
   float: right;
 }
 
@@ -343,6 +346,7 @@ nav {
 .titleblurb {
   float: left;
   margin-top: 20px;
+  margin-right: 30px;
 }
 
 .trackproject {
@@ -374,12 +378,14 @@ nav {
 }
 
 .buttonclear {
-  float: left;
+  float: right;
+  margin-right: -24px;
+  margin-top: -25px;
 }
 
 .requestsubmit {
-  float: left;
-  margin-right: 17px;
+  float: right;
+  margin-right: 45px;
 }
 
 .click {

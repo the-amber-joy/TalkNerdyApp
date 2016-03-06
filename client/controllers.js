@@ -121,9 +121,8 @@ app.controller('ViewTracksController', ['$http', '$scope', function ($http, $sco
     });
 
 
-    $scope.loadProjects = function(){
-        $http.post('/getProjects', allTracks[$scope.selectedTrack]).then(function(response){
-            console.log('response:', response);
+    viewTracks.loadProjects = function(){
+        $http.post('/getProjects', allTracks[viewTracks.selectedTrack]).then(function(response){
             viewTracks.selectedProjects = response;
         });
     }
