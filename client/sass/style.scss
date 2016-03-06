@@ -11,7 +11,7 @@ body {
   background-image: url("http://www.transparenttextures.com/patterns/cross-scratches.png");
 }
   header {
-  padding: 10px;
+  padding: -4px;
 }
 
 .login {
@@ -70,7 +70,7 @@ main {
   width: 80%;
   float: right;
   .well {background-color: #FFFFFF;
-    width: 90%;
+    width: 100%;
   }
   border-radius: 0 4px 4px 0;
 }
@@ -107,7 +107,7 @@ nav {
 }
 
 .timage {
-  margin-right: 80px;
+  margin-right: 115px;
   float: right;
 }
 
@@ -131,10 +131,11 @@ nav {
   margin-left: 25px;
   text-align: left;
   width: 100%;
+  font-size: 32px;
 }
 
 .chapter {
-  margin: 0 0 10px 40px;
+  margin: 0 0 10px 42px;
   float: left;
   clear: left;
 }
@@ -149,7 +150,7 @@ nav {
 //vvvvv CSS for manage_meeting.html vvvvv
 
 .container {
-  width: 1062px;
+  width: 798px;
   border-color: black;
   border: solid;
   padding-bottom: 15px;
@@ -157,7 +158,8 @@ nav {
 }
 
 .mainbody {
-  width: 100%;
+  width: 97%;
+  margin-left: 2px;
 }
 
 .heading {
@@ -194,26 +196,27 @@ nav {
   margin-left: 10px;
 }
 
-.dateThemeLocationWord {
-  float: right;
-  padding-right: 185px;
+.dtlw {
+  float: left;
+  width: 485px;
+  margin-bottom: 15px;
 }
 
 .datetheme {
   float: left;
-  margin-top: 65px;
+  margin-top: 27px;
   width: 223px;
 }
 
 .locationword {
-  float: left;
-  margin-top: 64px;
+  padding-left: 10px;
+  float: right;
   width: 230px;
 }
 
 .speechcolumns {
   float: right;
-  padding-right:120px;
+  clear: right;
 }
 
 .date {
@@ -226,6 +229,7 @@ nav {
 
 .locationbox {
   width: 220px;
+  margin-bottom: 5px;
 }
 
 .word {
@@ -235,7 +239,6 @@ nav {
 
 .wordbox {
   width: 220px;
-  margin-top: 25px;
 }
 
 .theme {
@@ -247,10 +250,8 @@ nav {
 }
 
 .tmasterPositions {
-  margin-right: 10px;
   float: left;
-  clear: left;
-  margin-top: -138px;
+  margin-top: 8px;
 }
 
 .pofficfer {
@@ -291,19 +292,18 @@ nav {
 .first {
   width: 172px;
   float: left;
-  margin-top: 33px;
+  clear: both;
 }
 
 .second {
   width: 172px;
   float: left;
-  margin: 33px 10px 0 10px;
+  margin: 0 5px 0 5px;
 }
 
 .third {
   width: 172px;
   float: right;
-  margin-top: 33px;
 }
 
 .speechone, .speechtwo, .speechthree {
