@@ -125,7 +125,7 @@ nav {
   margin-left: 15px; }
 
 .mainbody {
-  width: 1022px; }
+  width: 100%; }
 
 .heading {
   text-align: center; }
@@ -276,6 +276,9 @@ nav {
   width: 220px;
   margin-top: 20px; }
 
+.project {
+  width: 168px; }
+
 .requestinstruct {
   margin-left: 13px; }
 
@@ -299,5 +302,11 @@ nav {
 
 .click {
   width: 85px; }
+
+.userindex {
+  width: 45%; }
+
+.rostersubmit {
+  width: 410px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -157,7 +157,7 @@ nav {
 }
 
 .mainbody {
-  width: 1022px;
+  width: 100%;
 }
 
 .heading {
@@ -350,6 +350,10 @@ nav {
   margin-top: 20px;
 }
 
+.project {
+  width: 168px;
+}
+
 .requestinstruct {
   margin-left: 13px;
 }
@@ -379,4 +383,12 @@ nav {
 
 .click {
   width: 85px;
+}
+
+.userindex {
+  width: 45%;
+}
+
+.rostersubmit {
+  width: 410px;
 }
