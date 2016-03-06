@@ -1,7 +1,7 @@
 <h2>Manage Roster</h2>
 <div class="well">
-<form ng-submit="roster.updateRoster()">
-        <select ng-model="userIndex" id="people" style="font-size: 26px" ng-change="roster.loadName()">
+<form ng-submit="roster.updateRoster()" class="rostersubmit">
+        <select ng-model="userIndex" id="people" style="font-size: 26px" ng-change="roster.loadName()" class="userindex">
             <option value="" disabled selected>Select A Member</option>
             <option ng-repeat="person in roster.sortedArray" value={{$index}}>{{person.displayLine}}</option>;
         </select>
