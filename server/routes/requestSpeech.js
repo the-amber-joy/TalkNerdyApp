@@ -10,9 +10,9 @@ router.post('/', function(request){
     var speechRequestObject = request.body;
 
     var speechRequestQuery = "INSERT INTO speeches \
-                    (speech_title, summary, track, track_project, speaker_first_name, speaker_last_name, date_requested) \
+                    (speech_title, summary, track, track_project, speaker_first_name, speaker_last_name, date_requested, speaker_google_id) \
                     VALUES \
-                    ($1, $2, $3, $4, $5, $6, now()::date);";
+                    ($1, $2, $3, $4, $5, $6, now()::date, $7);";
 
     pg.connect(connectionString, function(error, client, done) {
         if(error) {
@@ -28,7 +28,8 @@ router.post('/', function(request){
                 speechRequestObject.speech.track,
                 speechRequestObject.speech.project,
                 speechRequestObject.firstName,
-                speechRequestObject.lastName
+                speechRequestObject.lastName,
+                speechRequestObject.google_id
             ]);
 
         client.on('end', function () {
