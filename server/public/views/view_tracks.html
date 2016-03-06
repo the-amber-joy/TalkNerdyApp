@@ -1,6 +1,6 @@
  <h2>Speech Tracks</h2>
 
-<div ng-repeat="track in tracks track by $index" class="panel-group">
+<div ng-repeat="track in requestSpeech.tracks track by $index" class="panel-group">
     <div>
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -9,7 +9,7 @@
                 </h4>
             </div>
             <div class="panel">
-                <div class="panel-body" ng-repeat="project in projects track by $index">
+                <div class="panel-body" ng-repeat="project in requestSpeech.projects track by $index">
                     <b>{{project.project_name}}</b><br>
                     {{project.project_description}}
                 </div>
