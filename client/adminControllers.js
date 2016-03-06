@@ -233,7 +233,7 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
 
     manageTracks.submitTrack = function(){
         //console.log('request object:', $scope.newTrack);
-        $http.post('/manageTracks', $scope.newTrack).then(function(request){
+        $http.post('/manageTracks', manageTracks.newTrack).then(function(request){
         });
         $scope.resetTrackForm();
     };

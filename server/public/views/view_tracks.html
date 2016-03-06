@@ -1,16 +1,22 @@
  <h2>Speech Tracks</h2>
 
-<div ng-repeat="track in requestSpeech.tracks track by $index" class="panel-group">
+<form>
+    <select ng-model="selectedTrack" style="font-size: 26px" ng-change="loadProjects()">
+        <option value="" disabled selected>Select A Track:</option>
+        <option ng-repeat="track in viewTracks.tracks track by $index" value={{$index}}>{{track.track_name}}</option>
+    </select>
+</form>
+
+
+<div ng-repeat="project in viewTracks.selectedProjects.data track by $index" class="panel-group">
     <div>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4 class="panel-title">
-                    {{track.track_name}}
-                </h4>
+                <h4 class="panel-title">{{project.project_name}}</h4>
+
             </div>
             <div class="panel">
-                <div class="panel-body" ng-repeat="project in requestSpeech.projects track by $index">
-                    <b>{{project.project_name}}</b><br>
+                <div class="panel-body">
                     {{project.project_description}}
                 </div>
             </div>

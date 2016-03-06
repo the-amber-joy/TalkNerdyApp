@@ -13,8 +13,9 @@ router.post('/', function(request, response){
 
     pg.connect(connectionString, function(error, client){
         if (error) {
-            console.log(error);
             client.end();
+            console.log(error);
+            return response.status(500).json({ success: false, data: error});
         }
 
         //This query returns info for all speeches by logged-in req.user
