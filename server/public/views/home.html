@@ -1,10 +1,5 @@
 <div ng-include="'/views/attendance.html'"></div>
 <div class="well">
-<div>Hello, {{home.firstName}}!</div>
-<div ng-hide="home.isadmin == false"></div>
-<div ng-hide="home.role == 'guest'"></div>
-<div ng-hide="home.role == 'member'"></div>
-
 
 <h2>Next Meeting: <b>{{home.data.date | date: "fullDate"}}</b></h2>
     <hr>
