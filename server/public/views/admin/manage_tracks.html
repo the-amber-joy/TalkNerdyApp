@@ -14,14 +14,13 @@
      <button ng-click="manageTracks.showNewTracks = true">Or Click Here to Create a New Track</button>
 
      <form ng-submit="manageTracks.createTrack()" ng-repeat="project in manageTracks.selectedProjects.data">
-         <form>
+         <form ng-submit="manageTracks.addProject()">
              <div>
                  <label for="project.project_number">Project {{project.project_number}}:</label><br>
                  <input type="text" ng-model="project.project_name" id="project.project_number" placeholder="Project Name"><br>
                  <textarea ng-model="project.project_description" id="project.project_number.description" placeholder="Project Description"></textarea>
              </div>
-             <div id="addMoreProjects"></div>
-             <button
+             <input type="submit" value="Add Another Project" class="submitThis">
          </form>
          <div ng-show="manageTracks.showNewTracks">
              <input type="submit" value="Submit Changes" class="submitThis">

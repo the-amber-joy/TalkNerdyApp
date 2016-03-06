@@ -261,10 +261,10 @@ app.controller('TrackController', ['$scope','$http', 'AddProjects', function ($s
     };
 
 
-    //$scope.newTrack = {
-    //        track_name: this.trackName,
-    //        project_name: this.projectName,
-    //        project_descripton: this.projectDescription
+
+    manageTracks.addProject = function () {
+        manageTracks.message = "Clicked!";
+    }
 
 }]);
 //+++++++++++++++++++++++++ End of TRACK ++++++++++++++++++++++++++++
