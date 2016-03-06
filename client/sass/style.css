@@ -156,8 +156,10 @@ nav {
   width: 485px;
   margin-left: 10px; }
 
-.dateThemeLocationWord {
-  float: left; }
+.dtlw {
+  float: left;
+  width: 485px;
+  margin-bottom: 15px; }
 
 .datetheme {
   float: left;
@@ -170,7 +172,8 @@ nav {
   width: 230px; }
 
 .speechcolumns {
-  float: left; }
+  float: right;
+  clear: right; }
 
 .date {
   margin: 0 -25px 0 0; }
@@ -196,9 +199,7 @@ nav {
   width: 220px; }
 
 .tmasterPositions {
-  margin-right: 10px;
   float: left;
-  clear: left;
   margin-top: 8px; }
 
 .pofficfer {
@@ -231,17 +232,16 @@ nav {
 .first {
   width: 172px;
   float: left;
-  margin-top: 33px; }
+  clear: both; }
 
 .second {
   width: 172px;
   float: left;
-  margin: 33px 10px 0 10px; }
+  margin: 0 5px 0 5px; }
 
 .third {
   width: 172px;
-  float: right;
-  margin-top: 33px; }
+  float: right; }
 
 .speechone, .speechtwo, .speechthree {
   margin-bottom: 20px; }
