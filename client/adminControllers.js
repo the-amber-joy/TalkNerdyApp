@@ -131,10 +131,11 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
     });
 
     //This call grabs all the open speech requests that do not have assigned dates yet
-    //$http.get('/manageMtg').then(function (response) {
-    //    this.pendingRequests = response.data;
-    //    console.log(response.data);
-    //});
+    $http.get('/manageMtg/pendingRequests').then(function (response) {
+        this.pendingRequests = response.data;
+        console.log(response.data);
+        manageMtg.pending = response.data;
+    });
 
     //Return the dates for future meetings from the DB
     $http.get('/manageMtg/getDates').then(function (response) {
