@@ -225,7 +225,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 //|||||||                     TRACK CONTROLLER
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
+app.controller('TrackController', ['$scope','$http', 'AddProjects', function ($scope, $http, AddProjects) {
 
     var manageTracks = this;
 
@@ -259,7 +259,6 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
         manageTracks.showNewTracks = false;
 
     };
-
 
 
     //$scope.newTrack = {
