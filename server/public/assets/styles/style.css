@@ -132,7 +132,8 @@ nav {
   margin-left: 5px; }
 
 .heading {
-  text-align: center; }
+  text-align: center;
+  padding-bottom: 40px; }
 
 .pending {
   float: left;
@@ -143,7 +144,7 @@ nav {
   margin-top: -2px; }
 
 .pendtext {
-  height: 380px; }
+  height: 250px; }
 
 .delemeeting {
   width: 222px;
