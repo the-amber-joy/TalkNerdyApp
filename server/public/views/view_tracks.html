@@ -1,7 +1,7 @@
  <h2>Toastmasters Education Program Tracks</h2>
 
 <form>
-    <select ng-model="selectedTrack" style="font-size: 26px" ng-change="loadProjects()">
+    <select ng-model="viewTracks.selectedTrack" style="font-size: 26px" ng-change="viewTracks.loadProjects()">
         <option value="" disabled selected>Select A Track:</option>
         <option ng-repeat="track in viewTracks.tracks track by $index" value={{$index}}>{{track.track_name}}</option>
     </select>
