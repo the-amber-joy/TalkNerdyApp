@@ -77,7 +77,8 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
 
     requestSpeech.data = {
         firstName: UserService.firstName,
-        lastName: UserService.lastName
+        lastName: UserService.lastName,
+        google_id: UserService.google_id
     };
 
     $http.get('/getTracks').then(function(response){
