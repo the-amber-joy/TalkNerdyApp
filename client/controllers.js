@@ -82,14 +82,18 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
     };
 
     $http.get('/getTracks').then(function(response){
-        //console.log('tracks:', response.data);
+        console.log('tracks:', response.data);
         requestSpeech.tracks = response.data;
     });
 
     $http.get('/getProjects').then(function(response){
-        //console.log('projects:', response.data);
+        console.log('projects:', response.data);
         requestSpeech.projects = response.data;
     });
+
+    console.log('tracks:', requestSpeech.tracks);
+    console.log('projects:', requestSpeech.projects);
+
 
     requestSpeech.resetForm = function(){
         requestSpeech.data = {};

@@ -13,32 +13,6 @@ app.factory('UserService', function(){
 
 });
 
-app.factory('TrackService', function(){
-
-    var tracks = [];
-
-    $http.get('/getTracks').then(function(response){
-        tracks = response.data;
-    });
-
-    return tracks;
-
-
-});
-
-app.factory('ProjectService', function(){
-
-    var projects = [];
-
-    $http.get('/getProjects').then(function(response){
-        projects = response.data;
-    });
-
-    return projects;
-
-
-
-});
 
 app.factory('NestedTrackService', function(){
 
