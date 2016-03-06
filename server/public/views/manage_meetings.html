@@ -1,10 +1,10 @@
 <div class="container row">
-<div class=" mainbody col-xs-12 col-sm-8 col-md-12">
+<div class="centrebody col-xs-12 col-sm-8 col-md-12">
 <h2 class="heading"> Create a Future Meeting</h2>
 
 
                          <!--UNNECESSARY TEXT BOX FORM     -->
-<!--<form>-->
+<form>
 
     <!--<div class=" rbox col-md-9.6">-->
         <!--<div class="pending col-md-2.4">-->
@@ -19,10 +19,76 @@
                 <!--<input ng-click="deleteManagedMeetings()" type="submit" class="delemeeting" value="Delete This Meeting">-->
             <!--</div>-->
         <!--</div>-->
+    <div class="tmasterPositions col-md-2.4">
+        <div>
+            <label for="presiding_Officer">Presiding Officer:</label><br>
+            <input type="text" ng-model="presiding_officer" id="presiding_officer" class="pofficer">
+        </div>
 
+        <br>
+
+        <div>
+            <label for="toastmaster">Toastmaster:</label><br>
+            <input type="text" ng-model="toastmaster" id="toastmaster" class="toastmaster">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="general_evaluator">General Evaluator:</label><br>
+            <input type="text" ng-model="general_evaluator" id="general_evaluator" class="gevaluator">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="evaluatorOne">Speech Evaluator One:</label><br>
+            <input type="text" ng-model="speech_evaluator_1" id="evaluatorOne" class="eval1">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="evaluatorTwo">Speech Evaluator Two:</label><br>
+            <input type="text" ng-model="speech_evaluator_2" id="evaluatorTwo" class="eval2">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="evaluatorThree">Speech Evaluator Three:</label><br>
+            <input type="text" ng-model="speech_evaluator_3" id="evaluatorThree" class="eval3">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="timer">Timer:</label><br>
+            <input type="text" ng-model="timer" id="timer" class="timer">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="grammarian">Grammarian:</label><br>
+            <input type=text ng-model="grammarian" id="grammarian" class="grammarian">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="ahCounter">Ah-Counter:</label><br>
+            <input type="text" ng-model="ah_counter" id="ahCounter" class="ahcounter">
+        </div>
+
+
+        <div class="subbuttons">
+            <input ng-click="submitManagedMeetings()" type="submit" class="sinput" value="Save Meeting">
+        </div>
+    </div>
 
                         <!--SELECT A DATE DROPDOWN-->
-<div class="dateThemeLocationWord">
+<div class="dtlwc">
     <div class="dtlw col-md-7">
     <div class="datetheme col-md-3.5">
         <div class="date">
@@ -52,7 +118,6 @@
 
     </div>
 </div>
-    </div>
     </div>
 
 
@@ -150,74 +215,9 @@
     </div>
     </div>
 
-<div class="tmasterPositions col-md-2.4">
-    <div>
-        <label for="presiding_Officer">Presiding Officer:</label><br>
-        <input type="text" ng-model="presiding_officer" id="presiding_officer" class="pofficer">
-    </div>
-
-        <br>
-
-    <div>
-        <label for="toastmaster">Toastmaster:</label><br>
-        <input type="text" ng-model="toastmaster" id="toastmaster" class="toastmaster">
-    </div>
-
-        <br>
-
-    <div>
-        <label for="general_evaluator">General Evaluator:</label><br>
-        <input type="text" ng-model="general_evaluator" id="general_evaluator" class="gevaluator">
-    </div>
-
-        <br>
-
-    <div>
-        <label for="evaluatorOne">Speech Evaluator One:</label><br>
-        <input type="text" ng-model="speech_evaluator_1" id="evaluatorOne" class="eval1">
-    </div>
-
-        <br>
-
-    <div>
-        <label for="evaluatorTwo">Speech Evaluator Two:</label><br>
-        <input type="text" ng-model="speech_evaluator_2" id="evaluatorTwo" class="eval2">
-    </div>
-
-        <br>
-
-    <div>
-        <label for="evaluatorThree">Speech Evaluator Three:</label><br>
-        <input type="text" ng-model="speech_evaluator_3" id="evaluatorThree" class="eval3">
-    </div>
-
-        <br>
-
-    <div>
-        <label for="timer">Timer:</label><br>
-        <input type="text" ng-model="timer" id="timer" class="timer">
-    </div>
-
-        <br>
-
-    <div>
-        <label for="grammarian">Grammarian:</label><br>
-        <input type=text ng-model="grammarian" id="grammarian" class="grammarian">
-    </div>
-
-        <br>
-
-    <div>
-        <label for="ahCounter">Ah-Counter:</label><br>
-        <input type="text" ng-model="ah_counter" id="ahCounter" class="ahcounter">
-    </div>
-
-
-    <div class="subbuttons">
-        <input ng-click="submitManagedMeetings()" type="submit" class="sinput" value="Save Meeting">
-    </div>
 </div>
-    </div>
+
+
 </form>
 </div>
 </div>

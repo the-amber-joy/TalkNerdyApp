@@ -57,7 +57,7 @@ main {
   border-radius: 0 4px 4px 0; }
   main .well {
     background-color: #FFFFFF;
-    width: 90%; }
+    width: 100%; }
 
 nav {
   margin-left: -14px;
@@ -118,14 +118,15 @@ nav {
   padding-bottom: 55px; }
 
 .container {
-  width: 1062px;
+  width: 798px;
   border-color: black;
   border: solid;
   padding-bottom: 15px;
   margin-left: 15px; }
 
 .mainbody {
-  width: 100%; }
+  width: 97%;
+  margin-left: 2px; }
 
 .heading {
   text-align: center; }
@@ -155,22 +156,20 @@ nav {
   margin-left: 10px; }
 
 .dateThemeLocationWord {
-  float: right;
-  padding-right: 185px; }
+  float: left; }
 
 .datetheme {
   float: left;
-  margin-top: 65px;
+  margin-top: 27px;
   width: 223px; }
 
 .locationword {
-  float: left;
-  margin-top: 64px;
+  padding-left: 10px;
+  float: right;
   width: 230px; }
 
 .speechcolumns {
-  float: right;
-  padding-right: 120px; }
+  float: left; }
 
 .date {
   margin: 0 -25px 0 0; }
@@ -179,15 +178,15 @@ nav {
   float: right; }
 
 .locationbox {
-  width: 220px; }
+  width: 220px;
+  margin-bottom: 5px; }
 
 .word {
   float: right;
   clear: right; }
 
 .wordbox {
-  width: 220px;
-  margin-top: 25px; }
+  width: 220px; }
 
 .theme {
   margin: 10px 0 0 0; }
@@ -199,7 +198,7 @@ nav {
   margin-right: 10px;
   float: left;
   clear: left;
-  margin-top: -138px; }
+  margin-top: 8px; }
 
 .pofficfer {
   margin-bottom: 5px; }
