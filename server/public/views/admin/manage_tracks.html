@@ -6,7 +6,7 @@
          <option ng-repeat="track in manageTracks.tracks track by $index" value={{$index}}>{{track.track_name}}</option>
      </select>
  </form>
-
+<br>
 <form ng-submit="manageTracks.changeTrack()" ng-repeat="project in manageTracks.selectedProjects.data">
     <form>
         <div>
