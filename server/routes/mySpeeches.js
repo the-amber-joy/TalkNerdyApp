@@ -18,7 +18,7 @@ router.post('/', function(request, response){
         }
 
         //This query returns info for all speeches by logged-in req.user
-        var queryString = "SELECT * FROM speeches WHERE speaker_google_id = $1 ORDER BY speech_date DESC";
+        var queryString = "SELECT * FROM speeches WHERE speaker_google_id = $1 AND speech_date IS NOT NULL ORDER BY speech_date DESC";
 
         var query = client.query(queryString, [user]);
 
