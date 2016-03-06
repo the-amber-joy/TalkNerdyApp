@@ -225,11 +225,12 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 //|||||||                     TRACK CONTROLLER
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
+app.controller('TrackController', ['$scope','$http', 'AddProjects', function ($scope, $http, AddProjects) {
 
     var manageTracks = this;
 
-    manageTracks.showSubmitButton = false;
+    manageTracks.showNewTracks = false;
+
 
     var allTracks = [];
 
@@ -244,8 +245,8 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
         $http.post('/getProjects', allTracks[manageTracks.selectedTrack]).then(function(response){
             manageTracks.selectedProjects = response;
         });
-        manageTracks.showSubmitButton = true;
-    }
+        manageTracks.showNewTracks = true;
+    },
 
 
     manageTracks.newTrack = {};
@@ -255,17 +256,15 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
         $http.post('/manageTracks', manageTracks.newTrack).then(function(request){
         });
         $scope.resetTrackForm();
+        manageTracks.showNewTracks = false;
+
     };
 
-    manageTracks.resetTrackForm = function(){
-        $scope.newTrack = {};
-    };
 
 
-    //$scope.newTrack = {
-    //        track_name: this.trackName,
-    //        project_name: this.projectName,
-    //        project_descripton: this.projectDescription
+    manageTracks.addProject = function () {
+        manageTracks.message = "Clicked!";
+    }
 
 }]);
 //+++++++++++++++++++++++++ End of TRACK ++++++++++++++++++++++++++++

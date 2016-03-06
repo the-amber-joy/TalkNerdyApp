@@ -164,6 +164,10 @@ nav {
   margin-left: 5px;
 }
 
+.centrebody {
+  width: 100%;
+}
+
 .heading {
   text-align: center;
   padding-bottom: 40px;
@@ -195,31 +199,28 @@ nav {
 }
 
 .dtlw {
-  width: 485px;
-  margin-left: 10px;
-}
-
-.dtlw {
   float: left;
   width: 485px;
   margin-bottom: 15px;
+  margin-left: 10px;
 }
 
 .datetheme {
   float: left;
   margin-top: 27px;
   width: 223px;
+  display: inline-block;
 }
 
 .locationword {
   padding-left: 10px;
   float: right;
   width: 230px;
+  display: inline-block;
 }
 
 .speechcolumns {
-  float: right;
-  clear: right;
+  float: left;
 }
 
 .date {
@@ -253,7 +254,6 @@ nav {
 }
 
 .tmasterPositions {
-  margin-left: -50px;
   float: left;
   margin-top: 8px;
 }
@@ -294,21 +294,17 @@ nav {
 }
 
 .first {
-  margin-left: -28px;
-  width: 172px;
-  float: left;
   clear: both;
 }
 
 .second {
-  width: 172px;
-  float: left;
-  margin: 0 5px 0 15px;
+  margin: 0 25px 0 25px;
 }
 
-.third {
-  width: 190px;
-  float: right;
+.first, .second, .third {
+  display: inline;
+  width: 29%;
+  float: left;
 }
 
 .speechone, .speechtwo, .speechthree {
@@ -350,6 +346,15 @@ nav {
   margin-right: 30px;
 }
 
+.submitclear {
+  width: 98%;
+  margin-left: 15px;
+}
+
+.requestsubmit {
+  margin-left: -16px;
+}
+
 .trackproject {
   float: left;
   width: 220px;
@@ -379,14 +384,12 @@ nav {
 }
 
 .buttonclear {
-  float: right;
-  margin-right: -24px;
-  margin-top: -25px;
+  float: left;
+  margin-left: 17px;
 }
 
 .requestsubmit {
-  float: right;
-  margin-right: 45px;
+  float: left;
 }
 
 .click {
