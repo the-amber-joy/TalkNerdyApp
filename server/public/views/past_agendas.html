@@ -3,23 +3,27 @@
 <div class="pastAgendas">
 
     <div class="well" ng-repeat="agenda in past.agendas">
-        Date: {{agenda.date | date}}<br>
-        Theme: {{agenda.theme}}<br>
-        Meeting Description: {{agenda.description}}<br>
-        Word of the Day: {{agenda.word_of_day}}<br>
-        Location: {{agenda.location}}<br>
-        Speech 1: {{agenda.speech_1}}<br>
-        Speech 2: {{agenda.speech_2}}<br>
-        Meeting Roles:<br>
-            Presiding Officer: {{agenda.presiding_officer}}<br>
-            Toastmaster: {{agenda.toastmaster}}<br>
-            General Evaluator: {{agenda.general_evaluator}}<br>
-            Evaluator 1: {{agenda.speech_evaluator_1}}<br>
-            Evaluator 2: {{agenda.speech_evaluator_2}}<br>
-            Table Topics Czar: {{agenda.table_topics_czar}}<br>
-            Timer: {{agenda.timer}}<br>
-            Grammarian: {{agenda.grammarian}}<br>
-            Ah Counter: {{agenda.ah_counter}}<br>
+        <h3>{{agenda.date | date}}</h3><br>
+        Theme: <b>{{agenda.theme}}</b><br>
+        Meeting Description: <b>{{agenda.description}}</b><br>
+        Word of the Day: <b>{{agenda.word_of_day}}</b><br>
+        Location: <b>{{agenda.location}}</b><br>
+        <hr/>
+        <!--Speech 1: <b>{{agenda.speech_1}}</b><br>-->
+        <!--Speech 2: <b>{{agenda.speech_2}}</b><br>-->
+        <hr/>
+        <b style="text-decoration: underline ">Meeting Roles</b><br>
+            Presiding Officer: <b>{{agenda.presiding_officer}}</b><br>
+            Toastmaster: <b>{{agenda.toastmaster}}</b><br>
+            General Evaluator: <b>{{agenda.general_evaluator}}</b><br>
+            Evaluator 1: <b>{{agenda.speech_evaluator_1}}</b><br>
+            Evaluator 2: <b>{{agenda.speech_evaluator_2}}</b><br>
+            Table Topics Czar: <b>{{agenda.table_topics_czar}}</b><br>
+            Timer: <b>{{agenda.timer}}</b><br>
+            Grammarian: <b>{{agenda.grammarian}}</b><br>
+            Ah Counter: <b>{{agenda.ah_counter}}</b><br>
+        <br/>
+            Attendance: <b>{{agenda.attendee_count}}</b>
 
     </div>
 
