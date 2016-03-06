@@ -225,12 +225,11 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 //|||||||                     TRACK CONTROLLER
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-app.controller('TrackController', ['$scope','$http', 'AddProjects', function ($scope, $http, AddProjects) {
+app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
 
     var manageTracks = this;
 
-    manageTracks.showNewTracks = false;
-
+    manageTracks.showSubmitButton = false;
 
     var allTracks = [];
 
@@ -245,8 +244,8 @@ app.controller('TrackController', ['$scope','$http', 'AddProjects', function ($s
         $http.post('/getProjects', allTracks[manageTracks.selectedTrack]).then(function(response){
             manageTracks.selectedProjects = response;
         });
-        manageTracks.showNewTracks = true;
-    },
+        manageTracks.showSubmitButton = true;
+    }
 
 
     manageTracks.newTrack = {};
@@ -256,15 +255,13 @@ app.controller('TrackController', ['$scope','$http', 'AddProjects', function ($s
         $http.post('/manageTracks', manageTracks.newTrack).then(function(request){
         });
         $scope.resetTrackForm();
-        manageTracks.showNewTracks = false;
+    };
 
+    manageTracks.resetTrackForm = function(){
+        $scope.newTrack = {};
     };
 
 
-
-    manageTracks.addProject = function () {
-        manageTracks.message = "Clicked!";
-    }
 
 }]);
 //+++++++++++++++++++++++++ End of TRACK ++++++++++++++++++++++++++++
