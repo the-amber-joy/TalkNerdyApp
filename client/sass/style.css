@@ -6,7 +6,8 @@ body {
   background-image: url("http://www.transparenttextures.com/patterns/cross-scratches.png"); }
 
 header {
-  padding: -4px; }
+  padding: -4px;
+  width: 100%; }
 
 .login {
   padding: 1px 20px 20px;
@@ -126,7 +127,7 @@ nav {
   margin-left: 15px; }
 
 .mainbody {
-  width: 97%;
+  width: 90%;
   margin-left: 2px; }
 
 .heading {
@@ -305,8 +306,5 @@ nav {
 
 .userindex {
   width: 45%; }
-
-.rostersubmit {
-  width: 410px; }
 
 /*# sourceMappingURL=style.css.map */
