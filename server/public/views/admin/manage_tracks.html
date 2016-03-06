@@ -8,18 +8,30 @@
  </form>
 
 <br>
+<<<<<<< HEAD
+<form ng-submit="manageTracks.changeTrack()" ng-repeat="project in manageTracks.selectedProjects.data">
+    <form>
+        <div>
+            <label for="project.project_number">Project {{project.project_number}}:</label><br>
+            <input type="text" ng-model="project.project_name" id="project.project_number" placeholder="Project Name"><br>
+            <br>
+            <textarea rows="1" cols="50" class="pendtext" name="comment" ng-model="project.project_description" id="project.project_number.description" placeholder="Project Description"></textarea>
+        <hr>
+        </div>
+=======
 
  <!--Form to create a new track -->
  <div ng-show="manageTracks.showNewTracks" >
      <button ng-click="manageTracks.showNewTracks = true">Or Click Here to Create a New Track</button>
 
      <form ng-submit="manageTracks.createTrack()" ng-repeat="project in manageTracks.selectedProjects.data">
-         <form>
+         <form ng-submit="manageTracks.addProject()">
              <div>
                  <label for="project.project_number">Project {{project.project_number}}:</label><br>
                  <input type="text" ng-model="project.project_name" id="project.project_number" placeholder="Project Name"><br>
                  <textarea ng-model="project.project_description" id="project.project_number.description" placeholder="Project Description"></textarea>
              </div>
+             <input type="submit" value="Add Another Project" class="submitThis">
          </form>
          <div ng-show="manageTracks.showNewTracks">
              <input type="submit" value="Submit Changes" class="submitThis">
@@ -43,6 +55,7 @@
                 <textarea ng-model="project.project_description" id="project.project_number.description" placeholder="Project Description"></textarea>
             </div>
         </form>
+>>>>>>> 4668bcc46df353999fc8971d457ff4cb67149d55
     </form>
 
     <div>

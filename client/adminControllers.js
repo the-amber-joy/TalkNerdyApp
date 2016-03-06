@@ -226,7 +226,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 //|||||||                     TRACK CONTROLLER
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
+app.controller('TrackController', ['$scope','$http', 'AddProjects', function ($scope, $http, AddProjects) {
 
     var manageTracks = this;
 
@@ -263,10 +263,9 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
 
 
 
-    //$scope.newTrack = {
-    //        track_name: this.trackName,
-    //        project_name: this.projectName,
-    //        project_descripton: this.projectDescription
+    manageTracks.addProject = function () {
+        manageTracks.message = "Clicked!";
+    }
 
 }]);
 //+++++++++++++++++++++++++ End of TRACK ++++++++++++++++++++++++++++
