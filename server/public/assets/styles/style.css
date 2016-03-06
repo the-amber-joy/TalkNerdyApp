@@ -125,7 +125,7 @@ nav {
   margin-left: 15px; }
 
 .mainbody {
-  width: 1022px; }
+  width: 100%; }
 
 .heading {
   text-align: center; }
@@ -275,6 +275,9 @@ nav {
   float: left;
   width: 220px;
   margin-top: 20px; }
+
+.project {
+  width: 168px; }
 
 .requestinstruct {
   margin-left: 13px; }
