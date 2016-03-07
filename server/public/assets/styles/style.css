@@ -243,7 +243,7 @@ nav {
   margin-bottom: 4px; }
 
 .subbuttons {
-  margin: 15px 0 0 3px; }
+  margin: 15px 0 0 -2px; }
 
 .sinput {
   width: 173px;
@@ -287,13 +287,15 @@ nav {
   width: 173px; }
 
 .pending_speeches {
-  margin-top: -62%;
+  margin-top: -54%;
   width: 55%;
   background-color: white;
   position: relative;
   float: right;
   padding-top: 10px;
-  padding-bottom: 10px; }
+  padding-bottom: 10px;
+  height: 715px;
+  overflow: scroll; }
 
 .requestform {
   height: 175px; }

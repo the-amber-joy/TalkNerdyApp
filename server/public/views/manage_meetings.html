@@ -219,14 +219,20 @@
         </div>
         </div>
         <div class="pending_speeches col-md-5">
+            <h4 class="speechrequest">Requested Speeches</h4>
             <div ng-repeat="unscheduled in manageMtg.pending">
                 <p>{{unscheduled.date_requested | date: "fullDate"}}
-                {{unscheduled.speaker_first_name}}
-                {{unscheduled.speaker_last_name}}.
-                {{unscheduled.speech_title}}.
-                {{unscheduled.summary}}
-                {{unscheduled.track}}.
-                {{unscheduled.track_project}}.</p>
+                    <br>
+                Name: {{unscheduled.speaker_first_name}}
+                 {{unscheduled.speaker_last_name}}
+                    <br>
+                Speech Title: {{unscheduled.speech_title}}
+                    <br>
+                Summary: {{unscheduled.summary}}
+                    <br>
+                Track: {{unscheduled.track}}
+                    <br>
+                Project: {{unscheduled.track_project}}.</p>
                 <hr>
             </div>
         </div>

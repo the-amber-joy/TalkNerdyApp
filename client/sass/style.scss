@@ -304,7 +304,7 @@ nav {
 }
 
 .subbuttons{
-  margin: 15px 0 0 3px;
+  margin: 15px 0 0 -2px;
 }
 
 .sinput {
@@ -361,13 +361,15 @@ nav {
 }
 
 .pending_speeches {
-  margin-top: -62%;
+  margin-top: -54%;
   width: 55%;
   background-color: white;
   position: relative;
   float: right;
   padding-top: 10px;
   padding-bottom: 10px;
+  height: 715px;
+  overflow: scroll;
 }
 
 
