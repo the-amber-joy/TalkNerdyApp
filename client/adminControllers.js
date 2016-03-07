@@ -245,19 +245,20 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
             manageTracks.selectedProjects = response;
         });
         manageTracks.showSubmitButton = true;
+        console.log('selectedprojects', manageTracks.selectedProjects);
     };
 
     manageTracks.newTrack = {};
 
     manageTracks.changeTrack = function(){
-        //console.log('request object:', $scope.newTrack);
-        $http.post('/manageTracks', manageTracks.newTrack).then(function(request){
+        console.log('request object:', manageTracks.selectedProjects.data);
+        $http.post('/manageTracks', manageTracks.selectedProjects.data).then(function(request){
         });
-        $scope.resetTrackForm();
+        manageTracks.resetTrackForm();
     };
 
     manageTracks.resetTrackForm = function(){
-        $scope.newTrack = {};
+        manageTracks.selectedProjects = {};
     };
 
 
