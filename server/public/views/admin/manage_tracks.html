@@ -2,26 +2,35 @@
 
 <form>
     <select ng-model="manageTracks.selectedTrack" style="font-size: 26px; margin-left: 20px; margin-top: 30px" ng-change="manageTracks.loadProjects()">
-        <option value="" disabled selected>Select A Track:</option>
+        <option value="" disabled selected>Select A Track to Edit:</option>
         <option ng-repeat="track in manageTracks.tracks track by $index" value={{$index}}>{{track.track_name}}</option>
     </select>
 </form>
 <br>
 
+<<<<<<< HEAD
 <form ng-submit="manageTracks.changeTrack()">
+=======
+<form ng-model="manageTracks.selectedProjects.data" ng-submit="manageTracks.changeTrack()">
+>>>>>>> Amber
     <div ng-repeat="project in manageTracks.selectedProjects.data">
         <label for="project.project_number">Project {{project.project_number}}:</label><br>
         <input type="text" ng-model="project.project_name" id="project.project_number" placeholder="Project Name"><br>
         <br>
         <textarea rows="20" class="pendtext" name="comment" ng-model="project.project_description" id="project.project_number.description" placeholder="Project Description"></textarea>
     <hr>
+<<<<<<< HEAD
     </div>
 
     <p ng-show="manageTracks.success">Thank you! Your changes have been submitted.</p>
 
     <div ng-show="manageTracks.showSubmitButton">
         <input type="submit" value="Submit" class="submitThis">
+=======
+>>>>>>> Amber
     </div>
+    <p ng-show="manageTracks.success">Thank you! Your changes have been submitted.</p>
+    <input ng-show="manageTracks.showSubmitButton" type="submit" value="Submit" class="submitThis">
 </form>
 
 
