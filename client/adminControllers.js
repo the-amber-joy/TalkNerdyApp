@@ -230,6 +230,7 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
     var manageTracks = this;
 
     manageTracks.showSubmitButton = false;
+    manageTracks.success = false;
 
     var allTracks = [];
 
@@ -250,15 +251,14 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
     manageTracks.newTrack = {};
 
     manageTracks.changeTrack = function(){
+        console.log('CLICKED!');
+        manageTracks.success = true;
         //console.log('request object:', $scope.newTrack);
         $http.post('/manageTracks', manageTracks.newTrack).then(function(request){
         });
-        $scope.resetTrackForm();
+
     };
 
-    manageTracks.resetTrackForm = function(){
-        $scope.newTrack = {};
-    };
 
 
 }]);
