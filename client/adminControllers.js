@@ -132,8 +132,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 
     //This call grabs all the open speech requests that do not have assigned dates yet
     $http.get('/manageMtg/pendingRequests').then(function (response) {
-        this.pendingRequests = response.data;
-        console.log(response.data);
+        console.log('pending requests', response.data);
         manageMtg.pending = response.data;
     });
 
@@ -246,8 +245,7 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
             manageTracks.selectedProjects = response;
         });
         manageTracks.showSubmitButton = true;
-    }
-
+    };
 
     manageTracks.newTrack = {};
 
@@ -261,7 +259,6 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
     manageTracks.resetTrackForm = function(){
         $scope.newTrack = {};
     };
-
 
 
 }]);
