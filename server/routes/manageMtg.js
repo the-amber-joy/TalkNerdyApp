@@ -214,6 +214,6 @@ router.post('/submitManagedMeeting', function(request, response) {
     //Add dates to the requested speeches
     var query = client.query(updateSpeeches, meetingDetails);
 
-}
+    });
 
 module.exports = router;
