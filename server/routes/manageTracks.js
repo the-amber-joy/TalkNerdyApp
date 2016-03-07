@@ -32,7 +32,6 @@ router.post('/', function(request){
         };
 
         addProjectNumbers(trackInfo);
-        console.log('trackinfo:', trackInfo);
 
         for (i = 0; i < trackInfo.length; i++){
             client.query(updateTrack, [trackInfo[i].project_name, trackInfo[i].project_description, trackInfo[i].project_number, trackInfo[i].track_name]);
