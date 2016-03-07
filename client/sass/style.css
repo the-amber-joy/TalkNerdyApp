@@ -144,8 +144,7 @@ nav {
 
 .setdate {
   float: left;
-  width: 100%;
-  padding-bottom: 40px; }
+  width: 100%; }
 
 .pending {
   float: left;
@@ -181,6 +180,7 @@ nav {
   margin-top: 10px; }
 
 .locationword {
+  margin-top: -6px;
   padding-left: 10px;
   float: left;
   width: 230px;
@@ -203,11 +203,12 @@ nav {
 
 .locationbox {
   width: 220px;
-  margin-bottom: 5px; }
+  margin-top: 10px; }
 
 .word {
   float: right;
-  clear: right; }
+  clear: right;
+  margin-top: 1px; }
 
 .wordbox {
   width: 220px; }
@@ -285,6 +286,10 @@ nav {
 .speechinputone, .speechinputtwo, .speechinputthree {
   background-color: yellow;
   width: 173px; }
+
+.pending_speeches {
+  margin-top: 15%;
+  width: 78%; }
 
 .requestform {
   height: 175px; }
