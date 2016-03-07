@@ -121,10 +121,6 @@ nav {
   padding-bottom: 55px; }
 
 .container {
-  width: 100%;
-  border-color: black;
-  border: solid;
-  padding-bottom: 15px;
   margin-left: 15px; }
 
 .mainbody {
@@ -132,14 +128,13 @@ nav {
   margin-left: 5px; }
 
 .centrebody {
-  width: 101%; }
+  border-color: black;
+  border: solid;
+  padding-bottom: 15px; }
 
 .heading {
   text-align: center;
   float: left;
-  display: inline-block; }
-
-.headingdate {
   display: inline-block; }
 
 .setdate {
@@ -173,50 +168,24 @@ nav {
   margin-bottom: 15px;
   margin-left: 10px; }
 
-.datetheme {
-  float: left;
-  width: 223px;
-  display: inline-block;
-  margin-top: 10px; }
-
-.locationword {
-  margin-top: 4px;
-  padding-left: 10px;
-  float: left;
-  width: 230px;
-  display: inline-block; }
-
 .speechcolumns {
-  float: right;
-  width: 22%; }
+  float: right; }
 
 .date {
   float: left;
   display: inline-block;
   margin-top: 26px; }
 
-.customdate {
-  width: 100%; }
-
 .location {
   float: right; }
-
-.locationbox {
-  width: 220px; }
 
 .word {
   float: right;
   clear: right;
   margin-top: 1px; }
 
-.wordbox {
-  width: 220px; }
-
 .theme {
   margin: 10px 0 0 0; }
-
-.themebox {
-  width: 220px; }
 
 .tmasterPositions {
   float: left;
@@ -287,15 +256,11 @@ nav {
   width: 173px; }
 
 .pending_speeches {
-  margin-top: -54%;
-  width: 55%;
   background-color: white;
-  position: relative;
-  float: right;
-  padding-top: 10px;
-  padding-bottom: 10px;
   height: 715px;
-  overflow: scroll; }
+  overflow: scroll;
+  margin-top: 30px;
+  border: solid; }
 
 .requestform {
   height: 175px; }
