@@ -1,8 +1,14 @@
 <div class="container row">
 <div class="centrebody col-xs-6 col-sm-12 col-md-12">
+    <div class="headingdate">
 <h2 class="heading"> Create or Edit a Future Meeting</h2>
-
-
+    <div class="date">
+        <select ng-model="dateStart" class="startdate" ng-change="fetchExistingFields(dateStart)">
+            <option value="" disabled selected>Select Meeting Date</option>
+            <option ng-repeat="day in manageMtg.dateArray" value={{day.date}}>{{day.date | date: "fullDate"}}</option>";
+        </select>
+    </div>
+</div>
 
                          <!--UNNECESSARY TEXT BOX FORM     -->
 <form>
@@ -89,16 +95,14 @@
     </div>
 
                         <!--SELECT A DATE DROPDOWN-->
-    <div class="speechcolumns col-xs-12 col-sm-12 col-md-8">
-    <div class="dtlw col-sm-4 col-md-7">
-    <div class="datetheme col-md-3.5">
-        <div class="date">
-            <select ng-model="dateStart" class="startdate" ng-change="fetchExistingFields(dateStart)">
-                <option value="" disabled selected>Select Meeting Date</option>
-                <option ng-repeat="day in manageMtg.dateArray" value={{day.date}}>{{day.date | date: "fullDate"}}</option>";
-            </select>
-        </div>
 
+    <div class="datetheme col-md-3.5">
+<div class="setdate">
+    <form>
+        Create Custom Date:
+        <input type="date" name="custom" class="customdate">
+    </form>
+</div>
 
     <div class="theme">
         <label for="theme">Theme:</label>
@@ -119,10 +123,9 @@
 
     </div>
 </div>
-    </div>
 
 
-
+    <div class="speechcolumns col-xs-12 col-sm-12 col-md-8">
     <div class="first col-md-2.4">
         <div>
             <label for="speechonetitle">Speech One Title:</label>
@@ -141,7 +144,7 @@
             </select>
         </div>
         <div>
-            <label for="speakernameone">Speaker One Name:</label>
+            <label for="speakernameone">Speaker Name:</label>
             <input type="text" ng-model="speaker_nameone" id="speakernameone" class="speakername1">
         </div>
         <div>
@@ -172,7 +175,7 @@
             </select>
         </div>
         <div>
-            <label for="speakernametwo">Speech Two Name:</label>
+            <label for="speakernametwo">Speaker Name:</label>
             <input type="text" ng-model="speaker_nametwo" id="speakernametwo" class="speakername2">
         </div>
         <div>
@@ -203,19 +206,18 @@
             </select>
         </div>
         <div>
-            <label for="speakernamethree">Speaker Three Name:</label>
+            <label for="speakernamethree">Speaker Name:</label>
             <input type="text" ng-model="speaker_namethree" id="speakernamethree" class="speakername3">
         </div>
         <div>
-            <label for="speechblurbthree">Speech Three Blurb:</label>
+            <label for="speechblurbthree">Speech Blurb:</label>
             <input type="text" ng-model="speech_blurbthree" id="speechblurbthree" class="speechblurb3">
         </div>
         <div class="speechbuttonthree">
             <input type="submit" class="speechinputthree" value="Put Back In Queue">
         </div>
     </div>
-    </div>
-
+        </div>
 </form>
 </div>
 </div>
