@@ -288,8 +288,13 @@ nav {
   width: 173px; }
 
 .pending_speeches {
-  margin-top: 15%;
-  width: 78%; }
+  margin-top: -56%;
+  width: 55%;
+  background-color: white;
+  position: relative;
+  float: right;
+  padding-top: 10px;
+  padding-bottom: 10px; }
 
 .requestform {
   height: 175px; }
