@@ -228,17 +228,15 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
 
     var manageTracks = this;
-
-    manageTracks.showSubmitButton = false;
-
     var allTracks = [];
 
+    manageTracks.showSubmitButton = false;
+    manageTracks.success = false;
+
     $http.get('/getTracks').then(function(response){
-        //console.log('tracks:', response.data);
         manageTracks.tracks = response.data;
         allTracks = response.data;
     });
-
 
     manageTracks.loadProjects = function(){
         $http.post('/getProjects', allTracks[manageTracks.selectedTrack]).then(function(response){
@@ -247,20 +245,11 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
         manageTracks.showSubmitButton = true;
     };
 
-    manageTracks.newTrack = {};
-
     manageTracks.changeTrack = function(){
-        //console.log('request object:', $scope.newTrack);
-        $http.post('/manageTracks', manageTracks.newTrack).then(function(request){
-        });
-        $scope.resetTrackForm();
+        console.log('selectedprojects', manageTracks.selectedProjects.data);
+        $http.post('/manageTracks', manageTracks.selectedProjects.data);
+        manageTracks.success = true;
     };
-
-    manageTracks.resetTrackForm = function(){
-        $scope.newTrack = {};
-    };
-
-
 }]);
 //+++++++++++++++++++++++++ End of TRACK ++++++++++++++++++++++++++++
 
