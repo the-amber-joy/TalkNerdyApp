@@ -6,13 +6,16 @@
         <option ng-repeat="track in manageTracks.tracks track by $index" value={{$index}}>{{track.track_name}}</option>
     </select>
 </form>
+<br>
 
 <form ng-submit="manageTracks.changeTrack()" ng-repeat="project in manageTracks.selectedProjects.data">
     <form>
         <div>
             <label for="project.project_number">Project {{project.project_number}}:</label><br>
             <input type="text" ng-model="project.project_name" id="project.project_number" placeholder="Project Name"><br>
-            <textarea ng-model="project.project_description" id="project.project_number.description" placeholder="Project Description"></textarea>
+            <br>
+            <textarea rows="20" class="pendtext" name="comment" ng-model="project.project_description" id="project.project_number.description" placeholder="Project Description"></textarea>
+        <hr>
         </div>
     </form>
 
