@@ -222,11 +222,12 @@
             <div ng-repeat="unscheduled in manageMtg.pending">
                 <p>{{unscheduled.date_requested | date: "fullDate"}}
                 {{unscheduled.speaker_first_name}}
-                {{unscheduled.speaker_last_name}}
-                {{unscheduled.speech_title}}
+                {{unscheduled.speaker_last_name}}.
+                {{unscheduled.speech_title}}.
                 {{unscheduled.summary}}
-                {{unscheduled.track}}
-                {{unscheduled.track_project}}</p>
+                {{unscheduled.track}}.
+                {{unscheduled.track_project}}.</p>
+                <hr>
             </div>
         </div>
 </form>
