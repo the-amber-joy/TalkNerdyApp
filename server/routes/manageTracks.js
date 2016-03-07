@@ -7,31 +7,36 @@ var connectionString = require('../../database.json').data + '?ssl=true';
 
 
 router.post('/', function(request){
-    var trackInfo = request.body;
-    console.log('trackInfo:', trackInfo);
+    var trackInfo = request.body; //this is an array of objects
 
-    function addProjectNumbers(foo){
+    function addProjectNumbers(array){
         var projectCounter = 1;
-        for (i = 1; i < foo.length+1; i++){
-            foo[i].project_number = i;
+
+        for (i = 0; i < array.length; i++){
+            array[i].project_number = i+1;
             projectCounter++;
         }
-        return trackInfo;
+        return array;
     }
 
-    var updateTrack = "INSERT INTO speech_tracks \
-                    (track_name, project_name, project_description, project_number) \
-                    VALUES \
-                    ($1, $2, $3, $4);";
+
+    var updateTrack = "UPDATE speech_tracks \
+                    SET project_name = $1, project_description = $2, project_number = $3 \
+                    WHERE track_name = $4 ";
 
     pg.connect(connectionString, function(error, client) {
         if(error) {
             console.log(error);
             client.end();
             return response.status(500).json({ success: false, data: error});
-        }
+        };
 
-        client.query(updateTrack, [addProjectNumbers(trackInfo)]);
+        addProjectNumbers(trackInfo);
+        console.log('trackinfo:', trackInfo);
+
+        for (i = 0; i < trackInfo.length; i++){
+            client.query(updateTrack, [trackInfo[i].project_name, trackInfo[i].project_description, trackInfo[i].project_number, trackInfo[i].track_name]);
+        };
 
         client.on('end', function () {
             client.end();
