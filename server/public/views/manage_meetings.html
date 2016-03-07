@@ -216,6 +216,8 @@
         <div class="speechbuttonthree">
             <input type="submit" class="speechinputthree" value="Put Back In Queue">
         </div>
+        </div>
+        </div>
         <div class="pending_speeches">
             <div ng-repeat="unscheduled in manageMtg.pending">
                 <p>{{unscheduled.date_requested | date: "fullDate"}}
@@ -226,8 +228,6 @@
                 {{unscheduled.track}}
                 {{unscheduled.track_project}}</p>
             </div>
-        </div>
-    </div>
         </div>
 </form>
 </div>
