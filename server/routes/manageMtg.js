@@ -6,7 +6,7 @@ var connectionString = require('../../database.json').data + '?ssl=true';
 //var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
 
 //This is where the Admin will see all the open speech submissions which do not have assigned dates yet
-router.get('/', function(request, response){
+router.get('/pendingRequests', function(request, response){
     var openSpeechRequests = [];
 
     pg.connect(connectionString, function(error, client){
@@ -31,8 +31,8 @@ router.get('/', function(request, response){
 
         query.on('end', function () {
             client.end();
+            console.log('Here are the open speech requests: ', openSpeechRequests);
             return response.json(openSpeechRequests);
-            console.log(openSpeechRequests);
         });
     });
 });
@@ -205,5 +205,15 @@ router.post('/submitManagedMeeting', function(request, response) {
 
     });
 });
+
+router.post('/submitManagedMeeting', function(request, response) {
+    var meetingData = request.body;
+
+
+
+    //Add dates to the requested speeches
+    var query = client.query(updateSpeeches, meetingDetails);
+
+    });
 
 module.exports = router;

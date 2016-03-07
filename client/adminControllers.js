@@ -131,10 +131,10 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
     });
 
     //This call grabs all the open speech requests that do not have assigned dates yet
-    //$http.get('/manageMtg').then(function (response) {
-    //    this.pendingRequests = response.data;
-    //    console.log(response.data);
-    //});
+    $http.get('/manageMtg/pendingRequests').then(function (response) {
+        console.log('pending requests', response.data);
+        manageMtg.pending = response.data;
+    });
 
     //Return the dates for future meetings from the DB
     $http.get('/manageMtg/getDates').then(function (response) {
@@ -225,12 +225,11 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 //|||||||                     TRACK CONTROLLER
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-app.controller('TrackController', ['$scope','$http', 'AddProjects', function ($scope, $http, AddProjects) {
+app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
 
     var manageTracks = this;
 
-    manageTracks.showNewTracks = false;
-
+    manageTracks.showSubmitButton = false;
 
     var allTracks = [];
 
@@ -245,9 +244,8 @@ app.controller('TrackController', ['$scope','$http', 'AddProjects', function ($s
         $http.post('/getProjects', allTracks[manageTracks.selectedTrack]).then(function(response){
             manageTracks.selectedProjects = response;
         });
-        manageTracks.showNewTracks = true;
-    },
-
+        manageTracks.showSubmitButton = true;
+    };
 
     manageTracks.newTrack = {};
 
@@ -256,15 +254,12 @@ app.controller('TrackController', ['$scope','$http', 'AddProjects', function ($s
         $http.post('/manageTracks', manageTracks.newTrack).then(function(request){
         });
         $scope.resetTrackForm();
-        manageTracks.showNewTracks = false;
-
     };
 
+    manageTracks.resetTrackForm = function(){
+        $scope.newTrack = {};
+    };
 
-
-    manageTracks.addProject = function () {
-        manageTracks.message = "Clicked!";
-    }
 
 }]);
 //+++++++++++++++++++++++++ End of TRACK ++++++++++++++++++++++++++++

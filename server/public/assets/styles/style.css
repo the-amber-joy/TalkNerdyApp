@@ -136,6 +136,7 @@ nav {
 
 .heading {
   text-align: center;
+<<<<<<< HEAD
   float: left;
   display: inline-block; }
 
@@ -145,6 +146,9 @@ nav {
 .setdate {
   float: left;
   width: 100%; }
+=======
+  padding-bottom: 40px; }
+>>>>>>> f62363762851a088418a87f85c1b8712cb3f27eb
 
 .pending {
   float: left;
@@ -155,7 +159,8 @@ nav {
   margin-top: -2px; }
 
 .pendtext {
-  height: 380px; }
+  height: 190px;
+  width: 400px; }
 
 .delemeeting {
   width: 222px;
