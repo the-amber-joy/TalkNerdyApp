@@ -251,11 +251,10 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
     manageTracks.newTrack = {};
 
     manageTracks.changeTrack = function(){
-        console.log('CLICKED!');
         manageTracks.success = true;
         //console.log('request object:', $scope.newTrack);
-        $http.post('/manageTracks', manageTracks.newTrack).then(function(request){
-        });
+        //$http.post('/manageTracks', manageTracks.newTrack).then(function(request){
+        //});
 
     };
 

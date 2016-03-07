@@ -8,22 +8,20 @@
 </form>
 <br>
 
-<form ng-submit="manageTracks.changeTrack()" ng-repeat="project in manageTracks.selectedProjects.data">
-    <form>
-        <div>
-            <label for="project.project_number">Project {{project.project_number}}:</label><br>
-            <input type="text" ng-model="project.project_name" id="project.project_number" placeholder="Project Name"><br>
-            <br>
-            <textarea rows="20" class="pendtext" name="comment" ng-model="project.project_description" id="project.project_number.description" placeholder="Project Description"></textarea>
-        <hr>
-        </div>
-    </form>
+<form ng-submit="manageTracks.changeTrack()">
+    <div ng-repeat="project in manageTracks.selectedProjects.data">
+        <label for="project.project_number">Project {{project.project_number}}:</label><br>
+        <input type="text" ng-model="project.project_name" id="project.project_number" placeholder="Project Name"><br>
+        <br>
+        <textarea rows="20" class="pendtext" name="comment" ng-model="project.project_description" id="project.project_number.description" placeholder="Project Description"></textarea>
+    <hr>
+    </div>
+
+    <p ng-show="manageTracks.success">Thank you! Your changes have been submitted.</p>
 
     <div ng-show="manageTracks.showSubmitButton">
         <input type="submit" value="Submit" class="submitThis">
     </div>
-    <div ng-show="manageTracks.success">Thank you! Your changes have been submitted.</div>
-
 </form>
 
 
