@@ -69,6 +69,12 @@ main {
   border-radius: 0 4px 4px 0;
 }
 
+//.appbody {
+//  margin-left: 50px;
+//  margin-top: 8px;
+//}
+//
+
 nav {
   //margin-left: -14px;
   //margin-top: 40px;
@@ -205,6 +211,14 @@ nav {
     margin-top: 26px;
 }
 
+.datetheme, .locationword {
+  width: 204px;
+}
+
+.customdate {
+  width: 174px;
+}
+
 .location {
   float: right;
 }
@@ -212,7 +226,6 @@ nav {
 .word {
   float: right;
   clear: right;
-  margin-top: 1px;
 }
 
 .theme {
@@ -407,15 +420,15 @@ nav {
   }
 }
 
-//@media (max-width 771px) {
-//  .speechcolumns {
-//    margin-top: -205px;
-//  }
-//}
-//
-//
-//@media (max-width:700px) {
-//  .speechcolumns {
-//    margin-top: 0;
-//  }
-//}
+@media (max-width: 771px) {
+  .speechcolumns {
+    margin-top: -205px;
+  }
+}
+
+
+@media (max-width: 760px) {
+  .speechcolumns {
+    margin-top: 0;
+  }
+}

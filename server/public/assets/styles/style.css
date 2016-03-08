@@ -159,13 +159,18 @@ nav {
   display: inline-block;
   margin-top: 26px; }
 
+.datetheme, .locationword {
+  width: 204px; }
+
+.customdate {
+  width: 174px; }
+
 .location {
   float: right; }
 
 .word {
   float: right;
-  clear: right;
-  margin-top: 1px; }
+  clear: right; }
 
 .theme {
   margin: 10px 0 0 0; }
@@ -312,10 +317,10 @@ nav {
 
   .pending_speeches {
     width: 65%; } }
-@media (max-width 771px) {
+@media (max-width: 771px) {
   .speechcolumns {
     margin-top: -205px; } }
-@media (max-width: 700px) {
+@media (max-width: 760px) {
   .speechcolumns {
     margin-top: 0; } }
 
