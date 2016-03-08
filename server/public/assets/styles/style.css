@@ -210,13 +210,8 @@ nav {
 .first {
   clear: both; }
 
-.second {
-  position: relative;
+.second, .third {
   clear: left; }
-
-.third {
-  clear: left;
-  position: relative; }
 
 .first, .second, .third {
   display: inline;

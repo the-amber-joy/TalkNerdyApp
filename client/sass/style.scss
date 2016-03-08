@@ -69,16 +69,7 @@ main {
   border-radius: 0 4px 4px 0;
 }
 
-//.appbody {
-//  margin-left: 50px;
-//  margin-top: 8px;
-//}
-//
-
 nav {
-  //margin-left: -14px;
-  //margin-top: 40px;
-  //width: 20%;
   float:left;
   .nav>li>a:hover,
   .nav>li>a:focus {
@@ -277,14 +268,8 @@ nav {
   clear: both;
 }
 
-.second {
-  position: relative;
+.second, .third {
   clear: left;
-}
-
-.third {
-  clear: left;
-  position: relative;
 }
 
 .first, .second, .third {
