@@ -5,8 +5,6 @@ $app-background-color: #ffffff;
 body {
   font-family: 'Montserrat', sans-serif;
   width: 100%;
-  margin: 25px;
-  //background-color: #a9b2b1;
   background-color: #a9b2b1;
   background-image: url("http://www.transparenttextures.com/patterns/cross-scratches.png");
 }
@@ -17,7 +15,7 @@ body {
 
 .login {
   padding: 1px 20px 20px;
-  margin: 150px auto 45px auto;
+  margin: 150px auto 0 auto;
   width: 320px;
   background-color: #ffffff;
   border-radius: 10px;
@@ -65,11 +63,6 @@ body {
 }
 
 main {
-  margin-right: -13px;
-  margin-top: 30px;
-  padding: 10px;
-  width: 80%;
-  float: right;
   .well {background-color: #FFFFFF;
     width: 100%;
   }
@@ -77,9 +70,9 @@ main {
 }
 
 nav {
-  margin-left: -14px;
-  margin-top: 40px;
-  width: 20%;
+  //margin-left: -14px;
+  //margin-top: 40px;
+  //width: 20%;
   float:left;
   .nav>li>a:hover,
   .nav>li>a:focus {
@@ -89,18 +82,11 @@ nav {
 }
 
 .banner {
-  overflow: hidden;
-  padding: inherit;
-  width: 106%;
   border-left: 0;
   border-top: 0;
   border-bottom-color: white;
   border-bottom-style: solid;
   border-bottom-width: 5px;
-  border-right: 0;
-  margin: -40px;
-  padding-top: 42px;
-  margin-top: -55px;
   background-color: #772432;
 }
 
@@ -110,7 +96,6 @@ nav {
 
 .timage {
   margin-right: 115px;
-  float: right;
 }
 
 .toastimage {
@@ -353,10 +338,7 @@ nav {
 }
 
 .trackproject {
-  float: left;
-  width: 220px;
-  margin-top: 20px;
-  margin-left: 160px;
+  height: 460px;
 }
 
 .project {
@@ -398,3 +380,42 @@ nav {
   width: 45%;
 }
 
+
+@media (max-width: 600px) {
+  .word {
+    margin-right: -35px;
+  }
+  .banner {
+    width: 142%;
+    margin-left: -40px;
+  }
+  .userindex {
+    width: 200px;
+  }
+  .sidebar {
+    display: flex;
+  }
+
+}
+
+@media (max-width:771px) {
+  .first, .second, .third, .locationword, .datetheme {
+    width: 220px;
+  }
+  .pending_speeches {
+    width: 65%;
+  }
+}
+
+//@media (max-width 771px) {
+//  .speechcolumns {
+//    margin-top: -205px;
+//  }
+//}
+//
+//
+//@media (max-width:700px) {
+//  .speechcolumns {
+//    margin-top: 0;
+//  }
+//}

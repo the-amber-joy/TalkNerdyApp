@@ -1,7 +1,6 @@
 body {
   font-family: 'Montserrat', sans-serif;
   width: 100%;
-  margin: 25px;
   background-color: #a9b2b1;
   background-image: url("http://www.transparenttextures.com/patterns/cross-scratches.png"); }
 
@@ -11,7 +10,7 @@ header {
 
 .login {
   padding: 1px 20px 20px;
-  margin: 150px auto 45px auto;
+  margin: 150px auto 0 auto;
   width: 320px;
   background-color: #ffffff;
   border-radius: 10px;
@@ -50,20 +49,12 @@ header {
   border-color: #004165; }
 
 main {
-  margin-right: -13px;
-  margin-top: 30px;
-  padding: 10px;
-  width: 80%;
-  float: right;
   border-radius: 0 4px 4px 0; }
   main .well {
     background-color: #FFFFFF;
     width: 100%; }
 
 nav {
-  margin-left: -14px;
-  margin-top: 40px;
-  width: 20%;
   float: left; }
   nav .nav > li > a:hover,
   nav .nav > li > a:focus {
@@ -71,26 +62,18 @@ nav {
     border-radius: 4px 0 0 4px; }
 
 .banner {
-  overflow: hidden;
-  padding: inherit;
-  width: 106%;
   border-left: 0;
   border-top: 0;
   border-bottom-color: white;
   border-bottom-style: solid;
   border-bottom-width: 5px;
-  border-right: 0;
-  margin: -40px;
-  padding-top: 42px;
-  margin-top: -55px;
   background-color: #772432; }
 
 .homechapter {
   float: left; }
 
 .timage {
-  margin-right: 115px;
-  float: right; }
+  margin-right: 115px; }
 
 .toastimage {
   float: right;
@@ -278,10 +261,7 @@ nav {
   margin-left: -16px; }
 
 .trackproject {
-  float: left;
-  width: 220px;
-  margin-top: 20px;
-  margin-left: 160px; }
+  height: 460px; }
 
 .project {
   width: 168px; }
@@ -312,5 +292,31 @@ nav {
 
 .userindex {
   width: 45%; }
+
+@media (max-width: 600px) {
+  .word {
+    margin-right: -35px; }
+
+  .banner {
+    width: 142%;
+    margin-left: -40px; }
+
+  .userindex {
+    width: 200px; }
+
+  .sidebar {
+    display: flex; } }
+@media (max-width: 771px) {
+  .first, .second, .third, .locationword, .datetheme {
+    width: 220px; }
+
+  .pending_speeches {
+    width: 65%; } }
+@media (max-width 771px) {
+  .speechcolumns {
+    margin-top: -205px; } }
+@media (max-width: 700px) {
+  .speechcolumns {
+    margin-top: 0; } }
 
 /*# sourceMappingURL=style.css.map */

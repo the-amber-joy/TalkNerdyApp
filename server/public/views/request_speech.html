@@ -6,21 +6,6 @@
 
         <form ng-submit="requestSpeech.submitSpeech()" class="requestform">
 
-            <div class="titleblurb col-md-3">
-                <div>
-                    <label for="speechTitle">Speech Title:</label><br>
-                    <input type="text" ng-model="requestSpeech.data.speechTitle" id="speechTitle">
-                </div>
-                <div>
-                    <label for="speechBlurb">Description:</label><br>
-                    <textarea rows="20" class="pendtext" name="comment" ng-model="requestSpeech.data.speechBlurb" id="speechBlurb"></textarea>
-                </div>
-                <div class="submitclear">
-                    <input type="submit" class="requestsubmit" value="Save Request">
-                    <button class="buttonclear" ng-click="requestSpeech.resetForm()">Clear</button>
-                </div>
-            </div>
-
             <div class="trackproject col-md-3">
                 <div>
                     <label for="track">Speech Track:</label><br>
@@ -37,7 +22,22 @@
                         <option ng-repeat="project in requestSpeech.selectedProjects.data track by $index">{{project.project_name}}</option>
                     </select>
                 </div>
+
+                <div>
+                    <label for="speechTitle">Speech Title:</label><br>
+                    <input type="text" ng-model="requestSpeech.data.speechTitle" id="speechTitle">
+                </div>
+                <div>
+                    <label for="speechBlurb">Description:</label><br>
+                    <textarea rows="20" class="pendtext" name="comment" ng-model="requestSpeech.data.speechBlurb" id="speechBlurb"></textarea>
+                </div>
+                <div class="submitclear">
+                    <input type="submit" class="requestsubmit" value="Save Request">
+                    <button class="buttonclear" ng-click="requestSpeech.resetForm()">Clear</button>
+                </div>
             </div>
+
+
         </form>
         <p ng-show="requestSpeech.submitted">Your speech request has been submitted. An admin will notify you when your speech is scheduled for a future meeting.</p>
 
