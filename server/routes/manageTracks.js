@@ -7,7 +7,7 @@ var connectionString = require('../../database.json').data + '?ssl=true';
 
 
 router.post('/', function(request, response){
-    var trackInfo = request.body; //this is an array of objects
+    var trackInfo = request.body; //the projects to be updated
 
     function addProjectNumbers(array){
         var projectCounter = 1;
@@ -19,11 +19,8 @@ router.post('/', function(request, response){
         return array;
     }
 
-    addProjectNumbers(trackInfo);
+    var updateTrack = "UPDATE speech_tracks SET project_name = $1, project_description = $2 WHERE project_number = $3 AND track_name = $4";
 
-    var updateTrack = "UPDATE speech_tracks SET project_name = $1, project_description = $2 WHERE project_number = $3";
-
-    addProjectNumbers(trackInfo);
 
     pg.connect(connectionString, function(error, client) {
         if(error) {
@@ -32,9 +29,10 @@ router.post('/', function(request, response){
             return response.status(500).json({ success: false, data: error});
         };
 
+        addProjectNumbers(trackInfo);
+
         for (var i = 0; i < trackInfo.length; i++){
-            console.log('trackinfo loop:', trackInfo[i].project_name);
-            client.query(updateTrack, [trackInfo[i].project_name, trackInfo[i].project_description, trackInfo[i].project_number]);
+            client.query(updateTrack, [trackInfo[i].project_name, trackInfo[i].project_description, trackInfo[i].project_number, trackInfo[i].track_name]);
         };
 
         client.on('end', function () {

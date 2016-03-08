@@ -245,6 +245,11 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
         manageTracks.showSubmitButton = true;
     };
 
+    //manageTracks.addProject = function() {
+    //    var newItemNo = manageTracks.selectedProjects.data.length+1;
+    //    manageTracks.selectedProjects.data.push({'id':'choice'+newItemNo});
+    //};
+
     manageTracks.changeTrack = function(){
         console.log('selectedprojects', manageTracks.selectedProjects.data);
         $http.post('/manageTracks', manageTracks.selectedProjects.data);
