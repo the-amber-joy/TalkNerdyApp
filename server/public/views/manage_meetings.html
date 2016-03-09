@@ -1,5 +1,4 @@
-<div class="container row">
-<div class="centrebody col-xs-12 col-sm-12 col-md-11">
+<div class="centrebody col-xs-12 col-sm-12 col-md-12">
     <div class="headingdate col-sm-12 col-md-10">
 <h2 class="heading"> Create or Edit a Future Meeting</h2>
     <div class="date">
@@ -10,8 +9,9 @@
     </div>
 </div>
 
-                         <!--UNNECESSARY TEXT BOX FORM     -->
-<form>
+   <form>
+       <!--UNNECESSARY TEXT BOX FORM     -->
+
 
     <!--<div class=" rbox col-md-9.6">-->
         <!--<div class="pending col-md-2.4">-->
@@ -94,15 +94,18 @@
         </div>
     </div>
 
-                        <!--SELECT A DATE DROPDOWN-->
+       <!-- ################# SELECT A CUSTOM DATE FIELD ################ -->
 
     <div class="datetheme col-xs-8 col-sm-4 col-md-3">
 <div class="setdate">
     <form>
         <label for="createdate">Create Custom Date:</label>
-        <input type="date" name="custom" id="createdate" class="customdate">
+        <input type="date" name="custom" id="createdate" class="customdate" ng-model="customDate">
+        <input type="submit" class="submitcustom" value="Enter Custom Date" ng-click="">
     </form>
 </div>
+
+        <!-- ################# end of custom date field ################ -->
 
     <div class="theme">
         <label for="theme">Theme:</label>
@@ -118,7 +121,7 @@
 
 
     <div class="word">
-        <label for="word">Word of the Day:</label>
+        <label for="word" class="wordlabel">Word of the Day:</label>
         <input type="text" ng-model="word_of_day" id="word" class="wordbox">
 
     </div>
@@ -238,4 +241,4 @@
         </div>
 </form>
 </div>
-</div>
+
