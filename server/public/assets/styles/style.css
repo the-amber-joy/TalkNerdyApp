@@ -216,7 +216,8 @@ nav {
 .first, .second, .third {
   display: inline;
   float: left;
-  width: 92%; }
+  width: 92%;
+  margin-top: 20px; }
 
 .speechone, .speechtwo, .speechthree {
   margin-bottom: 20px; }
@@ -306,7 +307,18 @@ nav {
     width: 200px; }
 
   .sidebar {
-    display: flex; } }
+    display: flex; }
+
+  .admin {
+    margin-left: -165px;
+    height: 200px;
+    margin-top: 71px; }
+
+  .click {
+    padding: 5px 0 4px 0; }
+
+  .nav {
+    margin-right: 80px; } }
 @media (max-width: 771px) {
   .first, .second, .third, .locationword, .datetheme {
     width: 220px; }
