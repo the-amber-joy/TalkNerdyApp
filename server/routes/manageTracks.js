@@ -5,7 +5,6 @@ var pg = require('pg');
 var connectionString = require('../../database.json').data + '?ssl=true';
 //var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
 
-var tracks = [];
 
 router.get('/', function(request, response){
 
@@ -14,6 +13,8 @@ router.get('/', function(request, response){
             console.log(error);
             client.end();
         }
+
+        var tracks = [];
 
         var query = client.query("SELECT DISTINCT track_name FROM speech_tracks");
 
@@ -27,7 +28,7 @@ router.get('/', function(request, response){
         });
 
         query.on('end', function () {
-            //console.log(tracks);
+            console.log(tracks);
             client.end();
             return response.json(tracks);
         });
