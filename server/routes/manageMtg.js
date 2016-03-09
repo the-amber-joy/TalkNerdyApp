@@ -161,15 +161,6 @@ router.post('/submitManagedMeeting', function(request, response) {
             WHERE\
             date = $24";
 
-    //var assignSpeechDate = "UPDATE speeches\
-    //            SET speech_date = $1, \
-    //            WHERE speech_title = $2 OR $3 OR $4";
-
-    //var selectedSpeech = [meetingData.date,
-    //    meetingData.speech_1,
-    //    meetingData.speech_2,
-    //    meetingData.speech_3
-    //];
 
     pg.connect(connectionString, function (err, client, done) {
         if (err) {
@@ -177,25 +168,10 @@ router.post('/submitManagedMeeting', function(request, response) {
             console.log(err);
             response.sendStatus(500).json({success: false, data: err});
         }
-        //} else if (
-        //    //see if the meeting exists
-        //    client.query("SELECT FROM meetings WHERE date = $1", [meetingData.date]) != null
-        //) {
-        //    //if meeting exists, run these queries to edit:
-        //
-        //    //Create the Meeting
-        //    client.query(makeNewMeeting, meetingDetails);
-
-        //Add this meeting date to the selected speeches
-        //client.query(assignSpeechDate, selectedSpeech);
-        //} else {
-        //if the meeting does not exist, run these queries to add it:
 
         //Create the Meeting
         var query = client.query(editMeetingDetails, meetingDetails);
 
-        //Add this meeting date to the specified speeches
-        //client.query(assignSpeechDate, selectedSpeech);
 
         query.on('end', function () {
             client.end();
