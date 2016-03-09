@@ -203,6 +203,15 @@ nav {
     margin-top: 26px;
 }
 
+.submitcustom {
+  width: 174px;
+  margin-top: 5px;
+}
+
+.wordlabel {
+  margin-top: 29px;
+}
+
 .datetheme, .locationword {
   width: 204px;
 }
@@ -404,6 +413,9 @@ nav {
   }
   .nav {
     margin-right: 80px;
+  }
+  .wordlabel {
+    margin-top: 0;
   }
 }
 
