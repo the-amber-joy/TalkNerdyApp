@@ -9,18 +9,20 @@
 <br>
 
 <!--Form to edit existing tracks-->
-<form ng-model="manageTracks.selectedProjects.data" ng-submit="manageTracks.changeTrack()">
-    <div ng-repeat="project in manageTracks.selectedProjects.data">
+<form ng-model="manageTracks.selectedProjects" ng-submit="manageTracks.updateTrack()">
+    <div ng-repeat="project in manageTracks.selectedProjects">
         <label for="project.project_number">Project {{project.project_number}}:</label><br>
         <input type="text" ng-model="project.project_name" id="project.project_number" placeholder="Project Name"><br>
         <br>
         <textarea rows="20" class="pendtext" name="comment" ng-model="project.project_description" id="project.project_number.description" placeholder="Project Description"></textarea>
         <hr>
     </div>
-    <button ng-show="$last">Add Another Project</button>
     <br>
     <input ng-show="manageTracks.showSubmitButton" type="submit" value="Submit" class="submitThis">
 </form>
+or
+<button ng-click="manageTracks.addProject()">Add Another Project</button>
+
 
 <!--Form to edit existing tracks-->
 

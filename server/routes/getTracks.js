@@ -14,7 +14,7 @@ router.get('/', function(request, response){
             client.end();
         }
 
-        var query = client.query("SELECT DISTINCT track_name, track_number FROM speech_tracks ORDER BY track_number ASC");
+        var query = client.query("SELECT DISTINCT track_name FROM speech_tracks");
 
         query.on('error', function (error){
             console.log(error);

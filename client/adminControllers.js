@@ -229,30 +229,38 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
 
     var manageTracks = this;
     var allTracks = [];
+    manageTracks.selectedProjects = [];
 
     manageTracks.showSubmitButton = false;
     manageTracks.success = false;
 
-    $http.get('/getTracks').then(function(response){
+    $http.get('/manageTracks').then(function(response){
         manageTracks.tracks = response.data;
         allTracks = response.data;
     });
 
     manageTracks.loadProjects = function(){
         $http.post('/getProjects', allTracks[manageTracks.selectedTrack]).then(function(response){
-            manageTracks.selectedProjects = response;
+            manageTracks.selectedProjects = response.data;
         });
         manageTracks.showSubmitButton = true;
     };
 
-    //manageTracks.addProject = function() {
-    //    var newItemNo = manageTracks.selectedProjects.data.length+1;
-    //    manageTracks.selectedProjects.data.push({'id':'choice'+newItemNo});
-    //};
+    manageTracks.addProject = function() {
+        var newProject = { track_name: allTracks[manageTracks.selectedTrack].track_name,
+            project_name: '',
+            project_description: '',
+            project_number: manageTracks.selectedProjects.length+1,
+            track_number: allTracks[manageTracks.selectedTrack].track_number
+             };
+        manageTracks.selectedProjects.push(newProject);
+        console.log('Selected projects', manageTracks.selectedProjects);
+    };
 
-    manageTracks.changeTrack = function(){
-        console.log('selectedprojects', manageTracks.selectedProjects.data);
-        $http.post('/manageTracks', manageTracks.selectedProjects.data);
+    manageTracks.updateTrack = function(){
+        console.log('Selected projects', manageTracks.selectedProjects);
+
+        $http.post('/manageTracks', manageTracks.selectedProjects);
         manageTracks.success = true;
     };
 }]);

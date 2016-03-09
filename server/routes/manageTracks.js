@@ -5,9 +5,42 @@ var pg = require('pg');
 var connectionString = require('../../database.json').data + '?ssl=true';
 //var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
 
+var tracks = [];
+
+router.get('/', function(request, response){
+
+    pg.connect(connectionString, function(error, client){
+        if (error) {
+            console.log(error);
+            client.end();
+        }
+
+        var query = client.query("SELECT DISTINCT track_name FROM speech_tracks");
+
+        query.on('error', function (error){
+            console.log(error);
+            response.sendStatus(500);
+        });
+
+        query.on('row', function (row) {
+            tracks.push(row);
+        });
+
+        query.on('end', function () {
+            //console.log(tracks);
+            client.end();
+            return response.json(tracks);
+        });
+    });
+});
+
 
 router.post('/', function(request, response){
-    var trackInfo = request.body; //the projects to be updated
+    trackInfo = request.body; //the projects to be updated
+    console.log('trackInfo:', trackInfo);
+
+    var refreshTrack = "DELETE FROM speech_tracks WHERE track_name = $1";
+    var updateTrack = "INSERT INTO speech_tracks (project_name, project_description, project_number, track_name) VALUES ($1, $2, $3, $4);";
 
     function addProjectNumbers(array){
         var projectCounter = 1;
@@ -19,21 +52,25 @@ router.post('/', function(request, response){
         return array;
     }
 
-    var updateTrack = "UPDATE speech_tracks SET project_name = $1, project_description = $2 WHERE project_number = $3 AND track_name = $4";
-
+    addProjectNumbers(trackInfo);
 
     pg.connect(connectionString, function(error, client) {
         if(error) {
             console.log(error);
             client.end();
             return response.status(500).json({ success: false, data: error});
-        };
+        }
 
-        addProjectNumbers(trackInfo);
+        client.query(refreshTrack, [trackInfo[0].track_name]);
 
         for (var i = 0; i < trackInfo.length; i++){
-            client.query(updateTrack, [trackInfo[i].project_name, trackInfo[i].project_description, trackInfo[i].project_number, trackInfo[i].track_name]);
-        };
+            client.query(updateTrack, [
+                trackInfo[i].project_name,
+                trackInfo[i].project_description,
+                trackInfo[i].project_number,
+                trackInfo[i].track_name
+            ]);
+        }
 
         client.on('end', function () {
             client.end();
