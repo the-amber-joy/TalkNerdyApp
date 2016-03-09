@@ -128,7 +128,7 @@
 </div>
 
 
-    <div class="speechcolumns col-xs-12 col-sm-4 col-md-3">
+    <div class="speechcolumns col-xs-12 col-sm-4 col-md-3" ng-controller="RequestSpeechController as requestSpeech">
     <div class="first col-xs-12 col-sm-10 col-md-4">
         <div>
             <label for="speechonetitle">Speech One Title:</label>
@@ -166,15 +166,16 @@
             <input type="text" ng-model="speech_two" id="speechtwotitle" class="speechtwo">
         </div>
         <div class="track2">
-            <select ng-model="selectTrack2" class="selecttrack2">
-                <option value="" disabled selected>Select Track</option>
-                <!--<option ng-repeat=""></option>";-->
+            <select ng-model="requestSpeech.selectedTrack" ng-change="requestSpeech.loadProjects()">
+                <option value="" disabled selected>Select A Track:</option>
+                <option ng-repeat="track in requestSpeech.tracks track by $index" value={{$index}}>{{track.track_name}}</option>
             </select>
         </div>
         <div class="project2">
-            <select ng-model="selectProject2" class="selectproject2">
-                <option value="" disabled selected>Select Project</option>
-                <!--<option ng-repeat=""></option>";-->
+            <label for="project">Speech Project:</label><br>
+            <select ng-model="requestSpeech.data.speech.project" id="project" class="project">
+                <option value="" disabled selected>Select A Project:</option>
+                <option ng-repeat="project in requestSpeech.selectedProjects.data track by $index">{{project.project_name}}</option>
             </select>
         </div>
         <div>

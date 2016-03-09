@@ -120,6 +120,7 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
 app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, $http) {
     var manageMtg = this;
     var meetingData = {};
+    manageMtg.pending = [];
     manageMtg.dateArray = [];
 
     $http.get('/getTracks').then(function(response){
@@ -129,6 +130,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
     $http.get('/getProjects').then(function(response){
         manageMtg.projects = response.data;
     });
+
 
     //This call grabs all the open speech requests that do not have assigned dates yet
     $http.get('/manageMtg/pendingRequests').then(function (response) {
@@ -203,20 +205,6 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 
     }
 
-        //    //$http.post('/manageMtg', meetingData);
-        //};
-
-        //This is in process and may have to be moved to a separate controller
-        //$scope.resetSpeech = function () {
-        //    var speechToReset = {
-        //        speech_1: this.speech_1,
-        //        speech_2: this.speech_2,
-        //        speech_3: this.speech_3
-        //    };
-        //
-        //    $http.post('/resetSpeech', speechToReset);
-        //
-        //};
     }]);
 //+++++++++++++++++++++++++ End of MANAGE MEETING ++++++++++++++++++++++++++++
 

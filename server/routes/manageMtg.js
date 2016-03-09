@@ -31,7 +31,7 @@ router.get('/pendingRequests', function(request, response){
 
         query.on('end', function () {
             client.end();
-            console.log('Here are the open speech requests: ', openSpeechRequests);
+            //console.log('Here are the open speech requests: ', openSpeechRequests);
             return response.json(openSpeechRequests);
         });
     });
@@ -62,7 +62,6 @@ router.get('/getDates', function(request, response){
 
         query.on('end', function () {
             client.end();
-            //console.log(dateArray);
             return response.json(dateArray);
         });
     });
@@ -94,7 +93,6 @@ router.post('/fetchExisting', function(request, response){
 
         query.on('end', function () {
             client.end();
-            //console.log(filledFields);
             return response.json(filledFields);
         });
     });
@@ -105,6 +103,7 @@ router.post('/fetchExisting', function(request, response){
 router.post('/submitManagedMeeting', function(request, response) {
     var meetingData = request.body;
 
+    console.log('meeting data submitted:', meetingData);
     var meetingDetails = [
         meetingData.theme,
         meetingData.location,
@@ -172,7 +171,6 @@ router.post('/submitManagedMeeting', function(request, response) {
         //Create the Meeting
         var query = client.query(editMeetingDetails, meetingDetails);
 
-
         query.on('end', function () {
             client.end();
             response.sendStatus(200);
@@ -181,15 +179,5 @@ router.post('/submitManagedMeeting', function(request, response) {
 
     });
 });
-
-router.post('/submitManagedMeeting', function(request, response) {
-    var meetingData = request.body;
-
-
-
-    //Add dates to the requested speeches
-    var query = client.query(updateSpeeches, meetingDetails);
-
-    });
 
 module.exports = router;
