@@ -1,8 +1,8 @@
 //CONTROLLERS FOR ADMIN VIEWS & FUNCTIONS
 
-//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-//|||||||                    ROSTER CONTROLLER
-//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//                  ROSTER CONTROLLER                        //
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 app.controller('RosterController', ['$scope','$http', 'UserService', function ($scope, $http, UserService) {
     console.log('Roster Controller Hit');
