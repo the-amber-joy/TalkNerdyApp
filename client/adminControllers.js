@@ -120,6 +120,11 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
     manageMtg.dateArray = [];
     manageMtg.scheduledSpeeches = [];
 
+    $http.get('manageMtg/userList').then(function(response){
+        manageMtg.users = response.data;
+        console.log(manageMtg.users);
+    });
+
     $http.get('/getTracks').then(function(response){
         manageMtg.tracks = response.data;
     });

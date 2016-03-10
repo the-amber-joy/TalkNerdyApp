@@ -205,6 +205,36 @@ router.post('/submitCustomDate', function(request, response){
     });
 });
 
+router.get('/userList', function(request, response){
+    var currentUsers = [];
+
+    pg.connect(connectionString, function(error, client){
+        if(error) {
+            console.log(error);
+        }
+
+        //this query returns all current members on roster
+        var queryString = "SELECT first_name, last_name FROM roster ORDER BY first_name";
+
+
+        var query = client.query(queryString);
+
+        query.on('error', function (error){
+            console.log(error);
+            response.sendStatus(500);
+        });
+
+        query.on('row', function (row) {
+            currentUsers.push(row);
+        });
+
+        query.on('end', function () {
+            response.send(currentUsers);
+            client.end();
+        });
+
+    });
+});
 
 
 
