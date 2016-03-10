@@ -15,7 +15,7 @@ app.controller('HomeController', ['$http', '$scope', 'UserService', function ($h
     var home = this;
     home.things = UserService;
     home.dateToday = Date.now();
-    if(!UserService.id) {
+
         $http.get('/auth/currentUser').then(function (response) {
             console.log('Current User: ', response.data);
             UserService.firstName = response.data.first_name;
@@ -31,7 +31,7 @@ app.controller('HomeController', ['$http', '$scope', 'UserService', function ($h
             home.isadmin = UserService.isadmin;
             home.role = UserService.role;
         });
-    }
+
     $http.get('/agenda').then(function(response){
         home.data = response.data;
     });
