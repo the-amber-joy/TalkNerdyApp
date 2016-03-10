@@ -230,10 +230,6 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             speech_blurb: '',
             id: 0
         };
-        $http.get('/manageMtg/pendingRequests').then(function (response) {
-            console.log('pending requests', response.data);
-            manageMtg.pending = response.data;
-        });
     };
 
     //Send object to update DB on button click
@@ -279,44 +275,45 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 
 
     manageMtg.fetchExistingSpeeches = function(selectedDate) {
-        var sendingDate={};
-        var returnedSpeeches=[];
+        var sendingDate = {};
+        var returnedSpeeches = [];
 
         sendingDate.date = selectedDate;
         console.log(sendingDate);
 
-        $http.post('/manageMtg/fetchExistingSpeeches', sendingDate).then(function(response){
+        $http.post('/manageMtg/fetchExistingSpeeches', sendingDate).then(function (response) {
             returnedSpeeches = response.data;
             console.log('returned speeches', returnedSpeeches);
 
-            for(var objectKey in returnedSpeeches) {
+            for (var objectKey in returnedSpeeches) {
                 if (returnedFields[objectKey]) {
-                manageMtg.speech1.objectKey = returnedSpeeches[0].objectKey;
-                manageMtg.speech2.objectKey = returnedSpeeches[1].objectKey;
-                manageMtg.speech2.objectKey = returnedSpeeches[2].objectKey;
+                    manageMtg.speech1.objectKey = returnedSpeeches[0].objectKey;
+                    manageMtg.speech2.objectKey = returnedSpeeches[1].objectKey;
+                    manageMtg.speech2.objectKey = returnedSpeeches[2].objectKey;
+                }
             }
-        };
-    };
+        });
 
-    //Format object to include with ajax call to DB
-    function manageMeeting() {
-        meetingData = {
-            date: $scope.dateStart,
-            theme: $scope.theme,
-            location: $scope.location,
-            word_of_day: $scope.word_of_day,
-            presiding_officer: $scope.presiding_officer,
-            toastmaster: $scope.toastmaster,
-            general_evaluator: $scope.general_evaluator,
-            table_topics_czar: $scope.table_topics_czar,
-            speech_evaluator_1: $scope.speech_evaluator_1,
-            speech_evaluator_2: $scope.speech_evaluator_2,
-            speech_evaluator_3: $scope.speech_evaluator_3,
-            grammarian: $scope.grammarian,
-            ah_counter: $scope.ah_counter,
-            timer: $scope.timer,
-            description: $scope.description,
-        };
+        //Format object to include with ajax call to DB
+        function manageMeeting() {
+            meetingData = {
+                date: $scope.dateStart,
+                theme: $scope.theme,
+                location: $scope.location,
+                word_of_day: $scope.word_of_day,
+                presiding_officer: $scope.presiding_officer,
+                toastmaster: $scope.toastmaster,
+                general_evaluator: $scope.general_evaluator,
+                table_topics_czar: $scope.table_topics_czar,
+                speech_evaluator_1: $scope.speech_evaluator_1,
+                speech_evaluator_2: $scope.speech_evaluator_2,
+                speech_evaluator_3: $scope.speech_evaluator_3,
+                grammarian: $scope.grammarian,
+                ah_counter: $scope.ah_counter,
+                timer: $scope.timer,
+                description: $scope.description,
+            };
+        }
     }
 }]);
 //+++++++++++++++++++++++++ End of MANAGE MEETING ++++++++++++++++++++++++++++
