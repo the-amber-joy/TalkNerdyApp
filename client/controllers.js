@@ -13,6 +13,7 @@ app.controller('indexController', ['$http', 'UserService', function ($http, User
 app.controller('HomeController', ['$http', '$scope', 'UserService', function ($http, $scope, UserService) {
     console.log("We're home!");
     var home = this;
+    home.things = UserService;
     home.dateToday = Date.now();
     if(!UserService.id) {
         $http.get('/auth/currentUser').then(function (response) {
@@ -33,7 +34,7 @@ app.controller('HomeController', ['$http', '$scope', 'UserService', function ($h
     });
 
     home.attending = function() {
-        UserService.checkedIn = true;
+        home.things.checkedIn = true;
         //console.log('UserService:', UserService.google_id);
         $http.post('/checkin', {google_id : UserService.google_id});
     };
