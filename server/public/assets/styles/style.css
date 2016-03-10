@@ -74,10 +74,10 @@ nav {
   float: left; }
 
 .welcome_by_name {
+  font-size: 32px;
+  margin-top: 14px;
   color: #F2DF74;
-  float: left;
-  font-size: 18px;
-  margin: 60px 0 0 55px; }
+  float: left; }
 
 .timage {
   margin-right: 115px; }
@@ -99,7 +99,8 @@ nav {
   margin-left: 56px;
   text-align: left;
   width: 100%;
-  font-size: 32px; }
+  font-size: 32px;
+  color: #F2DF74; }
 
 .chapter {
   margin: 0 0 10px 60px;
