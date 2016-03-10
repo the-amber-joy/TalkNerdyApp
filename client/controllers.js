@@ -1,9 +1,3 @@
-//app.controller('LoginController', function () {
-//    console.log('UI Router seems to be working!');
-//    var login = this
-//        .message='Hello and things!'
-//});
-
 app.controller('indexController', ['$http', 'UserService', function ($http, UserService) {
     var index = this;
         index.things = UserService;
@@ -11,13 +5,11 @@ app.controller('indexController', ['$http', 'UserService', function ($http, User
 
 
 app.controller('HomeController', ['$http', '$scope', 'UserService', function ($http, $scope, UserService) {
-    console.log("We're home!");
     var home = this;
     home.things = UserService;
     home.dateToday = Date.now();
 
         $http.get('/auth/currentUser').then(function (response) {
-            console.log('Current User: ', response.data);
             UserService.firstName = response.data.first_name;
             UserService.lastName = response.data.last_name;
             UserService.id = response.data.id;
@@ -26,7 +18,7 @@ app.controller('HomeController', ['$http', '$scope', 'UserService', function ($h
             UserService.google_id = response.data.google_id;
 
             home.lastCheckIn = response.data.last_checkin;
-            console.log(home.lastCheckIn);
+            console.log('Last Checkin:', home.lastCheckIn);
             home.firstName = UserService.firstName;
             home.isadmin = UserService.isadmin;
             home.role = UserService.role;
@@ -39,9 +31,7 @@ app.controller('HomeController', ['$http', '$scope', 'UserService', function ($h
 
     home.attending = function() {
         home.things.checkedIn = true;
-        //console.log('UserService:', UserService.google_id);
         $http.post('/checkin', {google_id : UserService.google_id}).then(function (response) {
-            console.log(response);
         });
         };
 
@@ -52,7 +42,6 @@ app.controller('SpeechAgendaController', ['$http', function ($http) {
     var plannedSpeeches = this;
     $http.get('/speechAgenda').then(function(response){
         plannedSpeeches.speechArray = response.data;
-        //console.log('Scheduled Speeches: ', response.data)
     });
 }]);
 
@@ -88,20 +77,9 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
         google_id: UserService.google_id
     };
 
-    //$http.get('/getTracks').then(function(response){
-    //    console.log('tracks:', response.data);
-    //    requestSpeech.tracks = response.data;
-    //});
-    //
-    //$http.get('/getProjects').then(function(response){
-    //    console.log('projects:', response.data);
-    //    requestSpeech.projects = response.data;
-    //});
-
     var allTracks = [];
 
     $http.get('/getTracks').then(function(response){
-        //console.log('tracks:', response.data);
         requestSpeech.tracks = response.data;
         allTracks = response.data;
     });
@@ -109,7 +87,6 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
     requestSpeech.loadProjects = function(){
         $http.post('/getProjects', allTracks[requestSpeech.selectedTrack]).then(function(response){
             requestSpeech.selectedProjects = response.data;
-            console.log('response.data', response.data);
         });
     };
 
@@ -118,7 +95,6 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
     };
 
     requestSpeech.submitSpeech = function (){
-        //console.log('data is:', $scope.data);
         $http.post('/requestSpeech', requestSpeech.data).then(function(request){
         });
         requestSpeech.submitted = true;
@@ -133,7 +109,6 @@ app.controller('ViewTracksController', ['$http', '$scope', function ($http, $sco
     var allTracks = [];
 
     $http.get('/getTracks').then(function(response){
-        //console.log('tracks:', response.data);
         viewTracks.tracks = response.data;
         allTracks = response.data;
     });
@@ -142,7 +117,6 @@ app.controller('ViewTracksController', ['$http', '$scope', function ($http, $sco
     viewTracks.loadProjects = function(){
         $http.post('/getProjects', allTracks[viewTracks.selectedTrack]).then(function(response){
             viewTracks.selectedProjects = response.data;
-            console.log('response.data', response.data);
         });
     }
 

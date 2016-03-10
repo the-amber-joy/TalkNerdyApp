@@ -135,7 +135,6 @@ router.post('/fetchExistingSpeeches', function(request, response){
 router.post('/submitManagedMeeting', function(request, response) {
     var meetingData = request.body;
 
-    console.log('meeting data submitted:', meetingData);
     var meetingDetails = [
         meetingData.theme,
         meetingData.location,
@@ -151,10 +150,8 @@ router.post('/submitManagedMeeting', function(request, response) {
         meetingData.ah_counter,
         meetingData.timer,
         meetingData.description,
-
-        meetingData.date.slice(0,10)
+        meetingData.date
     ];
-    console.log("Meeting Data", meetingData);
 
     var editMeetingDetails = "UPDATE meetings \
             SET\
@@ -173,14 +170,14 @@ router.post('/submitManagedMeeting', function(request, response) {
                 timer = $13,\
                 description = $14\
             WHERE\
-            date = $15";
+            date = $15::date";
 
 
-    pg.connect(connectionString, function (err, client, done) {
-        if (err) {
+    pg.connect(connectionString, function (error, client, done) {
+        if (error) {
             done();
-            console.log(err);
-            response.sendStatus(500).json({success: false, data: err});
+            console.log(error);
+            response.sendStatus(500).json({success: false, data: error});
         }
 
         //Create the Meeting
@@ -189,7 +186,6 @@ router.post('/submitManagedMeeting', function(request, response) {
         query.on('end', function () {
             client.end();
             response.sendStatus(200);
-
         });
 
     });
@@ -203,7 +199,7 @@ router.post('/submitCustomDate', function(request, response){
             console.log(error);
         }
 
-        var queryString = "INSERT INTO meetings(date) VALUES ($1);";
+        var queryString = "INSERT INTO meetings (date) VALUES ($1::date);";
 
         var query = client.query(queryString, [addNewDate]);
 
@@ -250,17 +246,5 @@ router.get('/userList', function(request, response){
 
     });
 });
-
-
-
-router.post('/submitManagedMeeting', function(request, response) {
-    var meetingData = request.body;
-
-
-
-    //Add dates to the requested speeches
-    var query = client.query(updateSpeeches, meetingDetails);
-
-    });
 
 module.exports = router;

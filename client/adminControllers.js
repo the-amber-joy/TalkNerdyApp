@@ -115,6 +115,7 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
 
 app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, $http) {
     var manageMtg = this;
+    manageMtg.success = false;
     var meetingData = {};
     manageMtg.pending = [];  // array of unscheduled speeches
     manageMtg.speech1 = {};
@@ -127,8 +128,6 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
     $http.get('manageMtg/userList').then(function(response){
         manageMtg.users = response.data;
     });
-
-
 
 
     var getPendingSpeeches = function() {
@@ -257,13 +256,33 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         );
     };
 
+    //Format object to include with ajax call to DB
+    var manageMeeting = function() {
+        meetingData = {
+            date: $scope.dateStart,
+            theme: $scope.theme,
+            location: $scope.location,
+            word_of_day: $scope.word_of_day,
+            presiding_officer: $scope.presiding_officer,
+            toastmaster: $scope.toastmaster,
+            general_evaluator: $scope.general_evaluator,
+            table_topics_czar: $scope.table_topics_czar,
+            speech_evaluator_1: $scope.speech_evaluator_1,
+            speech_evaluator_2: $scope.speech_evaluator_2,
+            speech_evaluator_3: $scope.speech_evaluator_3,
+            grammarian: $scope.grammarian,
+            ah_counter: $scope.ah_counter,
+            timer: $scope.timer,
+            description: $scope.description
+        };
+    }
+
     //Send object to update DB on button click
     manageMtg.submitManagedMeetings = function () {
-
         manageMeeting();
-
         $http.post('/manageMtg/submitManagedMeeting', meetingData).then(function(response){
         });
+        manageMtg.success = true;
     };
 
 
@@ -275,7 +294,6 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             manageMtg.customDate = null;
             grabDates();
         });
-        //and then something to give user the message that their request was submitted
     };
 
 
@@ -297,7 +315,6 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 
 
     $scope.fetchExistingSpeeches = function(selectedDate) {
-        console.log('beginning speech population function');
 
         var sendingDate = {};
         var returnedSpeeches = [];
@@ -310,7 +327,6 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             manageMtg.speech3 = {};
 
             returnedSpeeches = response.data;
-            console.log('returned speeches', returnedSpeeches);
             manageMtg.speech1 = {
                 speech_title: returnedSpeeches[0].speech_title,
                 track: returnedSpeeches[0].track,
@@ -337,27 +353,6 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             };
             getPendingSpeeches();
         });
-
-        //Format object to include with ajax call to DB
-        function manageMeeting() {
-            meetingData = {
-                date: $scope.dateStart,
-                theme: $scope.theme,
-                location: $scope.location,
-                word_of_day: $scope.word_of_day,
-                presiding_officer: $scope.presiding_officer,
-                toastmaster: $scope.toastmaster,
-                general_evaluator: $scope.general_evaluator,
-                table_topics_czar: $scope.table_topics_czar,
-                speech_evaluator_1: $scope.speech_evaluator_1,
-                speech_evaluator_2: $scope.speech_evaluator_2,
-                speech_evaluator_3: $scope.speech_evaluator_3,
-                grammarian: $scope.grammarian,
-                ah_counter: $scope.ah_counter,
-                timer: $scope.timer,
-                description: $scope.description
-            };
-        }
     }
 }]);
 //+++++++++++++++++++++++++ End of MANAGE MEETING ++++++++++++++++++++++++++++
