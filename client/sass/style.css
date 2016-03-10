@@ -253,6 +253,8 @@ nav {
   overflow: scroll;
   margin-top: 30px;
   border: solid; }
+  .pending_speeches .speech:hover {
+    background-color: #F2DF74; }
 
 .requestform {
   height: 175px; }
