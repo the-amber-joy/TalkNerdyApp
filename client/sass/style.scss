@@ -92,6 +92,13 @@ nav {
   float: left;
 }
 
+.welcome_by_name {
+  color: #F2DF74;
+  float: left;
+  font-size: 18px;
+  margin: 60px 0 0 55px;
+}
+
 .timage {
   margin-right: 115px;
 }
@@ -437,6 +444,26 @@ nav {
 
 @media (max-width: 760px) {
   .speechcolumns {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 764px) {
+  .sidebar {
+    display: flex;
+  }
+  .admin {
+    margin-left: -165px;
+    height: 200px;
+    margin-top: 71px;
+  }
+  .click {
+    padding: 5px 0 4px 0;
+  }
+  .nav {
+    margin-right: 80px;
+  }
+  .wordlabel {
     margin-top: 0;
   }
 }
