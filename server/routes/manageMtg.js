@@ -14,7 +14,7 @@ router.get('/pendingRequests', function(request, response){
             console.log(error);
         }
 
-        //This query returns all past meeting agendas
+        //This query returns all open speech requests
         var queryString = "SELECT * FROM speeches WHERE speech_date IS NULL";
 
         var query = client.query(queryString);
@@ -46,7 +46,7 @@ router.get('/getDates', function(request, response){
         }
 
         //This query returns the next 16 meeting dates
-        var queryString = "SELECT date, id FROM meetings WHERE date >= now() ORDER BY date LIMIT 16";
+        var queryString = "SELECT date, id FROM meetings WHERE date >= now()::date ORDER BY date LIMIT 16";
 
         var query = client.query(queryString);
 
@@ -119,15 +119,7 @@ router.post('/submitManagedMeeting', function(request, response) {
         meetingData.ah_counter,
         meetingData.timer,
         meetingData.description,
-        meetingData.speech_1,
-        meetingData.speech_2,
-        meetingData.speech_3,
-        meetingData.speaker_1_firstname,
-        meetingData.speaker_1_lastname,
-        meetingData.speaker_2_firstname,
-        meetingData.speaker_2_lastname,
-        meetingData.speaker_3_firstname,
-        meetingData.speaker_3_lastname,
+
         meetingData.date.slice(0,10)
     ];
     console.log("Meeting Data", meetingData);
@@ -148,17 +140,8 @@ router.post('/submitManagedMeeting', function(request, response) {
                 ah_counter = $12,\
                 timer = $13,\
                 description = $14,\
-                speech_1 = $15,\
-                speech_2 = $16,\
-                speech_3 = $17,\
-                speaker_1_firstname = $18,\
-                speaker_1_lastname = $19,\
-                speaker_2_firstname = $20,\
-                speaker_2_lastname = $21,\
-                speaker_3_firstname = $22,\
-                speaker_3_lastname = $23\
             WHERE\
-            date = $24";
+            date = $15";
 
 
     pg.connect(connectionString, function (err, client, done) {
