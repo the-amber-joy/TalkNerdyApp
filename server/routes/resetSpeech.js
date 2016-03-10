@@ -9,21 +9,27 @@ var connectionString = require('../../database.json').data + '?ssl=true';
 //var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
 
 
-router.post('/', function(request, response){
+router.post('/', function(request) {
 
-    var resetSpeech = "UPDATE speeches\
-                SET speech_date = NULL, \
-                WHERE speech_title = $1";
+    console.log('request', request);
 
-    pg.connect(connectionString, function(error, client, done) {
-        if(err) {
+    var resetSpeech = "UPDATE speeches SET speech_date = NULL WHERE id = $1";
+
+    pg.connect(connectionString, function (error, client, done) {
+        if (error) {
             done();
             console.log(error);
-            return response.status(500).json({ success: false, data: err});
+            return response.status(500).json({success: false, data: error});
         }
 
-        client.query(resetSpeech, [meetingData.speech_1]);
-    })
+        client.query(resetSpeech, [request.body.id]);
+
+        client.on('end', function () {
+            client.end();
+
+        })
+    });
 });
 
 module.exports = router;
+
