@@ -164,7 +164,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         if ($scope.dateStart == undefined){
             alert("Please select a date first, or create a custom date.")
         } else {
-            if (manageMtg.speech1.speech_title == undefined || '') {
+            if (manageMtg.speech1.speech_title == undefined || manageMtg.speech1.speech_title == '') {
                 console.log('speech3 id', manageMtg.speech3.id);
 
                 manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;
@@ -180,7 +180,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
                 $http.post('/scheduleSpeech', clickedSpeech).then(function(request){
                 });
 
-             } else if (manageMtg.speech2.speech_title == undefined || '') {
+             } else if (manageMtg.speech2.speech_title == undefined || manageMtg.speech2.speech_title == '') {
 
                 manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;
                 manageMtg.speech2.speech_title = clickedSpeech.speech_title;
@@ -195,7 +195,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
                 $http.post('/scheduleSpeech', clickedSpeech).then(function(request){
                 });
 
-            } else if (manageMtg.speech3.speech_title == undefined || '') {
+            } else if (manageMtg.speech3.speech_title == undefined || manageMtg.speech3.speech_title == '') {
 
                 manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;
                 manageMtg.speech3.speech_title = clickedSpeech.speech_title;
