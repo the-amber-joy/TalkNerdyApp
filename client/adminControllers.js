@@ -289,15 +289,14 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             returnedSpeeches = response.data;
             console.log('returned speeches', returnedSpeeches);
 
-            for(var key in returnedSpeeches) {
-                manageMtg.speech1.key = returnedSpeeches[0].key;
-                manageMtg.speech2.key = returnedSpeeches[1].key;
-                manageMtg.speech2.key = returnedSpeeches[2].key;
+            for(var objectKey in returnedSpeeches) {
+                if (returnedFields[objectKey]) {
+                manageMtg.speech1.objectKey = returnedSpeeches[0].objectKey;
+                manageMtg.speech2.objectKey = returnedSpeeches[1].objectKey;
+                manageMtg.speech2.objectKey = returnedSpeeches[2].objectKey;
             }
-        });
+        };
     };
-
-
 
     //Format object to include with ajax call to DB
     function manageMeeting() {
