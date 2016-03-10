@@ -128,11 +128,15 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         console.log(manageMtg.users);
     });
 
+    var getPendingSpeeches = function() {
+        $http.get('/manageMtg/pendingRequests').then(function (response) {
+            console.log('pending requests', response.data);
+            manageMtg.pending = response.data;
+        });
+    };
+
     //This call grabs all the open speech requests that do not have assigned dates yet
-    $http.get('/manageMtg/pendingRequests').then(function (response) {
-        console.log('pending requests', response.data);
-        manageMtg.pending = response.data;
-    });
+    getPendingSpeeches();
 
     //Return the dates for future meetings from the DB
     grabDates();
@@ -149,42 +153,46 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         if ($scope.dateStart == undefined){
             alert("Please select a date first, or create a custom date.")
         } else {
-            if (manageMtg.speech1.speech_title == undefined) {
+            if (manageMtg.speech1.speech_title == undefined || '') {
+                console.log('speech3 id', manageMtg.speech3.id);
 
                 manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;
                 manageMtg.speech1.speech_title = clickedSpeech.speech_title;
-                manageMtg.speech1.track_name = clickedSpeech.track;
-                manageMtg.speech1.project_name = clickedSpeech.track_project;
-                manageMtg.speech1.speaker_name = clickedSpeech.speaker_first_name + " " + clickedSpeech.speaker_last_name;
-                manageMtg.speech1.speech_blurb = clickedSpeech.summary;
+                manageMtg.speech1.track = clickedSpeech.track;
+                manageMtg.speech1.track_project = clickedSpeech.track_project;
+                manageMtg.speech1.speaker_first_name = clickedSpeech.speaker_first_name;
+                manageMtg.speech1.speaker_last_name = clickedSpeech.speaker_last_name;
+                manageMtg.speech1.summary = clickedSpeech.summary;
                 manageMtg.speech1.id = clickedSpeech.id;
                 manageMtg.pending.splice([manageMtg.pending.indexOf(clickedSpeech)], 1);
 
                 $http.post('/scheduleSpeech', clickedSpeech).then(function(request){
                 });
 
-             } else if (manageMtg.speech2.speech_title == undefined) {
+             } else if (manageMtg.speech2.speech_title == undefined || '') {
 
                 manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;
                 manageMtg.speech2.speech_title = clickedSpeech.speech_title;
-                manageMtg.speech2.track_name = clickedSpeech.track;
-                manageMtg.speech2.project_name = clickedSpeech.track_project;
-                manageMtg.speech2.speaker_name = clickedSpeech.speaker_first_name + " " + clickedSpeech.speaker_last_name;
-                manageMtg.speech2.speech_blurb = clickedSpeech.summary;
+                manageMtg.speech2.track = clickedSpeech.track;
+                manageMtg.speech2.track_project = clickedSpeech.track_project;
+                manageMtg.speech2.speaker_first_name = clickedSpeech.speaker_first_name;
+                manageMtg.speech2.speaker_last_name = clickedSpeech.speaker_last_name;
+                manageMtg.speech2.summary = clickedSpeech.summary;
                 manageMtg.speech2.id = clickedSpeech.id;
                 manageMtg.pending.splice([manageMtg.pending.indexOf(clickedSpeech)], 1);
 
                 $http.post('/scheduleSpeech', clickedSpeech).then(function(request){
                 });
 
-            } else if (manageMtg.speech3.speech_title == undefined) {
+            } else if (manageMtg.speech3.speech_title == undefined || '') {
 
                 manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;
                 manageMtg.speech3.speech_title = clickedSpeech.speech_title;
-                manageMtg.speech3.track_name = clickedSpeech.track;
-                manageMtg.speech3.project_name = clickedSpeech.track_project;
-                manageMtg.speech3.speaker_name = clickedSpeech.speaker_first_name + " " + clickedSpeech.speaker_last_name;
-                manageMtg.speech3.speech_blurb = clickedSpeech.summary;
+                manageMtg.speech3.track = clickedSpeech.track;
+                manageMtg.speech3.track_project = clickedSpeech.track_project;
+                manageMtg.speech3.speaker_first_name = clickedSpeech.speaker_first_name;
+                manageMtg.speech3.speaker_last_name = clickedSpeech.speaker_last_name;
+                manageMtg.speech3.summary = clickedSpeech.summary;
                 manageMtg.speech3.id = clickedSpeech.id;
                 manageMtg.pending.splice([manageMtg.pending.indexOf(clickedSpeech)], 1);
 
@@ -197,9 +205,23 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         };
     };
 
+    //Resets speech date to NULL so it appears back in request queue
     manageMtg.backToQueue = function(speechToReset){
         console.log('speech to reset', speechToReset);
         $http.post('/resetSpeech', speechToReset).then(function(request){
+        });
+        speechToReset = {
+            speech_title: '',
+            track_name: '',
+            project_name: '',
+            speaker_first_name: '',
+            speaker_last_name: '',
+            speech_blurb: '',
+            id: 0
+        };
+        $http.get('/manageMtg/pendingRequests').then(function (response) {
+            console.log('pending requests', response.data);
+            manageMtg.pending = response.data;
         });
     };
 
@@ -246,6 +268,26 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         });
     };
 
+    //
+    //$scope.fetchExistingSpeeches = function(selectedDate) {
+    //    var sendingDate={};
+    //    var returnedSpeeches={};
+    //
+    //    sendingDate.date = selectedDate;
+    //    console.log(sendingDate);
+    //    $http.post('/manageMtg/fetchExistingSpeeches', sendingDate).then(function(response){
+    //        returnedSpeeches = response.data;
+    //        for(var objectKey in returnedSpeeches) {
+    //            if ((returnedSpeeches[objectKey])) {
+    //                $scope[objectKey] = returnedSpeeches[objectKey];
+    //            } else {
+    //                $scope[objectKey] = null}
+    //
+    //        }
+    //    });
+    //};
+
+
 
     //Format object to include with ajax call to DB
     function manageMeeting() {
@@ -265,15 +307,6 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             ah_counter: $scope.ah_counter,
             timer: $scope.timer,
             description: $scope.description,
-            speech_1: $scope.speech_1,
-            speech_2: $scope.speech_2,
-            speech_3: $scope.speech_3,
-            speaker_1_firstname: $scope.speaker_1_firstName,
-            speaker_1_lastname: $scope.speaker_1_lastName,
-            speaker_2_firstname: $scope.speaker_2_firstName,
-            speaker_2_lastname: $scope.speaker_2_lastName,
-            speaker_3_firstname: $scope.speaker_3_firstName,
-            speaker_3_lastname: $scope.speaker_3_lastName
         };
     }
 }]);

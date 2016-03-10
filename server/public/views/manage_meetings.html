@@ -10,7 +10,7 @@
     <div class="headingdate col-sm-12 col-md-12">
 <h2 class="heading"> Create or Edit a Future Meeting</h2>
     <div class="date">
-        <select ng-model="dateStart" class="startdate" ng-change="fetchExistingFields(dateStart)">
+        <select ng-model="dateStart" class="startdate" ng-change="fetchExistingFields(dateStart); fetchExistingSpeeches(dateStart)">
             <option value="" disabled selected>Select Meeting Date</option>
             <option ng-repeat="day in manageMtg.dateArray" value={{day.date}}>{{day.date | date: "fullDate"}}</option>";
         </select>
@@ -18,22 +18,7 @@
 </div>
 
    <form>
-       <!--UNNECESSARY TEXT BOX FORM     -->
 
-
-    <!--<div class=" rbox col-md-9.6">-->
-        <!--<div class="pending col-md-2.4">-->
-            <!--<h4 class="pendingtext">Pending Speeches: </h4>-->
-            <!--<form class="pendingSpeeches">-->
-                <!--<textarea cols="25" rows="20" class="pendtext" name="comment"></textarea>-->
-            <!--</form>-->
-
-
-                        <!--DELETE BUTTON NEEDS TO WORK-->
-            <!--<div class="delbutton">-->
-                <!--<input ng-click="deleteManagedMeetings()" type="submit" class="delemeeting" value="Delete This Meeting">-->
-            <!--</div>-->
-        <!--</div>-->
     <div class="tmasterPositions col-xs-12 col-sm-4 col-md-3">
         <div>
             <label for="presiding_Officer">Presiding Officer:</label><br>
@@ -144,19 +129,20 @@
         </div>
         <div class="track1">
             <label for="tracknameone">Track Name:</label>
-            <input type="text" ng-model="manageMtg.speech1.track_name" id="tracknameone" class="trackone">
+            <input type="text" ng-model="manageMtg.speech1.track" id="tracknameone" class="trackone">
         </div>
         <div class="project1">
             <label for="projectnameone">Project Name:</label>
-            <input type="text" ng-model="manageMtg.speech1.project_name" id="projectnameone" class="selectproject1">
+            <input type="text" ng-model="manageMtg.speech1.track_project" id="projectnameone" class="selectproject1">
         </div>
         <div>
             <label for="speakernameone">Speaker Name:</label>
-            <input type="text" ng-model="manageMtg.speech1.speaker_name" id="speakernameone" class="speakername1">
+            <input type="text" ng-model="manageMtg.speech1.speaker_first_name" id="speakernameone" class="speakername1">
+            <input type="text" ng-model="manageMtg.speech1.speaker_last_name" id="speakerlastnameone" class="speakername1">
         </div>
         <div>
             <label for="speechblurbone">Speech Blurb:</label>
-            <input type="text" ng-model="manageMtg.speech1.speech_blurb" id="speechblurbone" class="speechblurb1">
+            <input type="text" ng-model="manageMtg.speech1.summary" id="speechblurbone" class="speechblurb1">
         </div>
         <div class="speechbuttonone">
             <input type="submit" class="speechinputone" value="Put Back In Queue" ng-click="manageMtg.backToQueue(manageMtg.speech1)">
@@ -171,19 +157,21 @@
         </div>
         <div class="track2">
             <label for="tracknametwo">Track Name:</label>
-            <input type="text" ng-model="manageMtg.speech2.track_name" id="tracknametwo" class="tracktw">
+            <input type="text" ng-model="manageMtg.speech2.track" id="tracknametwo" class="tracktw">
         </div>
         <div class="project2">
             <label for="projectnametwo">Project Name:</label>
-            <input type="text" ng-model="manageMtg.speech2.project_name" id="projectnametwo" class="selectproject2">
+            <input type="text" ng-model="manageMtg.speech2.track_project" id="projectnametwo" class="selectproject2">
         </div>
         <div>
             <label for="speakernametwo">Speaker Name:</label>
-            <input type="text" ng-model="manageMtg.speech2.speaker_name" id="speakernametwo" class="speakername2">
+            <input type="text" ng-model="manageMtg.speech2.speaker_first_name" id="speakernametwo" class="speakername2">
+            <input type="text" ng-model="manageMtg.speech2.speaker_last_name" id="speakerlastnametwo" class="speakername2">
+
         </div>
         <div>
             <label for="speechblurbtwo">Speech Blurb:</label>
-            <input type="text" ng-model="manageMtg.speech2.speech_blurb" id="speechblurbtwo" class="speechblurb2">
+            <input type="text" ng-model="manageMtg.speech2.summary" id="speechblurbtwo" class="speechblurb2">
         </div>
         <div class="speechbuttontwo">
             <input type="submit" class="speechinputtwo" value="Put Back In Queue" ng-click="manageMtg.backToQueue(manageMtg.speech2)">
@@ -198,19 +186,20 @@
         </div>
         <div class="track3">
             <label for="tracknamethree">Track Name:</label>
-            <input type="text" ng-model="manageMtg.speech3.track_name" id="tracknamethree" class="trackthree">
+            <input type="text" ng-model="manageMtg.speech3.track" id="tracknamethree" class="trackthree">
         </div>
         <div class="project3">
             <label for="projectnamethree">Project Name:</label>
-            <input type="text" ng-model="manageMtg.speech3.project_name" id="projectnamethree" class="selectproject3">
+            <input type="text" ng-model="manageMtg.speech3.track_project" id="projectnamethree" class="selectproject3">
         </div>
         <div>
             <label for="speakernamethree">Speaker Name:</label>
-            <input type="text" ng-model="manageMtg.speech3.speaker_name" id="speakernamethree" class="speakername3">
+            <input type="text" ng-model="manageMtg.speech3.speaker_first_name" id="speakernamethree" class="speakername3">
+            <input type="text" ng-model="manageMtg.speech3.speaker_last_name" id="speakerlastnamethree" class="speakername3">
         </div>
         <div>
             <label for="speechblurbthree">Speech Blurb:</label>
-            <input type="text" ng-model="manageMtg.speech3.speech_blurb" id="speechblurbthree" class="speechblurb3">
+            <input type="text" ng-model="manageMtg.speech3.summary" id="speechblurbthree" class="speechblurb3">
         </div>
         <div class="speechbuttonthree">
             <input type="submit" class="speechinputthree" value="Put Back In Queue" ng-click="manageMtg.backToQueue(manageMtg.speech3)">
