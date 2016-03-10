@@ -5,7 +5,6 @@
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 app.controller('RosterController', ['$scope','$http', 'UserService', function ($scope, $http, UserService) {
-    console.log('Roster Controller Hit');
     var roster = this;
     roster.people = [];
 
@@ -18,12 +17,10 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
         $http.get('/manage_roster').then(function (response) {
             roster.people = response.data;
 
-            //console.log('Response from Roster: ', roster.people);
-
             var i = 0;
             while (i < roster.people.length + 1) {
                 if (i < roster.people.length) {
-                    //console.log('Loop: ', i);
+
                     var addOn = ' ';
                     if (roster.people[i].isadmin == true) {
                         addOn = '<< Admin >>'
@@ -32,7 +29,6 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
                     i++;
                 } else {
                     sortArray();
-                    //console.log('STUFF Reached', roster.sortedArray);
                     i++;
                 }
             }
@@ -139,9 +135,13 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
     });
 
     //Return the dates for future meetings from the DB
-    $http.get('/manageMtg/getDates').then(function (response) {
-        manageMtg.dateArray = response.data;
-    });
+    grabDates();
+
+    function grabDates() {
+        $http.get('/manageMtg/getDates').then(function (response) {
+            manageMtg.dateArray = response.data;
+        });
+    }
 
     //Send object to update DB on button click
     manageMtg.submitManagedMeetings = function () {
@@ -153,6 +153,19 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         });
         //and then something to give user the message that their request was submitted
     };
+
+    //***** Add a custom meeting date to the db ************
+    manageMtg.submitCustomDate = function () {
+        var addDate = {};
+        addDate.date = manageMtg.customDate;
+        console.log(addDate);
+        $http.post('/manageMtg/submitCustomDate', addDate).then(function(response){
+            manageMtg.customDate = null;
+            grabDates();
+        });
+        //and then something to give user the message that their request was submitted
+    };
+
 
     $scope.fetchExistingFields = function(selectedDate) {
         var sendingDate={};
@@ -202,10 +215,8 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             speaker_3_firstname: $scope.speaker_3_firstName,
             speaker_3_lastname: $scope.speaker_3_lastName
         };
-
     }
-
-    }]);
+}]);
 //+++++++++++++++++++++++++ End of MANAGE MEETING ++++++++++++++++++++++++++++
 
 
