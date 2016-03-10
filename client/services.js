@@ -7,7 +7,8 @@ app.factory('UserService', function(){
         id: 0,
         isadmin: '',
         role: '',
-        google_id: 0
+        google_id: 0,
+        checkedIn: false
     };
 
     return userInfo;
