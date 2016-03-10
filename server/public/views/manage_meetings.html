@@ -122,46 +122,43 @@
                 <label for="location">Location:</label>
                 <input type="text" list="locations" ng-model="location" id="location" class="locationbox">
             </div>
-
-
             <div class="word">
                 <label for="word" class="wordlabel">Word of the Day:</label>
                 <input type="text" ng-model="word_of_day" id="word" class="wordbox">
             </div>
         </div>
 
-
     <div class="speechcolumns col-xs-12 col-sm-4 col-md-3">
         <div class="first col-xs-12 col-sm-10 col-md-4">
-            <div>
-                <label for="speechonetitle">Speech One Title:</label>
-                <input type="text" ng-model="manageMtg.speech1.speech_title" id="speechonetitle" class="speechone">
-            </div>
-
-            <div class="track1">
-                <label for="tracknameone">Track Name:</label>
-                <input type="text" ng-model="manageMtg.speech1.track" id="tracknameone" class="trackone">
-            </div>
-            <div class="project1">
-                <label for="projectnameone">Project Name:</label>
-                <input type="text" ng-model="manageMtg.speech1.track_project" id="projectnameone" class="selectproject1">
-            </div>
-            <div>
-                <label for="speakerfirstnameone">Speaker Name:</label>
-                <input type="text" ng-model="manageMtg.speech1.speaker_first_name" id="speakerfirstnameone" class="speakerfirstname1">
-                <input type="text" ng-model="manageMtg.speech1.speaker_last_name" id="speakerlastnameone" class="speakerlastname1">
-            </div>
-            <div>
-                <label for="speechblurbone">Speech Blurb:</label>
-                <input type="text" ng-model="manageMtg.speech1.summary" id="speechblurbone" class="speechblurb1">
-            </div>
+        <div>
+            <label for="speechonetitle">Speech One Title:</label>
+            <input type="text" ng-model="manageMtg.speech1.speech_title" id="speechonetitle" class="speechone">
+        </div>
+        <div class="track1">
+            <label for="tracknameone">Track Name:</label>
+            <input type="text" ng-model="manageMtg.speech1.track" id="tracknameone" class="trackone">
+        </div>
+        <div class="project1">
+            <label for="projectnameone">Project Name:</label>
+            <input type="text" ng-model="manageMtg.speech1.track_project" id="projectnameone" class="selectproject1">
+        </div>
+        <div>
+            <label for="speakerfirstnameone">Speaker First Name:</label>
+            <input type="text" ng-model="manageMtg.speech1.speaker_first_name" id="speakerfirstnameone" class="speakername1">
+            <label for="speakerlastnameone">Speaker Last Name:</label>
+            <input type="text" ng-model="manageMtg.speech1.speaker_last_name" id="speakerlastnameone" class="speakername1">
+        </div>
+        <div>
+            <label for="speechblurbone">Speech Blurb:</label>
+            <input type="text" ng-model="manageMtg.speech1.summary" id="speechblurbone" class="speechblurb1">
         <div class="speechbuttonone">
             <input type="submit" class="speechinputone" value="Put Back In Queue" ng-click="manageMtg.oneToQueue(manageMtg.speech1)">
         </div>
-    </div>
+        </div>
+            </div>
 
 
-    <div class="second col-xs-12 col-sm-10 col-md-4" ng-controller="RequestSpeechController as requestSpeech">
+        <div class="second col-xs-12 col-sm-10 col-md-4" ng-controller="RequestSpeechController as requestSpeech">
         <div>
             <label for="speechtwotitle">Speech Two Title:</label>
             <input type="text" ng-model="manageMtg.speech2.speech_title" id="speechtwotitle" class="speechtwo">
@@ -175,9 +172,11 @@
             <input type="text" ng-model="manageMtg.speech2.track_project" id="projectnametwo" class="selectproject2">
         </div>
         <div>
-            <label for="speakerfirstnametwo">Speaker Name:</label>
-            <input type="text" ng-model="manageMtg.speech2.speaker_first_name" id="speakerfirstnametwo" class="speakerfirstname2">
-            <input type="text" ng-model="manageMtg.speech2.speaker_last_name" id="speakerlastnametwo" class="speakerlastname2">
+
+            <label for="speakerfirstnametwo">Speaker First Name:</label>
+            <input type="text" ng-model="manageMtg.speech2.speaker_first_name" id="speakerfirstnametwo" class="speakername2">
+            <label for="speakerlastnametwo">Speaker Last Name:</label>
+            <input type="text" ng-model="manageMtg.speech2.speaker_last_name" id="speakerlastnametwo" class="speakername2">
         </div>
         <div>
             <label for="speechblurbtwo">Speech Blurb:</label>
@@ -203,9 +202,10 @@
             <input type="text" ng-model="manageMtg.speech3.track_project" id="projectnamethree" class="selectproject3">
         </div>
         <div>
-            <label for="speakerfirstnamethree">Speaker Name:</label>
-            <input type="text" ng-model="manageMtg.speech3.speaker_first_name" id="speakerfirstnamethree" class="speakerfirstname3">
-            <input type="text" ng-model="manageMtg.speech3.speaker_last_name" id="speakerlastnamethree" class="speakerlastname3">
+            <label for="speakerfirstnamethree">Speaker First Name:</label>
+            <input type="text" ng-model="manageMtg.speech3.speaker_first_name" id="speakerfirstnamethree" class="speakername3">
+            <label for="speakerlastnamethree">Speaker Last Name:</label>
+            <input type="text" ng-model="manageMtg.speech3.speaker_last_name" id="speakerlastnamethree" class="speakername3">
         </div>
         <div>
             <label for="speechblurbthree">Speech Blurb:</label>
@@ -219,7 +219,7 @@
     </div>
 
     <div class="pending_speeches col-xs-12 col-sm-4 col-md-5">
-        <div ng-include="'/views/pending_speeches.html.html'"></div>
+        <div ng-include="'/views/pending_speeches.html'"></div>
     </div>
     </form>
 </div>
