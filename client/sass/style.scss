@@ -305,6 +305,10 @@ nav {
   clear: both;
 }
 
+.first, .second {
+  margin-bottom: 10px;
+}
+
 .second, .third {
   clear: left;
 }
@@ -314,10 +318,6 @@ nav {
   float: left;
   width: 92%;
   margin-top: 20px;
-}
-
-.speechone, .speechtwo, .speechthree {
-  margin-bottom: 20px;
 }
 
 .selecttrack1, .selecttrack2, .selecttrack3 {
