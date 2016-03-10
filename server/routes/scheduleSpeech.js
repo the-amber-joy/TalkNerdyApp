@@ -8,7 +8,7 @@ var connectionString = require('../../database.json').data + '?ssl=true';
 router.post('/', function(request){
     var scheduledSpeech = request.body;
 
-    var giveDate = "UPDATE speeches SET speech_date = $1 WHERE id = $2";
+    var giveDate = "UPDATE speeches SET speech_date = $1::date WHERE id = $2";
 
     pg.connect(connectionString, function(error, client, done) {
         if(error) {

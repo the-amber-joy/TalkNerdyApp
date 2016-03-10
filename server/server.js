@@ -17,6 +17,7 @@ var getTracks = require('./routes/getTracks');
 var getProjects = require('./routes/getProjects');
 var manageTracks = require('./routes/manageTracks');
 var scheduleSpeech = require('./routes/scheduleSpeech');
+var resetSpeech = require('./routes/resetSpeech');
 var myRequests = require('./routes/myRequests');
 
 var app = express();
@@ -44,6 +45,7 @@ app.use('/getTracks', getTracks);
 app.use('/getProjects', getProjects);
 app.use('/manageTracks', manageTracks);
 app.use('/scheduleSpeech', scheduleSpeech);
+app.use('/resetSpeech', resetSpeech);
 app.use('/index', index);
 app.use('/', login);
 

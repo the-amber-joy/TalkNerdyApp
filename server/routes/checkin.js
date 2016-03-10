@@ -14,7 +14,7 @@ router.post('/', function(request){
             client.end();
         }
 
-        var checkinQuery = "UPDATE roster SET last_checkin = (now()::date) WHERE google_id = $1";
+        var checkinQuery = "UPDATE roster SET last_checkin = (now()::date) WHERE google_id = $1 RETURNING last_checkin";
         var addAttendees = "UPDATE meetings SET attendee_count = (attendee_count + 1) WHERE date = now()::date";
 
         client.query(checkinQuery, [request.body.google_id]);

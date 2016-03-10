@@ -99,6 +99,38 @@ router.post('/fetchExisting', function(request, response){
 });
 
 
+//fetches speeches scheduled for this meeting date
+router.post('/fetchExistingSpeeches', function(request, response){
+    var searchDate = request.body;
+    var filledFields = [];
+
+    pg.connect(connectionString, function(error, client, done){
+        if (error) {
+            console.log(error);
+        }
+
+        var queryString = "SELECT * FROM speeches WHERE speech_date::date = $1";
+
+        var query = client.query(queryString, [searchDate.date.slice(0,10)]);
+
+        query.on('error', function (error){
+            done();
+            console.log(error);
+            return response.status(500).json({ success: false, data: error});
+        });
+
+        query.on('row', function (row) {
+            filledFields.push(row);
+        });
+
+        query.on('end', function () {
+            client.end();
+            return response.json(filledFields);
+        });
+    });
+});
+
+
 //This is where the Admin will be submitting the new/edited meeting data
 router.post('/submitManagedMeeting', function(request, response) {
     var meetingData = request.body;

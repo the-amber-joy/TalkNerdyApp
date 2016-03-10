@@ -1,4 +1,4 @@
-<div style="background-color: #004165; text-align: center; color: #FFFFFF; border: solid 3px #333333;border-radius: 15px; padding: 0 0 15px 15px" ng-show="(home.data.date.slice(0,10))==(home.dateToday | date:'yyyy-MM-dd') && (home.lastCheckIn.slice(0,10) != (home.dateToday | date:'yyyy-MM-dd'))" >
+<div style="background-color: #004165; text-align: center; color: #FFFFFF; border: solid 3px #333333;border-radius: 15px; padding: 0 0 15px 15px" ng-show="(home.data.date.slice(0,10))==(home.dateToday | date:'yyyy-MM-dd') && (home.lastCheckIn.slice(0,10) != (home.dateToday | date:'yyyy-MM-dd')) && (home.things.checkedIn == false)" >
 
         <h1>Thank you for coming!</h1>
         <p>Please Click to record your attendance today:</p>
