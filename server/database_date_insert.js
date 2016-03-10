@@ -1,3 +1,10 @@
+//*******************************************************************************
+//****  run in terminal - node server/database_date_insert.js  ******************
+//****  will add ten years worth of Wednesdays (520 days) into db  **************
+//****  is set to enter May 20, 2026 as first date (1779235200 UNIX time) *******
+//*******************************************************************************
+
+
 var express = require('express');
 var pg = require('pg');
 
@@ -10,9 +17,9 @@ pg.connect(connectionString, function(error, client){
             client.end();
         }
 
-    for(var i = 1; i < 520; i++){
+    for(var i = 0; i < 520; i++){
 
-        var query = client.query("INSERT INTO meetings (date) VALUES (to_timestamp(1464739200 + (" + i + "* 604800)))");
+        var query = client.query("INSERT INTO meetings (date) VALUES (to_timestamp(1779235200 + (" + i + "* 604800)))");
 
     }
 
