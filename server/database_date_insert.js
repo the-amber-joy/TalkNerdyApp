@@ -9,7 +9,6 @@ var express = require('express');
 var pg = require('pg');
 
 var connectionString = require('../database.json').data + '?ssl=true';
-//var connectionString = process.env.DATABASE_URL || require('../../database.json').data;
 
 pg.connect(connectionString, function(error, client){
         if (error) {
@@ -22,13 +21,12 @@ pg.connect(connectionString, function(error, client){
         var query = client.query("INSERT INTO meetings (date) VALUES (to_timestamp(1779235200 + (" + i + "* 604800)))");
 
     }
-
         query.on('error', function (error){
             console.log(error);
         });
 
+
         query.on('end', function () {
             client.end();
         });
-
 });

@@ -1,7 +1,6 @@
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //        CONTROLLERS FOR ADMIN VIEWS & FUNCTIONS            //
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-//
 
 
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -59,8 +58,7 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
 
     roster.updateRoster = function(){
 
-        roster.person =
-        {
+        roster.person = {
             isAdmin: $scope.isAdmin,
             hasRole: $scope.status,
             id: roster.sortedArray[$scope.userIndex].id
@@ -86,8 +84,7 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
 
     roster.updateName = function(){
 
-        roster.person =
-        {
+        roster.person = {
             firstName: $scope.user_first_name,
             lastName: $scope.user_last_name,
             id: roster.sortedArray[$scope.userIndex].id

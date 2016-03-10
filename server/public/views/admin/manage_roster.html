@@ -1,53 +1,58 @@
 <h2>Manage Roster</h2>
 <div class="well">
-<form ng-submit="roster.updateRoster()" class="rostersubmit">
-        <select ng-model="userIndex" id="people" style="font-size: 26px" ng-change="roster.loadName()" class="userindex">
-            <option value="" disabled selected>Select A Member</option>
-            <option ng-repeat="person in roster.sortedArray" value={{$index}}>{{person.displayLine}}</option>;
-        </select>
-        <br />
-        <br />
-        <div class="hide_if_no_selection" ng-hide="!userIndex">
-        <label>
-            <input type="radio" id="guestCheck" ng-model="status" value="guest"> Guest
-        </label>
-        <label>
-            <input type="radio" id="memberCheck" ng-model="status" value="member"> Member
-        </label>
+    <form ng-submit="roster.updateRoster()" class="rostersubmit">
+            <select ng-model="userIndex" id="people" style="font-size: 26px" ng-change="roster.loadName()" class="userindex">
+                <option value="" disabled selected>Select A Member</option>
+                <option ng-repeat="person in roster.sortedArray" value={{$index}}>{{person.displayLine}}</option>;
+            </select>
+
             <br />
-        <label>
-            <input type="checkbox" id="adminCheck" ng-model="isAdmin"> Admin<br>
-        </label>
+            <br />
 
+            <div class="hide_if_no_selection" ng-hide="!userIndex">
 
-            <!--KEEP THIS FOR CHRIS-->
+            <label>
+                <input type="radio" id="guestCheck" ng-model="status" value="guest"> Guest
+            </label>
 
-            <!--###### This section pre-selects the boxes applicable to the current user but ng-checked seems problematic with ng-model ####-->
-            <!--<input type="radio" name="" value="guest" ng-checked="roster.sortedArray[userRole].role == 'guest'"> Guest<br>-->
-            <!--<input type="radio" name="" value="member" ng-checked="roster.sortedArray[userRole].role == 'member'"> Member<br>-->
-            <!--<br />-->
-            <!--<input type="checkbox" ng-model="isAdmin" ng-checked="roster.sortedArray[userRole].isadmin == true"> Admin<br>-->
-    <br>
-    <!--Below would be your button to trigger the function-->
-    <input type="submit" value="Click to Change Role" class="submitThis">
-    </div>
-</form>
-    <div ng-show="roster.show_role_ack" style="color: red">Role Successfully Updated!</div>
-    <br/><br/><br/>
-    <div class="name_change"  ng-hide="!userIndex">
-        <p>Make changes to user First and Last Name here: </p>
-        <form ng-submit="roster.updateName()">
-            <label for="user_first_name">First Name: </label>
-            <input type="text" id="user_first_name" ng-model="user_first_name" />
-            <label for="user_last_name">Last Name: </label>
-            <input type="text" id="user_last_name" ng-model="user_last_name" />
-            <br/><br/>
-            <input type="submit" value="Click to Modify Name" class="submitThis">
-        </form>
-        <div ng-show="roster.show_name_ack" style="color: red">Name Successfully Updated!</div>
+            <label>
+                <input type="radio" id="memberCheck" ng-model="status" value="member"> Member
+            </label>
 
-    </div>
+            <br />
 
+            <label>
+                <input type="checkbox" id="adminCheck" ng-model="isAdmin"> Admin<br>
+            </label>
+
+                <!--KEEP THIS FOR CHRIS-->
+
+                <!--###### This section pre-selects the boxes applicable to the current user but ng-checked seems problematic with ng-model ####-->
+                <!--<input type="radio" name="" value="guest" ng-checked="roster.sortedArray[userRole].role == 'guest'"> Guest<br>-->
+                <!--<input type="radio" name="" value="member" ng-checked="roster.sortedArray[userRole].role == 'member'"> Member<br>-->
+                <!--<br />-->
+                <!--<input type="checkbox" ng-model="isAdmin" ng-checked="roster.sortedArray[userRole].isadmin == true"> Admin<br>-->
+
+        <br>
+        <!--Below would be your button to trigger the function-->
+        <input type="submit" value="Click to Change Role" class="submitThis">
+        </div>
+    </form>
+        <div ng-show="roster.show_role_ack" style="color: red">Role Successfully Updated!</div>
+        <br/><br/><br/>
+        <div class="name_change"  ng-hide="!userIndex">
+            <p>Make changes to user First and Last Name here: </p>
+            <form ng-submit="roster.updateName()">
+                <label for="user_first_name">First Name: </label>
+                <input type="text" id="user_first_name" ng-model="user_first_name" />
+                <label for="user_last_name">Last Name: </label>
+                <input type="text" id="user_last_name" ng-model="user_last_name" />
+                <br/><br/>
+                <input type="submit" value="Click to Modify Name" class="submitThis">
+            </form>
+            <div ng-show="roster.show_name_ack" style="color: red">Name Successfully Updated!</div>
+
+        </div>
 </div>
 
 
