@@ -23,6 +23,7 @@ router.post('/', function(request) {
         client.query(resetSpeechQuery, [speechToReset.id]);
 
         client.on('end', function () {
+            console.log('speech has been reset', speechToReset.speech_title);
             client.end();
         })
     });

@@ -1,7 +1,6 @@
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //        CONTROLLERS FOR ADMIN VIEWS & FUNCTIONS            //
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-//
 
 
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -59,8 +58,7 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
 
     roster.updateRoster = function(){
 
-        roster.person =
-        {
+        roster.person = {
             isAdmin: $scope.isAdmin,
             hasRole: $scope.status,
             id: roster.sortedArray[$scope.userIndex].id
@@ -72,7 +70,6 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
 
         $http.post('/manage_roster', roster.person).then(function(response){
             roster.show_role_ack=true;
-            console.log(response);
             fetchRoster();
         });
 
@@ -86,8 +83,7 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
 
     roster.updateName = function(){
 
-        roster.person =
-        {
+        roster.person = {
             firstName: $scope.user_first_name,
             lastName: $scope.user_last_name,
             id: roster.sortedArray[$scope.userIndex].id
@@ -96,7 +92,6 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
 
         $http.post('/manage_roster/names', roster.person).then(function(response){
             roster.show_name_ack=true;
-            console.log(response);
             fetchRoster();
         });
     };
@@ -131,7 +126,6 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 
     $http.get('manageMtg/userList').then(function(response){
         manageMtg.users = response.data;
-        console.log(manageMtg.users);
     });
 
 
@@ -164,7 +158,6 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             alert("Please select a date first, or create a custom date.")
         } else {
             if (manageMtg.speech1.speech_title == undefined || manageMtg.speech1.speech_title == '') {
-                console.log('speech3 id', manageMtg.speech3.id);
 
                 manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;
                 manageMtg.speech1.speech_title = clickedSpeech.speech_title;
@@ -217,9 +210,8 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 
     //Resets speech date to NULL so it appears back in request queue
     manageMtg.oneToQueue = function(speechToReset){
-        console.log('speech to reset', speechToReset);
         $http.post('/resetSpeech', speechToReset).then(function(request){
-        });
+        }).then(
         manageMtg.speech1 = {
             speech_title: '',
             track_name: '',
@@ -228,14 +220,14 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             speaker_last_name: '',
             speech_blurb: '',
             id: 0
-        };
-        getPendingSpeeches();
+        }).then(
+            getPendingSpeeches()
+        );
     };
 
     manageMtg.twoToQueue = function(speechToReset){
-        console.log('speech to reset', speechToReset);
         $http.post('/resetSpeech', speechToReset).then(function(request){
-        });
+        }).then(
         manageMtg.speech2 = {
             speech_title: '',
             track_name: '',
@@ -244,14 +236,14 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             speaker_last_name: '',
             speech_blurb: '',
             id: 0
-        };
-        getPendingSpeeches();
+        }).then(
+            getPendingSpeeches()
+        );
     };
 
     manageMtg.threeToQueue = function(speechToReset){
-        console.log('speech to reset', speechToReset);
         $http.post('/resetSpeech', speechToReset).then(function(request){
-        });
+        }).then(
         manageMtg.speech3 = {
             speech_title: '',
             track_name: '',
@@ -260,8 +252,9 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             speaker_last_name: '',
             speech_blurb: '',
             id: 0
-        };
-        getPendingSpeeches();
+        }).then(
+        getPendingSpeeches()
+        );
     };
 
     //Send object to update DB on button click
@@ -291,27 +284,25 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         var returnedFields={};
 
         sendingDate.date = selectedDate;
-        console.log(sendingDate);
         $http.post('/manageMtg/fetchExisting', sendingDate).then(function(response){
             returnedFields = response.data;
-            console.log('returned fields', returnedFields);
             for(var objectKey in returnedFields) {
                 if ((returnedFields[objectKey])) {
                     $scope[objectKey] = returnedFields[objectKey];
                 } else {
                     $scope[objectKey] = null}
-
             }
         });
     };
 
 
-    manageMtg.fetchExistingSpeeches = function(selectedDate) {
+    $scope.fetchExistingSpeeches = function(selectedDate) {
+        console.log('beginning speech population function');
+
         var sendingDate = {};
         var returnedSpeeches = [];
 
         sendingDate.date = selectedDate;
-        console.log(sendingDate);
 
         $http.post('/manageMtg/fetchExistingSpeeches', sendingDate).then(function (response) {
             manageMtg.speech1 = {};
@@ -407,12 +398,10 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
             track_number: allTracks[manageTracks.selectedTrack].track_number
              };
         manageTracks.selectedProjects.push(newProject);
-        console.log('Selected projects', manageTracks.selectedProjects);
     };
 
 
     manageTracks.updateTrack = function(){
-        console.log('Selected projects', manageTracks.selectedProjects);
 
         $http.post('/manageTracks', manageTracks.selectedProjects);
         manageTracks.success = true;

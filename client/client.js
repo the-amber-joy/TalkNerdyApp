@@ -67,6 +67,7 @@ $urlRouterProvider, $locationProvider) {
             controllerAs: 'manageMtg'
         });
 
+
     //$locationProvider.html5Mode(true).hashPrefix('!');
     $locationProvider.html5Mode(true);
 }]);

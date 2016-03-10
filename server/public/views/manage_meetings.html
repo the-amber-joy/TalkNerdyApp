@@ -1,31 +1,35 @@
+<!-- ################# SETUP OF MANAGE MTGS ################ -->
+
 <datalist id="list_of_users">
     <option ng-repeat="user in manageMtg.users" value="{{user.first_name}} {{user.last_name}}">
 </datalist>
+
 <datalist id="locations">
     <option value="Nerdery">
     <option value="Prime">
 </datalist>
 
 <div class="centrebody col-xs-12 col-sm-12 col-md-12">
+
     <div class="headingdate col-sm-12 col-md-12">
-<h2 class="heading"> Create or Edit a Future Meeting</h2>
-    <div class="date">
-        <select ng-model="dateStart" class="startdate" ng-change="fetchExistingFields(dateStart); manageMtg.fetchExistingSpeeches(dateStart)">
-            <option value="" disabled selected>Select Meeting Date</option>
-            <option ng-repeat="day in manageMtg.dateArray" value={{day.date}}>{{day.date | date: "fullDate"}}</option>";
-        </select>
-    </div>
-</div>
 
-   <form>
+        <h2 class="heading"> Create or Edit a Future Meeting</h2>
 
-       <!-- ################# MEETING ROLES ################ -->
-
-    <div class="tmasterPositions col-xs-12 col-sm-4 col-md-3">
-        <div>
-            <label for="presiding_Officer">Presiding Officer:</label><br>
-            <input type="text" list="list_of_users" ng-model="presiding_officer" id="presiding_officer" class="pofficer">
+        <div class="date">
+            <select ng-model="dateStart" class="startdate" ng-change="fetchExistingFields(dateStart); fetchExistingSpeeches(dateStart)">
+                <option value="" disabled selected>Select Meeting Date</option>
+                <option ng-repeat="day in manageMtg.dateArray" value={{day.date}}>{{day.date | date: "fullDate"}}</option>";
+            </select>
         </div>
+
+    </div>
+
+    <form>
+        <div class="tmasterPositions col-xs-12 col-sm-4 col-md-3">
+            <div>
+                <label for="presiding_Officer">Presiding Officer:</label><br>
+                <input type="text" list="list_of_users" ng-model="presiding_officer" id="presiding_officer" class="pofficer">
+            </div>
 
         <br>
 
@@ -87,45 +91,45 @@
         <div class="subbuttons">
             <input ng-click="manageMtg.submitManagedMeetings()" type="submit" class="sinput" value="Save Meeting">
         </div>
-    </div>
+        </div>
+
 
        <!-- ################# SELECT A CUSTOM DATE FIELD ################ -->
 
-    <div class="datetheme col-xs-8 col-sm-4 col-md-3">
-<div class="setdate">
-    <form>
-        <label for="createdate">Create Custom Date:</label>
-        <input type="date" name="custom" id="createdate" class="customdate" ng-model="manageMtg.customDate">
-        <input type="submit" class="submitcustom" value="Create Custom Date" ng-click="manageMtg.submitCustomDate()">
-    </form>
-</div>
 
-        <!-- ################# END OF CUSTOM DATE FIELD ################ -->
-
-    <div class="theme">
-        <label for="theme">Theme:</label>
-        <input type="text" ng-model="theme" id="theme" class="themebox">
-    </div>
-</div>
-
-<div class="locationword col-xs-8 col-sm-4 col-md-3">
-    <div>
-        <label for="location">Location:</label>
-        <input type="text" list="locations" ng-model="location" id="location" class="locationbox">
-    </div>
+        <div class="datetheme col-xs-8 col-sm-4 col-md-3">
+            <div class="setdate">
+                <form>
+                    <label for="createdate">Create Custom Date:</label>
+                    <input type="date" name="custom" id="createdate" class="customdate" ng-model="manageMtg.customDate">
+                    <input type="submit" class="submitcustom" value="Create Custom Date" ng-click="manageMtg.submitCustomDate()">
+                </form>
+            </div>
 
 
-    <div class="word">
-        <label for="word" class="wordlabel">Word of the Day:</label>
-        <input type="text" ng-model="word_of_day" id="word" class="wordbox">
+                <!-- ################# END OF CUSTOM DATE FIELD ################ -->
 
-    </div>
-</div>
 
-       <!-- ################# THE SPEECHES ################ -->
+            <div class="theme">
+                <label for="theme">Theme:</label>
+                <input type="text" ng-model="theme" id="theme" class="themebox">
+            </div>
+        </div>
+
+
+        <div class="locationword col-xs-8 col-sm-4 col-md-3">
+            <div>
+                <label for="location">Location:</label>
+                <input type="text" list="locations" ng-model="location" id="location" class="locationbox">
+            </div>
+            <div class="word">
+                <label for="word" class="wordlabel">Word of the Day:</label>
+                <input type="text" ng-model="word_of_day" id="word" class="wordbox">
+            </div>
+        </div>
 
     <div class="speechcolumns col-xs-12 col-sm-4 col-md-3">
-    <div class="first col-xs-12 col-sm-10 col-md-4">
+        <div class="first col-xs-12 col-sm-10 col-md-4">
         <div>
             <label for="speechonetitle">Speech One Title:</label>
             <input type="text" ng-model="manageMtg.speech1.speech_title" id="speechonetitle" class="speechone">
@@ -147,32 +151,31 @@
         <div>
             <label for="speechblurbone">Speech Blurb:</label>
             <input type="text" ng-model="manageMtg.speech1.summary" id="speechblurbone" class="speechblurb1">
-        </div>
         <div class="speechbuttonone">
             <input type="submit" class="speechinputone" value="Put Back In Queue" ng-click="manageMtg.oneToQueue(manageMtg.speech1)">
         </div>
-    </div>
+        </div>
+            </div>
 
 
-    <div class="second col-xs-12 col-sm-10 col-md-4" ng-controller="RequestSpeechController as requestSpeech">
+        <div class="second col-xs-12 col-sm-10 col-md-4" ng-controller="RequestSpeechController as requestSpeech">
         <div>
             <label for="speechtwotitle">Speech Two Title:</label>
             <input type="text" ng-model="manageMtg.speech2.speech_title" id="speechtwotitle" class="speechtwo">
         </div>
         <div class="track2">
             <label for="tracknametwo">Track Name:</label>
-            <input type="text" ng-model="manageMtg.speech2.track" id="tracknametwo" class="tracktw">
+            <input type="text" ng-model="manageMtg.speech1.track" id="tracknametwo" class="tracktw">
         </div>
         <div class="project2">
             <label for="projectnametwo">Project Name:</label>
             <input type="text" ng-model="manageMtg.speech2.track_project" id="projectnametwo" class="selectproject2">
         </div>
         <div>
-            <label for="speakerfirstnametwo">Speaker Name:</label>
+            <label for="speakerfirstnametwo">Speaker First Name:</label>
             <input type="text" ng-model="manageMtg.speech2.speaker_first_name" id="speakerfirstnametwo" class="speakername2">
-            <label for="speakernametwo">Speaker Last Name:</label>
+            <label for="speakerlastnametwo">Speaker Last Name:</label>
             <input type="text" ng-model="manageMtg.speech2.speaker_last_name" id="speakerlastnametwo" class="speakername2">
-
         </div>
         <div>
             <label for="speechblurbtwo">Speech Blurb:</label>
@@ -213,7 +216,10 @@
     </div>
 
     </div>
-       <div ng-include="'/views/pending_speeches.html'"></div>
-   </form>
+
+    <div class="pending_speeches col-xs-12 col-sm-4 col-md-5">
+        <div ng-include="'/views/pending_speeches.html'"></div>
+    </div>
+    </form>
 </div>
 
