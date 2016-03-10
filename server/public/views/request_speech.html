@@ -19,7 +19,7 @@
                     <label for="project">Speech Project:</label><br>
                     <select ng-model="requestSpeech.data.speech.project" id="project" class="project">
                         <option value="" disabled selected>Select A Project:</option>
-                        <option ng-repeat="project in requestSpeech.selectedProjects.data track by $index">{{project.project_name}}</option>
+                        <option ng-repeat="project in requestSpeech.selectedProjects track by $index">{{project.project_name}}</option>
                     </select>
                 </div>
 

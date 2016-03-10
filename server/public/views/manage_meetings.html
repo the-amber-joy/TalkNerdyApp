@@ -140,27 +140,23 @@
     <div class="first col-xs-12 col-sm-10 col-md-4">
         <div>
             <label for="speechonetitle">Speech One Title:</label>
-            <input type="text" ng-model="speech_one" id="speechonetitle" class="speechone">
+            <input type="text" ng-model="manageMtg.speech_one" id="speechonetitle" class="speechone">
         </div>
         <div class="track1">
-            <select ng-model="selectTrack1" class="selecttrack1">
-                <option value="" disabled selected>Select Track</option>
-                <!--<option ng-repeat=""></option>";-->
-            </select>
+            <label for="tracknameone">Track Name:</label>
+            <input type="text" ng-model="manageMtg.selectTrack1" id="tracknameone" class="trackone">
         </div>
         <div class="project1">
-            <select ng-model="selectProject1" class="selectproject1">
-                <option value="" disabled selected>Select Project</option>
-                <!--<option ng-repeat=""></option>";-->
-            </select>
+            <label for="projectnameone">Project Name:</label>
+            <input type="text" ng-model="manageMtg.selectProject1" id="projectnameone" class="selectproject1">
         </div>
         <div>
             <label for="speakernameone">Speaker Name:</label>
-            <input type="text" ng-model="speaker_nameone" id="speakernameone" class="speakername1">
+            <input type="text" ng-model="manageMtg.speaker_nameone" id="speakernameone" class="speakername1">
         </div>
         <div>
             <label for="speechblurbone">Speech Blurb:</label>
-            <input type="text" ng-model="speech_blurbone" id="speechblurbone" class="speechblurb1">
+            <input type="text" ng-model="manageMtg.speech_blurbone" id="speechblurbone" class="speechblurb1">
         </div>
         <div class="speechbuttonone">
             <input type="submit" class="speechinputone" value="Put Back In Queue">
@@ -168,30 +164,26 @@
     </div>
 
 
-    <div class="second col-xs-12 col-sm-10 col-md-4">
+    <div class="second col-xs-12 col-sm-10 col-md-4" ng-controller="RequestSpeechController as requestSpeech">
         <div>
             <label for="speechtwotitle">Speech Two Title:</label>
-            <input type="text" ng-model="speech_two" id="speechtwotitle" class="speechtwo">
+            <input type="text" ng-model="manageMtg.speech_two" id="speechtwotitle" class="speechtwo">
         </div>
         <div class="track2">
-            <select ng-model="selectTrack2" class="selecttrack2">
-                <option value="" disabled selected>Select Track</option>
-                <!--<option ng-repeat=""></option>";-->
-            </select>
+            <label for="tracknametwo">Track Name:</label>
+            <input type="text" ng-model="manageMtg.selectTrack2" id="tracknametwo" class="tracktw">
         </div>
         <div class="project2">
-            <select ng-model="selectProject2" class="selectproject2">
-                <option value="" disabled selected>Select Project</option>
-                <!--<option ng-repeat=""></option>";-->
-            </select>
+            <label for="projectnametwo">Project Name:</label>
+            <input type="text" ng-model="manageMtg.selectProject2" id="projectnametwo" class="selectproject2">
         </div>
         <div>
             <label for="speakernametwo">Speaker Name:</label>
-            <input type="text" ng-model="speaker_nametwo" id="speakernametwo" class="speakername2">
+            <input type="text" ng-model="manageMtg.speaker_nametwo" id="speakernametwo" class="speakername2">
         </div>
         <div>
             <label for="speechblurbtwo">Speech Blurb:</label>
-            <input type="text" ng-model="speech_blurbtwo" id="speechblurbtwo" class="speechblurb2">
+            <input type="text" ng-model="manageMtg.speech_blurbtwo" id="speechblurbtwo" class="speechblurb2">
         </div>
         <div class="speechbuttontwo">
             <input type="submit" class="speechinputtwo" value="Put Back In Queue">
@@ -202,36 +194,33 @@
     <div class="third col-xs-12 col-sm-10 col-md-4">
         <div>
             <label for="speechthreetitle">Speech Three Title:</label>
-            <input type="text" ng-model="speech_three" id="speechthreetitle" class="speechthree">
+            <input type="text" ng-model="manageMtg.speech_three" id="speechthreetitle" class="speechthree">
         </div>
         <div class="track3">
-            <select ng-model="selectTrack3" class="selecttrack3">
-                <option value="" disabled selected>Select Track</option>
-                <!--<option ng-repeat=""></option>";-->
-            </select>
+            <label for="tracknamethree">Track Name:</label>
+            <input type="text" ng-model="manageMtg.selectTrack3" id="tracknamethree" class="trackthree">
         </div>
         <div class="project3">
-            <select ng-model="selectProject3" class="selectproject3">
-                <option value="" disabled selected>Select Project</option>
-                <!--<option ng-repeat=""></option>";-->
-            </select>
+            <label for="projectnamethree">Project Name:</label>
+            <input type="text" ng-model="manageMtg.selectProject3" id="projectnamethree" class="selectproject3">
         </div>
         <div>
             <label for="speakernamethree">Speaker Name:</label>
-            <input type="text" ng-model="speaker_namethree" id="speakernamethree" class="speakername3">
+            <input type="text" ng-model="manageMtg.speaker_namethree" id="speakernamethree" class="speakername3">
         </div>
         <div>
             <label for="speechblurbthree">Speech Blurb:</label>
-            <input type="text" ng-model="speech_blurbthree" id="speechblurbthree" class="speechblurb3">
+            <input type="text" ng-model="manageMtg.speech_blurbthree" id="speechblurbthree" class="speechblurb3">
         </div>
         <div class="speechbuttonthree">
             <input type="submit" class="speechinputthree" value="Put Back In Queue">
         </div>
-        </div>
-        </div>
+    </div>
+
+    </div>
         <div class="pending_speeches col-xs-12 col-sm-4 col-md-5">
             <h4 class="speechrequest">Requested Speeches</h4>
-            <div ng-repeat="unscheduled in manageMtg.pending">
+            <div class="queue" ng-repeat="unscheduled in manageMtg.pending" ng-click="manageMtg.scheduleSpeech(unscheduled)">
                 <p>{{unscheduled.date_requested | date: "fullDate"}}
                     <br>
                 Name: {{unscheduled.speaker_first_name}}

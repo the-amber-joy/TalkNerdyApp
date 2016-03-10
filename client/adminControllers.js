@@ -116,7 +116,9 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
 app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, $http) {
     var manageMtg = this;
     var meetingData = {};
+    manageMtg.pending = []; // array of unscheduled speeches
     manageMtg.dateArray = [];
+    manageMtg.scheduledSpeeches = [];
 
     $http.get('manageMtg/userList').then(function(response){
         manageMtg.users = response.data;
@@ -130,6 +132,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
     $http.get('/getProjects').then(function(response){
         manageMtg.projects = response.data;
     });
+
 
     //This call grabs all the open speech requests that do not have assigned dates yet
     $http.get('/manageMtg/pendingRequests').then(function (response) {
@@ -146,6 +149,51 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         });
     }
 
+    //Assigns date to pending speech
+    manageMtg.scheduleSpeech = function (clickedSpeech){
+        if ($scope.dateStart == undefined){
+            alert("Please select a date first.")
+        } else
+        {
+            if (manageMtg.speech_one == null) {
+
+                manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;
+                manageMtg.speech_one = clickedSpeech.speech_title;
+                manageMtg.selectTrack1 = clickedSpeech.track;
+                manageMtg.selectProject1 = clickedSpeech.track_project;
+                manageMtg.speaker_nameone = clickedSpeech.speaker_first_name + " " + clickedSpeech.speaker_last_name;
+                manageMtg.speech_blurbone = clickedSpeech.summary;
+                manageMtg.pending.splice([manageMtg.pending.indexOf(clickedSpeech)], 1);
+
+             } else if (manageMtg.speech_two == null) {
+
+                manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;
+                manageMtg.speech_two = clickedSpeech.speech_title;
+                manageMtg.selectTrack2 = clickedSpeech.track;
+                manageMtg.selectProject2 = clickedSpeech.track_project;
+                manageMtg.speaker_nametwo = clickedSpeech.speaker_first_name + " " + clickedSpeech.speaker_last_name;
+                manageMtg.speech_blurbtwo = clickedSpeech.summary;
+                manageMtg.pending.splice([manageMtg.pending.indexOf(clickedSpeech)], 1);
+
+            } else if (manageMtg.speech_three == null) {
+
+                manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;
+                manageMtg.speech_three = clickedSpeech.speech_title;
+                manageMtg.selectTrack3 = clickedSpeech.track;
+                manageMtg.selectProject3 = clickedSpeech.track_project;
+                manageMtg.speaker_namethree = clickedSpeech.speaker_first_name + " " + clickedSpeech.speaker_last_name;
+                manageMtg.speech_blurbthree = clickedSpeech.summary;
+                manageMtg.pending.splice([manageMtg.pending.indexOf(clickedSpeech)], 1);
+
+            } else {
+                alert("Current meeting is full. Please select another date for this speech!")
+            }
+
+
+        }
+
+    };
+
     //Send object to update DB on button click
     manageMtg.submitManagedMeetings = function () {
 
@@ -154,7 +202,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         $http.post('/manageMtg/submitManagedMeeting', meetingData).then(function(response){
             console.log(response);
         });
-        //and then something to give user the message that their request was submitted
+        //and then something to give user the message that their request was submitted?
     };
 
     //***** Add a custom meeting date to the db ************
@@ -218,9 +266,8 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             speaker_3_firstname: $scope.speaker_3_firstName,
             speaker_3_lastname: $scope.speaker_3_lastName
         };
-
-        }
-    }]);
+    }
+}]);
 //+++++++++++++++++++++++++ End of MANAGE MEETING ++++++++++++++++++++++++++++
 
 

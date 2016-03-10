@@ -99,13 +99,12 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
         allTracks = response.data;
     });
 
-
     requestSpeech.loadProjects = function(){
         $http.post('/getProjects', allTracks[requestSpeech.selectedTrack]).then(function(response){
-            requestSpeech.selectedProjects = response;
+            requestSpeech.selectedProjects = response.data;
+            console.log('response.data', response.data);
         });
     };
-
 
     requestSpeech.resetForm = function(){
         requestSpeech.data = {};
@@ -135,7 +134,8 @@ app.controller('ViewTracksController', ['$http', '$scope', function ($http, $sco
 
     viewTracks.loadProjects = function(){
         $http.post('/getProjects', allTracks[viewTracks.selectedTrack]).then(function(response){
-            viewTracks.selectedProjects = response;
+            viewTracks.selectedProjects = response.data;
+            console.log('response.data', response.data);
         });
     }
 
