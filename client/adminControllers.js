@@ -139,7 +139,6 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 
     var getPendingSpeeches = function() {
         $http.get('/manageMtg/pendingRequests').then(function (response) {
-            console.log('pending requests', response.data);
             manageMtg.pending = response.data;
         });
     };
@@ -345,6 +344,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
                 speaker_last_name: returnedSpeeches[2].speaker_last_name,
                 summary: returnedSpeeches[2].summary
             };
+            getPendingSpeeches();
         });
 
         //Format object to include with ajax call to DB
