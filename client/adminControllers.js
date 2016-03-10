@@ -157,8 +157,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 
         if ($scope.dateStart == undefined && $scope.customDate == undefined){
             alert("Please select a date first.")
-        } else
-        {
+        } else {
             if (manageMtg.speech1.speech_one == null) {
 
                 manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;

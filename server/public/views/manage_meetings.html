@@ -220,11 +220,7 @@
     </div>
         <div class="pending_speeches col-xs-12 col-sm-4 col-md-5">
             <h4 class="speechrequest">Requested Speeches</h4>
-<<<<<<< HEAD
-            <div class="queue" ng-repeat="unscheduled in manageMtg.pending" ng-click="manageMtg.scheduleSpeech(unscheduled)">
-=======
             <div class="speech" ng-repeat="unscheduled in manageMtg.pending" ng-click="manageMtg.scheduleSpeech(unscheduled)">
->>>>>>> scheduleSpeeches
                 <p>{{unscheduled.date_requested | date: "fullDate"}}
                     <br>
                 Name: {{unscheduled.speaker_first_name}}
