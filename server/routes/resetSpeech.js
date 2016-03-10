@@ -25,3 +25,5 @@ router.post('/', function(request, response){
         client.query(resetSpeech, [meetingData.speech_1]);
     })
 });
+
+module.exports = router;

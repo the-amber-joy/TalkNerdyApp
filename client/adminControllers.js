@@ -128,17 +128,10 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
     });
 
 
-    $http.get('/getTracks').then(function(response){
-        manageMtg.tracks = response.data;
-    });
 
 
-    $http.get('/getProjects').then(function(response){
-        manageMtg.projects = response.data;
-    });
 
-
-    //Grabs all the open speech requests that do not have assigned dates yet
+    //This call grabs all the open speech requests that do not have assigned dates yet
     $http.get('/manageMtg/pendingRequests').then(function (response) {
         console.log('pending requests', response.data);
         manageMtg.pending = response.data;
@@ -171,7 +164,10 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
                 manageMtg.speech_blurbone = clickedSpeech.summary;
                 manageMtg.pending.splice([manageMtg.pending.indexOf(clickedSpeech)], 1);
 
-            } else if (manageMtg.speech_two == undefined) {
+                $http.post('/scheduleSpeech', clickedSpeech).then(function(request){
+                });
+
+             } else if (manageMtg.speech_two == undefined) {
 
                 manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;
                 manageMtg.speech_two = clickedSpeech.speech_title;
@@ -180,6 +176,9 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
                 manageMtg.speaker_nametwo = clickedSpeech.speaker_first_name + " " + clickedSpeech.speaker_last_name;
                 manageMtg.speech_blurbtwo = clickedSpeech.summary;
                 manageMtg.pending.splice([manageMtg.pending.indexOf(clickedSpeech)], 1);
+
+                $http.post('/scheduleSpeech', clickedSpeech).then(function(request){
+                });
 
             } else if (manageMtg.speech_three == undefined) {
 
@@ -190,6 +189,9 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
                 manageMtg.speaker_namethree = clickedSpeech.speaker_first_name + " " + clickedSpeech.speaker_last_name;
                 manageMtg.speech_blurbthree = clickedSpeech.summary;
                 manageMtg.pending.splice([manageMtg.pending.indexOf(clickedSpeech)], 1);
+
+                $http.post('/scheduleSpeech', clickedSpeech).then(function(request){
+                });
 
             } else {
                 alert("Current meeting is full. Please select another date for this speech!")

@@ -1,14 +1,17 @@
 <div class="row">
     <div class="banner col-xs-12 col-sm-12 col-md-12">
-    <div class="homechapter">
-<a ui-sref="home" class="homelink"><h1 class="text-left">Talk Nerdy To Me</h1></a>
-    <p class="chapter">a chapter of toastmasters</p>
+        <div class="homechapter">
+            <a ui-sref="home" class="homelink"><h1 class="text-left">Talk Nerdy To Me
+                <div class="welcome_by_name" ng-hide="!index.things.firstName">
+                <div>, {{index.things.firstName}}!</div>
+            </div></h1></a>
+            <p class="chapter">a chapter of toastmasters</p>
         </div>
-        <div class="welcome_by_name" ng-hide="!index.things.firstName">
-            <div>, {{index.things.firstName}}!</div>
+        <!--<div class="welcome_by_name" ng-hide="!index.things.firstName">-->
+            <!--<div>, {{index.things.firstName}}!</div>-->
+        <!--</div>-->
+        <div class="timage">
+            <img class="toastimage" src="views/images/logo.png" alt="Toastmasters Logo">
         </div>
-    <div class="timage">
-<img class="toastimage" src="views/images/logo.png" alt="Toastmasters Logo">
-        </div>
-        </div>
+    </div>
 </div>

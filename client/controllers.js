@@ -13,8 +13,9 @@ app.controller('indexController', ['$http', 'UserService', function ($http, User
 app.controller('HomeController', ['$http', '$scope', 'UserService', function ($http, $scope, UserService) {
     console.log("We're home!");
     var home = this;
+    home.things = UserService;
     home.dateToday = Date.now();
-    if(!UserService.id) {
+
         $http.get('/auth/currentUser').then(function (response) {
             console.log('Current User: ', response.data);
             UserService.firstName = response.data.first_name;
@@ -23,17 +24,20 @@ app.controller('HomeController', ['$http', '$scope', 'UserService', function ($h
             UserService.isadmin = response.data.isadmin;
             UserService.role = response.data.role;
             UserService.google_id = response.data.google_id;
+
+            home.lastCheckIn = response.data.last_checkin;
+                console.log(home.lastCheckIn);
             home.firstName = UserService.firstName;
             home.isadmin = UserService.isadmin;
             home.role = UserService.role;
         });
-    }
+
     $http.get('/agenda').then(function(response){
         home.data = response.data;
     });
 
     home.attending = function() {
-        UserService.checkedIn = true;
+        home.things.checkedIn = true;
         //console.log('UserService:', UserService.google_id);
         $http.post('/checkin', {google_id : UserService.google_id});
     };
