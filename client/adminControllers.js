@@ -315,20 +315,36 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         console.log(sendingDate);
 
         $http.post('/manageMtg/fetchExistingSpeeches', sendingDate).then(function (response) {
+            manageMtg.speech1 = {};
+            manageMtg.speech2 = {};
+            manageMtg.speech3 = {};
+
             returnedSpeeches = response.data;
             console.log('returned speeches', returnedSpeeches);
-
-            for (var i = 0; i < returnedSpeeches.length; i++) {
-
-                manageMtg.speech3.speech_title = returnedSpeeches[i].speech_title;
-                manageMtg.speech3.track = returnedSpeeches[i].track;
-                manageMtg.speech3.track_project = returnedSpeeches[i].track_project;
-                manageMtg.speech3.speaker_first_name = returnedSpeeches[i].speaker_first_name;
-                manageMtg.speech3.speaker_last_name = returnedSpeeches[i].speaker_last_name;
-                manageMtg.speech3.summary = returnedSpeeches[i].summary;
-
-            }
-
+            manageMtg.speech1 = {
+                speech_title: returnedSpeeches[0].speech_title,
+                track: returnedSpeeches[0].track,
+                track_project: returnedSpeeches[0].track_project,
+                speaker_first_name: returnedSpeeches[0].speaker_first_name,
+                speaker_last_name: returnedSpeeches[0].speaker_last_name,
+                summary: returnedSpeeches[0].summary
+            };
+            manageMtg.speech2 = {
+                speech_title: returnedSpeeches[1].speech_title,
+                track: returnedSpeeches[1].track,
+                track_project: returnedSpeeches[1].track_project,
+                speaker_first_name: returnedSpeeches[1].speaker_first_name,
+                speaker_last_name: returnedSpeeches[1].speaker_last_name,
+                summary: returnedSpeeches[1].summary
+            };
+            manageMtg.speech3 = {
+                speech_title: returnedSpeeches[2].speech_title,
+                track: returnedSpeeches[2].track,
+                track_project: returnedSpeeches[2].track_project,
+                speaker_first_name: returnedSpeeches[2].speaker_first_name,
+                speaker_last_name: returnedSpeeches[2].speaker_last_name,
+                summary: returnedSpeeches[2].summary
+            };
         });
 
         //Format object to include with ajax call to DB
