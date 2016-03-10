@@ -1,4 +1,8 @@
-//CONTROLLERS FOR ADMIN VIEWS & FUNCTIONS
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//        CONTROLLERS FOR ADMIN VIEWS & FUNCTIONS            //
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//
+
 
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //                  ROSTER CONTROLLER                        //
@@ -28,7 +32,7 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
                     roster.people[i].displayLine = roster.people[i].first_name + " " + roster.people[i].last_name + " -- " + roster.people[i].role.charAt(0).toUpperCase() + roster.people[i].role.slice(1) + "  " + addOn;
                     i++;
                 } else {
-                    sortArray();
+                sortArray();
                     i++;
                 }
             }
@@ -36,17 +40,15 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
     }
 
 
-        //######## Sort the final array alphabetical order #########
+        //######## Sort the final array in alphabetical order #########
         function sortArray() {
                 roster.people.sort(sortNames);
-                //console.log(returnsArray);
                 roster.sortedArray = roster.people;
             }
 
 
         //######### Sorting function ###########
         function sortNames(a, b) {
-            //var nameA = a.first_name.toLowerCase(), nameB = b.last_name.toLowerCase();
             if (a.first_name < b.first_name){
                 return -1;}
             if (a.first_name > b.first_name){
@@ -54,7 +56,6 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
             return 0;
         }
 
-        //console.log('Response from Roster: ', response);
 
     roster.updateRoster = function(){
 
@@ -64,9 +65,10 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
             hasRole: $scope.status,
             id: roster.sortedArray[$scope.userIndex].id
         };
+
+
         if(roster.person.isAdmin == undefined){roster.person.isAdmin = roster.sortedArray[$scope.userIndex].isadmin}
         if(roster.person.hasRole == undefined){roster.person.hasRole = roster.sortedArray[$scope.userIndex].role}
-
 
         $http.post('/manage_roster', roster.person).then(function(response){
             roster.show_role_ack=true;
@@ -74,13 +76,13 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
             fetchRoster();
         });
 
-        console.log("update Roster Function fired", $scope.status, $scope.isAdmin);
+
         document.getElementById("guestCheck").checked = false;
         document.getElementById("memberCheck").checked = false;
         document.getElementById("adminCheck").checked = false;
         $scope.isAdmin = false;
-
     };
+
 
     roster.updateName = function(){
 
@@ -91,13 +93,14 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
             id: roster.sortedArray[$scope.userIndex].id
         };
 
+
         $http.post('/manage_roster/names', roster.person).then(function(response){
             roster.show_name_ack=true;
             console.log(response);
             fetchRoster();
         });
-
     };
+
 
     roster.loadName = function(){
         $scope.user_first_name = roster.sortedArray[$scope.userIndex].first_name;
@@ -106,7 +109,9 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
         roster.show_role_ack=false;
     }
 }]);
-//+++++++++++++++++++++++++ End of ROSTER ++++++++++++++++++++++++++++++++++++
+
+
+//+++++++++++++++++++++++++ End of ROSTER CONTROLLER +++++++++++++++++++++++++++
 
 
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -116,7 +121,7 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
 app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, $http) {
     var manageMtg = this;
     var meetingData = {};
-    manageMtg.pending = []; // array of unscheduled speeches
+    manageMtg.pending = [];  // array of unscheduled speeches
     manageMtg.dateArray = [];
     manageMtg.scheduledSpeeches = [];
 
@@ -125,20 +130,23 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         console.log(manageMtg.users);
     });
 
+
     $http.get('/getTracks').then(function(response){
         manageMtg.tracks = response.data;
     });
+
 
     $http.get('/getProjects').then(function(response){
         manageMtg.projects = response.data;
     });
 
 
-    //This call grabs all the open speech requests that do not have assigned dates yet
+    //Grabs all the open speech requests that do not have assigned dates yet
     $http.get('/manageMtg/pendingRequests').then(function (response) {
         console.log('pending requests', response.data);
         manageMtg.pending = response.data;
     });
+
 
     //Return the dates for future meetings from the DB
     grabDates();
@@ -149,7 +157,8 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         });
     }
 
-    //Assigns date to pending speech
+
+    //Assigns date to pending speech & adds speech to queue
     manageMtg.scheduleSpeech = function (clickedSpeech){
 
         if ($scope.dateStart == undefined){
@@ -165,7 +174,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
                 manageMtg.speech_blurbone = clickedSpeech.summary;
                 manageMtg.pending.splice([manageMtg.pending.indexOf(clickedSpeech)], 1);
 
-             } else if (manageMtg.speech_two == undefined) {
+            } else if (manageMtg.speech_two == undefined) {
 
                 manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;
                 manageMtg.speech_two = clickedSpeech.speech_title;
@@ -188,13 +197,11 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             } else {
                 alert("Current meeting is full. Please select another date for this speech!")
             }
-        };
+        }
 
         manageMtg.backToQueue = function(){
             manageMtg.pending.push(manageMtg.speech1);
-            console.log('new array', manageMtg.pending);
         }
-
     };
 
     //Send object to update DB on button click
@@ -203,16 +210,14 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         manageMeeting();
 
         $http.post('/manageMtg/submitManagedMeeting', meetingData).then(function(response){
-            console.log(response);
         });
-        //and then something to give user the message that their request was submitted?
     };
 
-    //***** Add a custom meeting date to the db ************
+
+    // Add a custom meeting date to the db
     manageMtg.submitCustomDate = function () {
         var addDate = {};
         addDate.date = manageMtg.customDate;
-        console.log(addDate);
         $http.post('/manageMtg/submitCustomDate', addDate).then(function(response){
             manageMtg.customDate = null;
             grabDates();
@@ -275,7 +280,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 
 
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-//|||||||                     TRACK CONTROLLER
+//                              TRACK CONTROLLER                            //
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
@@ -292,12 +297,14 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
         allTracks = response.data;
     });
 
+
     manageTracks.loadProjects = function(){
         $http.post('/getProjects', allTracks[manageTracks.selectedTrack]).then(function(response){
             manageTracks.selectedProjects = response.data;
         });
         manageTracks.showSubmitButton = true;
     };
+
 
     manageTracks.addProject = function() {
         var newProject = { track_name: allTracks[manageTracks.selectedTrack].track_name,
@@ -310,6 +317,7 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
         console.log('Selected projects', manageTracks.selectedProjects);
     };
 
+
     manageTracks.updateTrack = function(){
         console.log('Selected projects', manageTracks.selectedProjects);
 
@@ -317,5 +325,6 @@ app.controller('TrackController', ['$scope','$http', function ($scope, $http) {
         manageTracks.success = true;
     };
 }]);
+
 //+++++++++++++++++++++++++ End of TRACK ++++++++++++++++++++++++++++
 
