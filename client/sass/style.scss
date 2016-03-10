@@ -1,6 +1,8 @@
-
 $background-gray: #A9B2B1;
 $app-background-color: #ffffff;
+
+
+// main body/general CSS
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -8,35 +10,49 @@ body {
   background-color: #a9b2b1;
   background-image: url("http://www.transparenttextures.com/patterns/cross-scratches.png");
 }
-  header {
+
+main {
+  .well {background-color: #FFFFFF;
+    width: 100%;
+    padding-bottom: 55px;
+  }
+  border-radius: 0 4px 4px 0;
+}
+
+//.well {
+//  background-color: #ffffff;
+//
+//}
+
+
+// header CSS
+
+header {
   padding: -4px;
     width: 100%;
 }
 
-.login {
-  padding: 1px 20px 20px;
-  margin: 150px auto 0 auto;
-  width: 320px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  border-color: #004165;
-}
-
-.loginbox {
-  width: 96%;
-}
+//.text-left {
+//  margin-left: 25px;
+//  text-align: left;
+//  width: 100%;
+//}
 
 .text-left {
-  color: #FFFFFF;
-  margin-left: 25px;
+  margin-left: 56px;
   text-align: left;
   width: 100%;
+  font-size: 32px;
+  color: #F2DF74;
 }
+
 
 .chapter {
   font-style: italic;
   color: #FFFFFF;
-
+  margin: 0 0 10px 60px;
+  float: left;
+  clear: left;
 }
 
 .welcome {
@@ -47,35 +63,6 @@ body {
 .welcomeParagraph {
   font-style: italic;
   text-align: center;
-}
-
-.google {
-  text-align: center;
-  margin: 0 auto;
-}
-
-.btn {
-  text-align: center;
-  margin: 0 auto;
-  padding: 10px 16px;
-  color: #004165;
-  border-color: #004165;
-}
-
-main {
-  .well {background-color: #FFFFFF;
-    width: 100%;
-  }
-  border-radius: 0 4px 4px 0;
-}
-
-nav {
-  float:left;
-  .nav>li>a:hover,
-  .nav>li>a:focus {
-    background-color: $app-background-color;
-    border-radius: 4px 0 0 4px;
-  }
 }
 
 .banner {
@@ -99,12 +86,6 @@ nav {
   margin-left: -55px;
 }
 
-.comma {
-  margin-left: 338px;
-  margin-top: -50px;
-  color: #F2DF74;
-}
-
 .timage {
   margin-right: 115px;
 }
@@ -125,28 +106,61 @@ nav {
   font-weight: bold;
 }
 
-.text-left {
-  margin-left: 56px;
-  text-align: left;
-  width: 100%;
-  font-size: 32px;
-  color: #F2DF74;
+// sidebar CSS
+
+nav {
+  float:left;
+  .nav>li>a:hover,
+  .nav>li>a:focus {
+    background-color: $app-background-color;
+    border-radius: 4px 0 0 4px;
+  }
 }
 
-.chapter {
-  margin: 0 0 10px 60px;
-  float: left;
-  clear: left;
+.textcolour {
+  color: #772432;
+  font-weight: bold;
 }
 
-// CSS for roster.html
+.click {
+  width: 85px;
+}
 
-.well {
+// html.login CSS
+
+.login {
+  padding: 1px 20px 20px;
+  margin: 150px auto 0 auto;
+  width: 320px;
   background-color: #ffffff;
-  padding-bottom: 55px;
+  border-radius: 10px;
+  border-color: #004165;
 }
 
-//vvvvv CSS for manage_meeting.html vvvvv
+.loginbox {
+  width: 96%;
+}
+
+.google {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.btn {
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px 16px;
+  color: #004165;
+  border-color: #004165;
+}
+
+// CSS for manage.roster.html
+
+.userindex {
+  width: 45%;
+}
+
+// CSS for manage_meeting.html
 
 .container {
   margin-left: 15px;
@@ -340,8 +354,7 @@ nav {
   }
 }
 
-
-//vvvvv CSS for request_speech.html vvvvv
+// CSS for request_speech.html
 
 .requestform {
   height: 175px;
@@ -360,6 +373,7 @@ nav {
 
 .requestsubmit {
   margin-left: -16px;
+  float: left;
 }
 
 .trackproject {
@@ -374,13 +388,15 @@ nav {
   margin-left: 13px;
 }
 
-.homelink, a:hover, a:visited, a:link, a:active {
-  text-decoration: none;
+.buttonclear {
+  float: left;
+  margin-left: 17px;
 }
 
-.textcolour {
-  color: #772432;
-  font-weight: bold;
+// manage.tracks.html
+
+.trackform {
+  margin-bottom: 50px;
 }
 
 .manageTrackBtn button {
@@ -388,23 +404,7 @@ nav {
   float: left;
 }
 
-.buttonclear {
-  float: left;
-  margin-left: 17px;
-}
-
-.requestsubmit {
-  float: left;
-}
-
-.click {
-  width: 85px;
-}
-
-.userindex {
-  width: 45%;
-}
-
+// media queries CSS
 
 @media (max-width: 600px) {
   .word {
