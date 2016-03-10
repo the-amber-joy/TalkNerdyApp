@@ -152,6 +152,18 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         //and then something to give user the message that their request was submitted
     };
 
+    //***** Add a custom meeting date to the db ************
+    manageMtg.submitCustomDate = function () {
+        var addDate = {};
+        addDate.date = manageMtg.customDate;
+        console.log(addDate);
+        $http.post('/manageMtg/submitCustomDate', addDate).then(function(response){
+            console.log(response);
+        });
+        //and then something to give user the message that their request was submitted
+    };
+
+
     $scope.fetchExistingFields = function(selectedDate) {
         var sendingDate={};
         var returnedFields={};

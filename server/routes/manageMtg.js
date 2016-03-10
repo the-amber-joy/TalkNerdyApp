@@ -206,6 +206,33 @@ router.post('/submitManagedMeeting', function(request, response) {
     });
 });
 
+router.post('/submitCustomDate', function(request, response){
+    var addNewDate = request.body.date;
+    pg.connect(connectionString, function(error, client){
+        if (error) {
+            console.log(error);
+        }
+
+        var queryString = "INSERT INTO meetings(date) VALUES ($1);";
+
+        var query = client.query(queryString, [addNewDate]);
+
+        query.on('error', function (error){
+            done();
+            console.log(error);
+            return response.status(500).json({ success: false, data: error});
+        });
+
+        query.on('end', function () {
+            client.end();
+            return response.sendStatus(200);
+        });
+    });
+});
+
+
+
+
 router.post('/submitManagedMeeting', function(request, response) {
     var meetingData = request.body;
 
