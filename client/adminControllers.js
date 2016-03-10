@@ -1,7 +1,6 @@
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //        CONTROLLERS FOR ADMIN VIEWS & FUNCTIONS            //
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-//
 
 
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -59,8 +58,7 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
 
     roster.updateRoster = function(){
 
-        roster.person =
-        {
+        roster.person = {
             isAdmin: $scope.isAdmin,
             hasRole: $scope.status,
             id: roster.sortedArray[$scope.userIndex].id
@@ -86,8 +84,7 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
 
     roster.updateName = function(){
 
-        roster.person =
-        {
+        roster.person = {
             firstName: $scope.user_first_name,
             lastName: $scope.user_last_name,
             id: roster.sortedArray[$scope.userIndex].id
@@ -315,16 +312,36 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         console.log(sendingDate);
 
         $http.post('/manageMtg/fetchExistingSpeeches', sendingDate).then(function (response) {
+            manageMtg.speech1 = {};
+            manageMtg.speech2 = {};
+            manageMtg.speech3 = {};
+
             returnedSpeeches = response.data;
             console.log('returned speeches', returnedSpeeches);
-
-            for (var objectKey in returnedSpeeches) {
-                if (returnedFields[objectKey]) {
-                    manageMtg.speech1.objectKey = returnedSpeeches[0].objectKey;
-                    manageMtg.speech2.objectKey = returnedSpeeches[1].objectKey;
-                    manageMtg.speech2.objectKey = returnedSpeeches[2].objectKey;
-                }
-            }
+            manageMtg.speech1 = {
+                speech_title: returnedSpeeches[0].speech_title,
+                track: returnedSpeeches[0].track,
+                track_project: returnedSpeeches[0].track_project,
+                speaker_first_name: returnedSpeeches[0].speaker_first_name,
+                speaker_last_name: returnedSpeeches[0].speaker_last_name,
+                summary: returnedSpeeches[0].summary
+            };
+            manageMtg.speech2 = {
+                speech_title: returnedSpeeches[1].speech_title,
+                track: returnedSpeeches[1].track,
+                track_project: returnedSpeeches[1].track_project,
+                speaker_first_name: returnedSpeeches[1].speaker_first_name,
+                speaker_last_name: returnedSpeeches[1].speaker_last_name,
+                summary: returnedSpeeches[1].summary
+            };
+            manageMtg.speech3 = {
+                speech_title: returnedSpeeches[2].speech_title,
+                track: returnedSpeeches[2].track,
+                track_project: returnedSpeeches[2].track_project,
+                speaker_first_name: returnedSpeeches[2].speaker_first_name,
+                speaker_last_name: returnedSpeeches[2].speaker_last_name,
+                summary: returnedSpeeches[2].summary
+            };
         });
 
         //Format object to include with ajax call to DB
@@ -344,7 +361,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
                 grammarian: $scope.grammarian,
                 ah_counter: $scope.ah_counter,
                 timer: $scope.timer,
-                description: $scope.description,
+                description: $scope.description
             };
         }
     }

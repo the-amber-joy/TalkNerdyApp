@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="talkNerdyApp">
+
 <head>
     <meta charset="UTF-8">
-        <title>Talk Nerdy to Me - Toastmasters Club</title>
 
+    <title>Talk Nerdy to Me - Toastmasters Club</title>
 
-    <!--STYLESHEETS-->
-    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/styles/style.css">
+        <!--STYLESHEETS-->
+        <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/styles/style.css">
 
-    <!--SCRIPTS-->
-    <script type="text/javascript" src="vendor/angular/angular.min.js"></script>
-    <script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/scripts/client.min.js"></script>
-    <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!--SCRIPTS-->
+        <script type="text/javascript" src="vendor/angular/angular.min.js"></script>
+        <script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/scripts/client.min.js"></script>
+        <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <base href="/">
-</head>
+        <base href="/">
+    </head>
     <body>
-    <header ng-include="'/views/header.html'"></header>
-    <div class="loginbox row">
-    <div class="login">
-    <h3 class="welcome">Welcome</h3>
+        <header ng-include="'/views/header.html'"></header>
+            <div class="loginbox row">
+            <div class="login">
+                <h3 class="welcome">Welcome</h3>
         <br>
-        <p class="welcomeParagraph">Use of this application requires signing in. You will be redirected to Google to log in. </p>
+                <p class="welcomeParagraph">Use of this application requires signing in. You will be redirected to Google to log in. </p>
         <br/>
-        <div class="google">
-        <a href="/auth/google" class="btn btn-primary" target="_self"><span class="fa fa-google-plus"></span> Log In With Google </a>
+            <div class="google">
+                <a href="/auth/google" class="btn btn-primary" target="_self"><span class="fa fa-google-plus"></span> Log In With Google </a>
             </div>
-    </div>
-        </div>
+            </div>
+            </div>
     </body>
 </html>
 
