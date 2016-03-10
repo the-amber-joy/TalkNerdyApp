@@ -1,6 +1,3 @@
-//This is where a scheduled meeting is re-queued by removing the date
-// removes previously assigned meeting date from the selected speech, and puts speech back in queue to be assigned a meeting date
-
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
@@ -10,10 +7,11 @@ var connectionString = require('../../database.json').data + '?ssl=true';
 
 
 router.post('/', function(request) {
+    var speechToReset = request.body;
 
-    console.log('request', request);
+    console.log('speechToReset', speechToReset);
 
-    var resetSpeech = "UPDATE speeches SET speech_date = NULL WHERE id = $1";
+    var resetSpeechQuery = "UPDATE speeches SET speech_date = NULL WHERE id = $1";
 
     pg.connect(connectionString, function (error, client, done) {
         if (error) {
@@ -22,11 +20,10 @@ router.post('/', function(request) {
             return response.status(500).json({success: false, data: error});
         }
 
-        client.query(resetSpeech, [request.body.id]);
+        client.query(resetSpeechQuery, [speechToReset.id]);
 
         client.on('end', function () {
             client.end();
-
         })
     });
 });

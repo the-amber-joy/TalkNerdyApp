@@ -195,15 +195,12 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
                 alert("Current meeting is full. Please select another date for this speech!")
             }
         };
+    };
 
-        manageMtg.backToQueue = function(speechToReset){
-            console.log('speech to reset', speechToReset);
-            speechToReset = {};
-            //manageMtg.pending.push(speechToReset);
-            $http.post('/resetSpeech', speechToReset).then(function(request){
-            });
-        }
-
+    manageMtg.backToQueue = function(speechToReset){
+        console.log('speech to reset', speechToReset);
+        $http.post('/resetSpeech', speechToReset).then(function(request){
+        });
     };
 
     //Send object to update DB on button click
