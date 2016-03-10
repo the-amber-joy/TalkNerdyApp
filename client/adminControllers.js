@@ -364,7 +364,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
                 grammarian: $scope.grammarian,
                 ah_counter: $scope.ah_counter,
                 timer: $scope.timer,
-                description: $scope.description,
+                description: $scope.description
             };
         }
     }
