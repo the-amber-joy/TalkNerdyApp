@@ -150,13 +150,40 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             alert("Please select a date first.")
         } else
         {
-            manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;
-            manageMtg.speech_one = clickedSpeech.speech_title;
-            manageMtg.selectTrack1 = clickedSpeech.track;
-            manageMtg.selectProject1 = clickedSpeech.track_project;
-            manageMtg.speaker_nameone = clickedSpeech.speaker_first_name + " " + clickedSpeech.speaker_last_name;
-            manageMtg.speech_blurbone = clickedSpeech.summary;
-            manageMtg.pending.splice([manageMtg.pending.indexOf(clickedSpeech)], 1);
+            if (manageMtg.speech_one == null) {
+
+                manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;
+                manageMtg.speech_one = clickedSpeech.speech_title;
+                manageMtg.selectTrack1 = clickedSpeech.track;
+                manageMtg.selectProject1 = clickedSpeech.track_project;
+                manageMtg.speaker_nameone = clickedSpeech.speaker_first_name + " " + clickedSpeech.speaker_last_name;
+                manageMtg.speech_blurbone = clickedSpeech.summary;
+                manageMtg.pending.splice([manageMtg.pending.indexOf(clickedSpeech)], 1);
+
+             } else if (manageMtg.speech_two == null) {
+
+                manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;
+                manageMtg.speech_two = clickedSpeech.speech_title;
+                manageMtg.selectTrack2 = clickedSpeech.track;
+                manageMtg.selectProject2 = clickedSpeech.track_project;
+                manageMtg.speaker_nametwo = clickedSpeech.speaker_first_name + " " + clickedSpeech.speaker_last_name;
+                manageMtg.speech_blurbtwo = clickedSpeech.summary;
+                manageMtg.pending.splice([manageMtg.pending.indexOf(clickedSpeech)], 1);
+
+            } else if (manageMtg.speech_three == null) {
+
+                manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;
+                manageMtg.speech_three = clickedSpeech.speech_title;
+                manageMtg.selectTrack3 = clickedSpeech.track;
+                manageMtg.selectProject3 = clickedSpeech.track_project;
+                manageMtg.speaker_namethree = clickedSpeech.speaker_first_name + " " + clickedSpeech.speaker_last_name;
+                manageMtg.speech_blurbthree = clickedSpeech.summary;
+                manageMtg.pending.splice([manageMtg.pending.indexOf(clickedSpeech)], 1);
+
+            } else {
+                alert("Current meeting is full. Please select another date for this speech!")
+            }
+
 
         }
 
