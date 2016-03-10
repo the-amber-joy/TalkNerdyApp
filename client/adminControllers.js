@@ -137,9 +137,13 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
     });
 
     //Return the dates for future meetings from the DB
-    $http.get('/manageMtg/getDates').then(function (response) {
-        manageMtg.dateArray = response.data;
-    });
+    grabDates();
+
+    function grabDates() {
+        $http.get('/manageMtg/getDates').then(function (response) {
+            manageMtg.dateArray = response.data;
+        });
+    }
 
     //Send object to update DB on button click
     manageMtg.submitManagedMeetings = function () {
@@ -158,7 +162,8 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         addDate.date = manageMtg.customDate;
         console.log(addDate);
         $http.post('/manageMtg/submitCustomDate', addDate).then(function(response){
-            console.log(response);
+            manageMtg.customDate = null;
+            grabDates();
         });
         //and then something to give user the message that their request was submitted
     };
