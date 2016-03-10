@@ -45,8 +45,8 @@ router.get('/getDates', function(request, response){
             console.log(error);
         }
 
-        //This query returns all past meeting agendas
-        var queryString = "SELECT date, id FROM meetings WHERE date >= now()";
+        //This query returns the next 16 meeting dates
+        var queryString = "SELECT date, id FROM meetings WHERE date >= now() ORDER BY date LIMIT 16";
 
         var query = client.query(queryString);
 
