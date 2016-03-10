@@ -23,7 +23,6 @@ app.controller('HomeController', ['$http', '$scope', 'UserService', function ($h
             UserService.isadmin = response.data.isadmin;
             UserService.role = response.data.role;
             UserService.google_id = response.data.google_id;
-            //console.log('User Service --->', UserService);
             home.firstName = UserService.firstName;
             home.isadmin = UserService.isadmin;
             home.role = UserService.role;
@@ -34,8 +33,8 @@ app.controller('HomeController', ['$http', '$scope', 'UserService', function ($h
     });
 
     home.attending = function() {
-        $scope.checkedIn = true;
-        console.log('UserService:', UserService.google_id);
+        UserService.checkedIn = true;
+        //console.log('UserService:', UserService.google_id);
         $http.post('/checkin', {google_id : UserService.google_id});
     };
 }]);
