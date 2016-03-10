@@ -102,14 +102,14 @@ router.post('/fetchExisting', function(request, response){
 //fetches speeches scheduled for this meeting date
 router.post('/fetchExistingSpeeches', function(request, response){
     var searchDate = request.body;
-    var filledFields = {};
+    var filledFields = [];
 
-    pg.connect(connectionString, function(error, client){
+    pg.connect(connectionString, function(error, client, done){
         if (error) {
             console.log(error);
         }
 
-        var queryString = "SELECT * FROM speches WHERE speech_date::date = $1";
+        var queryString = "SELECT * FROM speeches WHERE speech_date::date = $1";
 
         var query = client.query(queryString, [searchDate.date.slice(0,10)]);
 
@@ -120,7 +120,7 @@ router.post('/fetchExistingSpeeches', function(request, response){
         });
 
         query.on('row', function (row) {
-            filledFields = row;
+            filledFields.push(row);
         });
 
         query.on('end', function () {

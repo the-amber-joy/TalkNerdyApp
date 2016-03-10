@@ -257,7 +257,6 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         console.log(sendingDate);
         $http.post('/manageMtg/fetchExisting', sendingDate).then(function(response){
             returnedFields = response.data;
-            console.log('Here is the theme: ', returnedFields.theme);
             for(var objectKey in returnedFields) {
                 if ((returnedFields[objectKey])) {
                     $scope[objectKey] = returnedFields[objectKey];
@@ -268,24 +267,26 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         });
     };
 
-    //
-    //$scope.fetchExistingSpeeches = function(selectedDate) {
-    //    var sendingDate={};
-    //    var returnedSpeeches={};
-    //
-    //    sendingDate.date = selectedDate;
-    //    console.log(sendingDate);
-    //    $http.post('/manageMtg/fetchExistingSpeeches', sendingDate).then(function(response){
-    //        returnedSpeeches = response.data;
-    //        for(var objectKey in returnedSpeeches) {
-    //            if ((returnedSpeeches[objectKey])) {
-    //                $scope[objectKey] = returnedSpeeches[objectKey];
-    //            } else {
-    //                $scope[objectKey] = null}
-    //
-    //        }
-    //    });
-    //};
+
+    manageMtg.fetchExistingSpeeches = function(selectedDate) {
+        var sendingDate={};
+        var returnedSpeeches=[];
+
+        sendingDate.date = selectedDate;
+        console.log(sendingDate);
+        $http.post('/manageMtg/fetchExistingSpeeches', sendingDate).then(function(response){
+            returnedSpeeches = response.data;
+            console.log('returned speeches', returnedSpeeches);
+
+            for(var objectKey in returnedSpeeches) {
+                    if ((returnedSpeeches.objectKey)) {
+                        manageMtg.speech1.objectKey = returnedSpeeches[0].objectKey;
+                        manageMtg.speech2.objectKey = returnedSpeeches[1].objectKey;
+                        manageMtg.speech2.objectKey = returnedSpeeches[2].objectKey;
+                    }
+                }
+        });
+    };
 
 
 
