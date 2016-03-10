@@ -1,18 +1,17 @@
-<div class="pending_speeches col-xs-12 col-sm-4 col-md-5">
-    <h4 class="speechrequest">Requested Speeches</h4>
-    <div class="speech" ng-repeat="unscheduled in manageMtg.pending" ng-click="manageMtg.scheduleSpeech(unscheduled)">
-        <p>{{unscheduled.date_requested | date: "fullDate"}}
-            <br>
-            Name: {{unscheduled.speaker_first_name}}
-            {{unscheduled.speaker_last_name}}
-            <br>
-            Speech Title: {{unscheduled.speech_title}}
-            <br>
-            Summary: {{unscheduled.summary}}
-            <br>
-            Track: {{unscheduled.track}}
-            <br>
-            Project: {{unscheduled.track_project}}.</p>
-        <hr>
-    </div>
+<h4 class="speechrequest">Requested Speeches</h4>
+
+<div class="speech" ng-repeat="unscheduled in manageMtg.pending" ng-click="manageMtg.scheduleSpeech(unscheduled)">
+    <p>{{unscheduled.date_requested | date: "fullDate"}}
+        <br>
+        Name: {{unscheduled.speaker_first_name}}
+        {{unscheduled.speaker_last_name}}
+        <br>
+        Speech Title: {{unscheduled.speech_title}}
+        <br>
+        Summary: {{unscheduled.summary}}
+        <br>
+        Track: {{unscheduled.track}}
+        <br>
+        Project: {{unscheduled.track_project}}.</p>
+    <hr>
 </div>
