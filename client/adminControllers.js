@@ -217,11 +217,41 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
     };
 
     //Resets speech date to NULL so it appears back in request queue
-    manageMtg.backToQueue = function(speechToReset){
+    manageMtg.oneToQueue = function(speechToReset){
         console.log('speech to reset', speechToReset);
         $http.post('/resetSpeech', speechToReset).then(function(request){
         });
-        speechToReset = {
+        manageMtg.speech1 = {
+            speech_title: '',
+            track_name: '',
+            project_name: '',
+            speaker_first_name: '',
+            speaker_last_name: '',
+            speech_blurb: '',
+            id: 0
+        };
+    };
+
+    manageMtg.twoToQueue = function(speechToReset){
+        console.log('speech to reset', speechToReset);
+        $http.post('/resetSpeech', speechToReset).then(function(request){
+        });
+        manageMtg.speech2 = {
+            speech_title: '',
+            track_name: '',
+            project_name: '',
+            speaker_first_name: '',
+            speaker_last_name: '',
+            speech_blurb: '',
+            id: 0
+        };
+    };
+
+    manageMtg.threeToQueue = function(speechToReset){
+        console.log('speech to reset', speechToReset);
+        $http.post('/resetSpeech', speechToReset).then(function(request){
+        });
+        manageMtg.speech3 = {
             speech_title: '',
             track_name: '',
             project_name: '',
