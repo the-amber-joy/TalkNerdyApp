@@ -24,6 +24,9 @@ app.controller('HomeController', ['$http', '$scope', 'UserService', function ($h
             UserService.isadmin = response.data.isadmin;
             UserService.role = response.data.role;
             UserService.google_id = response.data.google_id;
+
+            home.lastCheckIn = response.data.last_checkin;
+                console.log(home.lastCheckIn);
             home.firstName = UserService.firstName;
             home.isadmin = UserService.isadmin;
             home.role = UserService.role;
