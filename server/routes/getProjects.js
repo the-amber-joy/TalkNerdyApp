@@ -58,6 +58,7 @@ router.post('/', function(request, response){
 
         query.on('row', function (row) {
             selectedProjects.push(row);
+            console.log('selected projects', selectedProjects)
         });
 
         query.on('end', function () {

@@ -120,8 +120,9 @@ app.controller('RosterController', ['$scope','$http', 'UserService', function ($
 app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, $http) {
     var manageMtg = this;
     var meetingData = {};
-    manageMtg.pending = [];
+    manageMtg.pending = []; // array of unscheduled speeches
     manageMtg.dateArray = [];
+    manageMtg.scheduledSpeeches = [];
 
     $http.get('/getTracks').then(function(response){
         manageMtg.tracks = response.data;
@@ -143,6 +144,24 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         manageMtg.dateArray = response.data;
     });
 
+    //Assigns date to pending speech
+    manageMtg.scheduleSpeech = function (clickedSpeech){
+        if ($scope.dateStart == undefined){
+            alert("Please select a date first.")
+        } else
+        {
+            manageMtg.pending[manageMtg.pending.indexOf(clickedSpeech)].speech_date = $scope.dateStart;
+            manageMtg.speech_one = clickedSpeech.speech_title;
+            manageMtg.selectTrack1 = clickedSpeech.track;
+            manageMtg.selectProject1 = clickedSpeech.track_project;
+            manageMtg.speaker_nameone = clickedSpeech.speaker_first_name + " " + clickedSpeech.speaker_last_name;
+            manageMtg.speech_blurbone = clickedSpeech.summary;
+            manageMtg.pending.splice([manageMtg.pending.indexOf(clickedSpeech)], 1);
+
+        }
+
+    };
+
     //Send object to update DB on button click
     manageMtg.submitManagedMeetings = function () {
 
@@ -151,7 +170,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         $http.post('/manageMtg/submitManagedMeeting', meetingData).then(function(response){
             console.log(response);
         });
-        //and then something to give user the message that their request was submitted
+        //and then something to give user the message that their request was submitted?
     };
 
     $scope.fetchExistingFields = function(selectedDate) {
