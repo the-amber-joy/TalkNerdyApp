@@ -257,6 +257,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
         console.log(sendingDate);
         $http.post('/manageMtg/fetchExisting', sendingDate).then(function(response){
             returnedFields = response.data;
+            console.log('returned fields', returnedFields);
             for(var objectKey in returnedFields) {
                 if ((returnedFields[objectKey])) {
                     $scope[objectKey] = returnedFields[objectKey];
@@ -274,17 +275,16 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 
         sendingDate.date = selectedDate;
         console.log(sendingDate);
+
         $http.post('/manageMtg/fetchExistingSpeeches', sendingDate).then(function(response){
             returnedSpeeches = response.data;
             console.log('returned speeches', returnedSpeeches);
 
-            for(var objectKey in returnedSpeeches) {
-                    if ((returnedSpeeches.objectKey)) {
-                        manageMtg.speech1.objectKey = returnedSpeeches[0].objectKey;
-                        manageMtg.speech2.objectKey = returnedSpeeches[1].objectKey;
-                        manageMtg.speech2.objectKey = returnedSpeeches[2].objectKey;
-                    }
-                }
+            for(var key in returnedSpeeches) {
+                manageMtg.speech1.key = returnedSpeeches[0].key;
+                manageMtg.speech2.key = returnedSpeeches[1].key;
+                manageMtg.speech2.key = returnedSpeeches[2].key;
+            }
         });
     };
 
