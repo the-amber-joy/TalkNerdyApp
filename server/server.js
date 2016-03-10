@@ -50,11 +50,10 @@ app.get('/*', function(request, response){
 });
 
 
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//         Server with heroku ENV port selector              //
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-//[][][][][][][][][][][][][][][][][][][][][][][][][][][][]
-//        Server with heroku ENV port selector
-//[][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 var server = app.listen(process.env.PORT || 3000, function(){
     var port = server.address().port;
-    console.log('Ready for some requests on Port', port)
 });

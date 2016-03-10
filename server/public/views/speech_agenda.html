@@ -1,12 +1,14 @@
 <div ng-controller="SpeechAgendaController as plannedSpeeches">
+
 <h4><b>Speeches scheduled for this week:</b></h4>
-<div class="well" ng-repeat="plannedSpeech in plannedSpeeches.speechArray track by $index">
-    <div>
-        Speaker: <b>{{plannedSpeech.speaker_first_name}} {{plannedSpeech.speaker_last_name}}</b><br>
-        Speech Title: <b>{{plannedSpeech.speech_title}}</b><br>
-        Track: <b>{{plannedSpeech.track}}</b><br>
-        Project: <b>{{plannedSpeech.track_project}}</b><br>
-        Summary: <b>{{plannedSpeech.summary}}</b><br>
+
+    <div class="well" ng-repeat="plannedSpeech in plannedSpeeches.speechArray track by $index">
+        <div>
+            Speaker: <b>{{plannedSpeech.speaker_first_name}} {{plannedSpeech.speaker_last_name}}</b><br>
+            Speech Title: <b>{{plannedSpeech.speech_title}}</b><br>
+            Track: <b>{{plannedSpeech.track}}</b><br>
+            Project: <b>{{plannedSpeech.track_project}}</b><br>
+            Summary: <b>{{plannedSpeech.summary}}</b><br>
+        </div>
     </div>
-</div>
 </div>
