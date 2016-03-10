@@ -230,6 +230,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             speech_blurb: '',
             id: 0
         };
+        getPendingSpeeches();
     };
 
     manageMtg.twoToQueue = function(speechToReset){
@@ -245,6 +246,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             speech_blurb: '',
             id: 0
         };
+        getPendingSpeeches();
     };
 
     manageMtg.threeToQueue = function(speechToReset){
@@ -260,6 +262,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
             speech_blurb: '',
             id: 0
         };
+        getPendingSpeeches();
     };
 
     //Send object to update DB on button click

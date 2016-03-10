@@ -21,7 +21,7 @@
     </head>
     <body ng-controller="indexController as index">
         <header ng-include="'/views/header.html'"></header>
-        <nav class="speech_queue" ng-include="'/views/sidebar/sidebar.html'"></nav>
+        <nav ng-include="'/views/sidebar/sidebar.html'"></nav>
 
         <!--Guest, Member, and Admin views will render here-->
         <main class="appbody col-xs-12 col-sm-10 col-md-10" ui-view></main>
