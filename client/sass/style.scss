@@ -446,6 +446,9 @@ nav {
   .pending_speeches {
     width: 65%;
   }
+  .timage {
+    margin-right: 40px;
+  }
 }
 
 @media (max-width: 771px) {
@@ -478,5 +481,8 @@ nav {
   }
   .wordlabel {
     margin-top: 0;
+  }
+  .timage {
+    margin-right: 115px;
   }
 }
