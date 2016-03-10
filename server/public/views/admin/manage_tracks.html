@@ -9,7 +9,7 @@
 <br>
 
 <!--Form to edit existing tracks-->
-<form ng-model="manageTracks.selectedProjects" ng-submit="manageTracks.updateTrack()">
+<form ng-model="manageTracks.selectedProjects" class="trackform" ng-submit="manageTracks.updateTrack()">
     <div ng-repeat="project in manageTracks.selectedProjects">
         <label for="project.project_number">Project {{project.project_number}}:</label><br>
         <input type="text" ng-model="project.project_name" id="project.project_number" placeholder="Project Name"><br>

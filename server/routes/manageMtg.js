@@ -171,7 +171,7 @@ router.post('/submitManagedMeeting', function(request, response) {
                 grammarian = $11,\
                 ah_counter = $12,\
                 timer = $13,\
-                description = $14,\
+                description = $14\
             WHERE\
             date = $15";
 
