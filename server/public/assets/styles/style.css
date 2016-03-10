@@ -75,9 +75,14 @@ nav {
 
 .welcome_by_name {
   font-size: 32px;
-  margin-top: 14px;
   color: #F2DF74;
-  float: left; }
+  float: right;
+  margin-left: -55px; }
+
+.comma {
+  margin-left: 338px;
+  margin-top: -50px;
+  color: #F2DF74; }
 
 .timage {
   margin-right: 115px; }
@@ -337,7 +342,10 @@ nav {
     margin-right: 80px; }
 
   .wordlabel {
-    margin-top: 0; } }
+    margin-top: 0; }
+
+  .welcome_by_name {
+    display: none; } }
 @media (max-width: 771px) {
   .first, .second, .third, .locationword, .datetheme {
     width: 220px; }

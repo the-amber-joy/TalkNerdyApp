@@ -94,11 +94,16 @@ nav {
 
 .welcome_by_name {
   font-size: 32px;
-  margin-top: 14px;
   color: #F2DF74;
-  float: left;
+  float: right;
+  margin-left: -55px;
 }
 
+.comma {
+  margin-left: 338px;
+  margin-top: -50px;
+  color: #F2DF74;
+}
 
 .timage {
   margin-right: 115px;
@@ -428,6 +433,9 @@ nav {
   }
   .wordlabel {
     margin-top: 0;
+  }
+  .welcome_by_name {
+    display: none;
   }
 }
 
