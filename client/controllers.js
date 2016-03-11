@@ -117,7 +117,7 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
     });
 
     requestSpeech.loadProjects = function(){
-        $http.post('/getProjects', {track: requestSpeech.data.selectedTrack}).then(function(response){
+        $http.post('/getProjects', {track_name: requestSpeech.data.selectedTrack}).then(function(response){
             requestSpeech.selectedProjects = response.data;
         });
     };
