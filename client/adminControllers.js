@@ -121,7 +121,6 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
     manageMtg.speech1 = {};
     manageMtg.speech2 = {};
     manageMtg.speech3 = {};
-    manageMtg.pending = []; // array of unscheduled speeches
     manageMtg.dateArray = [];
     manageMtg.scheduledSpeeches = [];
 
@@ -298,6 +297,7 @@ app.controller('ManageMeetingController', ['$scope', '$http', function ($scope, 
 
 
     $scope.fetchExistingFields = function(selectedDate) {
+        manageMtg.success = false;
         var sendingDate={};
         var returnedFields={};
 
