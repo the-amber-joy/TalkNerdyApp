@@ -126,6 +126,10 @@ nav {
   width: 85px;
 }
 
+.sidebar {
+  margin-top: 10px;
+}
+
 // html.login CSS
 
 .login {
@@ -391,6 +395,12 @@ nav {
 .buttonclear {
   float: left;
   margin-left: 17px;
+}
+
+.requestMessage {
+  margin-left: 15px;
+  float: left;
+  margin-top: -45px;
 }
 
 // manage.tracks.html
