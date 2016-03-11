@@ -65,23 +65,22 @@ app.controller('SpeechAgendaController', ['$http', function ($http) {
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 //This shows a logged-in user their own history of past speeches
-app.controller('SpeechHistory', ['$http', '$scope', 'UserService', function ($http, $scope, UserService) {
+app.controller('SpeechHistory', ['$http', '$scope', '$state', 'UserService', function ($http, $scope, $state, UserService) {
     var history = this;
 
-    $http.post('/mySpeeches', {google_id : UserService.google_id}).then(function(response){
+    $http.post('/mySpeeches', {google_id: UserService.google_id}).then(function (response) {
         history.speeches = response.data; //this is an array of speeches already given
     });
 
-    $http.post('/myRequests', {google_id : UserService.google_id}).then(function(response){
+    $http.post('/myRequests', {google_id: UserService.google_id}).then(function (response) {
         history.requests = response.data; //this is an array of speeches not yet given
     });
 
-    history.deleteRequest = function(foo) {
-        console.log(foo);
+    //supposed to delete request. Works on DB but does not remove request from view yet
+    history.deleteRequest = function (foo) {
         $http.post('/myRequests/delete', {speechId: foo.id}).then(function () {
-        }).then(function($route){
-            $route.reload();
-        })
+            $state.reload();
+        });
     };
 
 }]);
@@ -119,7 +118,6 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
 
     requestSpeech.loadProjects = function(){
         $http.post('/getProjects', {track: requestSpeech.data.selectedTrack}).then(function(response){
-            console.log('selected track', {track: requestSpeech.data.selectedTrack});
             requestSpeech.selectedProjects = response.data;
         });
     };
