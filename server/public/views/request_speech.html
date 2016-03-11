@@ -11,7 +11,7 @@
                     <label for="track">Speech Track:</label><br>
                     <select ng-model="requestSpeech.selectedTrack" id="track" ng-change="requestSpeech.loadProjects()">
                         <option value="" disabled selected>Select A Track:</option>
-                        <option ng-repeat="track in requestSpeech.tracks track by $index" value={{$index}}>{{track.track_name}}</option>
+                        <option ng-repeat="track in requestSpeech.tracks track by $index">{{track.track_name}}</option>
                     </select>
                 </div>
 
