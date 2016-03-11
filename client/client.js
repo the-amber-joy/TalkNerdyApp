@@ -63,6 +63,12 @@ $urlRouterProvider, $locationProvider) {
             templateUrl: 'views/manage_meetings.html',
             controller: 'ManageMeetingController',
             controllerAs: 'manageMtg'
+        })
+        .state('pending_speeches', {
+            url: '/home/pending_speeches',
+            templateUrl: 'views/pending_speeches.html',
+            controller: 'ManageMeetingController',
+            controllerAs: 'manageMtg'
         });
 
 

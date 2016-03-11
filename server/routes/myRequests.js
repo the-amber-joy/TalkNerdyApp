@@ -39,5 +39,25 @@ router.post('/', function(request, response){
     });
 });
 
+router.post('/delete', function(request){
+    var deleteThis = request.body.speechId;
+
+    var deleteQuery = "DELETE FROM speeches WHERE id = $1";
+
+    pg.connect(connectionString, function(error, client, done) {
+        if(error) {
+            done();
+            console.log(error);
+            return response.status(500).json({ success: false, data: error});
+        }
+
+        client.query(deleteQuery, [deleteThis]);
+
+        client.on('end', function () {
+            client.end();
+        });
+    })
+});
+
 
 module.exports = router;

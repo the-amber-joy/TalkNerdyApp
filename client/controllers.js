@@ -76,6 +76,13 @@ app.controller('SpeechHistory', ['$http', '$scope', 'UserService', function ($ht
         history.requests = response.data; //this is an array of speeches not yet given
     });
 
+    history.deleteRequest = function(foo) {
+        console.log(foo);
+        $http.post('/myRequests/delete', {speechId: foo.id}).then(function () {
+        }).then(function($route){
+            $route.reload();
+        })
+    };
 
 }]);
 
@@ -128,7 +135,6 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
         requestSpeech.resetForm();
     };
 
-    //requestSpeech.deleteRequest = function(foo)
 
 }]);
 
