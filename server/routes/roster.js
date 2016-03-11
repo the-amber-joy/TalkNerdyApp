@@ -52,7 +52,6 @@ router.post('/', function(request, response){
         });
 
         query.on('end', function () {
-            console.log("query end reached");
             response.sendStatus(200);
             client.end();
 
@@ -63,7 +62,6 @@ router.post('/', function(request, response){
 
 router.post('/names', function(request, response){
     var nameUpdate = request.body;
-    console.log('request.body contents:', nameUpdate);
 
     var updateRosterQuery = "UPDATE roster SET first_name = $1, last_name = $2 WHERE id = $3";
     pg.connect(connectionString, function(error, client){
@@ -77,7 +75,6 @@ router.post('/names', function(request, response){
         });
 
         query.on('end', function () {
-            console.log("query end reached");
             response.sendStatus(200);
             client.end();
 
