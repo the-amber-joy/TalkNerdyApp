@@ -9,7 +9,7 @@
             <div class="trackproject col-md-3">
                 <div>
                     <label for="track">Speech Track:</label><br>
-                    <select ng-model="requestSpeech.selectedTrack" id="track" ng-change="requestSpeech.loadProjects()">
+                    <select ng-model="requestSpeech.data.selectedTrack" id="track" ng-change="requestSpeech.loadProjects()">
                         <option value="" disabled selected>Select A Track:</option>
                         <option ng-repeat="track in requestSpeech.tracks track by $index">{{track.track_name}}</option>
                     </select>
@@ -17,7 +17,7 @@
 
                 <div>
                     <label for="project">Speech Project:</label><br>
-                    <select ng-model="requestSpeech.data.speech.project" id="project" class="project">
+                    <select ng-model="requestSpeech.data.project" id="project" class="project">
                         <option value="" disabled selected>Select A Project:</option>
                         <option ng-repeat="project in requestSpeech.selectedProjects track by $index">{{project.project_name}}</option>
                     </select>

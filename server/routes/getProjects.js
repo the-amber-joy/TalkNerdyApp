@@ -36,7 +36,8 @@ router.get('/', function(request, response){
 router.post('/', function(request, response){
 
     var selectedProjects = [];
-    var selectedTrack = request.body.track_name;
+    var selectedTrack = request.body.track;
+    console.log('request.body', selectedTrack);
 
     pg.connect(connectionString, function(error, client) {
         if (error) {

@@ -85,7 +85,8 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
     });
 
     requestSpeech.loadProjects = function(){
-        $http.post('/getProjects', allTracks[requestSpeech.selectedTrack]).then(function(response){
+        $http.post('/getProjects', {track: requestSpeech.data.selectedTrack}).then(function(response){
+            console.log('selected track', {track: requestSpeech.data.selectedTrack});
             requestSpeech.selectedProjects = response.data;
         });
     };
@@ -103,7 +104,7 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
 
 }]);
 
-app.controller('ViewTracksController', ['$http', '$scope', function ($http, $scope) {
+app.controller('ViewTracksController', ['$http', '$scope', function ($http) {
     var viewTracks = this;
 
     var allTracks = [];
@@ -115,7 +116,7 @@ app.controller('ViewTracksController', ['$http', '$scope', function ($http, $sco
 
 
     viewTracks.loadProjects = function(){
-        $http.post('/getProjects', allTracks[viewTracks.selectedTrack]).then(function(response){
+        $http.post('/getProjects', allTracks[viewTracks.data.selectedTrack]).then(function(response){
             viewTracks.selectedProjects = response.data;
         });
     }

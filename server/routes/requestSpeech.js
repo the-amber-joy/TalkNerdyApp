@@ -25,8 +25,8 @@ router.post('/', function(request){
             [
                 speechRequestObject.speechTitle,
                 speechRequestObject.speechBlurb,
-                speechRequestObject.speech.track,
-                speechRequestObject.speech.project,
+                speechRequestObject.selectedTrack,
+                speechRequestObject.project,
                 speechRequestObject.firstName,
                 speechRequestObject.lastName,
                 speechRequestObject.google_id
