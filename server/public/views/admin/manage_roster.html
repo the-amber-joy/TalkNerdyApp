@@ -25,7 +25,7 @@
                 <input type="checkbox" id="adminCheck" ng-model="isAdmin"> Admin<br>
             </label>
 
-                <!--KEEP THIS FOR CHRIS-->
+                <!--This section seems to work but is questionable - documentation says do not mix ng - model & checked-->
 
                 <!--###### This section pre-selects the boxes applicable to the current user but ng-checked seems problematic with ng-model ####-->
                 <!--<input type="radio" name="" value="guest" ng-checked="roster.sortedArray[userRole].role == 'guest'"> Guest<br>-->
@@ -38,8 +38,11 @@
         <input type="submit" value="Click to Change Role" class="submitThis">
         </div>
     </form>
+         <!--show message on successful role change-->
         <div ng-show="roster.show_role_ack" style="color: red">Role Successfully Updated!</div>
         <br/><br/><br/>
+
+        <!--********* Change User Name **********-->
         <div class="name_change"  ng-hide="!userIndex">
             <p>Make changes to user First and Last Name here: </p>
             <form ng-submit="roster.updateName()">
@@ -50,6 +53,7 @@
                 <br/><br/>
                 <input type="submit" value="Click to Modify Name" class="submitThis">
             </form>
+            <!--show message on successful name change-->
             <div ng-show="roster.show_name_ack" style="color: red">Name Successfully Updated!</div>
 
         </div>
