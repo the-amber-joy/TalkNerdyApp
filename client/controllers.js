@@ -1,8 +1,17 @@
+
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//                  INDEX CONTROLLER                         //
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
 app.controller('indexController', ['$http', 'UserService', function ($http, UserService) {
     var index = this;
         index.things = UserService;
 }]);
 
+
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//                  HOME CONTROLLER                          //
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 app.controller('HomeController', ['$http', '$scope', 'UserService', function ($http, $scope, UserService) {
     var home = this;
@@ -37,6 +46,11 @@ app.controller('HomeController', ['$http', '$scope', 'UserService', function ($h
 
 }]);
 
+
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//                SPEECH AGENDA CONTROLLER                   //
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
 //This will get all speeches scheduled for the next meeting, to be shown on the Home page agenda
 app.controller('SpeechAgendaController', ['$http', function ($http) {
     var plannedSpeeches = this;
@@ -44,6 +58,11 @@ app.controller('SpeechAgendaController', ['$http', function ($http) {
         plannedSpeeches.speechArray = response.data;
     });
 }]);
+
+
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//              SPEECH HISTORY CONTROLLER                    //
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 //This shows a logged-in user their own history of past speeches
 app.controller('SpeechHistory', ['$http', '$scope', 'UserService', function ($http, $scope, UserService) {
@@ -60,6 +79,10 @@ app.controller('SpeechHistory', ['$http', '$scope', 'UserService', function ($ht
 
 }]);
 
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//                  PAST CONTROLLER                          //
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
 app.controller('PastController', ['$http', function ($http) {
     var past = this;
     $http.get('/pastAgendas', {}).then(function(response){
@@ -67,6 +90,9 @@ app.controller('PastController', ['$http', function ($http) {
     });
 }]);
 
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//             REQUEST SPEECH CONTROLLER                     //
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', function ($http, $scope, UserService) {
     var requestSpeech = this;
@@ -102,11 +128,16 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
         requestSpeech.resetForm();
     };
 
-    requestSpeech.deleteRequest = function(foo)
+    //requestSpeech.deleteRequest = function(foo)
 
 }]);
 
-app.controller('ViewTracksController', ['$http', '$scope', function ($http) {
+
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//                VIEW TRACKS CONTROLLER                     //
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+app.controller('ViewTracksController', ['$http', '$scope', function ($http, $scope) {
     var viewTracks = this;
 
     var allTracks = [];

@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 
+//********  Routing Requires  *********
 var index = require('./routes/index');
 var login = require('./routes/login');
 var auth = require('./routes/auth');
@@ -60,4 +61,5 @@ app.get('/*', function(request, response){
 
 var server = app.listen(process.env.PORT || 3000, function(){
     var port = server.address().port;
+    console.log('Listening on Port: ', port)
 });
