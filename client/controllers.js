@@ -102,6 +102,8 @@ app.controller('RequestSpeechController', ['$http', '$scope', 'UserService', fun
         requestSpeech.resetForm();
     };
 
+    requestSpeech.deleteRequest = function(foo)
+
 }]);
 
 app.controller('ViewTracksController', ['$http', '$scope', function ($http) {
