@@ -37,7 +37,6 @@ router.post('/', function(request, response){
 
     var selectedProjects = [];
     var selectedTrack = request.body.track;
-    console.log('request.body', selectedTrack);
 
     pg.connect(connectionString, function(error, client) {
         if (error) {
@@ -59,7 +58,6 @@ router.post('/', function(request, response){
 
         query.on('row', function (row) {
             selectedProjects.push(row);
-            console.log('selected projects', selectedProjects)
         });
 
         query.on('end', function () {
