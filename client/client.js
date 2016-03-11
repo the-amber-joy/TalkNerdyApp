@@ -3,8 +3,6 @@ var app = angular.module('talkNerdyApp', ['ui.router']);
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider,
 $urlRouterProvider, $locationProvider) {
 
-    // For any unmatched url, redirect to /state1
-    //$urlRouterProvider.otherwise("/");
     $stateProvider
         .state('admin_sidebar', {
             url: '/admin_sidebar',
@@ -72,7 +70,7 @@ $urlRouterProvider, $locationProvider) {
 }]);
 
 
-//CONTROLLERS for all general views are now in client/controllers.js
+//CONTROLLERS for all general views are in client/controllers.js
 //CONTROLLERS for all ADMIN-specific functions are in client/adminControllers.js
 //FACTORIES and any other services will be in client/services.js
 
